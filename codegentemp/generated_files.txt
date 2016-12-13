@@ -147,10 +147,6 @@
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Comm_BOOT.h" value="HEADER;;;;;Comm" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\CommCLK.c" value="SOURCE_C;CortexM0;;;;CommCLK" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\CommCLK.h" value="HEADER;;;;;CommCLK" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_2.c" value="SOURCE_C;CortexM0;;;;END_STOP_2" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_2.h" value="HEADER;;;;;END_STOP_2" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_2_aliases.h" value="HEADER;;;;;END_STOP_2" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_2_PM.c" value="SOURCE_C;CortexM0;;;;END_STOP_2" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\STATUS_LED_2.c" value="SOURCE_C;CortexM0;;;;STATUS_LED_2" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\STATUS_LED_2.h" value="HEADER;;;;;STATUS_LED_2" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\STATUS_LED_2_aliases.h" value="HEADER;;;;;STATUS_LED_2" />
@@ -159,10 +155,12 @@
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\STATUS_LED_1.h" value="HEADER;;;;;STATUS_LED_1" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\STATUS_LED_1_aliases.h" value="HEADER;;;;;STATUS_LED_1" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\STATUS_LED_1_PM.c" value="SOURCE_C;CortexM0;;;;STATUS_LED_1" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_1.c" value="SOURCE_C;CortexM0;;;;END_STOP_1" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_1.h" value="HEADER;;;;;END_STOP_1" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_1_aliases.h" value="HEADER;;;;;END_STOP_1" />
-  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\END_STOP_1_PM.c" value="SOURCE_C;CortexM0;;;;END_STOP_1" />
+  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Pin_Sw.c" value="SOURCE_C;CortexM0;;;;Pin_Sw" />
+  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Pin_Sw.h" value="HEADER;;;;;Pin_Sw" />
+  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Pin_Sw_aliases.h" value="HEADER;;;;;Pin_Sw" />
+  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Pin_Sw_PM.c" value="SOURCE_C;CortexM0;;;;Pin_Sw" />
+  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\isr_GPIO.c" value="SOURCE_C;CortexM0;;;;isr_GPIO" />
+  <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\isr_GPIO.h" value="HEADER;;;;;isr_GPIO" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Comm_uart_rx_i2c_scl_spi_mosi.c" value="SOURCE_C;CortexM0;;;;Comm_uart_rx_i2c_scl_spi_mosi" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Comm_uart_rx_i2c_scl_spi_mosi.h" value="HEADER;;;;;Comm_uart_rx_i2c_scl_spi_mosi" />
   <file name="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\codegentemp\Comm_uart_rx_i2c_scl_spi_mosi_aliases.h" value="HEADER;;;;;Comm_uart_rx_i2c_scl_spi_mosi" />

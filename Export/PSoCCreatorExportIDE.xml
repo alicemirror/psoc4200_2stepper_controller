@@ -236,10 +236,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Comm_SCB_IRQ.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Comm_SCB_IRQ.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cycodeshareexport.ld</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_2.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_2.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_2_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_2_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STATUS_LED_2.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STATUS_LED_2.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STATUS_LED_2_aliases.h</File>
@@ -248,10 +244,12 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STATUS_LED_1.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STATUS_LED_1_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STATUS_LED_1_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\END_STOP_1_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Pin_Sw.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Pin_Sw.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Pin_Sw_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Pin_Sw_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\isr_GPIO.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\isr_GPIO.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\Export\ARM_GCC_Generic">

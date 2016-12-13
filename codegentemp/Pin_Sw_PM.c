@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: END_STOP_1.c  
+* File Name: Pin_Sw.c  
 * Version 2.20
 *
 * Description:
@@ -15,13 +15,13 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "END_STOP_1.h"
+#include "Pin_Sw.h"
 
-static END_STOP_1_BACKUP_STRUCT  END_STOP_1_backup = {0u, 0u, 0u};
+static Pin_Sw_BACKUP_STRUCT  Pin_Sw_backup = {0u, 0u, 0u};
 
 
 /*******************************************************************************
-* Function Name: END_STOP_1_Sleep
+* Function Name: Pin_Sw_Sleep
 ****************************************************************************//**
 *
 * \brief Stores the pin configuration and prepares the pin for entering chip 
@@ -39,30 +39,30 @@ static END_STOP_1_BACKUP_STRUCT  END_STOP_1_backup = {0u, 0u, 0u};
 *  deep-sleep/hibernate modes.
 *
 * \funcusage
-*  \snippet END_STOP_1_SUT.c usage_END_STOP_1_Sleep_Wakeup
+*  \snippet Pin_Sw_SUT.c usage_Pin_Sw_Sleep_Wakeup
 *******************************************************************************/
-void END_STOP_1_Sleep(void)
+void Pin_Sw_Sleep(void)
 {
-    #if defined(END_STOP_1__PC)
-        END_STOP_1_backup.pcState = END_STOP_1_PC;
+    #if defined(Pin_Sw__PC)
+        Pin_Sw_backup.pcState = Pin_Sw_PC;
     #else
         #if (CY_PSOC4_4200L)
             /* Save the regulator state and put the PHY into suspend mode */
-            END_STOP_1_backup.usbState = END_STOP_1_CR1_REG;
-            END_STOP_1_USB_POWER_REG |= END_STOP_1_USBIO_ENTER_SLEEP;
-            END_STOP_1_CR1_REG &= END_STOP_1_USBIO_CR1_OFF;
+            Pin_Sw_backup.usbState = Pin_Sw_CR1_REG;
+            Pin_Sw_USB_POWER_REG |= Pin_Sw_USBIO_ENTER_SLEEP;
+            Pin_Sw_CR1_REG &= Pin_Sw_USBIO_CR1_OFF;
         #endif
     #endif
-    #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(END_STOP_1__SIO)
-        END_STOP_1_backup.sioState = END_STOP_1_SIO_REG;
+    #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(Pin_Sw__SIO)
+        Pin_Sw_backup.sioState = Pin_Sw_SIO_REG;
         /* SIO requires unregulated output buffer and single ended input buffer */
-        END_STOP_1_SIO_REG &= (uint32)(~END_STOP_1_SIO_LPM_MASK);
+        Pin_Sw_SIO_REG &= (uint32)(~Pin_Sw_SIO_LPM_MASK);
     #endif  
 }
 
 
 /*******************************************************************************
-* Function Name: END_STOP_1_Wakeup
+* Function Name: Pin_Sw_Wakeup
 ****************************************************************************//**
 *
 * \brief Restores the pin configuration that was saved during Pin_Sleep().
@@ -75,22 +75,22 @@ void END_STOP_1_Sleep(void)
 *  None
 *  
 * \funcusage
-*  Refer to END_STOP_1_Sleep() for an example usage.
+*  Refer to Pin_Sw_Sleep() for an example usage.
 *******************************************************************************/
-void END_STOP_1_Wakeup(void)
+void Pin_Sw_Wakeup(void)
 {
-    #if defined(END_STOP_1__PC)
-        END_STOP_1_PC = END_STOP_1_backup.pcState;
+    #if defined(Pin_Sw__PC)
+        Pin_Sw_PC = Pin_Sw_backup.pcState;
     #else
         #if (CY_PSOC4_4200L)
             /* Restore the regulator state and come out of suspend mode */
-            END_STOP_1_USB_POWER_REG &= END_STOP_1_USBIO_EXIT_SLEEP_PH1;
-            END_STOP_1_CR1_REG = END_STOP_1_backup.usbState;
-            END_STOP_1_USB_POWER_REG &= END_STOP_1_USBIO_EXIT_SLEEP_PH2;
+            Pin_Sw_USB_POWER_REG &= Pin_Sw_USBIO_EXIT_SLEEP_PH1;
+            Pin_Sw_CR1_REG = Pin_Sw_backup.usbState;
+            Pin_Sw_USB_POWER_REG &= Pin_Sw_USBIO_EXIT_SLEEP_PH2;
         #endif
     #endif
-    #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(END_STOP_1__SIO)
-        END_STOP_1_SIO_REG = END_STOP_1_backup.sioState;
+    #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(Pin_Sw__SIO)
+        Pin_Sw_SIO_REG = Pin_Sw_backup.sioState;
     #endif
 }
 

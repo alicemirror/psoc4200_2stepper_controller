@@ -31,7 +31,7 @@
 #define PH11 33600 //run
 #define PH12 36800 //p
 
-void main() {
+int main() {
     uint16 i[2];
 
     uint8 l_previousStepPulse;
@@ -45,15 +45,15 @@ void main() {
 
     while(1) {
 
-        if(END_STOP_1_Read()) 
-            STATUS_LED_1_Write(0x00);
-        else
-            STATUS_LED_1_Write(0x01);
-
-        if(END_STOP_2_Read()) 
-            STATUS_LED_2_Write(0x00);
-        else
-            STATUS_LED_2_Write(0x01);
+//        if(END_STOP_1_Read()) 
+//            STATUS_LED_1_Write(0x00);
+//        else
+//            STATUS_LED_1_Write(0x01);
+//
+//        if(END_STOP_2_Read()) 
+//            STATUS_LED_2_Write(0x00);
+//        else
+//            STATUS_LED_2_Write(0x01);
         
         
         // Loop on two motors

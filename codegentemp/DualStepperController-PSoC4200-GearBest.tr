@@ -71,16 +71,16 @@ Port Name  Setup to Clk  Clock Name:Phase
 
 Port Name                   Clock to Out  Clock Name:Phase         
 --------------------------  ------------  -----------------------  
-DIR_OUT_A(0)_PAD            23648         CyHFCLK:R                
-DIR_OUT_A_1(0)_PAD          22857         CyHFCLK:R                
-DIR_OUT_B(0)_PAD            24159         CyHFCLK:R                
-DIR_OUT_B_1(0)_PAD          24463         CyHFCLK:R                
-INTERNAL_STEP_OUT(0)_PAD    24643         Clock_PWM_MAIN:R         
-INTERNAL_STEP_OUT_1(0)_PAD  22080         Clock_PWM_MAIN_1:R       
+DIR_OUT_A(0)_PAD            23250         CyHFCLK:R                
+DIR_OUT_A_1(0)_PAD          23209         CyHFCLK:R                
+DIR_OUT_B(0)_PAD            24388         CyHFCLK:R                
+DIR_OUT_B_1(0)_PAD          24240         CyHFCLK:R                
+INTERNAL_STEP_OUT(0)_PAD    24211         Clock_PWM_MAIN:R         
+INTERNAL_STEP_OUT_1(0)_PAD  22064         Clock_PWM_MAIN_1:R       
 PWM_OUT_A(0)_PAD            18655         Clock_PWM_MAIN_1(FFB):R  
-PWM_OUT_A_1(0)_PAD          18509         Clock_PWM_MAIN(FFB):R    
+PWM_OUT_A_1(0)_PAD          18511         Clock_PWM_MAIN(FFB):R    
 PWM_OUT_B(0)_PAD            18354         Clock_PWM_MAIN_1(FFB):R  
-PWM_OUT_B_1(0)_PAD          20229         Clock_PWM_MAIN(FFB):R    
+PWM_OUT_B_1(0)_PAD          20202         Clock_PWM_MAIN(FFB):R    
 
 
                          3.3::Pad to Pad
