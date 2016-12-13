@@ -1,0 +1,2032 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Comm_I2C.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Comm_I2CInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	Comm_I2CInit
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	Comm_I2CInit, %function
+  23              	Comm_I2CInit:
+  24              	.LFB0:
+  25              		.file 1 "Generated_Source\\PSoC4\\Comm_I2C.c"
+   1:Generated_Source\PSoC4/Comm_I2C.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/Comm_I2C.c **** * \file Comm_I2C.c
+   3:Generated_Source\PSoC4/Comm_I2C.c **** * \version 3.20
+   4:Generated_Source\PSoC4/Comm_I2C.c **** *
+   5:Generated_Source\PSoC4/Comm_I2C.c **** * \brief
+   6:Generated_Source\PSoC4/Comm_I2C.c **** *  This file provides the source code to the API for the SCB Component in
+   7:Generated_Source\PSoC4/Comm_I2C.c **** *  I2C mode.
+   8:Generated_Source\PSoC4/Comm_I2C.c **** *
+   9:Generated_Source\PSoC4/Comm_I2C.c **** * Note:
+  10:Generated_Source\PSoC4/Comm_I2C.c **** *
+  11:Generated_Source\PSoC4/Comm_I2C.c **** *******************************************************************************
+  12:Generated_Source\PSoC4/Comm_I2C.c **** * \copyright
+  13:Generated_Source\PSoC4/Comm_I2C.c **** * Copyright 2013-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/Comm_I2C.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/Comm_I2C.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/Comm_I2C.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/Comm_I2C.c **** *******************************************************************************/
+  18:Generated_Source\PSoC4/Comm_I2C.c **** 
+  19:Generated_Source\PSoC4/Comm_I2C.c **** #include "Comm_PVT.h"
+  20:Generated_Source\PSoC4/Comm_I2C.c **** #include "Comm_I2C_PVT.h"
+  21:Generated_Source\PSoC4/Comm_I2C.c **** 
+  22:Generated_Source\PSoC4/Comm_I2C.c **** 
+  23:Generated_Source\PSoC4/Comm_I2C.c **** /***************************************
+  24:Generated_Source\PSoC4/Comm_I2C.c **** *      I2C Private Vars
+  25:Generated_Source\PSoC4/Comm_I2C.c **** ***************************************/
+  26:Generated_Source\PSoC4/Comm_I2C.c **** 
+  27:Generated_Source\PSoC4/Comm_I2C.c **** volatile uint8 Comm_state;  /* Current state of I2C FSM */
+  28:Generated_Source\PSoC4/Comm_I2C.c **** 
+  29:Generated_Source\PSoC4/Comm_I2C.c **** #if(Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+  30:Generated_Source\PSoC4/Comm_I2C.c **** 
+  31:Generated_Source\PSoC4/Comm_I2C.c ****     /***************************************
+  32:Generated_Source\PSoC4/Comm_I2C.c ****     *  Configuration Structure Initialization
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 2
+
+
+  33:Generated_Source\PSoC4/Comm_I2C.c ****     ***************************************/
+  34:Generated_Source\PSoC4/Comm_I2C.c **** 
+  35:Generated_Source\PSoC4/Comm_I2C.c ****     /* Constant configuration of I2C */
+  36:Generated_Source\PSoC4/Comm_I2C.c ****     const Comm_I2C_INIT_STRUCT Comm_configI2C =
+  37:Generated_Source\PSoC4/Comm_I2C.c ****     {
+  38:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_MODE,
+  39:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_OVS_FACTOR_LOW,
+  40:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_OVS_FACTOR_HIGH,
+  41:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_MEDIAN_FILTER_ENABLE,
+  42:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_SLAVE_ADDRESS,
+  43:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_SLAVE_ADDRESS_MASK,
+  44:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_ACCEPT_ADDRESS,
+  45:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_WAKE_ENABLE,
+  46:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_BYTE_MODE_ENABLE,
+  47:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_DATA_RATE,
+  48:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_ACCEPT_GENERAL_CALL,
+  49:Generated_Source\PSoC4/Comm_I2C.c ****     };
+  50:Generated_Source\PSoC4/Comm_I2C.c **** 
+  51:Generated_Source\PSoC4/Comm_I2C.c ****     /*******************************************************************************
+  52:Generated_Source\PSoC4/Comm_I2C.c ****     * Function Name: Comm_I2CInit
+  53:Generated_Source\PSoC4/Comm_I2C.c ****     ****************************************************************************//**
+  54:Generated_Source\PSoC4/Comm_I2C.c ****     *
+  55:Generated_Source\PSoC4/Comm_I2C.c ****     *
+  56:Generated_Source\PSoC4/Comm_I2C.c ****     *  Configures the Comm for I2C operation.
+  57:Generated_Source\PSoC4/Comm_I2C.c ****     *
+  58:Generated_Source\PSoC4/Comm_I2C.c ****     *  This function is intended specifically to be used when the Comm 
+  59:Generated_Source\PSoC4/Comm_I2C.c ****     *  configuration is set to “Unconfigured Comm” in the customizer. 
+  60:Generated_Source\PSoC4/Comm_I2C.c ****     *  After initializing the Comm in I2C mode using this function, 
+  61:Generated_Source\PSoC4/Comm_I2C.c ****     *  the component can be enabled using the Comm_Start() or 
+  62:Generated_Source\PSoC4/Comm_I2C.c ****     * Comm_Enable() function.
+  63:Generated_Source\PSoC4/Comm_I2C.c ****     *  This function uses a pointer to a structure that provides the configuration 
+  64:Generated_Source\PSoC4/Comm_I2C.c ****     *  settings. This structure contains the same information that would otherwise 
+  65:Generated_Source\PSoC4/Comm_I2C.c ****     *  be provided by the customizer settings.
+  66:Generated_Source\PSoC4/Comm_I2C.c ****     *
+  67:Generated_Source\PSoC4/Comm_I2C.c ****     *  \param config: pointer to a structure that contains the following list of 
+  68:Generated_Source\PSoC4/Comm_I2C.c ****     *   fields. These fields match the selections available in the customizer. 
+  69:Generated_Source\PSoC4/Comm_I2C.c ****     *   Refer to the customizer for further description of the settings.
+  70:Generated_Source\PSoC4/Comm_I2C.c ****     *
+  71:Generated_Source\PSoC4/Comm_I2C.c ****     *******************************************************************************/
+  72:Generated_Source\PSoC4/Comm_I2C.c ****     void Comm_I2CInit(const Comm_I2C_INIT_STRUCT *config)
+  73:Generated_Source\PSoC4/Comm_I2C.c ****     {
+  26              		.loc 1 73 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 F7B5     		push	{r0, r1, r2, r4, r5, r6, r7, lr}
+  30              		.cfi_def_cfa_offset 32
+  31              		.cfi_offset 0, -32
+  32              		.cfi_offset 1, -28
+  33              		.cfi_offset 2, -24
+  34              		.cfi_offset 4, -20
+  35              		.cfi_offset 5, -16
+  36              		.cfi_offset 6, -12
+  37              		.cfi_offset 7, -8
+  38              		.cfi_offset 14, -4
+  74:Generated_Source\PSoC4/Comm_I2C.c ****         uint32 medianFilter;
+  75:Generated_Source\PSoC4/Comm_I2C.c ****         uint32 locEnableWake;
+  76:Generated_Source\PSoC4/Comm_I2C.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 3
+
+
+  77:Generated_Source\PSoC4/Comm_I2C.c ****         if(NULL == config)
+  39              		.loc 1 77 0
+  40 0002 0028     		cmp	r0, #0
+  41 0004 00D1     		bne	.LCB16
+  42 0006 A5E0     		b	.L1	@long jump
+  43              	.LCB16:
+  78:Generated_Source\PSoC4/Comm_I2C.c ****         {
+  79:Generated_Source\PSoC4/Comm_I2C.c ****             CYASSERT(0u != 0u); /* Halt execution due to bad function parameter */
+  80:Generated_Source\PSoC4/Comm_I2C.c ****         }
+  81:Generated_Source\PSoC4/Comm_I2C.c ****         else
+  82:Generated_Source\PSoC4/Comm_I2C.c ****         {
+  83:Generated_Source\PSoC4/Comm_I2C.c ****             /* Configure pins */
+  84:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_SetPins(Comm_SCB_MODE_I2C, Comm_DUMMY_PARAM,
+  44              		.loc 1 84 0
+  45 0008 0021     		mov	r1, #0
+  46 000a 041C     		mov	r4, r0
+  47 000c 0A1C     		mov	r2, r1
+  48 000e 0120     		mov	r0, #1
+  49              	.LVL1:
+  50 0010 FFF7FEFF 		bl	Comm_SetPins
+  51              	.LVL2:
+  85:Generated_Source\PSoC4/Comm_I2C.c ****                                      Comm_DUMMY_PARAM);
+  86:Generated_Source\PSoC4/Comm_I2C.c **** 
+  87:Generated_Source\PSoC4/Comm_I2C.c ****             /* Store internal configuration */
+  88:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbMode       = (uint8) Comm_SCB_MODE_I2C;
+  52              		.loc 1 88 0
+  53 0014 0122     		mov	r2, #1
+  89:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbEnableWake = (uint8) config->enableWake;
+  90:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbEnableIntr = (uint8) Comm_SCB_IRQ_INTERNAL;
+  91:Generated_Source\PSoC4/Comm_I2C.c **** 
+  92:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_mode          = (uint8) config->mode;
+  93:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_acceptAddr    = (uint8) config->acceptAddr;
+  94:Generated_Source\PSoC4/Comm_I2C.c **** 
+  95:Generated_Source\PSoC4/Comm_I2C.c ****         #if (Comm_CY_SCBIP_V0)
+  96:Generated_Source\PSoC4/Comm_I2C.c ****             /* Adjust SDA filter settings. Ticket ID#150521 */
+  97:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_SET_I2C_CFG_SDA_FILT_TRIM(Comm_EC_AM_I2C_CFG_SDA_FILT_TRIM);
+  54              		.loc 1 97 0
+  55 0016 0C25     		mov	r5, #12
+  88:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbEnableWake = (uint8) config->enableWake;
+  56              		.loc 1 88 0
+  57 0018 4F4B     		ldr	r3, .L31
+  89:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbEnableWake = (uint8) config->enableWake;
+  58              		.loc 1 89 0
+  59 001a 217F     		ldrb	r1, [r4, #28]
+  88:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbEnableWake = (uint8) config->enableWake;
+  60              		.loc 1 88 0
+  61 001c 1A70     		strb	r2, [r3]
+  89:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbEnableWake = (uint8) config->enableWake;
+  62              		.loc 1 89 0
+  63 001e 4F4B     		ldr	r3, .L31+4
+  92:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_acceptAddr    = (uint8) config->acceptAddr;
+  64              		.loc 1 92 0
+  65 0020 4F4E     		ldr	r6, .L31+8
+  89:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_scbEnableWake = (uint8) config->enableWake;
+  66              		.loc 1 89 0
+  67 0022 1970     		strb	r1, [r3]
+  90:Generated_Source\PSoC4/Comm_I2C.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 4
+
+
+  68              		.loc 1 90 0
+  69 0024 4F4B     		ldr	r3, .L31+12
+  93:Generated_Source\PSoC4/Comm_I2C.c **** 
+  70              		.loc 1 93 0
+  71 0026 217E     		ldrb	r1, [r4, #24]
+  90:Generated_Source\PSoC4/Comm_I2C.c **** 
+  72              		.loc 1 90 0
+  73 0028 1A70     		strb	r2, [r3]
+  93:Generated_Source\PSoC4/Comm_I2C.c **** 
+  74              		.loc 1 93 0
+  75 002a 4F4B     		ldr	r3, .L31+16
+  92:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_acceptAddr    = (uint8) config->acceptAddr;
+  76              		.loc 1 92 0
+  77 002c 2078     		ldrb	r0, [r4]
+  93:Generated_Source\PSoC4/Comm_I2C.c **** 
+  78              		.loc 1 93 0
+  79 002e 1970     		strb	r1, [r3]
+  80              		.loc 1 97 0
+  81 0030 4E4B     		ldr	r3, .L31+20
+  92:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_acceptAddr    = (uint8) config->acceptAddr;
+  82              		.loc 1 92 0
+  83 0032 3070     		strb	r0, [r6]
+  84              		.loc 1 97 0
+  85 0034 1968     		ldr	r1, [r3]
+  86 0036 2943     		orr	r1, r5
+  87 0038 1960     		str	r1, [r3]
+  98:Generated_Source\PSoC4/Comm_I2C.c ****         #endif /* (Comm_CY_SCBIP_V0) */
+  99:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 100:Generated_Source\PSoC4/Comm_I2C.c ****             /* Adjust AF and DF filter settings. Ticket ID#176179 */
+ 101:Generated_Source\PSoC4/Comm_I2C.c ****             if (((Comm_I2C_MODE_SLAVE != config->mode) &&
+  88              		.loc 1 101 0
+  89 003a 2568     		ldr	r5, [r4]
+  90 003c 0196     		str	r6, [sp, #4]
+  91 003e 191C     		mov	r1, r3
+  92 0040 9542     		cmp	r5, r2
+  93 0042 04D0     		beq	.L3
+  94              		.loc 1 101 0 is_stmt 0 discriminator 1
+  95 0044 C825     		mov	r5, #200
+  96 0046 678C     		ldrh	r7, [r4, #34]
+  97 0048 6D00     		lsl	r5, r5, #1
+  98 004a AF42     		cmp	r7, r5
+  99 004c 05D8     		bhi	.L4
+ 100              	.L3:
+ 102:Generated_Source\PSoC4/Comm_I2C.c ****                  (config->dataRate <= Comm_I2C_DATA_RATE_FS_MODE_MAX)) ||
+ 103:Generated_Source\PSoC4/Comm_I2C.c ****                  (Comm_I2C_MODE_SLAVE == config->mode))
+ 104:Generated_Source\PSoC4/Comm_I2C.c ****             {
+ 105:Generated_Source\PSoC4/Comm_I2C.c ****                 /* AF = 1, DF = 0 */
+ 106:Generated_Source\PSoC4/Comm_I2C.c ****                 Comm_I2C_CFG_ANALOG_FITER_ENABLE;
+ 101              		.loc 1 106 0 is_stmt 1
+ 102 004e 0B68     		ldr	r3, [r1]
+ 103 0050 474A     		ldr	r2, .L31+24
+ 104 0052 1343     		orr	r3, r2
+ 105 0054 0B60     		str	r3, [r1]
+ 106              	.LVL3:
+ 107:Generated_Source\PSoC4/Comm_I2C.c ****                 medianFilter = Comm_DIGITAL_FILTER_DISABLE;
+ 107              		.loc 1 107 0
+ 108 0056 0022     		mov	r2, #0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 5
+
+
+ 109 0058 03E0     		b	.L5
+ 110              	.LVL4:
+ 111              	.L4:
+ 108:Generated_Source\PSoC4/Comm_I2C.c ****             }
+ 109:Generated_Source\PSoC4/Comm_I2C.c ****             else
+ 110:Generated_Source\PSoC4/Comm_I2C.c ****             {
+ 111:Generated_Source\PSoC4/Comm_I2C.c ****                 /* AF = 0, DF = 1 */
+ 112:Generated_Source\PSoC4/Comm_I2C.c ****                 Comm_I2C_CFG_ANALOG_FITER_DISABLE;
+ 112              		.loc 1 112 0
+ 113 005a 1D68     		ldr	r5, [r3]
+ 114 005c 4549     		ldr	r1, .L31+28
+ 115 005e 2940     		and	r1, r5
+ 116 0060 1960     		str	r1, [r3]
+ 117              	.LVL5:
+ 118              	.L5:
+ 113:Generated_Source\PSoC4/Comm_I2C.c ****                 medianFilter = Comm_DIGITAL_FILTER_ENABLE;
+ 114:Generated_Source\PSoC4/Comm_I2C.c ****             }
+ 115:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 116:Generated_Source\PSoC4/Comm_I2C.c ****         #if (!Comm_CY_SCBIP_V0)
+ 117:Generated_Source\PSoC4/Comm_I2C.c ****             locEnableWake = (Comm_I2C_MULTI_MASTER_SLAVE) ? (0u) : (config->enableWake);
+ 118:Generated_Source\PSoC4/Comm_I2C.c ****         #else
+ 119:Generated_Source\PSoC4/Comm_I2C.c ****             locEnableWake = config->enableWake;
+ 120:Generated_Source\PSoC4/Comm_I2C.c ****         #endif /* (!Comm_CY_SCBIP_V0) */
+ 121:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 122:Generated_Source\PSoC4/Comm_I2C.c ****             /* Configure I2C interface */
+ 123:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_CTRL_REG     = Comm_GET_CTRL_BYTE_MODE  (config->enableByteMode) |
+ 124:Generated_Source\PSoC4/Comm_I2C.c ****                                             Comm_GET_CTRL_ADDR_ACCEPT(config->acceptAddr)     |
+ 119              		.loc 1 124 0
+ 120 0062 A369     		ldr	r3, [r4, #24]
+ 119:Generated_Source\PSoC4/Comm_I2C.c ****         #endif /* (!Comm_CY_SCBIP_V0) */
+ 121              		.loc 1 119 0
+ 122 0064 E169     		ldr	r1, [r4, #28]
+ 123              	.LVL6:
+ 123:Generated_Source\PSoC4/Comm_I2C.c ****                                             Comm_GET_CTRL_ADDR_ACCEPT(config->acceptAddr)     |
+ 124              		.loc 1 123 0
+ 125 0066 002B     		cmp	r3, #0
+ 126 0068 01D0     		beq	.L6
+ 127 006a 8023     		mov	r3, #128
+ 128 006c 5B02     		lsl	r3, r3, #9
+ 129              	.L6:
+ 125:Generated_Source\PSoC4/Comm_I2C.c ****                                             Comm_GET_CTRL_EC_AM_MODE (locEnableWake);
+ 130              		.loc 1 125 0
+ 131 006e 4D1E     		sub	r5, r1, #1
+ 132 0070 A941     		sbc	r1, r1, r5
+ 133              	.LVL7:
+ 126:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 127:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_I2C_CTRL_REG = Comm_GET_I2C_CTRL_HIGH_PHASE_OVS(config->oversampleHigh) |
+ 134              		.loc 1 127 0
+ 135 0072 0F27     		mov	r7, #15
+ 125:Generated_Source\PSoC4/Comm_I2C.c ****                                             Comm_GET_CTRL_EC_AM_MODE (locEnableWake);
+ 136              		.loc 1 125 0
+ 137 0074 0902     		lsl	r1, r1, #8
+ 124:Generated_Source\PSoC4/Comm_I2C.c ****                                             Comm_GET_CTRL_EC_AM_MODE (locEnableWake);
+ 138              		.loc 1 124 0
+ 139 0076 0B43     		orr	r3, r1
+ 123:Generated_Source\PSoC4/Comm_I2C.c ****                                             Comm_GET_CTRL_ADDR_ACCEPT(config->acceptAddr)     |
+ 140              		.loc 1 123 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 6
+
+
+ 141 0078 3F49     		ldr	r1, .L31+32
+ 128:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_LOW_PHASE_OVS (config->oversampleLow)                        
+ 129:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_S_GENERAL_IGNORE((uint32)(0u == config->acceptGeneralAddr))  
+ 142              		.loc 1 129 0
+ 143 007a 651D     		add	r5, r4, #5
+ 123:Generated_Source\PSoC4/Comm_I2C.c ****                                             Comm_GET_CTRL_ADDR_ACCEPT(config->acceptAddr)     |
+ 144              		.loc 1 123 0
+ 145 007c 0B60     		str	r3, [r1]
+ 146              	.LVL8:
+ 127:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_LOW_PHASE_OVS (config->oversampleLow)                        
+ 147              		.loc 1 127 0
+ 148 007e A368     		ldr	r3, [r4, #8]
+ 149              		.loc 1 129 0
+ 150 0080 EE7F     		ldrb	r6, [r5, #31]
+ 127:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_LOW_PHASE_OVS (config->oversampleLow)                        
+ 151              		.loc 1 127 0
+ 152 0082 013B     		sub	r3, r3, #1
+ 153 0084 3B40     		and	r3, r7
+ 154 0086 9C46     		mov	ip, r3
+ 128:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_LOW_PHASE_OVS (config->oversampleLow)                        
+ 155              		.loc 1 128 0
+ 156 0088 6368     		ldr	r3, [r4, #4]
+ 157 008a 591E     		sub	r1, r3, #1
+ 158 008c FF23     		mov	r3, #255
+ 159 008e 0901     		lsl	r1, r1, #4
+ 160 0090 1940     		and	r1, r3
+ 161              		.loc 1 129 0
+ 162 0092 7342     		neg	r3, r6
+ 163 0094 7341     		adc	r3, r3, r6
+ 164 0096 6646     		mov	r6, ip
+ 130:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_SL_MSTR_MODE  (config->mode);
+ 165              		.loc 1 130 0
+ 166 0098 2768     		ldr	r7, [r4]
+ 129:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_SL_MSTR_MODE  (config->mode);
+ 167              		.loc 1 129 0
+ 168 009a DB02     		lsl	r3, r3, #11
+ 169              		.loc 1 130 0
+ 170 009c BF07     		lsl	r7, r7, #30
+ 171 009e 3743     		orr	r7, r6
+ 172 00a0 3943     		orr	r1, r7
+ 129:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_SL_MSTR_MODE  (config->mode);
+ 173              		.loc 1 129 0
+ 174 00a2 0B43     		orr	r3, r1
+ 127:Generated_Source\PSoC4/Comm_I2C.c ****                     Comm_GET_I2C_CTRL_LOW_PHASE_OVS (config->oversampleLow)                        
+ 175              		.loc 1 127 0
+ 176 00a4 3549     		ldr	r1, .L31+36
+ 177 00a6 0B60     		str	r3, [r1]
+ 178 00a8 3549     		ldr	r1, .L31+40
+ 131:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 132:Generated_Source\PSoC4/Comm_I2C.c ****             /* Configure RX direction */
+ 133:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_RX_CTRL_REG      = Comm_GET_RX_CTRL_MEDIAN(medianFilter) |
+ 179              		.loc 1 133 0
+ 180 00aa 0B1C     		mov	r3, r1
+ 181 00ac 002A     		cmp	r2, #0
+ 182 00ae 00D0     		beq	.L9
+ 183 00b0 344B     		ldr	r3, .L31+44
+ 184              	.L9:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 7
+
+
+ 185              		.loc 1 133 0 is_stmt 0 discriminator 4
+ 186 00b2 354A     		ldr	r2, .L31+48
+ 187              	.LVL9:
+ 188 00b4 1360     		str	r3, [r2]
+ 134:Generated_Source\PSoC4/Comm_I2C.c ****                                                 Comm_I2C_RX_CTRL;
+ 135:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_RX_FIFO_CTRL_REG = Comm_CLEAR_REG;
+ 189              		.loc 1 135 0 is_stmt 1 discriminator 4
+ 190 00b6 0023     		mov	r3, #0
+ 191 00b8 344A     		ldr	r2, .L31+52
+ 192 00ba 1360     		str	r3, [r2]
+ 136:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 137:Generated_Source\PSoC4/Comm_I2C.c ****             /* Set default address and mask */
+ 138:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_RX_MATCH_REG    = ((Comm_I2C_SLAVE) ?
+ 139:Generated_Source\PSoC4/Comm_I2C.c ****                                                 (Comm_GET_I2C_8BIT_ADDRESS(config->slaveAddr) |
+ 140:Generated_Source\PSoC4/Comm_I2C.c ****                                                  Comm_GET_RX_MATCH_MASK(config->slaveAddrMask)) :
+ 193              		.loc 1 140 0 discriminator 4
+ 194 00bc C207     		lsl	r2, r0, #31
+ 195 00be 09D5     		bpl	.L10
+ 196              		.loc 1 140 0 is_stmt 0 discriminator 1
+ 197 00c0 6369     		ldr	r3, [r4, #20]
+ 139:Generated_Source\PSoC4/Comm_I2C.c ****                                                  Comm_GET_RX_MATCH_MASK(config->slaveAddrMask)) :
+ 198              		.loc 1 139 0 is_stmt 1 discriminator 1
+ 199 00c2 FF22     		mov	r2, #255
+ 200              		.loc 1 140 0 discriminator 1
+ 201 00c4 1804     		lsl	r0, r3, #16
+ 202 00c6 FF23     		mov	r3, #255
+ 203 00c8 1B04     		lsl	r3, r3, #16
+ 204 00ca 1840     		and	r0, r3
+ 139:Generated_Source\PSoC4/Comm_I2C.c ****                                                  Comm_GET_RX_MATCH_MASK(config->slaveAddrMask)) :
+ 205              		.loc 1 139 0 discriminator 1
+ 206 00cc 2369     		ldr	r3, [r4, #16]
+ 207 00ce 5B00     		lsl	r3, r3, #1
+ 208 00d0 1340     		and	r3, r2
+ 209              		.loc 1 140 0 discriminator 1
+ 210 00d2 0343     		orr	r3, r0
+ 211              	.L10:
+ 141:Generated_Source\PSoC4/Comm_I2C.c ****                                                 (Comm_CLEAR_REG));
+ 142:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 143:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 144:Generated_Source\PSoC4/Comm_I2C.c ****             /* Configure TX direction */
+ 145:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_TX_CTRL_REG      = Comm_I2C_TX_CTRL;
+ 146:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_TX_FIFO_CTRL_REG = Comm_CLEAR_REG;
+ 212              		.loc 1 146 0
+ 213 00d4 0024     		mov	r4, #0
+ 214              	.LVL10:
+ 138:Generated_Source\PSoC4/Comm_I2C.c ****                                                 (Comm_GET_I2C_8BIT_ADDRESS(config->slaveAddr) |
+ 215              		.loc 1 138 0
+ 216 00d6 2E4A     		ldr	r2, .L31+56
+ 147:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 148:Generated_Source\PSoC4/Comm_I2C.c ****             /* Configure interrupt with I2C handler but do not enable it */
+ 149:Generated_Source\PSoC4/Comm_I2C.c ****             CyIntDisable    (Comm_ISR_NUMBER);
+ 217              		.loc 1 149 0
+ 218 00d8 0A20     		mov	r0, #10
+ 138:Generated_Source\PSoC4/Comm_I2C.c ****                                                 (Comm_GET_I2C_8BIT_ADDRESS(config->slaveAddr) |
+ 219              		.loc 1 138 0
+ 220 00da 1360     		str	r3, [r2]
+ 145:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_TX_FIFO_CTRL_REG = Comm_CLEAR_REG;
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 8
+
+
+ 221              		.loc 1 145 0
+ 222 00dc 2D4B     		ldr	r3, .L31+60
+ 223 00de 1960     		str	r1, [r3]
+ 146:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 224              		.loc 1 146 0
+ 225 00e0 2D4B     		ldr	r3, .L31+64
+ 226 00e2 1C60     		str	r4, [r3]
+ 227              		.loc 1 149 0
+ 228 00e4 FFF7FEFF 		bl	CyIntDisable
+ 229              	.LVL11:
+ 150:Generated_Source\PSoC4/Comm_I2C.c ****             CyIntSetPriority(Comm_ISR_NUMBER, Comm_ISR_PRIORITY);
+ 230              		.loc 1 150 0
+ 231 00e8 0A20     		mov	r0, #10
+ 232 00ea 0321     		mov	r1, #3
+ 233 00ec FFF7FEFF 		bl	CyIntSetPriority
+ 234              	.LVL12:
+ 151:Generated_Source\PSoC4/Comm_I2C.c ****             (void) CyIntSetVector(Comm_ISR_NUMBER, &Comm_I2C_ISR);
+ 235              		.loc 1 151 0
+ 236 00f0 0A20     		mov	r0, #10
+ 237 00f2 2A49     		ldr	r1, .L31+68
+ 238 00f4 FFF7FEFF 		bl	CyIntSetVector
+ 239              	.LVL13:
+ 152:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 153:Generated_Source\PSoC4/Comm_I2C.c ****             /* Configure interrupt sources */
+ 154:Generated_Source\PSoC4/Comm_I2C.c ****         #if(!Comm_CY_SCBIP_V1)
+ 155:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_INTR_SPI_EC_MASK_REG = Comm_NO_INTR_SOURCES;
+ 240              		.loc 1 155 0
+ 241 00f8 294B     		ldr	r3, .L31+72
+ 242 00fa 1C60     		str	r4, [r3]
+ 156:Generated_Source\PSoC4/Comm_I2C.c ****         #endif /* (!Comm_CY_SCBIP_V1) */
+ 157:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 158:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_INTR_I2C_EC_MASK_REG = Comm_NO_INTR_SOURCES;
+ 243              		.loc 1 158 0
+ 244 00fc 294B     		ldr	r3, .L31+76
+ 245 00fe 1C60     		str	r4, [r3]
+ 159:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_INTR_RX_MASK_REG     = Comm_NO_INTR_SOURCES;
+ 246              		.loc 1 159 0
+ 247 0100 294B     		ldr	r3, .L31+80
+ 248 0102 1C60     		str	r4, [r3]
+ 160:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_INTR_TX_MASK_REG     = Comm_NO_INTR_SOURCES;
+ 249              		.loc 1 160 0
+ 250 0104 294B     		ldr	r3, .L31+84
+ 251 0106 1C60     		str	r4, [r3]
+ 161:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 162:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_INTR_SLAVE_MASK_REG  = ((Comm_I2C_SLAVE) ?
+ 252              		.loc 1 162 0
+ 253 0108 019B     		ldr	r3, [sp, #4]
+ 254 010a 1A78     		ldrb	r2, [r3]
+ 163:Generated_Source\PSoC4/Comm_I2C.c ****                             (Comm_GET_INTR_SLAVE_I2C_GENERAL(config->acceptGeneralAddr) |
+ 164:Generated_Source\PSoC4/Comm_I2C.c ****                              Comm_I2C_INTR_SLAVE_MASK) : (Comm_CLEAR_REG));
+ 255              		.loc 1 164 0
+ 256 010c D307     		lsl	r3, r2, #31
+ 257 010e 06D5     		bpl	.L11
+ 163:Generated_Source\PSoC4/Comm_I2C.c ****                             (Comm_GET_INTR_SLAVE_I2C_GENERAL(config->acceptGeneralAddr) |
+ 258              		.loc 1 163 0
+ 259 0110 EB7F     		ldrb	r3, [r5, #31]
+ 260 0112 A342     		cmp	r3, r4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 9
+
+
+ 261 0114 01D1     		bne	.L19
+ 262 0116 4C24     		mov	r4, #76
+ 263 0118 00E0     		b	.L29
+ 264              	.L19:
+ 265 011a CC24     		mov	r4, #204
+ 266              	.L29:
+ 267 011c FF34     		add	r4, r4, #255
+ 268              	.L11:
+ 162:Generated_Source\PSoC4/Comm_I2C.c ****                             (Comm_GET_INTR_SLAVE_I2C_GENERAL(config->acceptGeneralAddr) |
+ 269              		.loc 1 162 0
+ 270 011e 244B     		ldr	r3, .L31+88
+ 271 0120 1C60     		str	r4, [r3]
+ 165:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 166:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_INTR_MASTER_MASK_REG = ((Comm_I2C_MASTER) ?
+ 167:Generated_Source\PSoC4/Comm_I2C.c ****                                                      (Comm_I2C_INTR_MASTER_MASK) :
+ 272              		.loc 1 167 0
+ 273 0122 0223     		mov	r3, #2
+ 274 0124 1340     		and	r3, r2
+ 275 0126 01D0     		beq	.L12
+ 276 0128 1423     		mov	r3, #20
+ 277 012a FF33     		add	r3, r3, #255
+ 278              	.L12:
+ 166:Generated_Source\PSoC4/Comm_I2C.c ****                                                      (Comm_I2C_INTR_MASTER_MASK) :
+ 279              		.loc 1 166 0
+ 280 012c 214A     		ldr	r2, .L31+92
+ 281 012e 1360     		str	r3, [r2]
+ 168:Generated_Source\PSoC4/Comm_I2C.c ****                                                      (Comm_CLEAR_REG));
+ 169:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 170:Generated_Source\PSoC4/Comm_I2C.c ****             /* Configure global variables */
+ 171:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_state = Comm_I2C_FSM_IDLE;
+ 282              		.loc 1 171 0
+ 283 0130 1022     		mov	r2, #16
+ 284 0132 214B     		ldr	r3, .L31+96
+ 285 0134 1A70     		strb	r2, [r3]
+ 172:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 173:Generated_Source\PSoC4/Comm_I2C.c ****             /* Internal slave variables */
+ 174:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_slStatus        = 0u;
+ 286              		.loc 1 174 0
+ 287 0136 0023     		mov	r3, #0
+ 288 0138 204A     		ldr	r2, .L31+100
+ 289 013a 1370     		strb	r3, [r2]
+ 175:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_slRdBufIndex    = 0u;
+ 290              		.loc 1 175 0
+ 291 013c 204A     		ldr	r2, .L31+104
+ 292 013e 1360     		str	r3, [r2]
+ 176:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_slWrBufIndex    = 0u;
+ 293              		.loc 1 176 0
+ 294 0140 204A     		ldr	r2, .L31+108
+ 295 0142 1360     		str	r3, [r2]
+ 177:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_slOverFlowCount = 0u;
+ 296              		.loc 1 177 0
+ 297 0144 204A     		ldr	r2, .L31+112
+ 298 0146 1370     		strb	r3, [r2]
+ 178:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 179:Generated_Source\PSoC4/Comm_I2C.c ****             /* Internal master variables */
+ 180:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_mstrStatus     = 0u;
+ 299              		.loc 1 180 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 10
+
+
+ 300 0148 204A     		ldr	r2, .L31+116
+ 301 014a 1380     		strh	r3, [r2]
+ 181:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_mstrRdBufIndex = 0u;
+ 302              		.loc 1 181 0
+ 303 014c 204A     		ldr	r2, .L31+120
+ 304 014e 1360     		str	r3, [r2]
+ 182:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_mstrWrBufIndex = 0u;
+ 305              		.loc 1 182 0
+ 306 0150 204A     		ldr	r2, .L31+124
+ 307 0152 1360     		str	r3, [r2]
+ 308              	.LVL14:
+ 309              	.L1:
+ 183:Generated_Source\PSoC4/Comm_I2C.c ****         }
+ 184:Generated_Source\PSoC4/Comm_I2C.c ****     }
+ 310              		.loc 1 184 0
+ 311              		@ sp needed
+ 312 0154 F7BD     		pop	{r0, r1, r2, r4, r5, r6, r7, pc}
+ 313              	.L32:
+ 314 0156 C046     		.align	2
+ 315              	.L31:
+ 316 0158 00000000 		.word	Comm_scbMode
+ 317 015c 00000000 		.word	Comm_scbEnableWake
+ 318 0160 00000000 		.word	Comm_mode
+ 319 0164 00000000 		.word	Comm_scbEnableIntr
+ 320 0168 00000000 		.word	Comm_acceptAddr
+ 321 016c 70000640 		.word	1074135152
+ 322 0170 00000202 		.word	33685504
+ 323 0174 FFFFFDFD 		.word	-33685505
+ 324 0178 00000640 		.word	1074135040
+ 325 017c 60000640 		.word	1074135136
+ 326 0180 07010080 		.word	-2147483385
+ 327 0184 07030080 		.word	-2147482873
+ 328 0188 00030640 		.word	1074135808
+ 329 018c 04030640 		.word	1074135812
+ 330 0190 10030640 		.word	1074135824
+ 331 0194 00020640 		.word	1074135552
+ 332 0198 04020640 		.word	1074135556
+ 333 019c 00000000 		.word	Comm_I2C_ISR
+ 334 01a0 C80E0640 		.word	1074138824
+ 335 01a4 880E0640 		.word	1074138760
+ 336 01a8 C80F0640 		.word	1074139080
+ 337 01ac 880F0640 		.word	1074139016
+ 338 01b0 480F0640 		.word	1074138952
+ 339 01b4 080F0640 		.word	1074138888
+ 340 01b8 00000000 		.word	Comm_state
+ 341 01bc 00000000 		.word	Comm_slStatus
+ 342 01c0 00000000 		.word	Comm_slRdBufIndex
+ 343 01c4 00000000 		.word	Comm_slWrBufIndex
+ 344 01c8 00000000 		.word	Comm_slOverFlowCount
+ 345 01cc 00000000 		.word	Comm_mstrStatus
+ 346 01d0 00000000 		.word	Comm_mstrRdBufIndex
+ 347 01d4 00000000 		.word	Comm_mstrWrBufIndex
+ 348              		.cfi_endproc
+ 349              	.LFE0:
+ 350              		.size	Comm_I2CInit, .-Comm_I2CInit
+ 351              		.section	.text.Comm_I2CStop,"ax",%progbits
+ 352              		.align	1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 11
+
+
+ 353              		.global	Comm_I2CStop
+ 354              		.code	16
+ 355              		.thumb_func
+ 356              		.type	Comm_I2CStop, %function
+ 357              	Comm_I2CStop:
+ 358              	.LFB1:
+ 185:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 186:Generated_Source\PSoC4/Comm_I2C.c **** #else
+ 187:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 188:Generated_Source\PSoC4/Comm_I2C.c ****     /*******************************************************************************
+ 189:Generated_Source\PSoC4/Comm_I2C.c ****     * Function Name: Comm_I2CInit
+ 190:Generated_Source\PSoC4/Comm_I2C.c ****     ****************************************************************************//**
+ 191:Generated_Source\PSoC4/Comm_I2C.c ****     *
+ 192:Generated_Source\PSoC4/Comm_I2C.c ****     *  Configures the SCB for the I2C operation.
+ 193:Generated_Source\PSoC4/Comm_I2C.c ****     *
+ 194:Generated_Source\PSoC4/Comm_I2C.c ****     *******************************************************************************/
+ 195:Generated_Source\PSoC4/Comm_I2C.c ****     void Comm_I2CInit(void)
+ 196:Generated_Source\PSoC4/Comm_I2C.c ****     {
+ 197:Generated_Source\PSoC4/Comm_I2C.c ****     #if(Comm_CY_SCBIP_V0)
+ 198:Generated_Source\PSoC4/Comm_I2C.c ****         /* Adjust SDA filter settings. Ticket ID#150521 */
+ 199:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_SET_I2C_CFG_SDA_FILT_TRIM(Comm_EC_AM_I2C_CFG_SDA_FILT_TRIM);
+ 200:Generated_Source\PSoC4/Comm_I2C.c ****     #endif /* (Comm_CY_SCBIP_V0) */
+ 201:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 202:Generated_Source\PSoC4/Comm_I2C.c ****         /* Adjust AF and DF filter settings. Ticket ID#176179 */
+ 203:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_CFG_ANALOG_FITER_ENABLE_ADJ;
+ 204:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 205:Generated_Source\PSoC4/Comm_I2C.c ****         /* Configure I2C interface */
+ 206:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_CTRL_REG     = Comm_I2C_DEFAULT_CTRL;
+ 207:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_I2C_CTRL_REG = Comm_I2C_DEFAULT_I2C_CTRL;
+ 208:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 209:Generated_Source\PSoC4/Comm_I2C.c ****         /* Configure RX direction */
+ 210:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_RX_CTRL_REG      = Comm_I2C_DEFAULT_RX_CTRL;
+ 211:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_RX_FIFO_CTRL_REG = Comm_I2C_DEFAULT_RX_FIFO_CTRL;
+ 212:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 213:Generated_Source\PSoC4/Comm_I2C.c ****         /* Set default address and mask */
+ 214:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_RX_MATCH_REG     = Comm_I2C_DEFAULT_RX_MATCH;
+ 215:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 216:Generated_Source\PSoC4/Comm_I2C.c ****         /* Configure TX direction */
+ 217:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_TX_CTRL_REG      = Comm_I2C_DEFAULT_TX_CTRL;
+ 218:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_TX_FIFO_CTRL_REG = Comm_I2C_DEFAULT_TX_FIFO_CTRL;
+ 219:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 220:Generated_Source\PSoC4/Comm_I2C.c ****         /* Configure interrupt with I2C handler but do not enable it */
+ 221:Generated_Source\PSoC4/Comm_I2C.c ****         CyIntDisable    (Comm_ISR_NUMBER);
+ 222:Generated_Source\PSoC4/Comm_I2C.c ****         CyIntSetPriority(Comm_ISR_NUMBER, Comm_ISR_PRIORITY);
+ 223:Generated_Source\PSoC4/Comm_I2C.c ****     #if(!Comm_I2C_EXTERN_INTR_HANDLER)
+ 224:Generated_Source\PSoC4/Comm_I2C.c ****         (void) CyIntSetVector(Comm_ISR_NUMBER, &Comm_I2C_ISR);
+ 225:Generated_Source\PSoC4/Comm_I2C.c ****     #endif /* (Comm_I2C_EXTERN_INTR_HANDLER) */
+ 226:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 227:Generated_Source\PSoC4/Comm_I2C.c ****         /* Configure interrupt sources */
+ 228:Generated_Source\PSoC4/Comm_I2C.c ****     #if(!Comm_CY_SCBIP_V1)
+ 229:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_INTR_SPI_EC_MASK_REG = Comm_I2C_DEFAULT_INTR_SPI_EC_MASK;
+ 230:Generated_Source\PSoC4/Comm_I2C.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+ 231:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 232:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_INTR_I2C_EC_MASK_REG = Comm_I2C_DEFAULT_INTR_I2C_EC_MASK;
+ 233:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_INTR_SLAVE_MASK_REG  = Comm_I2C_DEFAULT_INTR_SLAVE_MASK;
+ 234:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_INTR_MASTER_MASK_REG = Comm_I2C_DEFAULT_INTR_MASTER_MASK;
+ 235:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_INTR_RX_MASK_REG     = Comm_I2C_DEFAULT_INTR_RX_MASK;
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 12
+
+
+ 236:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_INTR_TX_MASK_REG     = Comm_I2C_DEFAULT_INTR_TX_MASK;
+ 237:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 238:Generated_Source\PSoC4/Comm_I2C.c ****         /* Configure global variables */
+ 239:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_state = Comm_I2C_FSM_IDLE;
+ 240:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 241:Generated_Source\PSoC4/Comm_I2C.c ****     #if(Comm_I2C_SLAVE)
+ 242:Generated_Source\PSoC4/Comm_I2C.c ****         /* Internal slave variable */
+ 243:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_slStatus        = 0u;
+ 244:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_slRdBufIndex    = 0u;
+ 245:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_slWrBufIndex    = 0u;
+ 246:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_slOverFlowCount = 0u;
+ 247:Generated_Source\PSoC4/Comm_I2C.c ****     #endif /* (Comm_I2C_SLAVE) */
+ 248:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 249:Generated_Source\PSoC4/Comm_I2C.c ****     #if(Comm_I2C_MASTER)
+ 250:Generated_Source\PSoC4/Comm_I2C.c ****     /* Internal master variable */
+ 251:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_mstrStatus     = 0u;
+ 252:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_mstrRdBufIndex = 0u;
+ 253:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_mstrWrBufIndex = 0u;
+ 254:Generated_Source\PSoC4/Comm_I2C.c ****     #endif /* (Comm_I2C_MASTER) */
+ 255:Generated_Source\PSoC4/Comm_I2C.c ****     }
+ 256:Generated_Source\PSoC4/Comm_I2C.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 257:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 258:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 259:Generated_Source\PSoC4/Comm_I2C.c **** /*******************************************************************************
+ 260:Generated_Source\PSoC4/Comm_I2C.c **** * Function Name: Comm_I2CStop
+ 261:Generated_Source\PSoC4/Comm_I2C.c **** ****************************************************************************//**
+ 262:Generated_Source\PSoC4/Comm_I2C.c **** *
+ 263:Generated_Source\PSoC4/Comm_I2C.c **** *  Resets the I2C FSM into the default state.
+ 264:Generated_Source\PSoC4/Comm_I2C.c **** *
+ 265:Generated_Source\PSoC4/Comm_I2C.c **** *******************************************************************************/
+ 266:Generated_Source\PSoC4/Comm_I2C.c **** void Comm_I2CStop(void)
+ 267:Generated_Source\PSoC4/Comm_I2C.c **** {
+ 359              		.loc 1 267 0
+ 360              		.cfi_startproc
+ 268:Generated_Source\PSoC4/Comm_I2C.c ****     Comm_state = Comm_I2C_FSM_IDLE;
+ 361              		.loc 1 268 0
+ 362 0000 1022     		mov	r2, #16
+ 363 0002 014B     		ldr	r3, .L34
+ 269:Generated_Source\PSoC4/Comm_I2C.c **** }
+ 364              		.loc 1 269 0
+ 365              		@ sp needed
+ 268:Generated_Source\PSoC4/Comm_I2C.c ****     Comm_state = Comm_I2C_FSM_IDLE;
+ 366              		.loc 1 268 0
+ 367 0004 1A70     		strb	r2, [r3]
+ 368              		.loc 1 269 0
+ 369 0006 7047     		bx	lr
+ 370              	.L35:
+ 371              		.align	2
+ 372              	.L34:
+ 373 0008 00000000 		.word	Comm_state
+ 374              		.cfi_endproc
+ 375              	.LFE1:
+ 376              		.size	Comm_I2CStop, .-Comm_I2CStop
+ 377              		.section	.text.Comm_I2CSaveConfig,"ax",%progbits
+ 378              		.align	1
+ 379              		.global	Comm_I2CSaveConfig
+ 380              		.code	16
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 13
+
+
+ 381              		.thumb_func
+ 382              		.type	Comm_I2CSaveConfig, %function
+ 383              	Comm_I2CSaveConfig:
+ 384              	.LFB2:
+ 270:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 271:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 272:Generated_Source\PSoC4/Comm_I2C.c **** #if(Comm_I2C_WAKE_ENABLE_CONST)
+ 273:Generated_Source\PSoC4/Comm_I2C.c ****     /*******************************************************************************
+ 274:Generated_Source\PSoC4/Comm_I2C.c ****     * Function Name: Comm_I2CSaveConfig
+ 275:Generated_Source\PSoC4/Comm_I2C.c ****     ****************************************************************************//**
+ 276:Generated_Source\PSoC4/Comm_I2C.c ****     *
+ 277:Generated_Source\PSoC4/Comm_I2C.c ****     *  Enables Comm_INTR_I2C_EC_WAKE_UP interrupt source. This interrupt
+ 278:Generated_Source\PSoC4/Comm_I2C.c ****     *  triggers on address match and wakes up device.
+ 279:Generated_Source\PSoC4/Comm_I2C.c ****     *
+ 280:Generated_Source\PSoC4/Comm_I2C.c ****     *******************************************************************************/
+ 281:Generated_Source\PSoC4/Comm_I2C.c ****     void Comm_I2CSaveConfig(void)
+ 282:Generated_Source\PSoC4/Comm_I2C.c ****     {
+ 385              		.loc 1 282 0
+ 386              		.cfi_startproc
+ 283:Generated_Source\PSoC4/Comm_I2C.c ****     #if (!Comm_CY_SCBIP_V0)
+ 284:Generated_Source\PSoC4/Comm_I2C.c ****         #if (Comm_I2C_MULTI_MASTER_SLAVE_CONST && Comm_I2C_WAKE_ENABLE_CONST)
+ 285:Generated_Source\PSoC4/Comm_I2C.c ****             /* Enable externally clocked address match if it was not enabled before.
+ 286:Generated_Source\PSoC4/Comm_I2C.c ****             * This applicable only for Multi-Master-Slave. Ticket ID#192742 */
+ 287:Generated_Source\PSoC4/Comm_I2C.c ****             if (0u == (Comm_CTRL_REG & Comm_CTRL_EC_AM_MODE))
+ 288:Generated_Source\PSoC4/Comm_I2C.c ****             {
+ 289:Generated_Source\PSoC4/Comm_I2C.c ****                 /* Enable external address match logic */
+ 290:Generated_Source\PSoC4/Comm_I2C.c ****                 Comm_Stop();
+ 291:Generated_Source\PSoC4/Comm_I2C.c ****                 Comm_CTRL_REG |= Comm_CTRL_EC_AM_MODE;
+ 292:Generated_Source\PSoC4/Comm_I2C.c ****                 Comm_Enable();
+ 293:Generated_Source\PSoC4/Comm_I2C.c ****             }
+ 294:Generated_Source\PSoC4/Comm_I2C.c ****         #endif /* (Comm_I2C_MULTI_MASTER_SLAVE_CONST) */
+ 295:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 296:Generated_Source\PSoC4/Comm_I2C.c ****         #if (Comm_SCB_CLK_INTERNAL)
+ 297:Generated_Source\PSoC4/Comm_I2C.c ****             /* Disable clock to internal address match logic. Ticket ID#187931 */
+ 298:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_SCBCLK_Stop();
+ 299:Generated_Source\PSoC4/Comm_I2C.c ****         #endif /* (Comm_SCB_CLK_INTERNAL) */
+ 300:Generated_Source\PSoC4/Comm_I2C.c ****     #endif /* (!Comm_CY_SCBIP_V0) */
+ 301:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 302:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_SetI2CExtClkInterruptMode(Comm_INTR_I2C_EC_WAKE_UP);
+ 387              		.loc 1 302 0
+ 388 0000 0122     		mov	r2, #1
+ 389 0002 014B     		ldr	r3, .L37
+ 303:Generated_Source\PSoC4/Comm_I2C.c ****     }
+ 390              		.loc 1 303 0
+ 391              		@ sp needed
+ 302:Generated_Source\PSoC4/Comm_I2C.c ****     }
+ 392              		.loc 1 302 0
+ 393 0004 1A60     		str	r2, [r3]
+ 394              		.loc 1 303 0
+ 395 0006 7047     		bx	lr
+ 396              	.L38:
+ 397              		.align	2
+ 398              	.L37:
+ 399 0008 880E0640 		.word	1074138760
+ 400              		.cfi_endproc
+ 401              	.LFE2:
+ 402              		.size	Comm_I2CSaveConfig, .-Comm_I2CSaveConfig
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 14
+
+
+ 403              		.section	.text.Comm_I2CRestoreConfig,"ax",%progbits
+ 404              		.align	1
+ 405              		.global	Comm_I2CRestoreConfig
+ 406              		.code	16
+ 407              		.thumb_func
+ 408              		.type	Comm_I2CRestoreConfig, %function
+ 409              	Comm_I2CRestoreConfig:
+ 410              	.LFB3:
+ 304:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 305:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 306:Generated_Source\PSoC4/Comm_I2C.c ****     /*******************************************************************************
+ 307:Generated_Source\PSoC4/Comm_I2C.c ****     * Function Name: Comm_I2CRestoreConfig
+ 308:Generated_Source\PSoC4/Comm_I2C.c ****     ****************************************************************************//**
+ 309:Generated_Source\PSoC4/Comm_I2C.c ****     *
+ 310:Generated_Source\PSoC4/Comm_I2C.c ****     *  Disables Comm_INTR_I2C_EC_WAKE_UP interrupt source. This interrupt
+ 311:Generated_Source\PSoC4/Comm_I2C.c ****     *  triggers on address match and wakes up device.
+ 312:Generated_Source\PSoC4/Comm_I2C.c ****     *
+ 313:Generated_Source\PSoC4/Comm_I2C.c ****     *******************************************************************************/
+ 314:Generated_Source\PSoC4/Comm_I2C.c ****     void Comm_I2CRestoreConfig(void)
+ 315:Generated_Source\PSoC4/Comm_I2C.c ****     {
+ 411              		.loc 1 315 0
+ 412              		.cfi_startproc
+ 316:Generated_Source\PSoC4/Comm_I2C.c ****         /* Disable wakeup interrupt on address match */
+ 317:Generated_Source\PSoC4/Comm_I2C.c ****         Comm_SetI2CExtClkInterruptMode(Comm_NO_INTR_SOURCES);
+ 413              		.loc 1 317 0
+ 414 0000 0022     		mov	r2, #0
+ 415 0002 014B     		ldr	r3, .L40
+ 318:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 319:Generated_Source\PSoC4/Comm_I2C.c ****     #if (!Comm_CY_SCBIP_V0)
+ 320:Generated_Source\PSoC4/Comm_I2C.c ****         #if (Comm_SCB_CLK_INTERNAL)
+ 321:Generated_Source\PSoC4/Comm_I2C.c ****             /* Enable clock to internal address match logic. Ticket ID#187931 */
+ 322:Generated_Source\PSoC4/Comm_I2C.c ****             Comm_SCBCLK_Start();
+ 323:Generated_Source\PSoC4/Comm_I2C.c ****         #endif /* (Comm_SCB_CLK_INTERNAL) */
+ 324:Generated_Source\PSoC4/Comm_I2C.c ****     #endif /* (!Comm_CY_SCBIP_V0) */
+ 325:Generated_Source\PSoC4/Comm_I2C.c ****     }
+ 416              		.loc 1 325 0
+ 417              		@ sp needed
+ 317:Generated_Source\PSoC4/Comm_I2C.c **** 
+ 418              		.loc 1 317 0
+ 419 0004 1A60     		str	r2, [r3]
+ 420              		.loc 1 325 0
+ 421 0006 7047     		bx	lr
+ 422              	.L41:
+ 423              		.align	2
+ 424              	.L40:
+ 425 0008 880E0640 		.word	1074138760
+ 426              		.cfi_endproc
+ 427              	.LFE3:
+ 428              		.size	Comm_I2CRestoreConfig, .-Comm_I2CRestoreConfig
+ 429              		.global	Comm_configI2C
+ 430              		.comm	Comm_state,1,1
+ 431              		.section	.rodata
+ 432              		.align	2
+ 433              		.type	Comm_configI2C, %object
+ 434              		.size	Comm_configI2C, 40
+ 435              	Comm_configI2C:
+ 436 0000 01000000 		.word	1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 15
+
+
+ 437 0004 08000000 		.word	8
+ 438 0008 08000000 		.word	8
+ 439 000c 01000000 		.word	1
+ 440 0010 08000000 		.word	8
+ 441 0014 FE000000 		.word	254
+ 442 0018 00000000 		.word	0
+ 443 001c 00000000 		.word	0
+ 444 0020 00       		.byte	0
+ 445 0021 00       		.space	1
+ 446 0022 6400     		.short	100
+ 447 0024 00       		.byte	0
+ 448 0025 000000   		.space	3
+ 449              		.text
+ 450              	.Letext0:
+ 451              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 452              		.file 3 "Generated_Source\\PSoC4\\Comm_I2C.h"
+ 453              		.file 4 "Generated_Source\\PSoC4\\Comm_PVT.h"
+ 454              		.file 5 "Generated_Source\\PSoC4\\Comm_I2C_PVT.h"
+ 455              		.file 6 "Generated_Source\\PSoC4/CyLib.h"
+ 456              		.section	.debug_info,"",%progbits
+ 457              	.Ldebug_info0:
+ 458 0000 47030000 		.4byte	0x347
+ 459 0004 0400     		.2byte	0x4
+ 460 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 461 000a 04       		.byte	0x4
+ 462 000b 01       		.uleb128 0x1
+ 463 000c 36000000 		.4byte	.LASF53
+ 464 0010 01       		.byte	0x1
+ 465 0011 14000000 		.4byte	.LASF54
+ 466 0015 22020000 		.4byte	.LASF55
+ 467 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 468 001d 00000000 		.4byte	0
+ 469 0021 00000000 		.4byte	.Ldebug_line0
+ 470 0025 02       		.uleb128 0x2
+ 471 0026 01       		.byte	0x1
+ 472 0027 06       		.byte	0x6
+ 473 0028 E9030000 		.4byte	.LASF0
+ 474 002c 02       		.uleb128 0x2
+ 475 002d 01       		.byte	0x1
+ 476 002e 08       		.byte	0x8
+ 477 002f 3A010000 		.4byte	.LASF1
+ 478 0033 02       		.uleb128 0x2
+ 479 0034 02       		.byte	0x2
+ 480 0035 05       		.byte	0x5
+ 481 0036 86030000 		.4byte	.LASF2
+ 482 003a 02       		.uleb128 0x2
+ 483 003b 02       		.byte	0x2
+ 484 003c 07       		.byte	0x7
+ 485 003d F6000000 		.4byte	.LASF3
+ 486 0041 02       		.uleb128 0x2
+ 487 0042 04       		.byte	0x4
+ 488 0043 05       		.byte	0x5
+ 489 0044 CA030000 		.4byte	.LASF4
+ 490 0048 02       		.uleb128 0x2
+ 491 0049 04       		.byte	0x4
+ 492 004a 07       		.byte	0x7
+ 493 004b 5A010000 		.4byte	.LASF5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 16
+
+
+ 494 004f 02       		.uleb128 0x2
+ 495 0050 08       		.byte	0x8
+ 496 0051 05       		.byte	0x5
+ 497 0052 23030000 		.4byte	.LASF6
+ 498 0056 02       		.uleb128 0x2
+ 499 0057 08       		.byte	0x8
+ 500 0058 07       		.byte	0x7
+ 501 0059 9A020000 		.4byte	.LASF7
+ 502 005d 03       		.uleb128 0x3
+ 503 005e 04       		.byte	0x4
+ 504 005f 05       		.byte	0x5
+ 505 0060 696E7400 		.ascii	"int\000"
+ 506 0064 02       		.uleb128 0x2
+ 507 0065 04       		.byte	0x4
+ 508 0066 07       		.byte	0x7
+ 509 0067 15020000 		.4byte	.LASF8
+ 510 006b 04       		.uleb128 0x4
+ 511 006c 6C010000 		.4byte	.LASF9
+ 512 0070 02       		.byte	0x2
+ 513 0071 B901     		.2byte	0x1b9
+ 514 0073 2C000000 		.4byte	0x2c
+ 515 0077 04       		.uleb128 0x4
+ 516 0078 F0010000 		.4byte	.LASF10
+ 517 007c 02       		.byte	0x2
+ 518 007d BA01     		.2byte	0x1ba
+ 519 007f 3A000000 		.4byte	0x3a
+ 520 0083 04       		.uleb128 0x4
+ 521 0084 0E020000 		.4byte	.LASF11
+ 522 0088 02       		.byte	0x2
+ 523 0089 BB01     		.2byte	0x1bb
+ 524 008b 48000000 		.4byte	0x48
+ 525 008f 02       		.uleb128 0x2
+ 526 0090 04       		.byte	0x4
+ 527 0091 04       		.byte	0x4
+ 528 0092 31030000 		.4byte	.LASF12
+ 529 0096 02       		.uleb128 0x2
+ 530 0097 08       		.byte	0x8
+ 531 0098 04       		.byte	0x4
+ 532 0099 13010000 		.4byte	.LASF13
+ 533 009d 02       		.uleb128 0x2
+ 534 009e 01       		.byte	0x1
+ 535 009f 08       		.byte	0x8
+ 536 00a0 37030000 		.4byte	.LASF14
+ 537 00a4 05       		.uleb128 0x5
+ 538 00a5 6B000000 		.4byte	0x6b
+ 539 00a9 05       		.uleb128 0x5
+ 540 00aa 77000000 		.4byte	0x77
+ 541 00ae 04       		.uleb128 0x4
+ 542 00af 0E000000 		.4byte	.LASF15
+ 543 00b3 02       		.byte	0x2
+ 544 00b4 6502     		.2byte	0x265
+ 545 00b6 BA000000 		.4byte	0xba
+ 546 00ba 05       		.uleb128 0x5
+ 547 00bb 83000000 		.4byte	0x83
+ 548 00bf 04       		.uleb128 0x4
+ 549 00c0 D4020000 		.4byte	.LASF16
+ 550 00c4 02       		.byte	0x2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 17
+
+
+ 551 00c5 7502     		.2byte	0x275
+ 552 00c7 CB000000 		.4byte	0xcb
+ 553 00cb 06       		.uleb128 0x6
+ 554 00cc 04       		.byte	0x4
+ 555 00cd D1000000 		.4byte	0xd1
+ 556 00d1 07       		.uleb128 0x7
+ 557 00d2 02       		.uleb128 0x2
+ 558 00d3 04       		.byte	0x4
+ 559 00d4 07       		.byte	0x7
+ 560 00d5 1A030000 		.4byte	.LASF17
+ 561 00d9 08       		.uleb128 0x8
+ 562 00da 28       		.byte	0x28
+ 563 00db 03       		.byte	0x3
+ 564 00dc A1       		.byte	0xa1
+ 565 00dd 66010000 		.4byte	0x166
+ 566 00e1 09       		.uleb128 0x9
+ 567 00e2 CF020000 		.4byte	.LASF18
+ 568 00e6 03       		.byte	0x3
+ 569 00e7 A9       		.byte	0xa9
+ 570 00e8 83000000 		.4byte	0x83
+ 571 00ec 00       		.byte	0
+ 572 00ed 09       		.uleb128 0x9
+ 573 00ee 4E030000 		.4byte	.LASF19
+ 574 00f2 03       		.byte	0x3
+ 575 00f3 B0       		.byte	0xb0
+ 576 00f4 83000000 		.4byte	0x83
+ 577 00f8 04       		.byte	0x4
+ 578 00f9 09       		.uleb128 0x9
+ 579 00fa E1020000 		.4byte	.LASF20
+ 580 00fe 03       		.byte	0x3
+ 581 00ff B5       		.byte	0xb5
+ 582 0100 83000000 		.4byte	0x83
+ 583 0104 08       		.byte	0x8
+ 584 0105 09       		.uleb128 0x9
+ 585 0106 C9010000 		.4byte	.LASF21
+ 586 010a 03       		.byte	0x3
+ 587 010b BB       		.byte	0xbb
+ 588 010c 83000000 		.4byte	0x83
+ 589 0110 0C       		.byte	0xc
+ 590 0111 09       		.uleb128 0x9
+ 591 0112 04020000 		.4byte	.LASF22
+ 592 0116 03       		.byte	0x3
+ 593 0117 BF       		.byte	0xbf
+ 594 0118 83000000 		.4byte	0x83
+ 595 011c 10       		.byte	0x10
+ 596 011d 09       		.uleb128 0x9
+ 597 011e FD020000 		.4byte	.LASF23
+ 598 0122 03       		.byte	0x3
+ 599 0123 C7       		.byte	0xc7
+ 600 0124 83000000 		.4byte	0x83
+ 601 0128 14       		.byte	0x14
+ 602 0129 09       		.uleb128 0x9
+ 603 012a 1A010000 		.4byte	.LASF24
+ 604 012e 03       		.byte	0x3
+ 605 012f D0       		.byte	0xd0
+ 606 0130 83000000 		.4byte	0x83
+ 607 0134 18       		.byte	0x18
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 18
+
+
+ 608 0135 09       		.uleb128 0x9
+ 609 0136 BE010000 		.4byte	.LASF25
+ 610 013a 03       		.byte	0x3
+ 611 013b D5       		.byte	0xd5
+ 612 013c 83000000 		.4byte	0x83
+ 613 0140 1C       		.byte	0x1c
+ 614 0141 09       		.uleb128 0x9
+ 615 0142 72010000 		.4byte	.LASF26
+ 616 0146 03       		.byte	0x3
+ 617 0147 DE       		.byte	0xde
+ 618 0148 6B000000 		.4byte	0x6b
+ 619 014c 20       		.byte	0x20
+ 620 014d 09       		.uleb128 0x9
+ 621 014e E7010000 		.4byte	.LASF27
+ 622 0152 03       		.byte	0x3
+ 623 0153 E5       		.byte	0xe5
+ 624 0154 77000000 		.4byte	0x77
+ 625 0158 22       		.byte	0x22
+ 626 0159 09       		.uleb128 0x9
+ 627 015a 48010000 		.4byte	.LASF28
+ 628 015e 03       		.byte	0x3
+ 629 015f ED       		.byte	0xed
+ 630 0160 6B000000 		.4byte	0x6b
+ 631 0164 24       		.byte	0x24
+ 632 0165 00       		.byte	0
+ 633 0166 0A       		.uleb128 0xa
+ 634 0167 25010000 		.4byte	.LASF29
+ 635 016b 03       		.byte	0x3
+ 636 016c EE       		.byte	0xee
+ 637 016d D9000000 		.4byte	0xd9
+ 638 0171 0B       		.uleb128 0xb
+ 639 0172 B1010000 		.4byte	.LASF56
+ 640 0176 01       		.byte	0x1
+ 641 0177 48       		.byte	0x48
+ 642 0178 00000000 		.4byte	.LFB0
+ 643 017c D8010000 		.4byte	.LFE0-.LFB0
+ 644 0180 01       		.uleb128 0x1
+ 645 0181 9C       		.byte	0x9c
+ 646 0182 0B020000 		.4byte	0x20b
+ 647 0186 0C       		.uleb128 0xc
+ 648 0187 AA010000 		.4byte	.LASF57
+ 649 018b 01       		.byte	0x1
+ 650 018c 48       		.byte	0x48
+ 651 018d 0B020000 		.4byte	0x20b
+ 652 0191 00000000 		.4byte	.LLST0
+ 653 0195 0D       		.uleb128 0xd
+ 654 0196 C2020000 		.4byte	.LASF30
+ 655 019a 01       		.byte	0x1
+ 656 019b 4A       		.byte	0x4a
+ 657 019c 83000000 		.4byte	0x83
+ 658 01a0 39000000 		.4byte	.LLST1
+ 659 01a4 0D       		.uleb128 0xd
+ 660 01a5 F5030000 		.4byte	.LASF31
+ 661 01a9 01       		.byte	0x1
+ 662 01aa 4B       		.byte	0x4b
+ 663 01ab 83000000 		.4byte	0x83
+ 664 01af 58000000 		.4byte	.LLST2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 19
+
+
+ 665 01b3 0E       		.uleb128 0xe
+ 666 01b4 14000000 		.4byte	.LVL2
+ 667 01b8 F2020000 		.4byte	0x2f2
+ 668 01bc D0010000 		.4byte	0x1d0
+ 669 01c0 0F       		.uleb128 0xf
+ 670 01c1 01       		.uleb128 0x1
+ 671 01c2 52       		.byte	0x52
+ 672 01c3 01       		.uleb128 0x1
+ 673 01c4 30       		.byte	0x30
+ 674 01c5 0F       		.uleb128 0xf
+ 675 01c6 01       		.uleb128 0x1
+ 676 01c7 51       		.byte	0x51
+ 677 01c8 01       		.uleb128 0x1
+ 678 01c9 30       		.byte	0x30
+ 679 01ca 0F       		.uleb128 0xf
+ 680 01cb 01       		.uleb128 0x1
+ 681 01cc 50       		.byte	0x50
+ 682 01cd 01       		.uleb128 0x1
+ 683 01ce 31       		.byte	0x31
+ 684 01cf 00       		.byte	0
+ 685 01d0 0E       		.uleb128 0xe
+ 686 01d1 E8000000 		.4byte	.LVL11
+ 687 01d5 0D030000 		.4byte	0x30d
+ 688 01d9 E3010000 		.4byte	0x1e3
+ 689 01dd 0F       		.uleb128 0xf
+ 690 01de 01       		.uleb128 0x1
+ 691 01df 50       		.byte	0x50
+ 692 01e0 01       		.uleb128 0x1
+ 693 01e1 3A       		.byte	0x3a
+ 694 01e2 00       		.byte	0
+ 695 01e3 0E       		.uleb128 0xe
+ 696 01e4 F0000000 		.4byte	.LVL12
+ 697 01e8 1E030000 		.4byte	0x31e
+ 698 01ec FB010000 		.4byte	0x1fb
+ 699 01f0 0F       		.uleb128 0xf
+ 700 01f1 01       		.uleb128 0x1
+ 701 01f2 51       		.byte	0x51
+ 702 01f3 01       		.uleb128 0x1
+ 703 01f4 33       		.byte	0x33
+ 704 01f5 0F       		.uleb128 0xf
+ 705 01f6 01       		.uleb128 0x1
+ 706 01f7 50       		.byte	0x50
+ 707 01f8 01       		.uleb128 0x1
+ 708 01f9 3A       		.byte	0x3a
+ 709 01fa 00       		.byte	0
+ 710 01fb 10       		.uleb128 0x10
+ 711 01fc F8000000 		.4byte	.LVL13
+ 712 0200 34030000 		.4byte	0x334
+ 713 0204 0F       		.uleb128 0xf
+ 714 0205 01       		.uleb128 0x1
+ 715 0206 50       		.byte	0x50
+ 716 0207 01       		.uleb128 0x1
+ 717 0208 3A       		.byte	0x3a
+ 718 0209 00       		.byte	0
+ 719 020a 00       		.byte	0
+ 720 020b 06       		.uleb128 0x6
+ 721 020c 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 20
+
+
+ 722 020d 11020000 		.4byte	0x211
+ 723 0211 11       		.uleb128 0x11
+ 724 0212 66010000 		.4byte	0x166
+ 725 0216 12       		.uleb128 0x12
+ 726 0217 79030000 		.4byte	.LASF32
+ 727 021b 01       		.byte	0x1
+ 728 021c 0A01     		.2byte	0x10a
+ 729 021e 00000000 		.4byte	.LFB1
+ 730 0222 0C000000 		.4byte	.LFE1-.LFB1
+ 731 0226 01       		.uleb128 0x1
+ 732 0227 9C       		.byte	0x9c
+ 733 0228 12       		.uleb128 0x12
+ 734 0229 B7030000 		.4byte	.LASF33
+ 735 022d 01       		.byte	0x1
+ 736 022e 1901     		.2byte	0x119
+ 737 0230 00000000 		.4byte	.LFB2
+ 738 0234 0C000000 		.4byte	.LFE2-.LFB2
+ 739 0238 01       		.uleb128 0x1
+ 740 0239 9C       		.byte	0x9c
+ 741 023a 12       		.uleb128 0x12
+ 742 023b D3030000 		.4byte	.LASF34
+ 743 023f 01       		.byte	0x1
+ 744 0240 3A01     		.2byte	0x13a
+ 745 0242 00000000 		.4byte	.LFB3
+ 746 0246 0C000000 		.4byte	.LFE3-.LFB3
+ 747 024a 01       		.uleb128 0x1
+ 748 024b 9C       		.byte	0x9c
+ 749 024c 13       		.uleb128 0x13
+ 750 024d F7010000 		.4byte	.LASF35
+ 751 0251 04       		.byte	0x4
+ 752 0252 43       		.byte	0x43
+ 753 0253 6B000000 		.4byte	0x6b
+ 754 0257 13       		.uleb128 0x13
+ 755 0258 E3000000 		.4byte	.LASF36
+ 756 025c 04       		.byte	0x4
+ 757 025d 44       		.byte	0x44
+ 758 025e 6B000000 		.4byte	0x6b
+ 759 0262 13       		.uleb128 0x13
+ 760 0263 A4030000 		.4byte	.LASF37
+ 761 0267 04       		.byte	0x4
+ 762 0268 45       		.byte	0x45
+ 763 0269 6B000000 		.4byte	0x6b
+ 764 026d 13       		.uleb128 0x13
+ 765 026e 09010000 		.4byte	.LASF38
+ 766 0272 04       		.byte	0x4
+ 767 0273 48       		.byte	0x48
+ 768 0274 6B000000 		.4byte	0x6b
+ 769 0278 13       		.uleb128 0x13
+ 770 0279 C4000000 		.4byte	.LASF39
+ 771 027d 04       		.byte	0x4
+ 772 027e 49       		.byte	0x49
+ 773 027f 6B000000 		.4byte	0x6b
+ 774 0283 14       		.uleb128 0x14
+ 775 0284 0B030000 		.4byte	.LASF40
+ 776 0288 01       		.byte	0x1
+ 777 0289 24       		.byte	0x24
+ 778 028a 11020000 		.4byte	0x211
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 21
+
+
+ 779 028e 05       		.uleb128 0x5
+ 780 028f 03       		.byte	0x3
+ 781 0290 00000000 		.4byte	Comm_configI2C
+ 782 0294 14       		.uleb128 0x14
+ 783 0295 DC010000 		.4byte	.LASF41
+ 784 0299 01       		.byte	0x1
+ 785 029a 1B       		.byte	0x1b
+ 786 029b A4000000 		.4byte	0xa4
+ 787 029f 05       		.uleb128 0x5
+ 788 02a0 03       		.byte	0x3
+ 789 02a1 00000000 		.4byte	Comm_state
+ 790 02a5 13       		.uleb128 0x13
+ 791 02a6 00000000 		.4byte	.LASF42
+ 792 02aa 05       		.byte	0x5
+ 793 02ab 21       		.byte	0x21
+ 794 02ac A4000000 		.4byte	0xa4
+ 795 02b0 13       		.uleb128 0x13
+ 796 02b1 3C030000 		.4byte	.LASF43
+ 797 02b5 05       		.byte	0x5
+ 798 02b6 26       		.byte	0x26
+ 799 02b7 BA000000 		.4byte	0xba
+ 800 02bb 13       		.uleb128 0x13
+ 801 02bc 03040000 		.4byte	.LASF44
+ 802 02c0 05       		.byte	0x5
+ 803 02c1 2B       		.byte	0x2b
+ 804 02c2 BA000000 		.4byte	0xba
+ 805 02c6 13       		.uleb128 0x13
+ 806 02c7 81010000 		.4byte	.LASF45
+ 807 02cb 05       		.byte	0x5
+ 808 02cc 2D       		.byte	0x2d
+ 809 02cd A4000000 		.4byte	0xa4
+ 810 02d1 13       		.uleb128 0x13
+ 811 02d2 69030000 		.4byte	.LASF46
+ 812 02d6 05       		.byte	0x5
+ 813 02d7 31       		.byte	0x31
+ 814 02d8 A9000000 		.4byte	0xa9
+ 815 02dc 13       		.uleb128 0x13
+ 816 02dd 90030000 		.4byte	.LASF47
+ 817 02e1 05       		.byte	0x5
+ 818 02e2 37       		.byte	0x37
+ 819 02e3 BA000000 		.4byte	0xba
+ 820 02e7 13       		.uleb128 0x13
+ 821 02e8 96010000 		.4byte	.LASF48
+ 822 02ec 05       		.byte	0x5
+ 823 02ed 3C       		.byte	0x3c
+ 824 02ee BA000000 		.4byte	0xba
+ 825 02f2 15       		.uleb128 0x15
+ 826 02f3 F0020000 		.4byte	.LASF49
+ 827 02f7 04       		.byte	0x4
+ 828 02f8 31       		.byte	0x31
+ 829 02f9 0D030000 		.4byte	0x30d
+ 830 02fd 16       		.uleb128 0x16
+ 831 02fe 83000000 		.4byte	0x83
+ 832 0302 16       		.uleb128 0x16
+ 833 0303 83000000 		.4byte	0x83
+ 834 0307 16       		.uleb128 0x16
+ 835 0308 83000000 		.4byte	0x83
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 22
+
+
+ 836 030c 00       		.byte	0
+ 837 030d 15       		.uleb128 0x15
+ 838 030e 5C030000 		.4byte	.LASF50
+ 839 0312 06       		.byte	0x6
+ 840 0313 C5       		.byte	0xc5
+ 841 0314 1E030000 		.4byte	0x31e
+ 842 0318 16       		.uleb128 0x16
+ 843 0319 6B000000 		.4byte	0x6b
+ 844 031d 00       		.byte	0
+ 845 031e 15       		.uleb128 0x15
+ 846 031f B1020000 		.4byte	.LASF51
+ 847 0323 06       		.byte	0x6
+ 848 0324 C0       		.byte	0xc0
+ 849 0325 34030000 		.4byte	0x334
+ 850 0329 16       		.uleb128 0x16
+ 851 032a 6B000000 		.4byte	0x6b
+ 852 032e 16       		.uleb128 0x16
+ 853 032f 6B000000 		.4byte	0x6b
+ 854 0333 00       		.byte	0
+ 855 0334 17       		.uleb128 0x17
+ 856 0335 D4000000 		.4byte	.LASF52
+ 857 0339 06       		.byte	0x6
+ 858 033a BD       		.byte	0xbd
+ 859 033b BF000000 		.4byte	0xbf
+ 860 033f 16       		.uleb128 0x16
+ 861 0340 6B000000 		.4byte	0x6b
+ 862 0344 16       		.uleb128 0x16
+ 863 0345 BF000000 		.4byte	0xbf
+ 864 0349 00       		.byte	0
+ 865 034a 00       		.byte	0
+ 866              		.section	.debug_abbrev,"",%progbits
+ 867              	.Ldebug_abbrev0:
+ 868 0000 01       		.uleb128 0x1
+ 869 0001 11       		.uleb128 0x11
+ 870 0002 01       		.byte	0x1
+ 871 0003 25       		.uleb128 0x25
+ 872 0004 0E       		.uleb128 0xe
+ 873 0005 13       		.uleb128 0x13
+ 874 0006 0B       		.uleb128 0xb
+ 875 0007 03       		.uleb128 0x3
+ 876 0008 0E       		.uleb128 0xe
+ 877 0009 1B       		.uleb128 0x1b
+ 878 000a 0E       		.uleb128 0xe
+ 879 000b 55       		.uleb128 0x55
+ 880 000c 17       		.uleb128 0x17
+ 881 000d 11       		.uleb128 0x11
+ 882 000e 01       		.uleb128 0x1
+ 883 000f 10       		.uleb128 0x10
+ 884 0010 17       		.uleb128 0x17
+ 885 0011 00       		.byte	0
+ 886 0012 00       		.byte	0
+ 887 0013 02       		.uleb128 0x2
+ 888 0014 24       		.uleb128 0x24
+ 889 0015 00       		.byte	0
+ 890 0016 0B       		.uleb128 0xb
+ 891 0017 0B       		.uleb128 0xb
+ 892 0018 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 23
+
+
+ 893 0019 0B       		.uleb128 0xb
+ 894 001a 03       		.uleb128 0x3
+ 895 001b 0E       		.uleb128 0xe
+ 896 001c 00       		.byte	0
+ 897 001d 00       		.byte	0
+ 898 001e 03       		.uleb128 0x3
+ 899 001f 24       		.uleb128 0x24
+ 900 0020 00       		.byte	0
+ 901 0021 0B       		.uleb128 0xb
+ 902 0022 0B       		.uleb128 0xb
+ 903 0023 3E       		.uleb128 0x3e
+ 904 0024 0B       		.uleb128 0xb
+ 905 0025 03       		.uleb128 0x3
+ 906 0026 08       		.uleb128 0x8
+ 907 0027 00       		.byte	0
+ 908 0028 00       		.byte	0
+ 909 0029 04       		.uleb128 0x4
+ 910 002a 16       		.uleb128 0x16
+ 911 002b 00       		.byte	0
+ 912 002c 03       		.uleb128 0x3
+ 913 002d 0E       		.uleb128 0xe
+ 914 002e 3A       		.uleb128 0x3a
+ 915 002f 0B       		.uleb128 0xb
+ 916 0030 3B       		.uleb128 0x3b
+ 917 0031 05       		.uleb128 0x5
+ 918 0032 49       		.uleb128 0x49
+ 919 0033 13       		.uleb128 0x13
+ 920 0034 00       		.byte	0
+ 921 0035 00       		.byte	0
+ 922 0036 05       		.uleb128 0x5
+ 923 0037 35       		.uleb128 0x35
+ 924 0038 00       		.byte	0
+ 925 0039 49       		.uleb128 0x49
+ 926 003a 13       		.uleb128 0x13
+ 927 003b 00       		.byte	0
+ 928 003c 00       		.byte	0
+ 929 003d 06       		.uleb128 0x6
+ 930 003e 0F       		.uleb128 0xf
+ 931 003f 00       		.byte	0
+ 932 0040 0B       		.uleb128 0xb
+ 933 0041 0B       		.uleb128 0xb
+ 934 0042 49       		.uleb128 0x49
+ 935 0043 13       		.uleb128 0x13
+ 936 0044 00       		.byte	0
+ 937 0045 00       		.byte	0
+ 938 0046 07       		.uleb128 0x7
+ 939 0047 15       		.uleb128 0x15
+ 940 0048 00       		.byte	0
+ 941 0049 27       		.uleb128 0x27
+ 942 004a 19       		.uleb128 0x19
+ 943 004b 00       		.byte	0
+ 944 004c 00       		.byte	0
+ 945 004d 08       		.uleb128 0x8
+ 946 004e 13       		.uleb128 0x13
+ 947 004f 01       		.byte	0x1
+ 948 0050 0B       		.uleb128 0xb
+ 949 0051 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 24
+
+
+ 950 0052 3A       		.uleb128 0x3a
+ 951 0053 0B       		.uleb128 0xb
+ 952 0054 3B       		.uleb128 0x3b
+ 953 0055 0B       		.uleb128 0xb
+ 954 0056 01       		.uleb128 0x1
+ 955 0057 13       		.uleb128 0x13
+ 956 0058 00       		.byte	0
+ 957 0059 00       		.byte	0
+ 958 005a 09       		.uleb128 0x9
+ 959 005b 0D       		.uleb128 0xd
+ 960 005c 00       		.byte	0
+ 961 005d 03       		.uleb128 0x3
+ 962 005e 0E       		.uleb128 0xe
+ 963 005f 3A       		.uleb128 0x3a
+ 964 0060 0B       		.uleb128 0xb
+ 965 0061 3B       		.uleb128 0x3b
+ 966 0062 0B       		.uleb128 0xb
+ 967 0063 49       		.uleb128 0x49
+ 968 0064 13       		.uleb128 0x13
+ 969 0065 38       		.uleb128 0x38
+ 970 0066 0B       		.uleb128 0xb
+ 971 0067 00       		.byte	0
+ 972 0068 00       		.byte	0
+ 973 0069 0A       		.uleb128 0xa
+ 974 006a 16       		.uleb128 0x16
+ 975 006b 00       		.byte	0
+ 976 006c 03       		.uleb128 0x3
+ 977 006d 0E       		.uleb128 0xe
+ 978 006e 3A       		.uleb128 0x3a
+ 979 006f 0B       		.uleb128 0xb
+ 980 0070 3B       		.uleb128 0x3b
+ 981 0071 0B       		.uleb128 0xb
+ 982 0072 49       		.uleb128 0x49
+ 983 0073 13       		.uleb128 0x13
+ 984 0074 00       		.byte	0
+ 985 0075 00       		.byte	0
+ 986 0076 0B       		.uleb128 0xb
+ 987 0077 2E       		.uleb128 0x2e
+ 988 0078 01       		.byte	0x1
+ 989 0079 3F       		.uleb128 0x3f
+ 990 007a 19       		.uleb128 0x19
+ 991 007b 03       		.uleb128 0x3
+ 992 007c 0E       		.uleb128 0xe
+ 993 007d 3A       		.uleb128 0x3a
+ 994 007e 0B       		.uleb128 0xb
+ 995 007f 3B       		.uleb128 0x3b
+ 996 0080 0B       		.uleb128 0xb
+ 997 0081 27       		.uleb128 0x27
+ 998 0082 19       		.uleb128 0x19
+ 999 0083 11       		.uleb128 0x11
+ 1000 0084 01       		.uleb128 0x1
+ 1001 0085 12       		.uleb128 0x12
+ 1002 0086 06       		.uleb128 0x6
+ 1003 0087 40       		.uleb128 0x40
+ 1004 0088 18       		.uleb128 0x18
+ 1005 0089 9742     		.uleb128 0x2117
+ 1006 008b 19       		.uleb128 0x19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 25
+
+
+ 1007 008c 01       		.uleb128 0x1
+ 1008 008d 13       		.uleb128 0x13
+ 1009 008e 00       		.byte	0
+ 1010 008f 00       		.byte	0
+ 1011 0090 0C       		.uleb128 0xc
+ 1012 0091 05       		.uleb128 0x5
+ 1013 0092 00       		.byte	0
+ 1014 0093 03       		.uleb128 0x3
+ 1015 0094 0E       		.uleb128 0xe
+ 1016 0095 3A       		.uleb128 0x3a
+ 1017 0096 0B       		.uleb128 0xb
+ 1018 0097 3B       		.uleb128 0x3b
+ 1019 0098 0B       		.uleb128 0xb
+ 1020 0099 49       		.uleb128 0x49
+ 1021 009a 13       		.uleb128 0x13
+ 1022 009b 02       		.uleb128 0x2
+ 1023 009c 17       		.uleb128 0x17
+ 1024 009d 00       		.byte	0
+ 1025 009e 00       		.byte	0
+ 1026 009f 0D       		.uleb128 0xd
+ 1027 00a0 34       		.uleb128 0x34
+ 1028 00a1 00       		.byte	0
+ 1029 00a2 03       		.uleb128 0x3
+ 1030 00a3 0E       		.uleb128 0xe
+ 1031 00a4 3A       		.uleb128 0x3a
+ 1032 00a5 0B       		.uleb128 0xb
+ 1033 00a6 3B       		.uleb128 0x3b
+ 1034 00a7 0B       		.uleb128 0xb
+ 1035 00a8 49       		.uleb128 0x49
+ 1036 00a9 13       		.uleb128 0x13
+ 1037 00aa 02       		.uleb128 0x2
+ 1038 00ab 17       		.uleb128 0x17
+ 1039 00ac 00       		.byte	0
+ 1040 00ad 00       		.byte	0
+ 1041 00ae 0E       		.uleb128 0xe
+ 1042 00af 898201   		.uleb128 0x4109
+ 1043 00b2 01       		.byte	0x1
+ 1044 00b3 11       		.uleb128 0x11
+ 1045 00b4 01       		.uleb128 0x1
+ 1046 00b5 31       		.uleb128 0x31
+ 1047 00b6 13       		.uleb128 0x13
+ 1048 00b7 01       		.uleb128 0x1
+ 1049 00b8 13       		.uleb128 0x13
+ 1050 00b9 00       		.byte	0
+ 1051 00ba 00       		.byte	0
+ 1052 00bb 0F       		.uleb128 0xf
+ 1053 00bc 8A8201   		.uleb128 0x410a
+ 1054 00bf 00       		.byte	0
+ 1055 00c0 02       		.uleb128 0x2
+ 1056 00c1 18       		.uleb128 0x18
+ 1057 00c2 9142     		.uleb128 0x2111
+ 1058 00c4 18       		.uleb128 0x18
+ 1059 00c5 00       		.byte	0
+ 1060 00c6 00       		.byte	0
+ 1061 00c7 10       		.uleb128 0x10
+ 1062 00c8 898201   		.uleb128 0x4109
+ 1063 00cb 01       		.byte	0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 26
+
+
+ 1064 00cc 11       		.uleb128 0x11
+ 1065 00cd 01       		.uleb128 0x1
+ 1066 00ce 31       		.uleb128 0x31
+ 1067 00cf 13       		.uleb128 0x13
+ 1068 00d0 00       		.byte	0
+ 1069 00d1 00       		.byte	0
+ 1070 00d2 11       		.uleb128 0x11
+ 1071 00d3 26       		.uleb128 0x26
+ 1072 00d4 00       		.byte	0
+ 1073 00d5 49       		.uleb128 0x49
+ 1074 00d6 13       		.uleb128 0x13
+ 1075 00d7 00       		.byte	0
+ 1076 00d8 00       		.byte	0
+ 1077 00d9 12       		.uleb128 0x12
+ 1078 00da 2E       		.uleb128 0x2e
+ 1079 00db 00       		.byte	0
+ 1080 00dc 3F       		.uleb128 0x3f
+ 1081 00dd 19       		.uleb128 0x19
+ 1082 00de 03       		.uleb128 0x3
+ 1083 00df 0E       		.uleb128 0xe
+ 1084 00e0 3A       		.uleb128 0x3a
+ 1085 00e1 0B       		.uleb128 0xb
+ 1086 00e2 3B       		.uleb128 0x3b
+ 1087 00e3 05       		.uleb128 0x5
+ 1088 00e4 27       		.uleb128 0x27
+ 1089 00e5 19       		.uleb128 0x19
+ 1090 00e6 11       		.uleb128 0x11
+ 1091 00e7 01       		.uleb128 0x1
+ 1092 00e8 12       		.uleb128 0x12
+ 1093 00e9 06       		.uleb128 0x6
+ 1094 00ea 40       		.uleb128 0x40
+ 1095 00eb 18       		.uleb128 0x18
+ 1096 00ec 9742     		.uleb128 0x2117
+ 1097 00ee 19       		.uleb128 0x19
+ 1098 00ef 00       		.byte	0
+ 1099 00f0 00       		.byte	0
+ 1100 00f1 13       		.uleb128 0x13
+ 1101 00f2 34       		.uleb128 0x34
+ 1102 00f3 00       		.byte	0
+ 1103 00f4 03       		.uleb128 0x3
+ 1104 00f5 0E       		.uleb128 0xe
+ 1105 00f6 3A       		.uleb128 0x3a
+ 1106 00f7 0B       		.uleb128 0xb
+ 1107 00f8 3B       		.uleb128 0x3b
+ 1108 00f9 0B       		.uleb128 0xb
+ 1109 00fa 49       		.uleb128 0x49
+ 1110 00fb 13       		.uleb128 0x13
+ 1111 00fc 3F       		.uleb128 0x3f
+ 1112 00fd 19       		.uleb128 0x19
+ 1113 00fe 3C       		.uleb128 0x3c
+ 1114 00ff 19       		.uleb128 0x19
+ 1115 0100 00       		.byte	0
+ 1116 0101 00       		.byte	0
+ 1117 0102 14       		.uleb128 0x14
+ 1118 0103 34       		.uleb128 0x34
+ 1119 0104 00       		.byte	0
+ 1120 0105 03       		.uleb128 0x3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 27
+
+
+ 1121 0106 0E       		.uleb128 0xe
+ 1122 0107 3A       		.uleb128 0x3a
+ 1123 0108 0B       		.uleb128 0xb
+ 1124 0109 3B       		.uleb128 0x3b
+ 1125 010a 0B       		.uleb128 0xb
+ 1126 010b 49       		.uleb128 0x49
+ 1127 010c 13       		.uleb128 0x13
+ 1128 010d 3F       		.uleb128 0x3f
+ 1129 010e 19       		.uleb128 0x19
+ 1130 010f 02       		.uleb128 0x2
+ 1131 0110 18       		.uleb128 0x18
+ 1132 0111 00       		.byte	0
+ 1133 0112 00       		.byte	0
+ 1134 0113 15       		.uleb128 0x15
+ 1135 0114 2E       		.uleb128 0x2e
+ 1136 0115 01       		.byte	0x1
+ 1137 0116 3F       		.uleb128 0x3f
+ 1138 0117 19       		.uleb128 0x19
+ 1139 0118 03       		.uleb128 0x3
+ 1140 0119 0E       		.uleb128 0xe
+ 1141 011a 3A       		.uleb128 0x3a
+ 1142 011b 0B       		.uleb128 0xb
+ 1143 011c 3B       		.uleb128 0x3b
+ 1144 011d 0B       		.uleb128 0xb
+ 1145 011e 27       		.uleb128 0x27
+ 1146 011f 19       		.uleb128 0x19
+ 1147 0120 3C       		.uleb128 0x3c
+ 1148 0121 19       		.uleb128 0x19
+ 1149 0122 01       		.uleb128 0x1
+ 1150 0123 13       		.uleb128 0x13
+ 1151 0124 00       		.byte	0
+ 1152 0125 00       		.byte	0
+ 1153 0126 16       		.uleb128 0x16
+ 1154 0127 05       		.uleb128 0x5
+ 1155 0128 00       		.byte	0
+ 1156 0129 49       		.uleb128 0x49
+ 1157 012a 13       		.uleb128 0x13
+ 1158 012b 00       		.byte	0
+ 1159 012c 00       		.byte	0
+ 1160 012d 17       		.uleb128 0x17
+ 1161 012e 2E       		.uleb128 0x2e
+ 1162 012f 01       		.byte	0x1
+ 1163 0130 3F       		.uleb128 0x3f
+ 1164 0131 19       		.uleb128 0x19
+ 1165 0132 03       		.uleb128 0x3
+ 1166 0133 0E       		.uleb128 0xe
+ 1167 0134 3A       		.uleb128 0x3a
+ 1168 0135 0B       		.uleb128 0xb
+ 1169 0136 3B       		.uleb128 0x3b
+ 1170 0137 0B       		.uleb128 0xb
+ 1171 0138 27       		.uleb128 0x27
+ 1172 0139 19       		.uleb128 0x19
+ 1173 013a 49       		.uleb128 0x49
+ 1174 013b 13       		.uleb128 0x13
+ 1175 013c 3C       		.uleb128 0x3c
+ 1176 013d 19       		.uleb128 0x19
+ 1177 013e 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 28
+
+
+ 1178 013f 00       		.byte	0
+ 1179 0140 00       		.byte	0
+ 1180              		.section	.debug_loc,"",%progbits
+ 1181              	.Ldebug_loc0:
+ 1182              	.LLST0:
+ 1183 0000 00000000 		.4byte	.LVL0
+ 1184 0004 10000000 		.4byte	.LVL1
+ 1185 0008 0100     		.2byte	0x1
+ 1186 000a 50       		.byte	0x50
+ 1187 000b 10000000 		.4byte	.LVL1
+ 1188 000f D6000000 		.4byte	.LVL10
+ 1189 0013 0100     		.2byte	0x1
+ 1190 0015 54       		.byte	0x54
+ 1191 0016 D6000000 		.4byte	.LVL10
+ 1192 001a 54010000 		.4byte	.LVL14
+ 1193 001e 0300     		.2byte	0x3
+ 1194 0020 75       		.byte	0x75
+ 1195 0021 7B       		.sleb128 -5
+ 1196 0022 9F       		.byte	0x9f
+ 1197 0023 54010000 		.4byte	.LVL14
+ 1198 0027 D8010000 		.4byte	.LFE0
+ 1199 002b 0400     		.2byte	0x4
+ 1200 002d F3       		.byte	0xf3
+ 1201 002e 01       		.uleb128 0x1
+ 1202 002f 50       		.byte	0x50
+ 1203 0030 9F       		.byte	0x9f
+ 1204 0031 00000000 		.4byte	0
+ 1205 0035 00000000 		.4byte	0
+ 1206              	.LLST1:
+ 1207 0039 56000000 		.4byte	.LVL3
+ 1208 003d 5A000000 		.4byte	.LVL4
+ 1209 0041 0200     		.2byte	0x2
+ 1210 0043 30       		.byte	0x30
+ 1211 0044 9F       		.byte	0x9f
+ 1212 0045 62000000 		.4byte	.LVL5
+ 1213 0049 B4000000 		.4byte	.LVL9
+ 1214 004d 0100     		.2byte	0x1
+ 1215 004f 52       		.byte	0x52
+ 1216 0050 00000000 		.4byte	0
+ 1217 0054 00000000 		.4byte	0
+ 1218              	.LLST2:
+ 1219 0058 66000000 		.4byte	.LVL6
+ 1220 005c 72000000 		.4byte	.LVL7
+ 1221 0060 0100     		.2byte	0x1
+ 1222 0062 51       		.byte	0x51
+ 1223 0063 72000000 		.4byte	.LVL7
+ 1224 0067 7E000000 		.4byte	.LVL8
+ 1225 006b 0200     		.2byte	0x2
+ 1226 006d 74       		.byte	0x74
+ 1227 006e 1C       		.sleb128 28
+ 1228 006f 00000000 		.4byte	0
+ 1229 0073 00000000 		.4byte	0
+ 1230              		.section	.debug_aranges,"",%progbits
+ 1231 0000 34000000 		.4byte	0x34
+ 1232 0004 0200     		.2byte	0x2
+ 1233 0006 00000000 		.4byte	.Ldebug_info0
+ 1234 000a 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 29
+
+
+ 1235 000b 00       		.byte	0
+ 1236 000c 0000     		.2byte	0
+ 1237 000e 0000     		.2byte	0
+ 1238 0010 00000000 		.4byte	.LFB0
+ 1239 0014 D8010000 		.4byte	.LFE0-.LFB0
+ 1240 0018 00000000 		.4byte	.LFB1
+ 1241 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 1242 0020 00000000 		.4byte	.LFB2
+ 1243 0024 0C000000 		.4byte	.LFE2-.LFB2
+ 1244 0028 00000000 		.4byte	.LFB3
+ 1245 002c 0C000000 		.4byte	.LFE3-.LFB3
+ 1246 0030 00000000 		.4byte	0
+ 1247 0034 00000000 		.4byte	0
+ 1248              		.section	.debug_ranges,"",%progbits
+ 1249              	.Ldebug_ranges0:
+ 1250 0000 00000000 		.4byte	.LFB0
+ 1251 0004 D8010000 		.4byte	.LFE0
+ 1252 0008 00000000 		.4byte	.LFB1
+ 1253 000c 0C000000 		.4byte	.LFE1
+ 1254 0010 00000000 		.4byte	.LFB2
+ 1255 0014 0C000000 		.4byte	.LFE2
+ 1256 0018 00000000 		.4byte	.LFB3
+ 1257 001c 0C000000 		.4byte	.LFE3
+ 1258 0020 00000000 		.4byte	0
+ 1259 0024 00000000 		.4byte	0
+ 1260              		.section	.debug_line,"",%progbits
+ 1261              	.Ldebug_line0:
+ 1262 0000 5D010000 		.section	.debug_str,"MS",%progbits,1
+ 1262      02007E00 
+ 1262      00000201 
+ 1262      FB0E0D00 
+ 1262      01010101 
+ 1263              	.LASF42:
+ 1264 0000 436F6D6D 		.ascii	"Comm_slStatus\000"
+ 1264      5F736C53 
+ 1264      74617475 
+ 1264      7300
+ 1265              	.LASF15:
+ 1266 000e 72656733 		.ascii	"reg32\000"
+ 1266      3200
+ 1267              	.LASF54:
+ 1268 0014 47656E65 		.ascii	"Generated_Source\\PSoC4\\Comm_I2C.c\000"
+ 1268      72617465 
+ 1268      645F536F 
+ 1268      75726365 
+ 1268      5C50536F 
+ 1269              	.LASF53:
+ 1270 0036 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1270      4320342E 
+ 1270      392E3320 
+ 1270      32303135 
+ 1270      30333033 
+ 1271 0069 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1271      20726576 
+ 1271      6973696F 
+ 1271      6E203232 
+ 1271      31323230 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 30
+
+
+ 1272 009c 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1272      66756E63 
+ 1272      74696F6E 
+ 1272      2D736563 
+ 1272      74696F6E 
+ 1273              	.LASF39:
+ 1274 00c4 436F6D6D 		.ascii	"Comm_acceptAddr\000"
+ 1274      5F616363 
+ 1274      65707441 
+ 1274      64647200 
+ 1275              	.LASF52:
+ 1276 00d4 4379496E 		.ascii	"CyIntSetVector\000"
+ 1276      74536574 
+ 1276      56656374 
+ 1276      6F7200
+ 1277              	.LASF36:
+ 1278 00e3 436F6D6D 		.ascii	"Comm_scbEnableWake\000"
+ 1278      5F736362 
+ 1278      456E6162 
+ 1278      6C655761 
+ 1278      6B6500
+ 1279              	.LASF3:
+ 1280 00f6 73686F72 		.ascii	"short unsigned int\000"
+ 1280      7420756E 
+ 1280      7369676E 
+ 1280      65642069 
+ 1280      6E7400
+ 1281              	.LASF38:
+ 1282 0109 436F6D6D 		.ascii	"Comm_mode\000"
+ 1282      5F6D6F64 
+ 1282      6500
+ 1283              	.LASF13:
+ 1284 0113 646F7562 		.ascii	"double\000"
+ 1284      6C6500
+ 1285              	.LASF24:
+ 1286 011a 61636365 		.ascii	"acceptAddr\000"
+ 1286      70744164 
+ 1286      647200
+ 1287              	.LASF29:
+ 1288 0125 436F6D6D 		.ascii	"Comm_I2C_INIT_STRUCT\000"
+ 1288      5F493243 
+ 1288      5F494E49 
+ 1288      545F5354 
+ 1288      52554354 
+ 1289              	.LASF1:
+ 1290 013a 756E7369 		.ascii	"unsigned char\000"
+ 1290      676E6564 
+ 1290      20636861 
+ 1290      7200
+ 1291              	.LASF28:
+ 1292 0148 61636365 		.ascii	"acceptGeneralAddr\000"
+ 1292      70744765 
+ 1292      6E657261 
+ 1292      6C416464 
+ 1292      7200
+ 1293              	.LASF5:
+ 1294 015a 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 31
+
+
+ 1294      20756E73 
+ 1294      69676E65 
+ 1294      6420696E 
+ 1294      7400
+ 1295              	.LASF9:
+ 1296 016c 75696E74 		.ascii	"uint8\000"
+ 1296      3800
+ 1297              	.LASF26:
+ 1298 0172 656E6162 		.ascii	"enableByteMode\000"
+ 1298      6C654279 
+ 1298      74654D6F 
+ 1298      646500
+ 1299              	.LASF45:
+ 1300 0181 436F6D6D 		.ascii	"Comm_slOverFlowCount\000"
+ 1300      5F736C4F 
+ 1300      76657246 
+ 1300      6C6F7743 
+ 1300      6F756E74 
+ 1301              	.LASF48:
+ 1302 0196 436F6D6D 		.ascii	"Comm_mstrWrBufIndex\000"
+ 1302      5F6D7374 
+ 1302      72577242 
+ 1302      7566496E 
+ 1302      64657800 
+ 1303              	.LASF57:
+ 1304 01aa 636F6E66 		.ascii	"config\000"
+ 1304      696700
+ 1305              	.LASF56:
+ 1306 01b1 436F6D6D 		.ascii	"Comm_I2CInit\000"
+ 1306      5F493243 
+ 1306      496E6974 
+ 1306      00
+ 1307              	.LASF25:
+ 1308 01be 656E6162 		.ascii	"enableWake\000"
+ 1308      6C655761 
+ 1308      6B6500
+ 1309              	.LASF21:
+ 1310 01c9 656E6162 		.ascii	"enableMedianFilter\000"
+ 1310      6C654D65 
+ 1310      6469616E 
+ 1310      46696C74 
+ 1310      657200
+ 1311              	.LASF41:
+ 1312 01dc 436F6D6D 		.ascii	"Comm_state\000"
+ 1312      5F737461 
+ 1312      746500
+ 1313              	.LASF27:
+ 1314 01e7 64617461 		.ascii	"dataRate\000"
+ 1314      52617465 
+ 1314      00
+ 1315              	.LASF10:
+ 1316 01f0 75696E74 		.ascii	"uint16\000"
+ 1316      313600
+ 1317              	.LASF35:
+ 1318 01f7 436F6D6D 		.ascii	"Comm_scbMode\000"
+ 1318      5F736362 
+ 1318      4D6F6465 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 32
+
+
+ 1318      00
+ 1319              	.LASF22:
+ 1320 0204 736C6176 		.ascii	"slaveAddr\000"
+ 1320      65416464 
+ 1320      7200
+ 1321              	.LASF11:
+ 1322 020e 75696E74 		.ascii	"uint32\000"
+ 1322      333200
+ 1323              	.LASF8:
+ 1324 0215 756E7369 		.ascii	"unsigned int\000"
+ 1324      676E6564 
+ 1324      20696E74 
+ 1324      00
+ 1325              	.LASF55:
+ 1326 0222 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 1326      73657273 
+ 1326      5C546563 
+ 1326      6820436F 
+ 1326      6E73756C 
+ 1327 0251 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 1327      70706572 
+ 1327      2050726F 
+ 1327      6A656374 
+ 1327      73204765 
+ 1328 0282 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 1328      34323030 
+ 1328      2D476561 
+ 1328      72426573 
+ 1328      742E6379 
+ 1329              	.LASF7:
+ 1330 029a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1330      206C6F6E 
+ 1330      6720756E 
+ 1330      7369676E 
+ 1330      65642069 
+ 1331              	.LASF51:
+ 1332 02b1 4379496E 		.ascii	"CyIntSetPriority\000"
+ 1332      74536574 
+ 1332      5072696F 
+ 1332      72697479 
+ 1332      00
+ 1333              	.LASF30:
+ 1334 02c2 6D656469 		.ascii	"medianFilter\000"
+ 1334      616E4669 
+ 1334      6C746572 
+ 1334      00
+ 1335              	.LASF18:
+ 1336 02cf 6D6F6465 		.ascii	"mode\000"
+ 1336      00
+ 1337              	.LASF16:
+ 1338 02d4 63796973 		.ascii	"cyisraddress\000"
+ 1338      72616464 
+ 1338      72657373 
+ 1338      00
+ 1339              	.LASF20:
+ 1340 02e1 6F766572 		.ascii	"oversampleHigh\000"
+ 1340      73616D70 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 33
+
+
+ 1340      6C654869 
+ 1340      676800
+ 1341              	.LASF49:
+ 1342 02f0 436F6D6D 		.ascii	"Comm_SetPins\000"
+ 1342      5F536574 
+ 1342      50696E73 
+ 1342      00
+ 1343              	.LASF23:
+ 1344 02fd 736C6176 		.ascii	"slaveAddrMask\000"
+ 1344      65416464 
+ 1344      724D6173 
+ 1344      6B00
+ 1345              	.LASF40:
+ 1346 030b 436F6D6D 		.ascii	"Comm_configI2C\000"
+ 1346      5F636F6E 
+ 1346      66696749 
+ 1346      324300
+ 1347              	.LASF17:
+ 1348 031a 73697A65 		.ascii	"sizetype\000"
+ 1348      74797065 
+ 1348      00
+ 1349              	.LASF6:
+ 1350 0323 6C6F6E67 		.ascii	"long long int\000"
+ 1350      206C6F6E 
+ 1350      6720696E 
+ 1350      7400
+ 1351              	.LASF12:
+ 1352 0331 666C6F61 		.ascii	"float\000"
+ 1352      7400
+ 1353              	.LASF14:
+ 1354 0337 63686172 		.ascii	"char\000"
+ 1354      00
+ 1355              	.LASF43:
+ 1356 033c 436F6D6D 		.ascii	"Comm_slWrBufIndex\000"
+ 1356      5F736C57 
+ 1356      72427566 
+ 1356      496E6465 
+ 1356      7800
+ 1357              	.LASF19:
+ 1358 034e 6F766572 		.ascii	"oversampleLow\000"
+ 1358      73616D70 
+ 1358      6C654C6F 
+ 1358      7700
+ 1359              	.LASF50:
+ 1360 035c 4379496E 		.ascii	"CyIntDisable\000"
+ 1360      74446973 
+ 1360      61626C65 
+ 1360      00
+ 1361              	.LASF46:
+ 1362 0369 436F6D6D 		.ascii	"Comm_mstrStatus\000"
+ 1362      5F6D7374 
+ 1362      72537461 
+ 1362      74757300 
+ 1363              	.LASF32:
+ 1364 0379 436F6D6D 		.ascii	"Comm_I2CStop\000"
+ 1364      5F493243 
+ 1364      53746F70 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cctxtNRf.s 			page 34
+
+
+ 1364      00
+ 1365              	.LASF2:
+ 1366 0386 73686F72 		.ascii	"short int\000"
+ 1366      7420696E 
+ 1366      7400
+ 1367              	.LASF47:
+ 1368 0390 436F6D6D 		.ascii	"Comm_mstrRdBufIndex\000"
+ 1368      5F6D7374 
+ 1368      72526442 
+ 1368      7566496E 
+ 1368      64657800 
+ 1369              	.LASF37:
+ 1370 03a4 436F6D6D 		.ascii	"Comm_scbEnableIntr\000"
+ 1370      5F736362 
+ 1370      456E6162 
+ 1370      6C65496E 
+ 1370      747200
+ 1371              	.LASF33:
+ 1372 03b7 436F6D6D 		.ascii	"Comm_I2CSaveConfig\000"
+ 1372      5F493243 
+ 1372      53617665 
+ 1372      436F6E66 
+ 1372      696700
+ 1373              	.LASF4:
+ 1374 03ca 6C6F6E67 		.ascii	"long int\000"
+ 1374      20696E74 
+ 1374      00
+ 1375              	.LASF34:
+ 1376 03d3 436F6D6D 		.ascii	"Comm_I2CRestoreConfig\000"
+ 1376      5F493243 
+ 1376      52657374 
+ 1376      6F726543 
+ 1376      6F6E6669 
+ 1377              	.LASF0:
+ 1378 03e9 7369676E 		.ascii	"signed char\000"
+ 1378      65642063 
+ 1378      68617200 
+ 1379              	.LASF31:
+ 1380 03f5 6C6F6345 		.ascii	"locEnableWake\000"
+ 1380      6E61626C 
+ 1380      6557616B 
+ 1380      6500
+ 1381              	.LASF44:
+ 1382 0403 436F6D6D 		.ascii	"Comm_slRdBufIndex\000"
+ 1382      5F736C52 
+ 1382      64427566 
+ 1382      496E6465 
+ 1382      7800
+ 1383              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

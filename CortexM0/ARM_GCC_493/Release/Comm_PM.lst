@@ -1,0 +1,1088 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Comm_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Comm_Sleep,"ax",%progbits
+  18              		.align	1
+  19              		.global	Comm_Sleep
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	Comm_Sleep, %function
+  23              	Comm_Sleep:
+  24              	.LFB0:
+  25              		.file 1 "Generated_Source\\PSoC4\\Comm_PM.c"
+   1:Generated_Source\PSoC4/Comm_PM.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/Comm_PM.c **** * \file Comm_PM.c
+   3:Generated_Source\PSoC4/Comm_PM.c **** * \version 3.20
+   4:Generated_Source\PSoC4/Comm_PM.c **** *
+   5:Generated_Source\PSoC4/Comm_PM.c **** * \brief
+   6:Generated_Source\PSoC4/Comm_PM.c **** *  This file provides the source code to the Power Management support for
+   7:Generated_Source\PSoC4/Comm_PM.c **** *  the SCB Component.
+   8:Generated_Source\PSoC4/Comm_PM.c **** *
+   9:Generated_Source\PSoC4/Comm_PM.c **** * Note:
+  10:Generated_Source\PSoC4/Comm_PM.c **** *
+  11:Generated_Source\PSoC4/Comm_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/Comm_PM.c **** * \copyright
+  13:Generated_Source\PSoC4/Comm_PM.c **** * Copyright 2013-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/Comm_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/Comm_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/Comm_PM.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/Comm_PM.c **** *******************************************************************************/
+  18:Generated_Source\PSoC4/Comm_PM.c **** 
+  19:Generated_Source\PSoC4/Comm_PM.c **** #include "Comm.h"
+  20:Generated_Source\PSoC4/Comm_PM.c **** #include "Comm_PVT.h"
+  21:Generated_Source\PSoC4/Comm_PM.c **** 
+  22:Generated_Source\PSoC4/Comm_PM.c **** #if(Comm_SCB_MODE_I2C_INC)
+  23:Generated_Source\PSoC4/Comm_PM.c ****     #include "Comm_I2C_PVT.h"
+  24:Generated_Source\PSoC4/Comm_PM.c **** #endif /* (Comm_SCB_MODE_I2C_INC) */
+  25:Generated_Source\PSoC4/Comm_PM.c **** 
+  26:Generated_Source\PSoC4/Comm_PM.c **** #if(Comm_SCB_MODE_EZI2C_INC)
+  27:Generated_Source\PSoC4/Comm_PM.c ****     #include "Comm_EZI2C_PVT.h"
+  28:Generated_Source\PSoC4/Comm_PM.c **** #endif /* (Comm_SCB_MODE_EZI2C_INC) */
+  29:Generated_Source\PSoC4/Comm_PM.c **** 
+  30:Generated_Source\PSoC4/Comm_PM.c **** #if(Comm_SCB_MODE_SPI_INC || Comm_SCB_MODE_UART_INC)
+  31:Generated_Source\PSoC4/Comm_PM.c ****     #include "Comm_SPI_UART_PVT.h"
+  32:Generated_Source\PSoC4/Comm_PM.c **** #endif /* (Comm_SCB_MODE_SPI_INC || Comm_SCB_MODE_UART_INC) */
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 2
+
+
+  33:Generated_Source\PSoC4/Comm_PM.c **** 
+  34:Generated_Source\PSoC4/Comm_PM.c **** 
+  35:Generated_Source\PSoC4/Comm_PM.c **** /***************************************
+  36:Generated_Source\PSoC4/Comm_PM.c **** *   Backup Structure declaration
+  37:Generated_Source\PSoC4/Comm_PM.c **** ***************************************/
+  38:Generated_Source\PSoC4/Comm_PM.c **** 
+  39:Generated_Source\PSoC4/Comm_PM.c **** #if(Comm_SCB_MODE_UNCONFIG_CONST_CFG || \
+  40:Generated_Source\PSoC4/Comm_PM.c ****    (Comm_SCB_MODE_I2C_CONST_CFG   && (!Comm_I2C_WAKE_ENABLE_CONST))   || \
+  41:Generated_Source\PSoC4/Comm_PM.c ****    (Comm_SCB_MODE_EZI2C_CONST_CFG && (!Comm_EZI2C_WAKE_ENABLE_CONST)) || \
+  42:Generated_Source\PSoC4/Comm_PM.c ****    (Comm_SCB_MODE_SPI_CONST_CFG   && (!Comm_SPI_WAKE_ENABLE_CONST))   || \
+  43:Generated_Source\PSoC4/Comm_PM.c ****    (Comm_SCB_MODE_UART_CONST_CFG  && (!Comm_UART_WAKE_ENABLE_CONST)))
+  44:Generated_Source\PSoC4/Comm_PM.c **** 
+  45:Generated_Source\PSoC4/Comm_PM.c ****     Comm_BACKUP_STRUCT Comm_backup =
+  46:Generated_Source\PSoC4/Comm_PM.c ****     {
+  47:Generated_Source\PSoC4/Comm_PM.c ****         0u, /* enableState */
+  48:Generated_Source\PSoC4/Comm_PM.c ****     };
+  49:Generated_Source\PSoC4/Comm_PM.c **** #endif
+  50:Generated_Source\PSoC4/Comm_PM.c **** 
+  51:Generated_Source\PSoC4/Comm_PM.c **** 
+  52:Generated_Source\PSoC4/Comm_PM.c **** /*******************************************************************************
+  53:Generated_Source\PSoC4/Comm_PM.c **** * Function Name: Comm_Sleep
+  54:Generated_Source\PSoC4/Comm_PM.c **** ****************************************************************************//**
+  55:Generated_Source\PSoC4/Comm_PM.c **** *
+  56:Generated_Source\PSoC4/Comm_PM.c **** *  Prepares the Comm component to enter Deep Sleep.
+  57:Generated_Source\PSoC4/Comm_PM.c **** *  The “Enable wakeup from Deep Sleep Mode” selection has an influence on this 
+  58:Generated_Source\PSoC4/Comm_PM.c **** *  function implementation:
+  59:Generated_Source\PSoC4/Comm_PM.c **** *  - Checked: configures the component to be wakeup source from Deep Sleep.
+  60:Generated_Source\PSoC4/Comm_PM.c **** *  - Unchecked: stores the current component state (enabled or disabled) and 
+  61:Generated_Source\PSoC4/Comm_PM.c **** *    disables the component. See SCB_Stop() function for details about component 
+  62:Generated_Source\PSoC4/Comm_PM.c **** *    disabling.
+  63:Generated_Source\PSoC4/Comm_PM.c **** *
+  64:Generated_Source\PSoC4/Comm_PM.c **** *  Call the Comm_Sleep() function before calling the 
+  65:Generated_Source\PSoC4/Comm_PM.c **** *  CyPmSysDeepSleep() function. 
+  66:Generated_Source\PSoC4/Comm_PM.c **** *  Refer to the PSoC Creator System Reference Guide for more information about 
+  67:Generated_Source\PSoC4/Comm_PM.c **** *  power management functions and Low power section of this document for the 
+  68:Generated_Source\PSoC4/Comm_PM.c **** *  selected mode.
+  69:Generated_Source\PSoC4/Comm_PM.c **** *
+  70:Generated_Source\PSoC4/Comm_PM.c **** *  This function should not be called before entering Sleep.
+  71:Generated_Source\PSoC4/Comm_PM.c **** *
+  72:Generated_Source\PSoC4/Comm_PM.c **** *******************************************************************************/
+  73:Generated_Source\PSoC4/Comm_PM.c **** void Comm_Sleep(void)
+  74:Generated_Source\PSoC4/Comm_PM.c **** {
+  26              		.loc 1 74 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 3, -8
+  31              		.cfi_offset 14, -4
+  75:Generated_Source\PSoC4/Comm_PM.c **** #if(Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+  76:Generated_Source\PSoC4/Comm_PM.c **** 
+  77:Generated_Source\PSoC4/Comm_PM.c ****     if(Comm_SCB_WAKE_ENABLE_CHECK)
+  32              		.loc 1 77 0
+  33 0002 114B     		ldr	r3, .L13
+  34 0004 1B78     		ldrb	r3, [r3]
+  35 0006 002B     		cmp	r3, #0
+  36 0008 15D0     		beq	.L2
+  78:Generated_Source\PSoC4/Comm_PM.c ****     {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 3
+
+
+  79:Generated_Source\PSoC4/Comm_PM.c ****         if(Comm_SCB_MODE_I2C_RUNTM_CFG)
+  37              		.loc 1 79 0
+  38 000a 104B     		ldr	r3, .L13+4
+  39 000c 1B78     		ldrb	r3, [r3]
+  40 000e 012B     		cmp	r3, #1
+  41 0010 02D1     		bne	.L3
+  80:Generated_Source\PSoC4/Comm_PM.c ****         {
+  81:Generated_Source\PSoC4/Comm_PM.c ****             Comm_I2CSaveConfig();
+  42              		.loc 1 81 0
+  43 0012 FFF7FEFF 		bl	Comm_I2CSaveConfig
+  44              	.LVL0:
+  45 0016 16E0     		b	.L1
+  46              	.L3:
+  82:Generated_Source\PSoC4/Comm_PM.c ****         }
+  83:Generated_Source\PSoC4/Comm_PM.c ****         else if(Comm_SCB_MODE_EZI2C_RUNTM_CFG)
+  47              		.loc 1 83 0
+  48 0018 082B     		cmp	r3, #8
+  49 001a 02D1     		bne	.L5
+  84:Generated_Source\PSoC4/Comm_PM.c ****         {
+  85:Generated_Source\PSoC4/Comm_PM.c ****             Comm_EzI2CSaveConfig();
+  50              		.loc 1 85 0
+  51 001c FFF7FEFF 		bl	Comm_EzI2CSaveConfig
+  52              	.LVL1:
+  53 0020 11E0     		b	.L1
+  54              	.L5:
+  86:Generated_Source\PSoC4/Comm_PM.c ****         }
+  87:Generated_Source\PSoC4/Comm_PM.c ****     #if(!Comm_CY_SCBIP_V1)
+  88:Generated_Source\PSoC4/Comm_PM.c ****         else if(Comm_SCB_MODE_SPI_RUNTM_CFG)
+  55              		.loc 1 88 0
+  56 0022 022B     		cmp	r3, #2
+  57 0024 02D1     		bne	.L6
+  89:Generated_Source\PSoC4/Comm_PM.c ****         {
+  90:Generated_Source\PSoC4/Comm_PM.c ****             Comm_SpiSaveConfig();
+  58              		.loc 1 90 0
+  59 0026 FFF7FEFF 		bl	Comm_SpiSaveConfig
+  60              	.LVL2:
+  61 002a 0CE0     		b	.L1
+  62              	.L6:
+  91:Generated_Source\PSoC4/Comm_PM.c ****         }
+  92:Generated_Source\PSoC4/Comm_PM.c ****         else if(Comm_SCB_MODE_UART_RUNTM_CFG)
+  63              		.loc 1 92 0
+  64 002c 042B     		cmp	r3, #4
+  65 002e 0AD1     		bne	.L1
+  93:Generated_Source\PSoC4/Comm_PM.c ****         {
+  94:Generated_Source\PSoC4/Comm_PM.c ****             Comm_UartSaveConfig();
+  66              		.loc 1 94 0
+  67 0030 FFF7FEFF 		bl	Comm_UartSaveConfig
+  68              	.LVL3:
+  69 0034 07E0     		b	.L1
+  70              	.L2:
+  95:Generated_Source\PSoC4/Comm_PM.c ****         }
+  96:Generated_Source\PSoC4/Comm_PM.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+  97:Generated_Source\PSoC4/Comm_PM.c ****         else
+  98:Generated_Source\PSoC4/Comm_PM.c ****         {
+  99:Generated_Source\PSoC4/Comm_PM.c ****             /* Unknown mode */
+ 100:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 101:Generated_Source\PSoC4/Comm_PM.c ****     }
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 4
+
+
+ 102:Generated_Source\PSoC4/Comm_PM.c ****     else
+ 103:Generated_Source\PSoC4/Comm_PM.c ****     {
+ 104:Generated_Source\PSoC4/Comm_PM.c ****         Comm_backup.enableState = (uint8) Comm_GET_CTRL_ENABLED;
+  71              		.loc 1 104 0
+  72 0036 064B     		ldr	r3, .L13+8
+  73 0038 064A     		ldr	r2, .L13+12
+  74 003a 1B68     		ldr	r3, [r3]
+  75 003c DB0F     		lsr	r3, r3, #31
+  76 003e 1370     		strb	r3, [r2]
+ 105:Generated_Source\PSoC4/Comm_PM.c **** 
+ 106:Generated_Source\PSoC4/Comm_PM.c ****         if(0u != Comm_backup.enableState)
+  77              		.loc 1 106 0
+  78 0040 01D0     		beq	.L1
+ 107:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 108:Generated_Source\PSoC4/Comm_PM.c ****             Comm_Stop();
+  79              		.loc 1 108 0
+  80 0042 FFF7FEFF 		bl	Comm_Stop
+  81              	.LVL4:
+  82              	.L1:
+ 109:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 110:Generated_Source\PSoC4/Comm_PM.c ****     }
+ 111:Generated_Source\PSoC4/Comm_PM.c **** 
+ 112:Generated_Source\PSoC4/Comm_PM.c **** #else
+ 113:Generated_Source\PSoC4/Comm_PM.c **** 
+ 114:Generated_Source\PSoC4/Comm_PM.c ****     #if (Comm_SCB_MODE_I2C_CONST_CFG && Comm_I2C_WAKE_ENABLE_CONST)
+ 115:Generated_Source\PSoC4/Comm_PM.c ****         Comm_I2CSaveConfig();
+ 116:Generated_Source\PSoC4/Comm_PM.c **** 
+ 117:Generated_Source\PSoC4/Comm_PM.c ****     #elif (Comm_SCB_MODE_EZI2C_CONST_CFG && Comm_EZI2C_WAKE_ENABLE_CONST)
+ 118:Generated_Source\PSoC4/Comm_PM.c ****         Comm_EzI2CSaveConfig();
+ 119:Generated_Source\PSoC4/Comm_PM.c **** 
+ 120:Generated_Source\PSoC4/Comm_PM.c ****     #elif (Comm_SCB_MODE_SPI_CONST_CFG && Comm_SPI_WAKE_ENABLE_CONST)
+ 121:Generated_Source\PSoC4/Comm_PM.c ****         Comm_SpiSaveConfig();
+ 122:Generated_Source\PSoC4/Comm_PM.c **** 
+ 123:Generated_Source\PSoC4/Comm_PM.c ****     #elif (Comm_SCB_MODE_UART_CONST_CFG && Comm_UART_WAKE_ENABLE_CONST)
+ 124:Generated_Source\PSoC4/Comm_PM.c ****         Comm_UartSaveConfig();
+ 125:Generated_Source\PSoC4/Comm_PM.c **** 
+ 126:Generated_Source\PSoC4/Comm_PM.c ****     #else
+ 127:Generated_Source\PSoC4/Comm_PM.c **** 
+ 128:Generated_Source\PSoC4/Comm_PM.c ****         Comm_backup.enableState = (uint8) Comm_GET_CTRL_ENABLED;
+ 129:Generated_Source\PSoC4/Comm_PM.c **** 
+ 130:Generated_Source\PSoC4/Comm_PM.c ****         if(0u != Comm_backup.enableState)
+ 131:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 132:Generated_Source\PSoC4/Comm_PM.c ****             Comm_Stop();
+ 133:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 134:Generated_Source\PSoC4/Comm_PM.c **** 
+ 135:Generated_Source\PSoC4/Comm_PM.c ****     #endif /* defined (Comm_SCB_MODE_I2C_CONST_CFG) && (Comm_I2C_WAKE_ENABLE_CONST) */
+ 136:Generated_Source\PSoC4/Comm_PM.c **** 
+ 137:Generated_Source\PSoC4/Comm_PM.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 138:Generated_Source\PSoC4/Comm_PM.c **** }
+  83              		.loc 1 138 0
+  84              		@ sp needed
+  85 0046 08BD     		pop	{r3, pc}
+  86              	.L14:
+  87              		.align	2
+  88              	.L13:
+  89 0048 00000000 		.word	Comm_scbEnableWake
+  90 004c 00000000 		.word	Comm_scbMode
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 5
+
+
+  91 0050 00000640 		.word	1074135040
+  92 0054 00000000 		.word	.LANCHOR0
+  93              		.cfi_endproc
+  94              	.LFE0:
+  95              		.size	Comm_Sleep, .-Comm_Sleep
+  96              		.section	.text.Comm_Wakeup,"ax",%progbits
+  97              		.align	1
+  98              		.global	Comm_Wakeup
+  99              		.code	16
+ 100              		.thumb_func
+ 101              		.type	Comm_Wakeup, %function
+ 102              	Comm_Wakeup:
+ 103              	.LFB1:
+ 139:Generated_Source\PSoC4/Comm_PM.c **** 
+ 140:Generated_Source\PSoC4/Comm_PM.c **** 
+ 141:Generated_Source\PSoC4/Comm_PM.c **** /*******************************************************************************
+ 142:Generated_Source\PSoC4/Comm_PM.c **** * Function Name: Comm_Wakeup
+ 143:Generated_Source\PSoC4/Comm_PM.c **** ****************************************************************************//**
+ 144:Generated_Source\PSoC4/Comm_PM.c **** *
+ 145:Generated_Source\PSoC4/Comm_PM.c **** *  Prepares the Comm component for Active mode operation after 
+ 146:Generated_Source\PSoC4/Comm_PM.c **** *  Deep Sleep.
+ 147:Generated_Source\PSoC4/Comm_PM.c **** *  The “Enable wakeup from Deep Sleep Mode” selection has influence on this 
+ 148:Generated_Source\PSoC4/Comm_PM.c **** *  function implementation:
+ 149:Generated_Source\PSoC4/Comm_PM.c **** *  - Checked: restores the component Active mode configuration.
+ 150:Generated_Source\PSoC4/Comm_PM.c **** *  - Unchecked: enables the component if it was enabled before enter Deep Sleep.
+ 151:Generated_Source\PSoC4/Comm_PM.c **** *
+ 152:Generated_Source\PSoC4/Comm_PM.c **** *  This function should not be called after exiting Sleep.
+ 153:Generated_Source\PSoC4/Comm_PM.c **** *
+ 154:Generated_Source\PSoC4/Comm_PM.c **** *  \sideeffect
+ 155:Generated_Source\PSoC4/Comm_PM.c **** *   Calling the Comm_Wakeup() function without first calling the 
+ 156:Generated_Source\PSoC4/Comm_PM.c **** *   Comm_Sleep() function may produce unexpected behavior.
+ 157:Generated_Source\PSoC4/Comm_PM.c **** *
+ 158:Generated_Source\PSoC4/Comm_PM.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC4/Comm_PM.c **** void Comm_Wakeup(void)
+ 160:Generated_Source\PSoC4/Comm_PM.c **** {
+ 104              		.loc 1 160 0
+ 105              		.cfi_startproc
+ 106 0000 08B5     		push	{r3, lr}
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 3, -8
+ 109              		.cfi_offset 14, -4
+ 161:Generated_Source\PSoC4/Comm_PM.c **** #if(Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+ 162:Generated_Source\PSoC4/Comm_PM.c **** 
+ 163:Generated_Source\PSoC4/Comm_PM.c ****     if(Comm_SCB_WAKE_ENABLE_CHECK)
+ 110              		.loc 1 163 0
+ 111 0002 104B     		ldr	r3, .L24
+ 112 0004 1B78     		ldrb	r3, [r3]
+ 113 0006 002B     		cmp	r3, #0
+ 114 0008 15D0     		beq	.L16
+ 164:Generated_Source\PSoC4/Comm_PM.c ****     {
+ 165:Generated_Source\PSoC4/Comm_PM.c ****         if(Comm_SCB_MODE_I2C_RUNTM_CFG)
+ 115              		.loc 1 165 0
+ 116 000a 0F4B     		ldr	r3, .L24+4
+ 117 000c 1B78     		ldrb	r3, [r3]
+ 118 000e 012B     		cmp	r3, #1
+ 119 0010 02D1     		bne	.L17
+ 166:Generated_Source\PSoC4/Comm_PM.c ****         {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 6
+
+
+ 167:Generated_Source\PSoC4/Comm_PM.c ****             Comm_I2CRestoreConfig();
+ 120              		.loc 1 167 0
+ 121 0012 FFF7FEFF 		bl	Comm_I2CRestoreConfig
+ 122              	.LVL5:
+ 123 0016 14E0     		b	.L15
+ 124              	.L17:
+ 168:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 169:Generated_Source\PSoC4/Comm_PM.c ****         else if(Comm_SCB_MODE_EZI2C_RUNTM_CFG)
+ 125              		.loc 1 169 0
+ 126 0018 082B     		cmp	r3, #8
+ 127 001a 02D1     		bne	.L19
+ 170:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 171:Generated_Source\PSoC4/Comm_PM.c ****             Comm_EzI2CRestoreConfig();
+ 128              		.loc 1 171 0
+ 129 001c FFF7FEFF 		bl	Comm_EzI2CRestoreConfig
+ 130              	.LVL6:
+ 131 0020 0FE0     		b	.L15
+ 132              	.L19:
+ 172:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 173:Generated_Source\PSoC4/Comm_PM.c ****     #if(!Comm_CY_SCBIP_V1)
+ 174:Generated_Source\PSoC4/Comm_PM.c ****         else if(Comm_SCB_MODE_SPI_RUNTM_CFG)
+ 133              		.loc 1 174 0
+ 134 0022 022B     		cmp	r3, #2
+ 135 0024 02D1     		bne	.L20
+ 175:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 176:Generated_Source\PSoC4/Comm_PM.c ****             Comm_SpiRestoreConfig();
+ 136              		.loc 1 176 0
+ 137 0026 FFF7FEFF 		bl	Comm_SpiRestoreConfig
+ 138              	.LVL7:
+ 139 002a 0AE0     		b	.L15
+ 140              	.L20:
+ 177:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 178:Generated_Source\PSoC4/Comm_PM.c ****         else if(Comm_SCB_MODE_UART_RUNTM_CFG)
+ 141              		.loc 1 178 0
+ 142 002c 042B     		cmp	r3, #4
+ 143 002e 08D1     		bne	.L15
+ 179:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 180:Generated_Source\PSoC4/Comm_PM.c ****             Comm_UartRestoreConfig();
+ 144              		.loc 1 180 0
+ 145 0030 FFF7FEFF 		bl	Comm_UartRestoreConfig
+ 146              	.LVL8:
+ 147 0034 05E0     		b	.L15
+ 148              	.L16:
+ 181:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 182:Generated_Source\PSoC4/Comm_PM.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+ 183:Generated_Source\PSoC4/Comm_PM.c ****         else
+ 184:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 185:Generated_Source\PSoC4/Comm_PM.c ****             /* Unknown mode */
+ 186:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 187:Generated_Source\PSoC4/Comm_PM.c ****     }
+ 188:Generated_Source\PSoC4/Comm_PM.c ****     else
+ 189:Generated_Source\PSoC4/Comm_PM.c ****     {
+ 190:Generated_Source\PSoC4/Comm_PM.c ****         if(0u != Comm_backup.enableState)
+ 149              		.loc 1 190 0
+ 150 0036 054B     		ldr	r3, .L24+8
+ 151 0038 1B78     		ldrb	r3, [r3]
+ 152 003a 002B     		cmp	r3, #0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 7
+
+
+ 153 003c 01D0     		beq	.L15
+ 191:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 192:Generated_Source\PSoC4/Comm_PM.c ****             Comm_Enable();
+ 154              		.loc 1 192 0
+ 155 003e FFF7FEFF 		bl	Comm_Enable
+ 156              	.LVL9:
+ 157              	.L15:
+ 193:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 194:Generated_Source\PSoC4/Comm_PM.c ****     }
+ 195:Generated_Source\PSoC4/Comm_PM.c **** 
+ 196:Generated_Source\PSoC4/Comm_PM.c **** #else
+ 197:Generated_Source\PSoC4/Comm_PM.c **** 
+ 198:Generated_Source\PSoC4/Comm_PM.c ****     #if (Comm_SCB_MODE_I2C_CONST_CFG  && Comm_I2C_WAKE_ENABLE_CONST)
+ 199:Generated_Source\PSoC4/Comm_PM.c ****         Comm_I2CRestoreConfig();
+ 200:Generated_Source\PSoC4/Comm_PM.c **** 
+ 201:Generated_Source\PSoC4/Comm_PM.c ****     #elif (Comm_SCB_MODE_EZI2C_CONST_CFG && Comm_EZI2C_WAKE_ENABLE_CONST)
+ 202:Generated_Source\PSoC4/Comm_PM.c ****         Comm_EzI2CRestoreConfig();
+ 203:Generated_Source\PSoC4/Comm_PM.c **** 
+ 204:Generated_Source\PSoC4/Comm_PM.c ****     #elif (Comm_SCB_MODE_SPI_CONST_CFG && Comm_SPI_WAKE_ENABLE_CONST)
+ 205:Generated_Source\PSoC4/Comm_PM.c ****         Comm_SpiRestoreConfig();
+ 206:Generated_Source\PSoC4/Comm_PM.c **** 
+ 207:Generated_Source\PSoC4/Comm_PM.c ****     #elif (Comm_SCB_MODE_UART_CONST_CFG && Comm_UART_WAKE_ENABLE_CONST)
+ 208:Generated_Source\PSoC4/Comm_PM.c ****         Comm_UartRestoreConfig();
+ 209:Generated_Source\PSoC4/Comm_PM.c **** 
+ 210:Generated_Source\PSoC4/Comm_PM.c ****     #else
+ 211:Generated_Source\PSoC4/Comm_PM.c **** 
+ 212:Generated_Source\PSoC4/Comm_PM.c ****         if(0u != Comm_backup.enableState)
+ 213:Generated_Source\PSoC4/Comm_PM.c ****         {
+ 214:Generated_Source\PSoC4/Comm_PM.c ****             Comm_Enable();
+ 215:Generated_Source\PSoC4/Comm_PM.c ****         }
+ 216:Generated_Source\PSoC4/Comm_PM.c **** 
+ 217:Generated_Source\PSoC4/Comm_PM.c ****     #endif /* (Comm_I2C_WAKE_ENABLE_CONST) */
+ 218:Generated_Source\PSoC4/Comm_PM.c **** 
+ 219:Generated_Source\PSoC4/Comm_PM.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 220:Generated_Source\PSoC4/Comm_PM.c **** }
+ 158              		.loc 1 220 0
+ 159              		@ sp needed
+ 160 0042 08BD     		pop	{r3, pc}
+ 161              	.L25:
+ 162              		.align	2
+ 163              	.L24:
+ 164 0044 00000000 		.word	Comm_scbEnableWake
+ 165 0048 00000000 		.word	Comm_scbMode
+ 166 004c 00000000 		.word	.LANCHOR0
+ 167              		.cfi_endproc
+ 168              	.LFE1:
+ 169              		.size	Comm_Wakeup, .-Comm_Wakeup
+ 170              		.global	Comm_backup
+ 171              		.bss
+ 172              		.set	.LANCHOR0,. + 0
+ 173              		.type	Comm_backup, %object
+ 174              		.size	Comm_backup, 1
+ 175              	Comm_backup:
+ 176 0000 00       		.space	1
+ 177              		.text
+ 178              	.Letext0:
+ 179              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 8
+
+
+ 180              		.file 3 "Generated_Source\\PSoC4\\Comm.h"
+ 181              		.file 4 "Generated_Source\\PSoC4\\Comm_PVT.h"
+ 182              		.file 5 "Generated_Source\\PSoC4\\Comm_I2C_PVT.h"
+ 183              		.file 6 "Generated_Source\\PSoC4\\Comm_EZI2C_PVT.h"
+ 184              		.file 7 "Generated_Source\\PSoC4\\Comm_SPI_UART_PVT.h"
+ 185              		.section	.debug_info,"",%progbits
+ 186              	.Ldebug_info0:
+ 187 0000 C0010000 		.4byte	0x1c0
+ 188 0004 0400     		.2byte	0x4
+ 189 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 190 000a 04       		.byte	0x4
+ 191 000b 01       		.uleb128 0x1
+ 192 000c 0C000000 		.4byte	.LASF32
+ 193 0010 01       		.byte	0x1
+ 194 0011 1E020000 		.4byte	.LASF33
+ 195 0015 3F020000 		.4byte	.LASF34
+ 196 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 197 001d 00000000 		.4byte	0
+ 198 0021 00000000 		.4byte	.Ldebug_line0
+ 199 0025 02       		.uleb128 0x2
+ 200 0026 01       		.byte	0x1
+ 201 0027 06       		.byte	0x6
+ 202 0028 EF020000 		.4byte	.LASF0
+ 203 002c 02       		.uleb128 0x2
+ 204 002d 01       		.byte	0x1
+ 205 002e 08       		.byte	0x8
+ 206 002f 1B010000 		.4byte	.LASF1
+ 207 0033 02       		.uleb128 0x2
+ 208 0034 02       		.byte	0x2
+ 209 0035 05       		.byte	0x5
+ 210 0036 72010000 		.4byte	.LASF2
+ 211 003a 02       		.uleb128 0x2
+ 212 003b 02       		.byte	0x2
+ 213 003c 07       		.byte	0x7
+ 214 003d D7000000 		.4byte	.LASF3
+ 215 0041 02       		.uleb128 0x2
+ 216 0042 04       		.byte	0x4
+ 217 0043 05       		.byte	0x5
+ 218 0044 CA020000 		.4byte	.LASF4
+ 219 0048 02       		.uleb128 0x2
+ 220 0049 04       		.byte	0x4
+ 221 004a 07       		.byte	0x7
+ 222 004b 40010000 		.4byte	.LASF5
+ 223 004f 02       		.uleb128 0x2
+ 224 0050 08       		.byte	0x8
+ 225 0051 05       		.byte	0x5
+ 226 0052 E8010000 		.4byte	.LASF6
+ 227 0056 02       		.uleb128 0x2
+ 228 0057 08       		.byte	0x8
+ 229 0058 07       		.byte	0x7
+ 230 0059 BC010000 		.4byte	.LASF7
+ 231 005d 03       		.uleb128 0x3
+ 232 005e 04       		.byte	0x4
+ 233 005f 05       		.byte	0x5
+ 234 0060 696E7400 		.ascii	"int\000"
+ 235 0064 02       		.uleb128 0x2
+ 236 0065 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 9
+
+
+ 237 0066 07       		.byte	0x7
+ 238 0067 AF010000 		.4byte	.LASF8
+ 239 006b 04       		.uleb128 0x4
+ 240 006c 52010000 		.4byte	.LASF9
+ 241 0070 02       		.byte	0x2
+ 242 0071 B901     		.2byte	0x1b9
+ 243 0073 2C000000 		.4byte	0x2c
+ 244 0077 04       		.uleb128 0x4
+ 245 0078 89010000 		.4byte	.LASF10
+ 246 007c 02       		.byte	0x2
+ 247 007d BB01     		.2byte	0x1bb
+ 248 007f 48000000 		.4byte	0x48
+ 249 0083 02       		.uleb128 0x2
+ 250 0084 04       		.byte	0x4
+ 251 0085 04       		.byte	0x4
+ 252 0086 15010000 		.4byte	.LASF11
+ 253 008a 02       		.uleb128 0x2
+ 254 008b 08       		.byte	0x8
+ 255 008c 04       		.byte	0x4
+ 256 008d 58010000 		.4byte	.LASF12
+ 257 0091 02       		.uleb128 0x2
+ 258 0092 01       		.byte	0x1
+ 259 0093 08       		.byte	0x8
+ 260 0094 0E020000 		.4byte	.LASF13
+ 261 0098 04       		.uleb128 0x4
+ 262 0099 D3020000 		.4byte	.LASF14
+ 263 009d 02       		.byte	0x2
+ 264 009e 6502     		.2byte	0x265
+ 265 00a0 A4000000 		.4byte	0xa4
+ 266 00a4 05       		.uleb128 0x5
+ 267 00a5 77000000 		.4byte	0x77
+ 268 00a9 02       		.uleb128 0x2
+ 269 00aa 04       		.byte	0x4
+ 270 00ab 07       		.byte	0x7
+ 271 00ac DF010000 		.4byte	.LASF15
+ 272 00b0 06       		.uleb128 0x6
+ 273 00b1 01       		.byte	0x1
+ 274 00b2 03       		.byte	0x3
+ 275 00b3 5C       		.byte	0x5c
+ 276 00b4 C5000000 		.4byte	0xc5
+ 277 00b8 07       		.uleb128 0x7
+ 278 00b9 90010000 		.4byte	.LASF35
+ 279 00bd 03       		.byte	0x3
+ 280 00be 5E       		.byte	0x5e
+ 281 00bf 6B000000 		.4byte	0x6b
+ 282 00c3 00       		.byte	0
+ 283 00c4 00       		.byte	0
+ 284 00c5 08       		.uleb128 0x8
+ 285 00c6 5F010000 		.4byte	.LASF16
+ 286 00ca 03       		.byte	0x3
+ 287 00cb 5F       		.byte	0x5f
+ 288 00cc B0000000 		.4byte	0xb0
+ 289 00d0 09       		.uleb128 0x9
+ 290 00d1 13020000 		.4byte	.LASF17
+ 291 00d5 01       		.byte	0x1
+ 292 00d6 49       		.byte	0x49
+ 293 00d7 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 10
+
+
+ 294 00db 58000000 		.4byte	.LFE0-.LFB0
+ 295 00df 01       		.uleb128 0x1
+ 296 00e0 9C       		.byte	0x9c
+ 297 00e1 13010000 		.4byte	0x113
+ 298 00e5 0A       		.uleb128 0xa
+ 299 00e6 16000000 		.4byte	.LVL0
+ 300 00ea 7D010000 		.4byte	0x17d
+ 301 00ee 0A       		.uleb128 0xa
+ 302 00ef 20000000 		.4byte	.LVL1
+ 303 00f3 84010000 		.4byte	0x184
+ 304 00f7 0A       		.uleb128 0xa
+ 305 00f8 2A000000 		.4byte	.LVL2
+ 306 00fc 8B010000 		.4byte	0x18b
+ 307 0100 0A       		.uleb128 0xa
+ 308 0101 34000000 		.4byte	.LVL3
+ 309 0105 92010000 		.4byte	0x192
+ 310 0109 0A       		.uleb128 0xa
+ 311 010a 46000000 		.4byte	.LVL4
+ 312 010e 99010000 		.4byte	0x199
+ 313 0112 00       		.byte	0
+ 314 0113 09       		.uleb128 0x9
+ 315 0114 D3010000 		.4byte	.LASF18
+ 316 0118 01       		.byte	0x1
+ 317 0119 9F       		.byte	0x9f
+ 318 011a 00000000 		.4byte	.LFB1
+ 319 011e 50000000 		.4byte	.LFE1-.LFB1
+ 320 0122 01       		.uleb128 0x1
+ 321 0123 9C       		.byte	0x9c
+ 322 0124 56010000 		.4byte	0x156
+ 323 0128 0A       		.uleb128 0xa
+ 324 0129 16000000 		.4byte	.LVL5
+ 325 012d A0010000 		.4byte	0x1a0
+ 326 0131 0A       		.uleb128 0xa
+ 327 0132 20000000 		.4byte	.LVL6
+ 328 0136 A7010000 		.4byte	0x1a7
+ 329 013a 0A       		.uleb128 0xa
+ 330 013b 2A000000 		.4byte	.LVL7
+ 331 013f AE010000 		.4byte	0x1ae
+ 332 0143 0A       		.uleb128 0xa
+ 333 0144 34000000 		.4byte	.LVL8
+ 334 0148 B5010000 		.4byte	0x1b5
+ 335 014c 0A       		.uleb128 0xa
+ 336 014d 42000000 		.4byte	.LVL9
+ 337 0151 BC010000 		.4byte	0x1bc
+ 338 0155 00       		.byte	0
+ 339 0156 0B       		.uleb128 0xb
+ 340 0157 00000000 		.4byte	.LASF19
+ 341 015b 01       		.byte	0x1
+ 342 015c 2D       		.byte	0x2d
+ 343 015d C5000000 		.4byte	0xc5
+ 344 0161 05       		.uleb128 0x5
+ 345 0162 03       		.byte	0x3
+ 346 0163 00000000 		.4byte	Comm_backup
+ 347 0167 0C       		.uleb128 0xc
+ 348 0168 7C010000 		.4byte	.LASF20
+ 349 016c 04       		.byte	0x4
+ 350 016d 43       		.byte	0x43
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 11
+
+
+ 351 016e 6B000000 		.4byte	0x6b
+ 352 0172 0C       		.uleb128 0xc
+ 353 0173 B0000000 		.4byte	.LASF21
+ 354 0177 04       		.byte	0x4
+ 355 0178 44       		.byte	0x44
+ 356 0179 6B000000 		.4byte	0x6b
+ 357 017d 0D       		.uleb128 0xd
+ 358 017e B7020000 		.4byte	.LASF22
+ 359 0182 05       		.byte	0x5
+ 360 0183 4D       		.byte	0x4d
+ 361 0184 0D       		.uleb128 0xd
+ 362 0185 F6000000 		.4byte	.LASF23
+ 363 0189 06       		.byte	0x6
+ 364 018a 3F       		.byte	0x3f
+ 365 018b 0D       		.uleb128 0xd
+ 366 018c 9C010000 		.4byte	.LASF24
+ 367 0190 07       		.byte	0x7
+ 368 0191 48       		.byte	0x48
+ 369 0192 0D       		.uleb128 0xd
+ 370 0193 C3000000 		.4byte	.LASF25
+ 371 0197 07       		.byte	0x7
+ 372 0198 54       		.byte	0x54
+ 373 0199 0D       		.uleb128 0xd
+ 374 019a 0B010000 		.4byte	.LASF26
+ 375 019e 03       		.byte	0x3
+ 376 019f 6F       		.byte	0x6f
+ 377 01a0 0D       		.uleb128 0xd
+ 378 01a1 D9020000 		.4byte	.LASF27
+ 379 01a5 05       		.byte	0x5
+ 380 01a6 4E       		.byte	0x4e
+ 381 01a7 0D       		.uleb128 0xd
+ 382 01a8 F6010000 		.4byte	.LASF28
+ 383 01ac 06       		.byte	0x6
+ 384 01ad 40       		.byte	0x40
+ 385 01ae 0D       		.uleb128 0xd
+ 386 01af 9A000000 		.4byte	.LASF29
+ 387 01b3 07       		.byte	0x7
+ 388 01b4 49       		.byte	0x49
+ 389 01b5 0D       		.uleb128 0xd
+ 390 01b6 29010000 		.4byte	.LASF30
+ 391 01ba 07       		.byte	0x7
+ 392 01bb 55       		.byte	0x55
+ 393 01bc 0D       		.uleb128 0xd
+ 394 01bd EA000000 		.4byte	.LASF31
+ 395 01c1 03       		.byte	0x3
+ 396 01c2 6D       		.byte	0x6d
+ 397 01c3 00       		.byte	0
+ 398              		.section	.debug_abbrev,"",%progbits
+ 399              	.Ldebug_abbrev0:
+ 400 0000 01       		.uleb128 0x1
+ 401 0001 11       		.uleb128 0x11
+ 402 0002 01       		.byte	0x1
+ 403 0003 25       		.uleb128 0x25
+ 404 0004 0E       		.uleb128 0xe
+ 405 0005 13       		.uleb128 0x13
+ 406 0006 0B       		.uleb128 0xb
+ 407 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 12
+
+
+ 408 0008 0E       		.uleb128 0xe
+ 409 0009 1B       		.uleb128 0x1b
+ 410 000a 0E       		.uleb128 0xe
+ 411 000b 55       		.uleb128 0x55
+ 412 000c 17       		.uleb128 0x17
+ 413 000d 11       		.uleb128 0x11
+ 414 000e 01       		.uleb128 0x1
+ 415 000f 10       		.uleb128 0x10
+ 416 0010 17       		.uleb128 0x17
+ 417 0011 00       		.byte	0
+ 418 0012 00       		.byte	0
+ 419 0013 02       		.uleb128 0x2
+ 420 0014 24       		.uleb128 0x24
+ 421 0015 00       		.byte	0
+ 422 0016 0B       		.uleb128 0xb
+ 423 0017 0B       		.uleb128 0xb
+ 424 0018 3E       		.uleb128 0x3e
+ 425 0019 0B       		.uleb128 0xb
+ 426 001a 03       		.uleb128 0x3
+ 427 001b 0E       		.uleb128 0xe
+ 428 001c 00       		.byte	0
+ 429 001d 00       		.byte	0
+ 430 001e 03       		.uleb128 0x3
+ 431 001f 24       		.uleb128 0x24
+ 432 0020 00       		.byte	0
+ 433 0021 0B       		.uleb128 0xb
+ 434 0022 0B       		.uleb128 0xb
+ 435 0023 3E       		.uleb128 0x3e
+ 436 0024 0B       		.uleb128 0xb
+ 437 0025 03       		.uleb128 0x3
+ 438 0026 08       		.uleb128 0x8
+ 439 0027 00       		.byte	0
+ 440 0028 00       		.byte	0
+ 441 0029 04       		.uleb128 0x4
+ 442 002a 16       		.uleb128 0x16
+ 443 002b 00       		.byte	0
+ 444 002c 03       		.uleb128 0x3
+ 445 002d 0E       		.uleb128 0xe
+ 446 002e 3A       		.uleb128 0x3a
+ 447 002f 0B       		.uleb128 0xb
+ 448 0030 3B       		.uleb128 0x3b
+ 449 0031 05       		.uleb128 0x5
+ 450 0032 49       		.uleb128 0x49
+ 451 0033 13       		.uleb128 0x13
+ 452 0034 00       		.byte	0
+ 453 0035 00       		.byte	0
+ 454 0036 05       		.uleb128 0x5
+ 455 0037 35       		.uleb128 0x35
+ 456 0038 00       		.byte	0
+ 457 0039 49       		.uleb128 0x49
+ 458 003a 13       		.uleb128 0x13
+ 459 003b 00       		.byte	0
+ 460 003c 00       		.byte	0
+ 461 003d 06       		.uleb128 0x6
+ 462 003e 13       		.uleb128 0x13
+ 463 003f 01       		.byte	0x1
+ 464 0040 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 13
+
+
+ 465 0041 0B       		.uleb128 0xb
+ 466 0042 3A       		.uleb128 0x3a
+ 467 0043 0B       		.uleb128 0xb
+ 468 0044 3B       		.uleb128 0x3b
+ 469 0045 0B       		.uleb128 0xb
+ 470 0046 01       		.uleb128 0x1
+ 471 0047 13       		.uleb128 0x13
+ 472 0048 00       		.byte	0
+ 473 0049 00       		.byte	0
+ 474 004a 07       		.uleb128 0x7
+ 475 004b 0D       		.uleb128 0xd
+ 476 004c 00       		.byte	0
+ 477 004d 03       		.uleb128 0x3
+ 478 004e 0E       		.uleb128 0xe
+ 479 004f 3A       		.uleb128 0x3a
+ 480 0050 0B       		.uleb128 0xb
+ 481 0051 3B       		.uleb128 0x3b
+ 482 0052 0B       		.uleb128 0xb
+ 483 0053 49       		.uleb128 0x49
+ 484 0054 13       		.uleb128 0x13
+ 485 0055 38       		.uleb128 0x38
+ 486 0056 0B       		.uleb128 0xb
+ 487 0057 00       		.byte	0
+ 488 0058 00       		.byte	0
+ 489 0059 08       		.uleb128 0x8
+ 490 005a 16       		.uleb128 0x16
+ 491 005b 00       		.byte	0
+ 492 005c 03       		.uleb128 0x3
+ 493 005d 0E       		.uleb128 0xe
+ 494 005e 3A       		.uleb128 0x3a
+ 495 005f 0B       		.uleb128 0xb
+ 496 0060 3B       		.uleb128 0x3b
+ 497 0061 0B       		.uleb128 0xb
+ 498 0062 49       		.uleb128 0x49
+ 499 0063 13       		.uleb128 0x13
+ 500 0064 00       		.byte	0
+ 501 0065 00       		.byte	0
+ 502 0066 09       		.uleb128 0x9
+ 503 0067 2E       		.uleb128 0x2e
+ 504 0068 01       		.byte	0x1
+ 505 0069 3F       		.uleb128 0x3f
+ 506 006a 19       		.uleb128 0x19
+ 507 006b 03       		.uleb128 0x3
+ 508 006c 0E       		.uleb128 0xe
+ 509 006d 3A       		.uleb128 0x3a
+ 510 006e 0B       		.uleb128 0xb
+ 511 006f 3B       		.uleb128 0x3b
+ 512 0070 0B       		.uleb128 0xb
+ 513 0071 27       		.uleb128 0x27
+ 514 0072 19       		.uleb128 0x19
+ 515 0073 11       		.uleb128 0x11
+ 516 0074 01       		.uleb128 0x1
+ 517 0075 12       		.uleb128 0x12
+ 518 0076 06       		.uleb128 0x6
+ 519 0077 40       		.uleb128 0x40
+ 520 0078 18       		.uleb128 0x18
+ 521 0079 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 14
+
+
+ 522 007b 19       		.uleb128 0x19
+ 523 007c 01       		.uleb128 0x1
+ 524 007d 13       		.uleb128 0x13
+ 525 007e 00       		.byte	0
+ 526 007f 00       		.byte	0
+ 527 0080 0A       		.uleb128 0xa
+ 528 0081 898201   		.uleb128 0x4109
+ 529 0084 00       		.byte	0
+ 530 0085 11       		.uleb128 0x11
+ 531 0086 01       		.uleb128 0x1
+ 532 0087 31       		.uleb128 0x31
+ 533 0088 13       		.uleb128 0x13
+ 534 0089 00       		.byte	0
+ 535 008a 00       		.byte	0
+ 536 008b 0B       		.uleb128 0xb
+ 537 008c 34       		.uleb128 0x34
+ 538 008d 00       		.byte	0
+ 539 008e 03       		.uleb128 0x3
+ 540 008f 0E       		.uleb128 0xe
+ 541 0090 3A       		.uleb128 0x3a
+ 542 0091 0B       		.uleb128 0xb
+ 543 0092 3B       		.uleb128 0x3b
+ 544 0093 0B       		.uleb128 0xb
+ 545 0094 49       		.uleb128 0x49
+ 546 0095 13       		.uleb128 0x13
+ 547 0096 3F       		.uleb128 0x3f
+ 548 0097 19       		.uleb128 0x19
+ 549 0098 02       		.uleb128 0x2
+ 550 0099 18       		.uleb128 0x18
+ 551 009a 00       		.byte	0
+ 552 009b 00       		.byte	0
+ 553 009c 0C       		.uleb128 0xc
+ 554 009d 34       		.uleb128 0x34
+ 555 009e 00       		.byte	0
+ 556 009f 03       		.uleb128 0x3
+ 557 00a0 0E       		.uleb128 0xe
+ 558 00a1 3A       		.uleb128 0x3a
+ 559 00a2 0B       		.uleb128 0xb
+ 560 00a3 3B       		.uleb128 0x3b
+ 561 00a4 0B       		.uleb128 0xb
+ 562 00a5 49       		.uleb128 0x49
+ 563 00a6 13       		.uleb128 0x13
+ 564 00a7 3F       		.uleb128 0x3f
+ 565 00a8 19       		.uleb128 0x19
+ 566 00a9 3C       		.uleb128 0x3c
+ 567 00aa 19       		.uleb128 0x19
+ 568 00ab 00       		.byte	0
+ 569 00ac 00       		.byte	0
+ 570 00ad 0D       		.uleb128 0xd
+ 571 00ae 2E       		.uleb128 0x2e
+ 572 00af 00       		.byte	0
+ 573 00b0 3F       		.uleb128 0x3f
+ 574 00b1 19       		.uleb128 0x19
+ 575 00b2 03       		.uleb128 0x3
+ 576 00b3 0E       		.uleb128 0xe
+ 577 00b4 3A       		.uleb128 0x3a
+ 578 00b5 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 15
+
+
+ 579 00b6 3B       		.uleb128 0x3b
+ 580 00b7 0B       		.uleb128 0xb
+ 581 00b8 27       		.uleb128 0x27
+ 582 00b9 19       		.uleb128 0x19
+ 583 00ba 3C       		.uleb128 0x3c
+ 584 00bb 19       		.uleb128 0x19
+ 585 00bc 00       		.byte	0
+ 586 00bd 00       		.byte	0
+ 587 00be 00       		.byte	0
+ 588              		.section	.debug_aranges,"",%progbits
+ 589 0000 24000000 		.4byte	0x24
+ 590 0004 0200     		.2byte	0x2
+ 591 0006 00000000 		.4byte	.Ldebug_info0
+ 592 000a 04       		.byte	0x4
+ 593 000b 00       		.byte	0
+ 594 000c 0000     		.2byte	0
+ 595 000e 0000     		.2byte	0
+ 596 0010 00000000 		.4byte	.LFB0
+ 597 0014 58000000 		.4byte	.LFE0-.LFB0
+ 598 0018 00000000 		.4byte	.LFB1
+ 599 001c 50000000 		.4byte	.LFE1-.LFB1
+ 600 0020 00000000 		.4byte	0
+ 601 0024 00000000 		.4byte	0
+ 602              		.section	.debug_ranges,"",%progbits
+ 603              	.Ldebug_ranges0:
+ 604 0000 00000000 		.4byte	.LFB0
+ 605 0004 58000000 		.4byte	.LFE0
+ 606 0008 00000000 		.4byte	.LFB1
+ 607 000c 50000000 		.4byte	.LFE1
+ 608 0010 00000000 		.4byte	0
+ 609 0014 00000000 		.4byte	0
+ 610              		.section	.debug_line,"",%progbits
+ 611              	.Ldebug_line0:
+ 612 0000 E0000000 		.section	.debug_str,"MS",%progbits,1
+ 612      02009900 
+ 612      00000201 
+ 612      FB0E0D00 
+ 612      01010101 
+ 613              	.LASF19:
+ 614 0000 436F6D6D 		.ascii	"Comm_backup\000"
+ 614      5F626163 
+ 614      6B757000 
+ 615              	.LASF32:
+ 616 000c 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 616      4320342E 
+ 616      392E3320 
+ 616      32303135 
+ 616      30333033 
+ 617 003f 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 617      20726576 
+ 617      6973696F 
+ 617      6E203232 
+ 617      31323230 
+ 618 0072 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 618      66756E63 
+ 618      74696F6E 
+ 618      2D736563 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 16
+
+
+ 618      74696F6E 
+ 619              	.LASF29:
+ 620 009a 436F6D6D 		.ascii	"Comm_SpiRestoreConfig\000"
+ 620      5F537069 
+ 620      52657374 
+ 620      6F726543 
+ 620      6F6E6669 
+ 621              	.LASF21:
+ 622 00b0 436F6D6D 		.ascii	"Comm_scbEnableWake\000"
+ 622      5F736362 
+ 622      456E6162 
+ 622      6C655761 
+ 622      6B6500
+ 623              	.LASF25:
+ 624 00c3 436F6D6D 		.ascii	"Comm_UartSaveConfig\000"
+ 624      5F556172 
+ 624      74536176 
+ 624      65436F6E 
+ 624      66696700 
+ 625              	.LASF3:
+ 626 00d7 73686F72 		.ascii	"short unsigned int\000"
+ 626      7420756E 
+ 626      7369676E 
+ 626      65642069 
+ 626      6E7400
+ 627              	.LASF31:
+ 628 00ea 436F6D6D 		.ascii	"Comm_Enable\000"
+ 628      5F456E61 
+ 628      626C6500 
+ 629              	.LASF23:
+ 630 00f6 436F6D6D 		.ascii	"Comm_EzI2CSaveConfig\000"
+ 630      5F457A49 
+ 630      32435361 
+ 630      7665436F 
+ 630      6E666967 
+ 631              	.LASF26:
+ 632 010b 436F6D6D 		.ascii	"Comm_Stop\000"
+ 632      5F53746F 
+ 632      7000
+ 633              	.LASF11:
+ 634 0115 666C6F61 		.ascii	"float\000"
+ 634      7400
+ 635              	.LASF1:
+ 636 011b 756E7369 		.ascii	"unsigned char\000"
+ 636      676E6564 
+ 636      20636861 
+ 636      7200
+ 637              	.LASF30:
+ 638 0129 436F6D6D 		.ascii	"Comm_UartRestoreConfig\000"
+ 638      5F556172 
+ 638      74526573 
+ 638      746F7265 
+ 638      436F6E66 
+ 639              	.LASF5:
+ 640 0140 6C6F6E67 		.ascii	"long unsigned int\000"
+ 640      20756E73 
+ 640      69676E65 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 17
+
+
+ 640      6420696E 
+ 640      7400
+ 641              	.LASF9:
+ 642 0152 75696E74 		.ascii	"uint8\000"
+ 642      3800
+ 643              	.LASF12:
+ 644 0158 646F7562 		.ascii	"double\000"
+ 644      6C6500
+ 645              	.LASF16:
+ 646 015f 436F6D6D 		.ascii	"Comm_BACKUP_STRUCT\000"
+ 646      5F424143 
+ 646      4B55505F 
+ 646      53545255 
+ 646      435400
+ 647              	.LASF2:
+ 648 0172 73686F72 		.ascii	"short int\000"
+ 648      7420696E 
+ 648      7400
+ 649              	.LASF20:
+ 650 017c 436F6D6D 		.ascii	"Comm_scbMode\000"
+ 650      5F736362 
+ 650      4D6F6465 
+ 650      00
+ 651              	.LASF10:
+ 652 0189 75696E74 		.ascii	"uint32\000"
+ 652      333200
+ 653              	.LASF35:
+ 654 0190 656E6162 		.ascii	"enableState\000"
+ 654      6C655374 
+ 654      61746500 
+ 655              	.LASF24:
+ 656 019c 436F6D6D 		.ascii	"Comm_SpiSaveConfig\000"
+ 656      5F537069 
+ 656      53617665 
+ 656      436F6E66 
+ 656      696700
+ 657              	.LASF8:
+ 658 01af 756E7369 		.ascii	"unsigned int\000"
+ 658      676E6564 
+ 658      20696E74 
+ 658      00
+ 659              	.LASF7:
+ 660 01bc 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 660      206C6F6E 
+ 660      6720756E 
+ 660      7369676E 
+ 660      65642069 
+ 661              	.LASF18:
+ 662 01d3 436F6D6D 		.ascii	"Comm_Wakeup\000"
+ 662      5F57616B 
+ 662      65757000 
+ 663              	.LASF15:
+ 664 01df 73697A65 		.ascii	"sizetype\000"
+ 664      74797065 
+ 664      00
+ 665              	.LASF6:
+ 666 01e8 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 18
+
+
+ 666      206C6F6E 
+ 666      6720696E 
+ 666      7400
+ 667              	.LASF28:
+ 668 01f6 436F6D6D 		.ascii	"Comm_EzI2CRestoreConfig\000"
+ 668      5F457A49 
+ 668      32435265 
+ 668      73746F72 
+ 668      65436F6E 
+ 669              	.LASF13:
+ 670 020e 63686172 		.ascii	"char\000"
+ 670      00
+ 671              	.LASF17:
+ 672 0213 436F6D6D 		.ascii	"Comm_Sleep\000"
+ 672      5F536C65 
+ 672      657000
+ 673              	.LASF33:
+ 674 021e 47656E65 		.ascii	"Generated_Source\\PSoC4\\Comm_PM.c\000"
+ 674      72617465 
+ 674      645F536F 
+ 674      75726365 
+ 674      5C50536F 
+ 675              	.LASF34:
+ 676 023f 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 676      73657273 
+ 676      5C546563 
+ 676      6820436F 
+ 676      6E73756C 
+ 677 026e 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 677      70706572 
+ 677      2050726F 
+ 677      6A656374 
+ 677      73204765 
+ 678 029f 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 678      34323030 
+ 678      2D476561 
+ 678      72426573 
+ 678      742E6379 
+ 679              	.LASF22:
+ 680 02b7 436F6D6D 		.ascii	"Comm_I2CSaveConfig\000"
+ 680      5F493243 
+ 680      53617665 
+ 680      436F6E66 
+ 680      696700
+ 681              	.LASF4:
+ 682 02ca 6C6F6E67 		.ascii	"long int\000"
+ 682      20696E74 
+ 682      00
+ 683              	.LASF14:
+ 684 02d3 72656733 		.ascii	"reg32\000"
+ 684      3200
+ 685              	.LASF27:
+ 686 02d9 436F6D6D 		.ascii	"Comm_I2CRestoreConfig\000"
+ 686      5F493243 
+ 686      52657374 
+ 686      6F726543 
+ 686      6F6E6669 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccVdzYyw.s 			page 19
+
+
+ 687              	.LASF0:
+ 688 02ef 7369676E 		.ascii	"signed char\000"
+ 688      65642063 
+ 688      68617200 
+ 689              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

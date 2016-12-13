@@ -1,0 +1,873 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"systemInit.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.systemInit,"ax",%progbits
+  18              		.align	2
+  19              		.global	systemInit
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	systemInit, %function
+  23              	systemInit:
+  24              	.LFB0:
+  25              		.file 1 ".\\systemInit.c"
+   1:.\systemInit.c **** /* ========================================
+   2:.\systemInit.c ****  *
+   3:.\systemInit.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\systemInit.c ****  * All Rights Reserved
+   5:.\systemInit.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\systemInit.c ****  *
+   7:.\systemInit.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\systemInit.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\systemInit.c ****  *
+  10:.\systemInit.c ****  * ========================================
+  11:.\systemInit.c **** */
+  12:.\systemInit.c **** 
+  13:.\systemInit.c **** #include <systemInit.h>
+  14:.\systemInit.c **** #include <DIR_INPUT.h>
+  15:.\systemInit.c **** #include <DIR_INPUT_SOURCE.h>
+  16:.\systemInit.c **** #include <TCPWM_1.h>
+  17:.\systemInit.c **** #include <TCPWM_2.h>
+  18:.\systemInit.c **** #include <TCPWM_3.h>
+  19:.\systemInit.c **** #include <TCPWM_4.h>
+  20:.\systemInit.c **** #include <INTERNAL_STEP.h>
+  21:.\systemInit.c **** #include <INTERNAL_STEP_1.h>
+  22:.\systemInit.c **** 
+  23:.\systemInit.c **** void systemInit (){
+  26              		.loc 1 23 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 00AF     		add	r7, sp, #0
+  33              		.cfi_def_cfa_register 7
+  24:.\systemInit.c ****     currentStepA = 0;
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 2
+
+
+  34              		.loc 1 24 0
+  35 0004 424B     		ldr	r3, .L6
+  36 0006 0022     		mov	r2, #0
+  37 0008 1A70     		strb	r2, [r3]
+  25:.\systemInit.c ****     currentStepB = 16;
+  38              		.loc 1 25 0
+  39 000a 424B     		ldr	r3, .L6+4
+  40 000c 1022     		mov	r2, #16
+  41 000e 1A70     		strb	r2, [r3]
+  26:.\systemInit.c ****     divider = 16;
+  42              		.loc 1 26 0
+  43 0010 414B     		ldr	r3, .L6+8
+  44 0012 1022     		mov	r2, #16
+  45 0014 1A70     		strb	r2, [r3]
+  27:.\systemInit.c ****     previousDivider = 16;
+  46              		.loc 1 27 0
+  47 0016 414B     		ldr	r3, .L6+12
+  48 0018 1022     		mov	r2, #16
+  49 001a 1A70     		strb	r2, [r3]
+  28:.\systemInit.c ****     FullScale = 16;
+  50              		.loc 1 28 0
+  51 001c 404B     		ldr	r3, .L6+16
+  52 001e 1022     		mov	r2, #16
+  53 0020 1A70     		strb	r2, [r3]
+  29:.\systemInit.c ****     step = 1;
+  54              		.loc 1 29 0
+  55 0022 404B     		ldr	r3, .L6+20
+  56 0024 0122     		mov	r2, #1
+  57 0026 1A70     		strb	r2, [r3]
+  30:.\systemInit.c ****     currentStepA1 = 0;
+  58              		.loc 1 30 0
+  59 0028 3F4B     		ldr	r3, .L6+24
+  60 002a 0022     		mov	r2, #0
+  61 002c 1A70     		strb	r2, [r3]
+  31:.\systemInit.c ****     currentStepB1 = 16;
+  62              		.loc 1 31 0
+  63 002e 3F4B     		ldr	r3, .L6+28
+  64 0030 1022     		mov	r2, #16
+  65 0032 1A70     		strb	r2, [r3]
+  32:.\systemInit.c ****     divider1 = 16;
+  66              		.loc 1 32 0
+  67 0034 3E4B     		ldr	r3, .L6+32
+  68 0036 1022     		mov	r2, #16
+  69 0038 1A70     		strb	r2, [r3]
+  33:.\systemInit.c ****     previousDivider1 = 16;
+  70              		.loc 1 33 0
+  71 003a 3E4B     		ldr	r3, .L6+36
+  72 003c 1022     		mov	r2, #16
+  73 003e 1A70     		strb	r2, [r3]
+  34:.\systemInit.c ****     FullScale1 = 16;
+  74              		.loc 1 34 0
+  75 0040 3D4B     		ldr	r3, .L6+40
+  76 0042 1022     		mov	r2, #16
+  77 0044 1A70     		strb	r2, [r3]
+  35:.\systemInit.c ****     step1 = 1;
+  78              		.loc 1 35 0
+  79 0046 3D4B     		ldr	r3, .L6+44
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 3
+
+
+  80 0048 0122     		mov	r2, #1
+  81 004a 1A70     		strb	r2, [r3]
+  36:.\systemInit.c ****     
+  37:.\systemInit.c ****     // Main motor
+  38:.\systemInit.c ****     pwmA = sineTable[0];
+  82              		.loc 1 38 0
+  83 004c 3C4B     		ldr	r3, .L6+48
+  84 004e 1A78     		ldrb	r2, [r3]
+  85 0050 3C4B     		ldr	r3, .L6+52
+  86 0052 1A70     		strb	r2, [r3]
+  39:.\systemInit.c ****     pwmB = sineTable[FullScale];
+  87              		.loc 1 39 0
+  88 0054 324B     		ldr	r3, .L6+16
+  89 0056 1B78     		ldrb	r3, [r3]
+  90 0058 1A1C     		mov	r2, r3
+  91 005a 394B     		ldr	r3, .L6+48
+  92 005c 9A5C     		ldrb	r2, [r3, r2]
+  93 005e 3A4B     		ldr	r3, .L6+56
+  94 0060 1A70     		strb	r2, [r3]
+  40:.\systemInit.c ****     if (dirReg == 0 ){
+  95              		.loc 1 40 0
+  96 0062 3A4B     		ldr	r3, .L6+60
+  97 0064 1B78     		ldrb	r3, [r3]
+  98 0066 002B     		cmp	r3, #0
+  99 0068 03D1     		bne	.L2
+  41:.\systemInit.c ****         phase = 0;
+ 100              		.loc 1 41 0
+ 101 006a 394B     		ldr	r3, .L6+64
+ 102 006c 0022     		mov	r2, #0
+ 103 006e 1A70     		strb	r2, [r3]
+ 104 0070 02E0     		b	.L3
+ 105              	.L2:
+  42:.\systemInit.c ****     }
+  43:.\systemInit.c ****     else{
+  44:.\systemInit.c ****         phase = 2;
+ 106              		.loc 1 44 0
+ 107 0072 374B     		ldr	r3, .L6+64
+ 108 0074 0222     		mov	r2, #2
+ 109 0076 1A70     		strb	r2, [r3]
+ 110              	.L3:
+  45:.\systemInit.c ****     }
+  46:.\systemInit.c ****     
+  47:.\systemInit.c ****     TCPWM_1_WriteCompare(pwmA);
+ 111              		.loc 1 47 0
+ 112 0078 324B     		ldr	r3, .L6+52
+ 113 007a 1B78     		ldrb	r3, [r3]
+ 114 007c 181C     		mov	r0, r3
+ 115 007e FFF7FEFF 		bl	TCPWM_1_WriteCompare
+  48:.\systemInit.c ****     TCPWM_2_WriteCompare(pwmB);
+ 116              		.loc 1 48 0
+ 117 0082 314B     		ldr	r3, .L6+56
+ 118 0084 1B78     		ldrb	r3, [r3]
+ 119 0086 181C     		mov	r0, r3
+ 120 0088 FFF7FEFF 		bl	TCPWM_2_WriteCompare
+  49:.\systemInit.c ****     Clock_PWM_MAIN_Start(); 
+ 121              		.loc 1 49 0
+ 122 008c FFF7FEFF 		bl	Clock_PWM_MAIN_Start
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 4
+
+
+  50:.\systemInit.c **** 
+  51:.\systemInit.c ****     TCPWM_1_Start();
+ 123              		.loc 1 51 0
+ 124 0090 FFF7FEFF 		bl	TCPWM_1_Start
+  52:.\systemInit.c **** 	TCPWM_2_Start();
+ 125              		.loc 1 52 0
+ 126 0094 FFF7FEFF 		bl	TCPWM_2_Start
+  53:.\systemInit.c **** 	TCPWM_1_TriggerCommand (TCPWM_1_MASK, TCPWM_1_CMD_START);
+ 127              		.loc 1 53 0
+ 128 0098 0220     		mov	r0, #2
+ 129 009a 1821     		mov	r1, #24
+ 130 009c FFF7FEFF 		bl	TCPWM_1_TriggerCommand
+  54:.\systemInit.c **** 	TCPWM_2_TriggerCommand (TCPWM_2_MASK, TCPWM_2_CMD_START);	
+ 131              		.loc 1 54 0
+ 132 00a0 0420     		mov	r0, #4
+ 133 00a2 1821     		mov	r1, #24
+ 134 00a4 FFF7FEFF 		bl	TCPWM_2_TriggerCommand
+  55:.\systemInit.c **** 	
+  56:.\systemInit.c ****     INTERNAL_STEP_Start();
+ 135              		.loc 1 56 0
+ 136 00a8 FFF7FEFF 		bl	INTERNAL_STEP_Start
+  57:.\systemInit.c **** 
+  58:.\systemInit.c ****     // Motor + 1
+  59:.\systemInit.c ****     pwmA1 = sineTable[0];
+ 137              		.loc 1 59 0
+ 138 00ac 244B     		ldr	r3, .L6+48
+ 139 00ae 1A78     		ldrb	r2, [r3]
+ 140 00b0 284B     		ldr	r3, .L6+68
+ 141 00b2 1A70     		strb	r2, [r3]
+  60:.\systemInit.c ****     pwmB1 = sineTable[FullScale1];
+ 142              		.loc 1 60 0
+ 143 00b4 204B     		ldr	r3, .L6+40
+ 144 00b6 1B78     		ldrb	r3, [r3]
+ 145 00b8 1A1C     		mov	r2, r3
+ 146 00ba 214B     		ldr	r3, .L6+48
+ 147 00bc 9A5C     		ldrb	r2, [r3, r2]
+ 148 00be 264B     		ldr	r3, .L6+72
+ 149 00c0 1A70     		strb	r2, [r3]
+  61:.\systemInit.c ****     if (dirReg1 == 0 ){
+ 150              		.loc 1 61 0
+ 151 00c2 264B     		ldr	r3, .L6+76
+ 152 00c4 1B78     		ldrb	r3, [r3]
+ 153 00c6 002B     		cmp	r3, #0
+ 154 00c8 03D1     		bne	.L4
+  62:.\systemInit.c ****         phase1 = 0;
+ 155              		.loc 1 62 0
+ 156 00ca 254B     		ldr	r3, .L6+80
+ 157 00cc 0022     		mov	r2, #0
+ 158 00ce 1A70     		strb	r2, [r3]
+ 159 00d0 02E0     		b	.L5
+ 160              	.L4:
+  63:.\systemInit.c ****     }
+  64:.\systemInit.c ****     else{
+  65:.\systemInit.c ****         phase1 = 2;
+ 161              		.loc 1 65 0
+ 162 00d2 234B     		ldr	r3, .L6+80
+ 163 00d4 0222     		mov	r2, #2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 5
+
+
+ 164 00d6 1A70     		strb	r2, [r3]
+ 165              	.L5:
+  66:.\systemInit.c ****     }
+  67:.\systemInit.c ****     
+  68:.\systemInit.c ****     TCPWM_3_WriteCompare(pwmA1);
+ 166              		.loc 1 68 0
+ 167 00d8 1E4B     		ldr	r3, .L6+68
+ 168 00da 1B78     		ldrb	r3, [r3]
+ 169 00dc 181C     		mov	r0, r3
+ 170 00de FFF7FEFF 		bl	TCPWM_3_WriteCompare
+  69:.\systemInit.c ****     TCPWM_4_WriteCompare(pwmB1);
+ 171              		.loc 1 69 0
+ 172 00e2 1D4B     		ldr	r3, .L6+72
+ 173 00e4 1B78     		ldrb	r3, [r3]
+ 174 00e6 181C     		mov	r0, r3
+ 175 00e8 FFF7FEFF 		bl	TCPWM_4_WriteCompare
+  70:.\systemInit.c ****     Clock_PWM_MAIN_1_Start(); 
+ 176              		.loc 1 70 0
+ 177 00ec FFF7FEFF 		bl	Clock_PWM_MAIN_1_Start
+  71:.\systemInit.c **** 
+  72:.\systemInit.c ****     TCPWM_3_Start();
+ 178              		.loc 1 72 0
+ 179 00f0 FFF7FEFF 		bl	TCPWM_3_Start
+  73:.\systemInit.c **** 	TCPWM_4_Start();
+ 180              		.loc 1 73 0
+ 181 00f4 FFF7FEFF 		bl	TCPWM_4_Start
+  74:.\systemInit.c **** 	TCPWM_3_TriggerCommand (TCPWM_3_MASK, TCPWM_3_CMD_START);
+ 182              		.loc 1 74 0
+ 183 00f8 0820     		mov	r0, #8
+ 184 00fa 1821     		mov	r1, #24
+ 185 00fc FFF7FEFF 		bl	TCPWM_3_TriggerCommand
+  75:.\systemInit.c **** 	TCPWM_4_TriggerCommand (TCPWM_4_MASK, TCPWM_4_CMD_START);	
+ 186              		.loc 1 75 0
+ 187 0100 0120     		mov	r0, #1
+ 188 0102 1821     		mov	r1, #24
+ 189 0104 FFF7FEFF 		bl	TCPWM_4_TriggerCommand
+  76:.\systemInit.c **** 	
+  77:.\systemInit.c ****     INTERNAL_STEP_1_Start();
+ 190              		.loc 1 77 0
+ 191 0108 FFF7FEFF 		bl	INTERNAL_STEP_1_Start
+  78:.\systemInit.c **** }...
+ 192              		.loc 1 78 0
+ 193 010c BD46     		mov	sp, r7
+ 194              		@ sp needed
+ 195 010e 80BD     		pop	{r7, pc}
+ 196              	.L7:
+ 197              		.align	2
+ 198              	.L6:
+ 199 0110 00000000 		.word	currentStepA
+ 200 0114 00000000 		.word	currentStepB
+ 201 0118 00000000 		.word	divider
+ 202 011c 00000000 		.word	previousDivider
+ 203 0120 00000000 		.word	FullScale
+ 204 0124 00000000 		.word	step
+ 205 0128 00000000 		.word	currentStepA1
+ 206 012c 00000000 		.word	currentStepB1
+ 207 0130 00000000 		.word	divider1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 6
+
+
+ 208 0134 00000000 		.word	previousDivider1
+ 209 0138 00000000 		.word	FullScale1
+ 210 013c 00000000 		.word	step1
+ 211 0140 00000000 		.word	sineTable
+ 212 0144 00000000 		.word	pwmA
+ 213 0148 00000000 		.word	pwmB
+ 214 014c 00000000 		.word	dirReg
+ 215 0150 00000000 		.word	phase
+ 216 0154 00000000 		.word	pwmA1
+ 217 0158 00000000 		.word	pwmB1
+ 218 015c 00000000 		.word	dirReg1
+ 219 0160 00000000 		.word	phase1
+ 220              		.cfi_endproc
+ 221              	.LFE0:
+ 222              		.size	systemInit, .-systemInit
+ 223              		.text
+ 224              	.Letext0:
+ 225              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 226              		.file 3 "./systemInit.h"
+ 227              		.section	.debug_info,"",%progbits
+ 228              	.Ldebug_info0:
+ 229 0000 A4010000 		.4byte	0x1a4
+ 230 0004 0400     		.2byte	0x4
+ 231 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 232 000a 04       		.byte	0x4
+ 233 000b 01       		.uleb128 0x1
+ 234 000c CE000000 		.4byte	.LASF36
+ 235 0010 01       		.byte	0x1
+ 236 0011 F2010000 		.4byte	.LASF37
+ 237 0015 7A010000 		.4byte	.LASF38
+ 238 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 239 001d 00000000 		.4byte	0
+ 240 0021 00000000 		.4byte	.Ldebug_line0
+ 241 0025 02       		.uleb128 0x2
+ 242 0026 01       		.byte	0x1
+ 243 0027 06       		.byte	0x6
+ 244 0028 57020000 		.4byte	.LASF0
+ 245 002c 02       		.uleb128 0x2
+ 246 002d 01       		.byte	0x1
+ 247 002e 08       		.byte	0x8
+ 248 002f 72000000 		.4byte	.LASF1
+ 249 0033 02       		.uleb128 0x2
+ 250 0034 02       		.byte	0x2
+ 251 0035 05       		.byte	0x5
+ 252 0036 2B020000 		.4byte	.LASF2
+ 253 003a 02       		.uleb128 0x2
+ 254 003b 02       		.byte	0x2
+ 255 003c 07       		.byte	0x7
+ 256 003d 2D000000 		.4byte	.LASF3
+ 257 0041 02       		.uleb128 0x2
+ 258 0042 04       		.byte	0x4
+ 259 0043 05       		.byte	0x5
+ 260 0044 4E020000 		.4byte	.LASF4
+ 261 0048 02       		.uleb128 0x2
+ 262 0049 04       		.byte	0x4
+ 263 004a 07       		.byte	0x7
+ 264 004b 80000000 		.4byte	.LASF5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 7
+
+
+ 265 004f 02       		.uleb128 0x2
+ 266 0050 08       		.byte	0x8
+ 267 0051 05       		.byte	0x5
+ 268 0052 18020000 		.4byte	.LASF6
+ 269 0056 02       		.uleb128 0x2
+ 270 0057 08       		.byte	0x8
+ 271 0058 07       		.byte	0x7
+ 272 0059 DB010000 		.4byte	.LASF7
+ 273 005d 03       		.uleb128 0x3
+ 274 005e 04       		.byte	0x4
+ 275 005f 05       		.byte	0x5
+ 276 0060 696E7400 		.ascii	"int\000"
+ 277 0064 02       		.uleb128 0x2
+ 278 0065 04       		.byte	0x4
+ 279 0066 07       		.byte	0x7
+ 280 0067 5C010000 		.4byte	.LASF8
+ 281 006b 04       		.uleb128 0x4
+ 282 006c 92000000 		.4byte	.LASF9
+ 283 0070 02       		.byte	0x2
+ 284 0071 3801     		.2byte	0x138
+ 285 0073 2C000000 		.4byte	0x2c
+ 286 0077 04       		.uleb128 0x4
+ 287 0078 BD000000 		.4byte	.LASF10
+ 288 007c 02       		.byte	0x2
+ 289 007d 3A01     		.2byte	0x13a
+ 290 007f 48000000 		.4byte	0x48
+ 291 0083 02       		.uleb128 0x2
+ 292 0084 04       		.byte	0x4
+ 293 0085 04       		.byte	0x4
+ 294 0086 6C000000 		.4byte	.LASF11
+ 295 008a 02       		.uleb128 0x2
+ 296 008b 08       		.byte	0x8
+ 297 008c 04       		.byte	0x4
+ 298 008d A6000000 		.4byte	.LASF12
+ 299 0091 02       		.uleb128 0x2
+ 300 0092 01       		.byte	0x1
+ 301 0093 08       		.byte	0x8
+ 302 0094 26020000 		.4byte	.LASF13
+ 303 0098 02       		.uleb128 0x2
+ 304 0099 04       		.byte	0x4
+ 305 009a 07       		.byte	0x7
+ 306 009b 0F020000 		.4byte	.LASF14
+ 307 009f 05       		.uleb128 0x5
+ 308 00a0 61000000 		.4byte	.LASF39
+ 309 00a4 01       		.byte	0x1
+ 310 00a5 17       		.byte	0x17
+ 311 00a6 00000000 		.4byte	.LFB0
+ 312 00aa 64010000 		.4byte	.LFE0-.LFB0
+ 313 00ae 01       		.uleb128 0x1
+ 314 00af 9C       		.byte	0x9c
+ 315 00b0 06       		.uleb128 0x6
+ 316 00b1 07000000 		.4byte	.LASF15
+ 317 00b5 03       		.byte	0x3
+ 318 00b6 11       		.byte	0x11
+ 319 00b7 6B000000 		.4byte	0x6b
+ 320 00bb 06       		.uleb128 0x6
+ 321 00bc 14000000 		.4byte	.LASF16
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 8
+
+
+ 322 00c0 03       		.byte	0x3
+ 323 00c1 12       		.byte	0x12
+ 324 00c2 6B000000 		.4byte	0x6b
+ 325 00c6 06       		.uleb128 0x6
+ 326 00c7 01020000 		.4byte	.LASF17
+ 327 00cb 03       		.byte	0x3
+ 328 00cc 13       		.byte	0x13
+ 329 00cd 6B000000 		.4byte	0x6b
+ 330 00d1 06       		.uleb128 0x6
+ 331 00d2 48000000 		.4byte	.LASF18
+ 332 00d6 03       		.byte	0x3
+ 333 00d7 14       		.byte	0x14
+ 334 00d8 6B000000 		.4byte	0x6b
+ 335 00dc 06       		.uleb128 0x6
+ 336 00dd 98000000 		.4byte	.LASF19
+ 337 00e1 03       		.byte	0x3
+ 338 00e2 15       		.byte	0x15
+ 339 00e3 6B000000 		.4byte	0x6b
+ 340 00e7 06       		.uleb128 0x6
+ 341 00e8 35020000 		.4byte	.LASF20
+ 342 00ec 03       		.byte	0x3
+ 343 00ed 16       		.byte	0x16
+ 344 00ee 6B000000 		.4byte	0x6b
+ 345 00f2 06       		.uleb128 0x6
+ 346 00f3 3E020000 		.4byte	.LASF21
+ 347 00f7 03       		.byte	0x3
+ 348 00f8 17       		.byte	0x17
+ 349 00f9 6B000000 		.4byte	0x6b
+ 350 00fd 06       		.uleb128 0x6
+ 351 00fe 69010000 		.4byte	.LASF22
+ 352 0102 03       		.byte	0x3
+ 353 0103 18       		.byte	0x18
+ 354 0104 6B000000 		.4byte	0x6b
+ 355 0108 06       		.uleb128 0x6
+ 356 0109 C4000000 		.4byte	.LASF23
+ 357 010d 03       		.byte	0x3
+ 358 010e 19       		.byte	0x19
+ 359 010f 6B000000 		.4byte	0x6b
+ 360 0113 06       		.uleb128 0x6
+ 361 0114 56000000 		.4byte	.LASF24
+ 362 0118 03       		.byte	0x3
+ 363 0119 1A       		.byte	0x1a
+ 364 011a 6B000000 		.4byte	0x6b
+ 365 011e 06       		.uleb128 0x6
+ 366 011f 21000000 		.4byte	.LASF25
+ 367 0123 03       		.byte	0x3
+ 368 0124 1B       		.byte	0x1b
+ 369 0125 6B000000 		.4byte	0x6b
+ 370 0129 06       		.uleb128 0x6
+ 371 012a 63020000 		.4byte	.LASF26
+ 372 012e 03       		.byte	0x3
+ 373 012f 1C       		.byte	0x1c
+ 374 0130 6B000000 		.4byte	0x6b
+ 375 0134 06       		.uleb128 0x6
+ 376 0135 A0000000 		.4byte	.LASF27
+ 377 0139 03       		.byte	0x3
+ 378 013a 1D       		.byte	0x1d
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 9
+
+
+ 379 013b 6B000000 		.4byte	0x6b
+ 380 013f 06       		.uleb128 0x6
+ 381 0140 00000000 		.4byte	.LASF28
+ 382 0144 03       		.byte	0x3
+ 383 0145 1E       		.byte	0x1e
+ 384 0146 6B000000 		.4byte	0x6b
+ 385 014a 06       		.uleb128 0x6
+ 386 014b B3000000 		.4byte	.LASF29
+ 387 014f 03       		.byte	0x3
+ 388 0150 1F       		.byte	0x1f
+ 389 0151 6B000000 		.4byte	0x6b
+ 390 0155 06       		.uleb128 0x6
+ 391 0156 B8000000 		.4byte	.LASF30
+ 392 015a 03       		.byte	0x3
+ 393 015b 20       		.byte	0x20
+ 394 015c 6B000000 		.4byte	0x6b
+ 395 0160 06       		.uleb128 0x6
+ 396 0161 69020000 		.4byte	.LASF31
+ 397 0165 03       		.byte	0x3
+ 398 0166 21       		.byte	0x21
+ 399 0167 6B000000 		.4byte	0x6b
+ 400 016b 06       		.uleb128 0x6
+ 401 016c AD000000 		.4byte	.LASF32
+ 402 0170 03       		.byte	0x3
+ 403 0171 22       		.byte	0x22
+ 404 0172 6B000000 		.4byte	0x6b
+ 405 0176 06       		.uleb128 0x6
+ 406 0177 26000000 		.4byte	.LASF33
+ 407 017b 03       		.byte	0x3
+ 408 017c 23       		.byte	0x23
+ 409 017d 6B000000 		.4byte	0x6b
+ 410 0181 06       		.uleb128 0x6
+ 411 0182 40000000 		.4byte	.LASF34
+ 412 0186 03       		.byte	0x3
+ 413 0187 24       		.byte	0x24
+ 414 0188 6B000000 		.4byte	0x6b
+ 415 018c 07       		.uleb128 0x7
+ 416 018d 6B000000 		.4byte	0x6b
+ 417 0191 97010000 		.4byte	0x197
+ 418 0195 08       		.uleb128 0x8
+ 419 0196 00       		.byte	0
+ 420 0197 06       		.uleb128 0x6
+ 421 0198 6F020000 		.4byte	.LASF35
+ 422 019c 03       		.byte	0x3
+ 423 019d 25       		.byte	0x25
+ 424 019e A2010000 		.4byte	0x1a2
+ 425 01a2 09       		.uleb128 0x9
+ 426 01a3 8C010000 		.4byte	0x18c
+ 427 01a7 00       		.byte	0
+ 428              		.section	.debug_abbrev,"",%progbits
+ 429              	.Ldebug_abbrev0:
+ 430 0000 01       		.uleb128 0x1
+ 431 0001 11       		.uleb128 0x11
+ 432 0002 01       		.byte	0x1
+ 433 0003 25       		.uleb128 0x25
+ 434 0004 0E       		.uleb128 0xe
+ 435 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 10
+
+
+ 436 0006 0B       		.uleb128 0xb
+ 437 0007 03       		.uleb128 0x3
+ 438 0008 0E       		.uleb128 0xe
+ 439 0009 1B       		.uleb128 0x1b
+ 440 000a 0E       		.uleb128 0xe
+ 441 000b 55       		.uleb128 0x55
+ 442 000c 17       		.uleb128 0x17
+ 443 000d 11       		.uleb128 0x11
+ 444 000e 01       		.uleb128 0x1
+ 445 000f 10       		.uleb128 0x10
+ 446 0010 17       		.uleb128 0x17
+ 447 0011 00       		.byte	0
+ 448 0012 00       		.byte	0
+ 449 0013 02       		.uleb128 0x2
+ 450 0014 24       		.uleb128 0x24
+ 451 0015 00       		.byte	0
+ 452 0016 0B       		.uleb128 0xb
+ 453 0017 0B       		.uleb128 0xb
+ 454 0018 3E       		.uleb128 0x3e
+ 455 0019 0B       		.uleb128 0xb
+ 456 001a 03       		.uleb128 0x3
+ 457 001b 0E       		.uleb128 0xe
+ 458 001c 00       		.byte	0
+ 459 001d 00       		.byte	0
+ 460 001e 03       		.uleb128 0x3
+ 461 001f 24       		.uleb128 0x24
+ 462 0020 00       		.byte	0
+ 463 0021 0B       		.uleb128 0xb
+ 464 0022 0B       		.uleb128 0xb
+ 465 0023 3E       		.uleb128 0x3e
+ 466 0024 0B       		.uleb128 0xb
+ 467 0025 03       		.uleb128 0x3
+ 468 0026 08       		.uleb128 0x8
+ 469 0027 00       		.byte	0
+ 470 0028 00       		.byte	0
+ 471 0029 04       		.uleb128 0x4
+ 472 002a 16       		.uleb128 0x16
+ 473 002b 00       		.byte	0
+ 474 002c 03       		.uleb128 0x3
+ 475 002d 0E       		.uleb128 0xe
+ 476 002e 3A       		.uleb128 0x3a
+ 477 002f 0B       		.uleb128 0xb
+ 478 0030 3B       		.uleb128 0x3b
+ 479 0031 05       		.uleb128 0x5
+ 480 0032 49       		.uleb128 0x49
+ 481 0033 13       		.uleb128 0x13
+ 482 0034 00       		.byte	0
+ 483 0035 00       		.byte	0
+ 484 0036 05       		.uleb128 0x5
+ 485 0037 2E       		.uleb128 0x2e
+ 486 0038 00       		.byte	0
+ 487 0039 3F       		.uleb128 0x3f
+ 488 003a 19       		.uleb128 0x19
+ 489 003b 03       		.uleb128 0x3
+ 490 003c 0E       		.uleb128 0xe
+ 491 003d 3A       		.uleb128 0x3a
+ 492 003e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 11
+
+
+ 493 003f 3B       		.uleb128 0x3b
+ 494 0040 0B       		.uleb128 0xb
+ 495 0041 11       		.uleb128 0x11
+ 496 0042 01       		.uleb128 0x1
+ 497 0043 12       		.uleb128 0x12
+ 498 0044 06       		.uleb128 0x6
+ 499 0045 40       		.uleb128 0x40
+ 500 0046 18       		.uleb128 0x18
+ 501 0047 9642     		.uleb128 0x2116
+ 502 0049 19       		.uleb128 0x19
+ 503 004a 00       		.byte	0
+ 504 004b 00       		.byte	0
+ 505 004c 06       		.uleb128 0x6
+ 506 004d 34       		.uleb128 0x34
+ 507 004e 00       		.byte	0
+ 508 004f 03       		.uleb128 0x3
+ 509 0050 0E       		.uleb128 0xe
+ 510 0051 3A       		.uleb128 0x3a
+ 511 0052 0B       		.uleb128 0xb
+ 512 0053 3B       		.uleb128 0x3b
+ 513 0054 0B       		.uleb128 0xb
+ 514 0055 49       		.uleb128 0x49
+ 515 0056 13       		.uleb128 0x13
+ 516 0057 3F       		.uleb128 0x3f
+ 517 0058 19       		.uleb128 0x19
+ 518 0059 3C       		.uleb128 0x3c
+ 519 005a 19       		.uleb128 0x19
+ 520 005b 00       		.byte	0
+ 521 005c 00       		.byte	0
+ 522 005d 07       		.uleb128 0x7
+ 523 005e 01       		.uleb128 0x1
+ 524 005f 01       		.byte	0x1
+ 525 0060 49       		.uleb128 0x49
+ 526 0061 13       		.uleb128 0x13
+ 527 0062 01       		.uleb128 0x1
+ 528 0063 13       		.uleb128 0x13
+ 529 0064 00       		.byte	0
+ 530 0065 00       		.byte	0
+ 531 0066 08       		.uleb128 0x8
+ 532 0067 21       		.uleb128 0x21
+ 533 0068 00       		.byte	0
+ 534 0069 00       		.byte	0
+ 535 006a 00       		.byte	0
+ 536 006b 09       		.uleb128 0x9
+ 537 006c 26       		.uleb128 0x26
+ 538 006d 00       		.byte	0
+ 539 006e 49       		.uleb128 0x49
+ 540 006f 13       		.uleb128 0x13
+ 541 0070 00       		.byte	0
+ 542 0071 00       		.byte	0
+ 543 0072 00       		.byte	0
+ 544              		.section	.debug_aranges,"",%progbits
+ 545 0000 1C000000 		.4byte	0x1c
+ 546 0004 0200     		.2byte	0x2
+ 547 0006 00000000 		.4byte	.Ldebug_info0
+ 548 000a 04       		.byte	0x4
+ 549 000b 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 12
+
+
+ 550 000c 0000     		.2byte	0
+ 551 000e 0000     		.2byte	0
+ 552 0010 00000000 		.4byte	.LFB0
+ 553 0014 64010000 		.4byte	.LFE0-.LFB0
+ 554 0018 00000000 		.4byte	0
+ 555 001c 00000000 		.4byte	0
+ 556              		.section	.debug_ranges,"",%progbits
+ 557              	.Ldebug_ranges0:
+ 558 0000 00000000 		.4byte	.LFB0
+ 559 0004 64010000 		.4byte	.LFE0
+ 560 0008 00000000 		.4byte	0
+ 561 000c 00000000 		.4byte	0
+ 562              		.section	.debug_line,"",%progbits
+ 563              	.Ldebug_line0:
+ 564 0000 97000000 		.section	.debug_str,"MS",%progbits,1
+ 564      02005B00 
+ 564      00000201 
+ 564      FB0E0D00 
+ 564      01010101 
+ 565              	.LASF28:
+ 566 0000 70686173 		.ascii	"phase1\000"
+ 566      653100
+ 567              	.LASF15:
+ 568 0007 63757272 		.ascii	"currentStepA\000"
+ 568      656E7453 
+ 568      74657041 
+ 568      00
+ 569              	.LASF16:
+ 570 0014 63757272 		.ascii	"currentStepB\000"
+ 570      656E7453 
+ 570      74657042 
+ 570      00
+ 571              	.LASF25:
+ 572 0021 73746570 		.ascii	"step\000"
+ 572      00
+ 573              	.LASF33:
+ 574 0026 64697252 		.ascii	"dirReg\000"
+ 574      656700
+ 575              	.LASF3:
+ 576 002d 73686F72 		.ascii	"short unsigned int\000"
+ 576      7420756E 
+ 576      7369676E 
+ 576      65642069 
+ 576      6E7400
+ 577              	.LASF34:
+ 578 0040 64697252 		.ascii	"dirReg1\000"
+ 578      65673100 
+ 579              	.LASF18:
+ 580 0048 63757272 		.ascii	"currentStepB1\000"
+ 580      656E7453 
+ 580      74657042 
+ 580      3100
+ 581              	.LASF24:
+ 582 0056 46756C6C 		.ascii	"FullScale1\000"
+ 582      5363616C 
+ 582      653100
+ 583              	.LASF39:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 13
+
+
+ 584 0061 73797374 		.ascii	"systemInit\000"
+ 584      656D496E 
+ 584      697400
+ 585              	.LASF11:
+ 586 006c 666C6F61 		.ascii	"float\000"
+ 586      7400
+ 587              	.LASF1:
+ 588 0072 756E7369 		.ascii	"unsigned char\000"
+ 588      676E6564 
+ 588      20636861 
+ 588      7200
+ 589              	.LASF5:
+ 590 0080 6C6F6E67 		.ascii	"long unsigned int\000"
+ 590      20756E73 
+ 590      69676E65 
+ 590      6420696E 
+ 590      7400
+ 591              	.LASF9:
+ 592 0092 75696E74 		.ascii	"uint8\000"
+ 592      3800
+ 593              	.LASF19:
+ 594 0098 64697669 		.ascii	"divider\000"
+ 594      64657200 
+ 595              	.LASF27:
+ 596 00a0 70686173 		.ascii	"phase\000"
+ 596      6500
+ 597              	.LASF12:
+ 598 00a6 646F7562 		.ascii	"double\000"
+ 598      6C6500
+ 599              	.LASF32:
+ 600 00ad 70776D42 		.ascii	"pwmB1\000"
+ 600      3100
+ 601              	.LASF29:
+ 602 00b3 70776D41 		.ascii	"pwmA\000"
+ 602      00
+ 603              	.LASF30:
+ 604 00b8 70776D42 		.ascii	"pwmB\000"
+ 604      00
+ 605              	.LASF10:
+ 606 00bd 75696E74 		.ascii	"uint32\000"
+ 606      333200
+ 607              	.LASF23:
+ 608 00c4 46756C6C 		.ascii	"FullScale\000"
+ 608      5363616C 
+ 608      6500
+ 609              	.LASF36:
+ 610 00ce 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 610      4320342E 
+ 610      392E3320 
+ 610      32303135 
+ 610      30333033 
+ 611 0101 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 611      20726576 
+ 611      6973696F 
+ 611      6E203232 
+ 611      31323230 
+ 612 0134 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 14
+
+
+ 612      66756E63 
+ 612      74696F6E 
+ 612      2D736563 
+ 612      74696F6E 
+ 613              	.LASF8:
+ 614 015c 756E7369 		.ascii	"unsigned int\000"
+ 614      676E6564 
+ 614      20696E74 
+ 614      00
+ 615              	.LASF22:
+ 616 0169 70726576 		.ascii	"previousDivider1\000"
+ 616      696F7573 
+ 616      44697669 
+ 616      64657231 
+ 616      00
+ 617              	.LASF38:
+ 618 017a 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 618      73657273 
+ 618      5C546563 
+ 618      6820436F 
+ 618      6E73756C 
+ 619 01a9 5C537465 		.ascii	"\\StepMotor_PSoC4200\\StepMotor_PSoC4200_Dual.cydsn"
+ 619      704D6F74 
+ 619      6F725F50 
+ 619      536F4334 
+ 619      3230305C 
+ 620 01da 00       		.ascii	"\000"
+ 621              	.LASF7:
+ 622 01db 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 622      206C6F6E 
+ 622      6720756E 
+ 622      7369676E 
+ 622      65642069 
+ 623              	.LASF37:
+ 624 01f2 2E5C7379 		.ascii	".\\systemInit.c\000"
+ 624      7374656D 
+ 624      496E6974 
+ 624      2E6300
+ 625              	.LASF17:
+ 626 0201 63757272 		.ascii	"currentStepA1\000"
+ 626      656E7453 
+ 626      74657041 
+ 626      3100
+ 627              	.LASF14:
+ 628 020f 73697A65 		.ascii	"sizetype\000"
+ 628      74797065 
+ 628      00
+ 629              	.LASF6:
+ 630 0218 6C6F6E67 		.ascii	"long long int\000"
+ 630      206C6F6E 
+ 630      6720696E 
+ 630      7400
+ 631              	.LASF13:
+ 632 0226 63686172 		.ascii	"char\000"
+ 632      00
+ 633              	.LASF2:
+ 634 022b 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccKHbRlk.s 			page 15
+
+
+ 634      7420696E 
+ 634      7400
+ 635              	.LASF20:
+ 636 0235 64697669 		.ascii	"divider1\000"
+ 636      64657231 
+ 636      00
+ 637              	.LASF21:
+ 638 023e 70726576 		.ascii	"previousDivider\000"
+ 638      696F7573 
+ 638      44697669 
+ 638      64657200 
+ 639              	.LASF4:
+ 640 024e 6C6F6E67 		.ascii	"long int\000"
+ 640      20696E74 
+ 640      00
+ 641              	.LASF0:
+ 642 0257 7369676E 		.ascii	"signed char\000"
+ 642      65642063 
+ 642      68617200 
+ 643              	.LASF26:
+ 644 0263 73746570 		.ascii	"step1\000"
+ 644      3100
+ 645              	.LASF31:
+ 646 0269 70776D41 		.ascii	"pwmA1\000"
+ 646      3100
+ 647              	.LASF35:
+ 648 026f 73696E65 		.ascii	"sineTable\000"
+ 648      5461626C 
+ 648      6500
+ 649              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

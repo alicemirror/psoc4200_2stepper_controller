@@ -1,0 +1,1253 @@
+Archive member included because of file (symbol)
+
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o (cyfitter_cfg)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+                              .\CortexM0\ARM_GCC_493\Debug\inputScan.o (INTERNAL_STEP_OUT_Read)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+                              .\CortexM0\ARM_GCC_493\Debug\inputScan.o (STEP_INPUT_Read)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+                              .\CortexM0\ARM_GCC_493\Debug\inputScan.o (DIR_INPUT_Read)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+                              .\CortexM0\ARM_GCC_493\Debug\inputScan.o (STEP_INPUT_SOURCE_Read)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+                              .\CortexM0\ARM_GCC_493\Debug\inputScan.o (DIR_INPUT_SOURCE_Read)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+                              .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o (DIR_REG_Write)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+                              .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o) (CySysClkWriteImoFreq)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+                              .\CortexM0\ARM_GCC_493\Debug\systemInit.o (Clock_PWM_MAIN_Start)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                              .\CortexM0\ARM_GCC_493\Debug\systemInit.o (INTERNAL_STEP_Start)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Move.o (TCPWM_2_WriteCompare)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Move.o (TCPWM_1_WriteCompare)
+.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+                              .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o) (CyDelayCycles)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+                              .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o) (__aeabi_uidiv)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                              c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o (__errno)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+                              c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (exit)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                              c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                              c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+                              .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o) (memcpy)
+c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                              c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
+
+Allocating common symbols
+Common symbol       size              file
+
+pwmB                0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+currentStepA        0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+previousDivider     0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+pwmA                0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+dirReg              0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+phase               0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+stepPulse           0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+FullScale           0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+divider             0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+previousStepPulse   0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+currentStepB        0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+step                0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .data          0x00000000        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .text          0x00000000       0x78 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .data          0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .text._exit    0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .text._sbrk    0x00000000       0x54 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .text.CYCONFIGCPY
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .text.CYCONFIGCPYCODE
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .text.INTERNAL_STEP_OUT_Write
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .text.INTERNAL_STEP_OUT_SetDriveMode
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .text.INTERNAL_STEP_OUT_ReadDataReg
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .text.INTERNAL_STEP_OUT_ClearInterrupt
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .text.STEP_INPUT_Write
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .text.STEP_INPUT_SetDriveMode
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .text.STEP_INPUT_ReadDataReg
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .text.STEP_INPUT_ClearInterrupt
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .text.DIR_INPUT_Write
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .text.DIR_INPUT_SetDriveMode
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .text.DIR_INPUT_ReadDataReg
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .text.DIR_INPUT_ClearInterrupt
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .text.STEP_INPUT_SOURCE_Write
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .text.STEP_INPUT_SOURCE_SetDriveMode
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .text.STEP_INPUT_SOURCE_ReadDataReg
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .text.STEP_INPUT_SOURCE_ClearInterrupt
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .text.DIR_INPUT_SOURCE_Write
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .text.DIR_INPUT_SOURCE_SetDriveMode
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .text.DIR_INPUT_SOURCE_ReadDataReg
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .text.DIR_INPUT_SOURCE_ClearInterrupt
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .text.DIR_REG_Read
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .bss           0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysClkImoStart
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysClkImoStop
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysClkWriteHfclkDirect
+                0x00000000       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysClkWriteSysclkDiv
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysLvdEnable
+                0x00000000       0x60 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysLvdDisable
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysLvdGetInterruptSource
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysLvdClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysGetResetReason
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyDisableInts
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyEnableInts
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000       0x34 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntSetVector
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntSetPriority
+                0x00000000       0xa8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x5c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntEnable
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntGetState
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntDisable
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntSetPending
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyIntClearPending
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySoftwareReset
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyDelay  0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyDelayFreq
+                0x00000000       0x84 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x60 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickStop
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickEnableInterrupt
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickDisableInterrupt
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickSetReload
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickGetReload
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickGetValue
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickGetCountFlag
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickClear
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickSetCallback
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickGetCallback
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text.CyGetUniqueId
+                0x00000000       0xc0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .text.Clock_PWM_MAIN_Stop
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .text.Clock_PWM_MAIN_SetFractionalDividerRegister
+                0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .text.Clock_PWM_MAIN_GetDividerRegister
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .text.Clock_PWM_MAIN_GetFractionalDividerRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .text.INTERNAL_STEP_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .text.INTERNAL_STEP_ReadCounter
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .text.INTERNAL_STEP_ReadControlRegister
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .text.INTERNAL_STEP_WriteControlRegister
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .text.INTERNAL_STEP_ReadCompare
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .text.INTERNAL_STEP_ReadPeriod
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_Stop
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetQDMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetPrescaler
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetOneShot
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetPWMMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetPWMSyncKill
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetPWMStopOnKill
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetPWMDeadTime
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetPWMInvert
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadCounter
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetCounterMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadPeriod
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetCompareSwap
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_WritePeriodBuf
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadPeriodBuf
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetPeriodSwap
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadCompare
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_WriteCompareBuf
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadCompareBuf
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadCapture
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadCaptureBuf
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetCaptureMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetReloadMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetStartMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetStopMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetCountMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ReadStatus
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_GetInterruptSourceMasked
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_GetInterruptSource
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_ClearInterrupt
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text.TCPWM_2_SetInterrupt
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_Stop
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetQDMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetPrescaler
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetOneShot
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetPWMMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetPWMSyncKill
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetPWMStopOnKill
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetPWMDeadTime
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetPWMInvert
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadCounter
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetCounterMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadPeriod
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetCompareSwap
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_WritePeriodBuf
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadPeriodBuf
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetPeriodSwap
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadCompare
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_WriteCompareBuf
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadCompareBuf
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadCapture
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadCaptureBuf
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetCaptureMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetReloadMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetStartMode
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetStopMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetCountMode
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ReadStatus
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_GetInterruptSourceMasked
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_GetInterruptSource
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_ClearInterrupt
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .text.TCPWM_1_SetInterrupt
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+ .text          0x00000000      0x120 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .text          0x00000000        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .text.__errno  0x00000000        0xc c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data.impure_data
+                0x00000000       0x60 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .rodata.str1.1
+                0x00000000        0x2 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+ .text.memcpy   0x00000000       0x12 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00008000         xr
+ram              0x20000000         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+START GROUP
+LOAD .\CortexM0\ARM_GCC_493\Debug\main.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\genSine.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\Move.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a
+LOAD C:\Program Files\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_493\Debug\CyComponentLibrary.a
+END GROUP
+START GROUP
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libc_nano.a
+END GROUP
+START GROUP
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libc_nano.a
+END GROUP
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+START GROUP
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libc.a
+LOAD c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libnosys.a
+END GROUP
+                0x00000000                CY_APPL_ORIGIN = 0x0
+                0x00000080                CY_FLASH_ROW_SIZE = 0x80
+                0x00000001                CY_APPL_NUM = 0x1
+                0x00000001                CY_APPL_MAX = 0x1
+                0x00000040                CY_METADATA_SIZE = 0x40
+                0x00000001                CY_APPL_LOADABLE = 0x1
+                0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
+                0x00000000                CY_APP_FOR_STACK_AND_COPIER = 0x0
+                0x20000118                PROVIDE (__cy_heap_start, _end)
+                0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
+                0x20001000                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x1000))
+                0x20000c00                PROVIDE (__cy_heap_end, (__cy_stack - 0x400))
+
+.cybootloader   0x00000000     0x1100
+ *(.cybootloader)
+ .cybootloader  0x00000000     0x1100 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+                0x00000000                cy_bootloader
+                0x00001100                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x00004800                appl2_start = (appl1_start + ALIGN ((((0x8000 - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00001100                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+                0x00000000                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
+                0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
+
+.text           0x00001100     0x125c
+ CREATE_OBJECT_SYMBOLS
+                0x00001100                PROVIDE (__cy_interrupt_vector, RomVectors)
+ *(.romvectors)
+ .romvectors    0x00001100       0x10 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001100                RomVectors
+                0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
+                0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
+                0x00001110                PROVIDE (__cy_reset, Reset)
+ *(.text.Reset)
+ .text.Reset    0x00001110       0x14 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001110                Reset
+                0x00000001                ASSERT ((. != __cy_reset), No reset code)
+ *(.psocinit)
+ .psocinit      0x00001124      0x214 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+                0x000011a4                cyfitter_cfg
+                0x00001338                . = MAX (., 0x100)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x00001338       0x60 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .text.main     0x00001398      0x26c .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00001398                main
+ .text.genSine  0x00001604       0x58 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+                0x00001604                genSine
+ .text.inputScan
+                0x0000165c       0x64 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+                0x0000165c                inputScan
+ .text.Move     0x000016c0      0x1a8 .\CortexM0\ARM_GCC_493\Debug\Move.o
+                0x000016c0                Move
+ .text.phaseControl
+                0x00001868       0x1c .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+                0x00001868                phaseControl
+ .text.phaseMove
+                0x00001884       0xa8 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+                0x00001884                phaseMove
+ .text.systemInit
+                0x0000192c       0xb8 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+                0x0000192c                systemInit
+ .text.IntDefaultHandler
+                0x000019e4        0x8 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x000019e4                IntDefaultHandler
+ .text.Start_c  0x000019ec       0x98 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x000019ec                Start_c
+ .text.initialize_psoc
+                0x00001a84       0x74 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001a84                initialize_psoc
+ .text.CYMEMZERO
+                0x00001af8       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .text.cfg_write_bytes32
+                0x00001b18       0x80 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .text.AnalogSetDefault
+                0x00001b98        0x8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .text.INTERNAL_STEP_OUT_Read
+                0x00001ba0       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+                0x00001ba0                INTERNAL_STEP_OUT_Read
+ .text.STEP_INPUT_Read
+                0x00001bbc       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+                0x00001bbc                STEP_INPUT_Read
+ .text.DIR_INPUT_Read
+                0x00001bd8       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+                0x00001bd8                DIR_INPUT_Read
+ .text.STEP_INPUT_SOURCE_Read
+                0x00001bf4       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+                0x00001bf4                STEP_INPUT_SOURCE_Read
+ .text.DIR_INPUT_SOURCE_Read
+                0x00001c10       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+                0x00001c10                DIR_INPUT_SOURCE_Read
+ .text.DIR_REG_Write
+                0x00001c2c       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+                0x00001c2c                DIR_REG_Write
+ .text.CySysClkWriteImoFreq
+                0x00001c4c      0x1e4 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+                0x00001c4c                CySysClkWriteImoFreq
+ .text.CyHalt   0x00001e30       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+                0x00001e30                CyHalt
+ .text.CyDelayUs
+                0x00001e44       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+                0x00001e44                CyDelayUs
+ .text.Clock_PWM_MAIN_Start
+                0x00001e6c       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+                0x00001e6c                Clock_PWM_MAIN_Start
+ .text.INTERNAL_STEP_Start
+                0x00001e88       0x24 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001e88                INTERNAL_STEP_Start
+ .text.INTERNAL_STEP_Init
+                0x00001eac       0xa0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001eac                INTERNAL_STEP_Init
+ .text.INTERNAL_STEP_Enable
+                0x00001f4c       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001f4c                INTERNAL_STEP_Enable
+ .text.INTERNAL_STEP_WriteCounter
+                0x00001f6c       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001f6c                INTERNAL_STEP_WriteCounter
+ .text.INTERNAL_STEP_ClearFIFO
+                0x00001f8c       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001f8c                INTERNAL_STEP_ClearFIFO
+ .text.INTERNAL_STEP_WritePeriod
+                0x00001fa8       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001fa8                INTERNAL_STEP_WritePeriod
+ .text.INTERNAL_STEP_WriteCompare
+                0x00001fc8       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001fc8                INTERNAL_STEP_WriteCompare
+ .text.INTERNAL_STEP_SetInterruptMode
+                0x00001fe8       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00001fe8                INTERNAL_STEP_SetInterruptMode
+ .text.INTERNAL_STEP_ReadStatusRegister
+                0x00002008       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x00002008                INTERNAL_STEP_ReadStatusRegister
+ .text.INTERNAL_STEP_ReadCapture
+                0x0000201c       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x0000201c                INTERNAL_STEP_ReadCapture
+ .text.TCPWM_2_Init
+                0x00002030       0x54 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x00002030                TCPWM_2_Init
+ .text.TCPWM_2_Enable
+                0x00002084       0x38 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x00002084                TCPWM_2_Enable
+ .text.TCPWM_2_Start
+                0x000020bc       0x24 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x000020bc                TCPWM_2_Start
+ .text.TCPWM_2_WriteCounter
+                0x000020e0       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x000020e0                TCPWM_2_WriteCounter
+ .text.TCPWM_2_WritePeriod
+                0x000020fc       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x000020fc                TCPWM_2_WritePeriod
+ .text.TCPWM_2_WriteCompare
+                0x00002118       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x00002118                TCPWM_2_WriteCompare
+ .text.TCPWM_2_TriggerCommand
+                0x00002134       0x38 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x00002134                TCPWM_2_TriggerCommand
+ .text.TCPWM_2_SetInterruptMode
+                0x0000216c       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x0000216c                TCPWM_2_SetInterruptMode
+ .text.TCPWM_1_Init
+                0x00002184       0x54 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x00002184                TCPWM_1_Init
+ .text.TCPWM_1_Enable
+                0x000021d8       0x38 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x000021d8                TCPWM_1_Enable
+ .text.TCPWM_1_Start
+                0x00002210       0x24 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x00002210                TCPWM_1_Start
+ .text.TCPWM_1_WriteCounter
+                0x00002234       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x00002234                TCPWM_1_WriteCounter
+ .text.TCPWM_1_WritePeriod
+                0x00002250       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x00002250                TCPWM_1_WritePeriod
+ .text.TCPWM_1_WriteCompare
+                0x0000226c       0x1c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x0000226c                TCPWM_1_WriteCompare
+ .text.TCPWM_1_TriggerCommand
+                0x00002288       0x38 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x00002288                TCPWM_1_TriggerCommand
+ .text.TCPWM_1_SetInterruptMode
+                0x000022c0       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x000022c0                TCPWM_1_SetInterruptMode
+ .text          0x000022d8       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+                0x000022d8                CyDelayCycles
+                0x000022ec                CyEnterCriticalSection
+                0x000022f4                CyExitCriticalSection
+ .text.__libc_init_array
+                0x00002300       0x4c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00002300                __libc_init_array
+ .text.memset   0x0000234c       0x10 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x0000234c                memset
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.bootloader)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+
+.v4_bx          0x0000235c        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x0000235c        0x0
+ .iplt          0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x0000235c        0x4
+ *(.eh_frame)
+ .eh_frame      0x0000235c        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .eh_frame      0x0000235c        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+                0x00002360                PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00002360                __exidx_end = .
+
+.rodata         0x00002360      0x188
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x00002360       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00002360                sineTable
+ .rodata        0x00002374      0x110 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .rodata        0x00002484       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+                0x00002484                cyImoFreqMhz2Reg
+                0x000024b4                . = ALIGN (0x4)
+ *(.init)
+ .init          0x000024b4        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x000024b4                _init
+ .init          0x000024b8        0x8 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x000024c0                . = ALIGN (0x4)
+                0x000024c0                __preinit_array_start = .
+ *(.preinit_array)
+                0x000024c0                __preinit_array_end = .
+                0x000024c0                . = ALIGN (0x4)
+                0x000024c0                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x000024c0        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .init_array    0x000024c4        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x000024c8                __init_array_end = .
+                0x000024c8                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x000024c8        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x000024c8                _fini
+ .fini          0x000024cc        0x8 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x000024d4                . = ALIGN (0x4)
+                0x000024d4                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x000024d4        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x000024d8                __fini_array_end = .
+                0x000024d8                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x000024d8                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x000024d8                . = ALIGN (0x4)
+                0x000024d8                __cy_regions = .
+                0x000024d8        0x4 LONG 0x24e8 __cy_region_init_ram
+                0x000024dc        0x4 LONG 0x200000d0 __cy_region_start_data
+                0x000024e0        0x4 LONG 0x18 __cy_region_init_size_ram
+                0x000024e4        0x4 LONG 0x30 __cy_region_zero_size_ram
+                0x000024e8                __cy_regions_end = .
+                0x000024e8                . = ALIGN (0x8)
+                0x000024e8                _etext = .
+
+.ramvectors     0x20000000       0xc0
+                0x20000000                __cy_region_start_ram = .
+ *(.ramvectors)
+ .ramvectors    0x20000000       0xc0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x20000000                CyRamVectors
+
+.btldr_run      0x200000c0        0x4
+ *(.bootloaderruntype)
+ .bootloaderruntype
+                0x200000c0        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x200000c0                cyBtldrRunType
+
+.noinit         0x200000c8        0x4
+ *(.noinit)
+ .noinit        0x200000c8        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+
+.data           0x200000d0       0x18 load address 0x000024e8
+                0x200000d0                __cy_region_start_data = .
+ *(.jcr)
+ .jcr           0x200000d0        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .jcr           0x200000d0        0x4 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x200000d4       0x10 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+                0x200000d4                cydelayFreqHz
+                0x200000d8                cydelayFreqKhz
+                0x200000dc                cydelayFreqMhz
+                0x200000e0                cydelay32kMs
+                0x200000e8                . = ALIGN (0x8)
+ *fill*         0x200000e4        0x4 
+ *(.ram)
+                0x200000e8                _edata = .
+
+.igot.plt       0x200000e8        0x0 load address 0x00002500
+ .igot.plt      0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+
+.bss            0x200000e8       0x30 load address 0x00002500
+                0x200000e8                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x200000e8       0x1c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .bss           0x20000104        0x1 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                0x20000104                INTERNAL_STEP_initVar
+ .bss           0x20000105        0x1 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                0x20000105                TCPWM_2_initVar
+ .bss           0x20000106        0x1 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                0x20000106                TCPWM_1_initVar
+ *(COMMON)
+ COMMON         0x20000107        0xc .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x20000107                pwmB
+                0x20000108                currentStepA
+                0x20000109                previousDivider
+                0x2000010a                pwmA
+                0x2000010b                dirReg
+                0x2000010c                phase
+                0x2000010d                stepPulse
+                0x2000010e                FullScale
+                0x2000010f                divider
+                0x20000110                previousStepPulse
+                0x20000111                currentStepB
+                0x20000112                step
+                0x20000118                . = ALIGN (0x8)
+ *fill*         0x20000113        0x5 
+ *(.ram.b)
+                0x20000118                _end = .
+                0x20000118                __end = .
+                0x20000118                PROVIDE (end, .)
+                0x20000118                PROVIDE (__bss_end__, .)
+                0x000024e8                __cy_region_init_ram = LOADADDR (.data)
+                0x00000018                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000030                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x20000118      0x100 load address 0x00002500
+                0x20000118                . = _end
+                0x20000218                . = (. + 0x100)
+ *fill*         0x20000118      0x100 
+                0x20000218                __cy_heap_limit = .
+
+.stack          0x20000c00      0x400
+                0x20000c00                __cy_stack_limit = .
+                0x20001000                . = (. + 0x400)
+ *fill*         0x20000c00      0x400 
+                0x00000001                ASSERT ((__cy_stack_limit >= __cy_heap_limit), region RAM overflowed with stack)
+
+.cy_checksum_exclude
+                0x00007f80        0x0
+ *(.cy_checksum_exclude)
+                0x00000000                cy_checksum_exclude_size = (CY_APPL_LOADABLE == 0x1)?SIZEOF (.cy_checksum_exclude):0x0
+                0x00000001                ASSERT ((cy_checksum_exclude_size <= CY_CHECKSUM_EXCLUDE_SIZE), CY_BOOT: Section .cy_checksum_exclude size exceedes specified limit.)
+                0xf0000000                cyloadermeta_start = (cy_project_type_bootloader || cy_project_type_app_for_stack_and_copier)?(0x8000 - CY_METADATA_SIZE):0xf0000000
+
+.cyloadermeta   0xf0000000       0x40
+ *(.cyloadermeta)
+ .cyloadermeta  0xf0000000       0x40 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+                0xf0000000                cy_meta_loader
+                0x00007fc0                cyloadablemeta_start = cy_project_type_app_for_stack_and_copier?((0x8000 - CY_FLASH_ROW_SIZE) - CY_METADATA_SIZE):((0x8000 - (CY_FLASH_ROW_SIZE * (CY_APPL_NUM - 0x1))) - CY_METADATA_SIZE)
+
+.cyloadablemeta
+                0x00007fc0       0x40
+ *(.cyloadablemeta)
+ .cyloadablemeta
+                0x00007fc0       0x40 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+                0x00007fc0                cy_meta_loadable
+
+.cyflashprotect
+                0x90400000       0x20
+ *(.cyflashprotect)
+ .cyflashprotect
+                0x90400000       0x20 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+                0x90400000                cy_meta_flashprotect
+
+.cymeta         0x90500000        0xc
+ *(.cymeta)
+ .cymeta        0x90500000        0xc .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+                0x90500000                cy_metadata
+
+.cychipprotect  0x90600000        0x4
+ *(.cychipprotect)
+ .cychipprotect
+                0x90600000        0x4 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+                0x90600000                cy_meta_chipprotect
+
+.rel.dyn        0x00008000        0x0 load address 0x90600004
+ .rel.iplt      0x00000000        0x0 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x810
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_aranges
+                0x00000020       0x20 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .debug_aranges
+                0x00000040       0x20 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .debug_aranges
+                0x00000060       0x20 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .debug_aranges
+                0x00000080       0x28 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .debug_aranges
+                0x000000a8       0x20 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .debug_aranges
+                0x000000c8       0x48 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_aranges
+                0x00000110       0x18 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .debug_aranges
+                0x00000128       0x18 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_aranges
+                0x00000140       0x50 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .debug_aranges
+                0x00000190       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .debug_aranges
+                0x000001d0       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .debug_aranges
+                0x00000210       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .debug_aranges
+                0x00000250       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .debug_aranges
+                0x00000290       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .debug_aranges
+                0x000002d0       0x28 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .debug_aranges
+                0x000002f8      0x170 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .debug_aranges
+                0x00000468       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .debug_aranges
+                0x000004a8       0x98 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .debug_aranges
+                0x00000540      0x158 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .debug_aranges
+                0x00000698      0x158 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .debug_aranges
+                0x000007f0       0x20 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x312e
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x1b2 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_info    0x000001b2       0xef .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .debug_info    0x000002a1       0xcb .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .debug_info    0x0000036c       0xfc .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .debug_info    0x00000468       0xed .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .debug_info    0x00000555      0x138 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .debug_info    0x0000068d      0x30f .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_info    0x0000099c      0x14d .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .debug_info    0x00000ae9       0xb1 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_info    0x00000b9a      0x364 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .debug_info    0x00000efe      0x14c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .debug_info    0x0000104a      0x14c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .debug_info    0x00001196      0x14c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .debug_info    0x000012e2      0x14c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .debug_info    0x0000142e      0x14c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .debug_info    0x0000157a       0xd6 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .debug_info    0x00001650      0x852 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .debug_info    0x00001ea2      0x14d .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .debug_info    0x00001fef      0x29e .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .debug_info    0x0000228d      0x6f0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .debug_info    0x0000297d      0x6f0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .debug_info    0x0000306d       0xc1 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+
+.debug_abbrev   0x00000000     0x10d8
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x88 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_abbrev  0x00000088       0x97 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .debug_abbrev  0x0000011f       0x6f .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .debug_abbrev  0x0000018e       0x5e .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .debug_abbrev  0x000001ec       0x87 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .debug_abbrev  0x00000273       0x73 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .debug_abbrev  0x000002e6      0x1b6 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_abbrev  0x0000049c       0x77 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .debug_abbrev  0x00000513       0x5d .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_abbrev  0x00000570      0x18a .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .debug_abbrev  0x000006fa       0xb7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .debug_abbrev  0x000007b1       0xb7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .debug_abbrev  0x00000868       0xb7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .debug_abbrev  0x0000091f       0xb7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .debug_abbrev  0x000009d6       0xb7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .debug_abbrev  0x00000a8d       0x8e .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .debug_abbrev  0x00000b1b      0x1a7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .debug_abbrev  0x00000cc2       0xb5 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .debug_abbrev  0x00000d77      0x13b .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .debug_abbrev  0x00000eb2      0x109 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .debug_abbrev  0x00000fbb      0x109 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .debug_abbrev  0x000010c4       0x14 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+
+.debug_line     0x00000000     0x19e8
+ *(.debug_line)
+ .debug_line    0x00000000      0x123 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_line    0x00000123       0x73 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .debug_line    0x00000196       0x7b .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .debug_line    0x00000211       0xa5 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .debug_line    0x000002b6       0xbd .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .debug_line    0x00000373       0x88 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .debug_line    0x000003fb      0x1c4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_line    0x000005bf       0x55 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .debug_line    0x00000614       0x53 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_line    0x00000667      0x193 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .debug_line    0x000007fa       0xb7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .debug_line    0x000008b1       0xb0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .debug_line    0x00000961       0xaf .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .debug_line    0x00000a10       0xb7 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .debug_line    0x00000ac7       0xb6 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .debug_line    0x00000b7d       0x72 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .debug_line    0x00000bef      0x441 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .debug_line    0x00001030       0xce .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .debug_line    0x000010fe      0x193 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .debug_line    0x00001291      0x377 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .debug_line    0x00001608      0x377 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .debug_line    0x0000197f       0x69 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+
+.debug_frame    0x00000000     0x197c
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_frame   0x00000030       0x30 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .debug_frame   0x00000060       0x2c .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .debug_frame   0x0000008c       0x2c .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .debug_frame   0x000000b8       0x4c .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .debug_frame   0x00000104       0x2c .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .debug_frame   0x00000130       0xc8 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_frame   0x000001f8       0xe8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .debug_frame   0x000002e0       0xa8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .debug_frame   0x00000388       0xa8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .debug_frame   0x00000430       0xa8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .debug_frame   0x000004d8       0xa8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .debug_frame   0x00000580       0xa8 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .debug_frame   0x00000628       0x4c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .debug_frame   0x00000674      0x544 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .debug_frame   0x00000bb8       0xa0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .debug_frame   0x00000c58      0x1f0 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .debug_frame   0x00000e48      0x52c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .debug_frame   0x00001374      0x52c .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .debug_frame   0x000018a0       0x20 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x000018c0       0x20 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000018e0       0x28 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00001908       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00001934       0x28 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+ .debug_frame   0x0000195c       0x20 c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+
+.debug_str      0x00000000     0x1842
+ *(.debug_str)
+ .debug_str     0x00000000      0x1f8 .\CortexM0\ARM_GCC_493\Debug\main.o
+                                0x237 (size before relaxing)
+ .debug_str     0x000001f8       0x23 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+                                0x1db (size before relaxing)
+ .debug_str     0x0000021b       0x18 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+                                0x1df (size before relaxing)
+ .debug_str     0x00000233        0x9 .\CortexM0\ARM_GCC_493\Debug\Move.o
+                                0x200 (size before relaxing)
+ .debug_str     0x0000023c       0x35 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+                                0x1f7 (size before relaxing)
+ .debug_str     0x00000271       0x21 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+                                0x227 (size before relaxing)
+ .debug_str     0x00000292      0x144 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                                0x302 (size before relaxing)
+ .debug_str     0x000003d6       0x7a .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+                                0x21e (size before relaxing)
+ .debug_str     0x00000450       0x37 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+                                0x1db (size before relaxing)
+ .debug_str     0x00000487      0x103 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+                                0x2eb (size before relaxing)
+ .debug_str     0x0000058a       0xd2 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+                                0x280 (size before relaxing)
+ .debug_str     0x0000065c       0x90 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+                                0x256 (size before relaxing)
+ .debug_str     0x000006ec       0x8a .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+                                0x250 (size before relaxing)
+ .debug_str     0x00000776       0xba .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+                                0x280 (size before relaxing)
+ .debug_str     0x00000830       0xb4 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+                                0x27a (size before relaxing)
+ .debug_str     0x000008e4       0x46 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+                                0x1e6 (size before relaxing)
+ .debug_str     0x0000092a      0x449 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+                                0x63f (size before relaxing)
+ .debug_str     0x00000d73       0xf5 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+                                0x2a4 (size before relaxing)
+ .debug_str     0x00000e68      0x230 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+                                0x3ee (size before relaxing)
+ .debug_str     0x00001098      0x42d .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+                                0x5fd (size before relaxing)
+ .debug_str     0x000014c5      0x37d .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+                                0x5fd (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_ranges   0x00000000      0x690
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_ranges  0x00000010       0x10 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .debug_ranges  0x00000020       0x10 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .debug_ranges  0x00000030       0x10 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .debug_ranges  0x00000040       0x18 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .debug_ranges  0x00000058       0x10 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .debug_ranges  0x00000068       0x38 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_ranges  0x000000a0       0x40 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .debug_ranges  0x000000e0       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .debug_ranges  0x00000110       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .debug_ranges  0x00000140       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .debug_ranges  0x00000170       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .debug_ranges  0x000001a0       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .debug_ranges  0x000001d0       0x18 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .debug_ranges  0x000001e8      0x160 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .debug_ranges  0x00000348       0x30 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .debug_ranges  0x00000378       0x88 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .debug_ranges  0x00000400      0x148 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .debug_ranges  0x00000548      0x148 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 .\CortexM0\ARM_GCC_493\Debug\main.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x28
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1e c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .ARM.attributes
+                0x0000001e       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x31 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .ARM.attributes
+                0x00000096       0x31 .\CortexM0\ARM_GCC_493\Debug\genSine.o
+ .ARM.attributes
+                0x000000c7       0x31 .\CortexM0\ARM_GCC_493\Debug\inputScan.o
+ .ARM.attributes
+                0x000000f8       0x31 .\CortexM0\ARM_GCC_493\Debug\Move.o
+ .ARM.attributes
+                0x00000129       0x31 .\CortexM0\ARM_GCC_493\Debug\PhaseControl.o
+ .ARM.attributes
+                0x0000015a       0x31 .\CortexM0\ARM_GCC_493\Debug\systemInit.o
+ .ARM.attributes
+                0x0000018b       0x31 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .ARM.attributes
+                0x000001bc       0x31 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .ARM.attributes
+                0x000001ed       0x31 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .ARM.attributes
+                0x0000021e       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(cyfitter_cfg.o)
+ .ARM.attributes
+                0x0000024f       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP_OUT.o)
+ .ARM.attributes
+                0x00000280       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT.o)
+ .ARM.attributes
+                0x000002b1       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT.o)
+ .ARM.attributes
+                0x000002e2       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(STEP_INPUT_SOURCE.o)
+ .ARM.attributes
+                0x00000313       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_INPUT_SOURCE.o)
+ .ARM.attributes
+                0x00000344       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(DIR_REG.o)
+ .ARM.attributes
+                0x00000375       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyLib.o)
+ .ARM.attributes
+                0x000003a6       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(Clock_PWM_MAIN.o)
+ .ARM.attributes
+                0x000003d7       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(INTERNAL_STEP.o)
+ .ARM.attributes
+                0x00000408       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_2.o)
+ .ARM.attributes
+                0x00000439       0x31 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(TCPWM_1.o)
+ .ARM.attributes
+                0x0000046a       0x21 .\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.a(CyBootAsmGnu.o)
+ .ARM.attributes
+                0x0000048b       0x1e c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000004a9       0x1e c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x000004c7       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .ARM.attributes
+                0x000004f3       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .ARM.attributes
+                0x0000051f       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000054b       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000577       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x000005a3       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x000005cf       0x2c c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .ARM.attributes
+                0x000005fb       0x1e c:/program files/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(.\CortexM0\ARM_GCC_493\Debug\StepMotor_PSoC4200_demo.elf elf32-littlearm)

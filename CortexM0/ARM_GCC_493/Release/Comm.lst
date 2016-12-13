@@ -1,0 +1,3467 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Comm.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Comm_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	Comm_Init
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	Comm_Init, %function
+  23              	Comm_Init:
+  24              	.LFB0:
+  25              		.file 1 "Generated_Source\\PSoC4\\Comm.c"
+   1:Generated_Source\PSoC4/Comm.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/Comm.c **** * \file Comm.c
+   3:Generated_Source\PSoC4/Comm.c **** * \version 3.20
+   4:Generated_Source\PSoC4/Comm.c **** *
+   5:Generated_Source\PSoC4/Comm.c **** * \brief
+   6:Generated_Source\PSoC4/Comm.c **** *  This file provides the source code to the API for the SCB Component.
+   7:Generated_Source\PSoC4/Comm.c **** *
+   8:Generated_Source\PSoC4/Comm.c **** * Note:
+   9:Generated_Source\PSoC4/Comm.c **** *
+  10:Generated_Source\PSoC4/Comm.c **** *******************************************************************************
+  11:Generated_Source\PSoC4/Comm.c **** * \copyright
+  12:Generated_Source\PSoC4/Comm.c **** * Copyright 2013-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/Comm.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC4/Comm.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:Generated_Source\PSoC4/Comm.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/Comm.c **** 
+  18:Generated_Source\PSoC4/Comm.c **** #include "Comm_PVT.h"
+  19:Generated_Source\PSoC4/Comm.c **** 
+  20:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_I2C_INC)
+  21:Generated_Source\PSoC4/Comm.c ****     #include "Comm_I2C_PVT.h"
+  22:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_I2C_INC) */
+  23:Generated_Source\PSoC4/Comm.c **** 
+  24:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_EZI2C_INC)
+  25:Generated_Source\PSoC4/Comm.c ****     #include "Comm_EZI2C_PVT.h"
+  26:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_EZI2C_INC) */
+  27:Generated_Source\PSoC4/Comm.c **** 
+  28:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_SPI_INC || Comm_SCB_MODE_UART_INC)
+  29:Generated_Source\PSoC4/Comm.c ****     #include "Comm_SPI_UART_PVT.h"
+  30:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_SPI_INC || Comm_SCB_MODE_UART_INC) */
+  31:Generated_Source\PSoC4/Comm.c **** 
+  32:Generated_Source\PSoC4/Comm.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 2
+
+
+  33:Generated_Source\PSoC4/Comm.c **** /***************************************
+  34:Generated_Source\PSoC4/Comm.c **** *    Run Time Configuration Vars
+  35:Generated_Source\PSoC4/Comm.c **** ***************************************/
+  36:Generated_Source\PSoC4/Comm.c **** 
+  37:Generated_Source\PSoC4/Comm.c **** /* Stores internal component configuration for Unconfigured mode */
+  38:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+  39:Generated_Source\PSoC4/Comm.c ****     /* Common configuration variables */
+  40:Generated_Source\PSoC4/Comm.c ****     uint8 Comm_scbMode = Comm_SCB_MODE_UNCONFIG;
+  41:Generated_Source\PSoC4/Comm.c ****     uint8 Comm_scbEnableWake;
+  42:Generated_Source\PSoC4/Comm.c ****     uint8 Comm_scbEnableIntr;
+  43:Generated_Source\PSoC4/Comm.c **** 
+  44:Generated_Source\PSoC4/Comm.c ****     /* I2C configuration variables */
+  45:Generated_Source\PSoC4/Comm.c ****     uint8 Comm_mode;
+  46:Generated_Source\PSoC4/Comm.c ****     uint8 Comm_acceptAddr;
+  47:Generated_Source\PSoC4/Comm.c **** 
+  48:Generated_Source\PSoC4/Comm.c ****     /* SPI/UART configuration variables */
+  49:Generated_Source\PSoC4/Comm.c ****     volatile uint8 * Comm_rxBuffer;
+  50:Generated_Source\PSoC4/Comm.c ****     uint8  Comm_rxDataBits;
+  51:Generated_Source\PSoC4/Comm.c ****     uint32 Comm_rxBufferSize;
+  52:Generated_Source\PSoC4/Comm.c **** 
+  53:Generated_Source\PSoC4/Comm.c ****     volatile uint8 * Comm_txBuffer;
+  54:Generated_Source\PSoC4/Comm.c ****     uint8  Comm_txDataBits;
+  55:Generated_Source\PSoC4/Comm.c ****     uint32 Comm_txBufferSize;
+  56:Generated_Source\PSoC4/Comm.c **** 
+  57:Generated_Source\PSoC4/Comm.c ****     /* EZI2C configuration variables */
+  58:Generated_Source\PSoC4/Comm.c ****     uint8 Comm_numberOfAddr;
+  59:Generated_Source\PSoC4/Comm.c ****     uint8 Comm_subAddrSize;
+  60:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+  61:Generated_Source\PSoC4/Comm.c **** 
+  62:Generated_Source\PSoC4/Comm.c **** 
+  63:Generated_Source\PSoC4/Comm.c **** /***************************************
+  64:Generated_Source\PSoC4/Comm.c **** *     Common SCB Vars
+  65:Generated_Source\PSoC4/Comm.c **** ***************************************/
+  66:Generated_Source\PSoC4/Comm.c **** /**
+  67:Generated_Source\PSoC4/Comm.c **** * \addtogroup group_general
+  68:Generated_Source\PSoC4/Comm.c **** * \{
+  69:Generated_Source\PSoC4/Comm.c **** */
+  70:Generated_Source\PSoC4/Comm.c **** 
+  71:Generated_Source\PSoC4/Comm.c **** /** Comm_initVar indicates whether the Comm 
+  72:Generated_Source\PSoC4/Comm.c **** *  component has been initialized. The variable is initialized to 0 
+  73:Generated_Source\PSoC4/Comm.c **** *  and set to 1 the first time SCB_Start() is called. This allows 
+  74:Generated_Source\PSoC4/Comm.c **** *  the component to restart without reinitialization after the first 
+  75:Generated_Source\PSoC4/Comm.c **** *  call to the Comm_Start() routine.
+  76:Generated_Source\PSoC4/Comm.c **** *
+  77:Generated_Source\PSoC4/Comm.c **** *  If re-initialization of the component is required, then the 
+  78:Generated_Source\PSoC4/Comm.c **** *  Comm_Init() function can be called before the 
+  79:Generated_Source\PSoC4/Comm.c **** *  Comm_Start() or Comm_Enable() function.
+  80:Generated_Source\PSoC4/Comm.c **** */
+  81:Generated_Source\PSoC4/Comm.c **** uint8 Comm_initVar = 0u;
+  82:Generated_Source\PSoC4/Comm.c **** 
+  83:Generated_Source\PSoC4/Comm.c **** 
+  84:Generated_Source\PSoC4/Comm.c **** #if (! (Comm_SCB_MODE_I2C_CONST_CFG || \
+  85:Generated_Source\PSoC4/Comm.c ****         Comm_SCB_MODE_EZI2C_CONST_CFG))
+  86:Generated_Source\PSoC4/Comm.c ****     /** This global variable stores TX interrupt sources after 
+  87:Generated_Source\PSoC4/Comm.c ****     * Comm_Stop() is called. Only these TX interrupt sources 
+  88:Generated_Source\PSoC4/Comm.c ****     * will be restored on a subsequent Comm_Enable() call.
+  89:Generated_Source\PSoC4/Comm.c ****     */
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 3
+
+
+  90:Generated_Source\PSoC4/Comm.c ****     uint16 Comm_IntrTxMask = 0u;
+  91:Generated_Source\PSoC4/Comm.c **** #endif /* (! (Comm_SCB_MODE_I2C_CONST_CFG || \
+  92:Generated_Source\PSoC4/Comm.c ****               Comm_SCB_MODE_EZI2C_CONST_CFG)) */
+  93:Generated_Source\PSoC4/Comm.c **** /** \} globals */
+  94:Generated_Source\PSoC4/Comm.c **** 
+  95:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_IRQ_INTERNAL)
+  96:Generated_Source\PSoC4/Comm.c **** #if !defined (CY_REMOVE_Comm_CUSTOM_INTR_HANDLER)
+  97:Generated_Source\PSoC4/Comm.c ****     void (*Comm_customIntrHandler)(void) = NULL;
+  98:Generated_Source\PSoC4/Comm.c **** #endif /* !defined (CY_REMOVE_Comm_CUSTOM_INTR_HANDLER) */
+  99:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 100:Generated_Source\PSoC4/Comm.c **** 
+ 101:Generated_Source\PSoC4/Comm.c **** 
+ 102:Generated_Source\PSoC4/Comm.c **** /***************************************
+ 103:Generated_Source\PSoC4/Comm.c **** *    Private Function Prototypes
+ 104:Generated_Source\PSoC4/Comm.c **** ***************************************/
+ 105:Generated_Source\PSoC4/Comm.c **** 
+ 106:Generated_Source\PSoC4/Comm.c **** static void Comm_ScbEnableIntr(void);
+ 107:Generated_Source\PSoC4/Comm.c **** static void Comm_ScbModeStop(void);
+ 108:Generated_Source\PSoC4/Comm.c **** static void Comm_ScbModePostEnable(void);
+ 109:Generated_Source\PSoC4/Comm.c **** 
+ 110:Generated_Source\PSoC4/Comm.c **** 
+ 111:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 112:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_Init
+ 113:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 114:Generated_Source\PSoC4/Comm.c **** *
+ 115:Generated_Source\PSoC4/Comm.c **** *  Initializes the Comm component to operate in one of the selected
+ 116:Generated_Source\PSoC4/Comm.c **** *  configurations: I2C, SPI, UART or EZI2C.
+ 117:Generated_Source\PSoC4/Comm.c **** *  When the configuration is set to "Unconfigured SCB", this function does
+ 118:Generated_Source\PSoC4/Comm.c **** *  not do any initialization. Use mode-specific initialization APIs instead:
+ 119:Generated_Source\PSoC4/Comm.c **** *  Comm_I2CInit, Comm_SpiInit, 
+ 120:Generated_Source\PSoC4/Comm.c **** *  Comm_UartInit or Comm_EzI2CInit.
+ 121:Generated_Source\PSoC4/Comm.c **** *
+ 122:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 123:Generated_Source\PSoC4/Comm.c **** void Comm_Init(void)
+ 124:Generated_Source\PSoC4/Comm.c **** {
+  26              		.loc 1 124 0
+  27              		.cfi_startproc
+ 125:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+ 126:Generated_Source\PSoC4/Comm.c ****     if (Comm_SCB_MODE_UNCONFIG_RUNTM_CFG)
+  28              		.loc 1 126 0
+  29 0000 034B     		ldr	r3, .L4
+  30 0002 1B78     		ldrb	r3, [r3]
+  31 0004 FF2B     		cmp	r3, #255
+  32 0006 02D1     		bne	.L1
+ 127:Generated_Source\PSoC4/Comm.c ****     {
+ 128:Generated_Source\PSoC4/Comm.c ****         Comm_initVar = 0u;
+  33              		.loc 1 128 0
+  34 0008 0022     		mov	r2, #0
+  35 000a 024B     		ldr	r3, .L4+4
+  36 000c 1A70     		strb	r2, [r3]
+  37              	.L1:
+ 129:Generated_Source\PSoC4/Comm.c ****     }
+ 130:Generated_Source\PSoC4/Comm.c ****     else
+ 131:Generated_Source\PSoC4/Comm.c ****     {
+ 132:Generated_Source\PSoC4/Comm.c ****         /* Initialization was done before this function call */
+ 133:Generated_Source\PSoC4/Comm.c ****     }
+ 134:Generated_Source\PSoC4/Comm.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 4
+
+
+ 135:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_I2C_CONST_CFG)
+ 136:Generated_Source\PSoC4/Comm.c ****     Comm_I2CInit();
+ 137:Generated_Source\PSoC4/Comm.c **** 
+ 138:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_SPI_CONST_CFG)
+ 139:Generated_Source\PSoC4/Comm.c ****     Comm_SpiInit();
+ 140:Generated_Source\PSoC4/Comm.c **** 
+ 141:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_UART_CONST_CFG)
+ 142:Generated_Source\PSoC4/Comm.c ****     Comm_UartInit();
+ 143:Generated_Source\PSoC4/Comm.c **** 
+ 144:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_EZI2C_CONST_CFG)
+ 145:Generated_Source\PSoC4/Comm.c ****     Comm_EzI2CInit();
+ 146:Generated_Source\PSoC4/Comm.c **** 
+ 147:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 148:Generated_Source\PSoC4/Comm.c **** }
+  38              		.loc 1 148 0
+  39              		@ sp needed
+  40 000e 7047     		bx	lr
+  41              	.L5:
+  42              		.align	2
+  43              	.L4:
+  44 0010 00000000 		.word	.LANCHOR0
+  45 0014 00000000 		.word	.LANCHOR1
+  46              		.cfi_endproc
+  47              	.LFE0:
+  48              		.size	Comm_Init, .-Comm_Init
+  49              		.section	.text.Comm_Enable,"ax",%progbits
+  50              		.align	1
+  51              		.global	Comm_Enable
+  52              		.code	16
+  53              		.thumb_func
+  54              		.type	Comm_Enable, %function
+  55              	Comm_Enable:
+  56              	.LFB1:
+ 149:Generated_Source\PSoC4/Comm.c **** 
+ 150:Generated_Source\PSoC4/Comm.c **** 
+ 151:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 152:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_Enable
+ 153:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 154:Generated_Source\PSoC4/Comm.c **** *
+ 155:Generated_Source\PSoC4/Comm.c **** *  Enables Comm component operation: activates the hardware and 
+ 156:Generated_Source\PSoC4/Comm.c **** *  internal interrupt. It also restores TX interrupt sources disabled after the 
+ 157:Generated_Source\PSoC4/Comm.c **** *  Comm_Stop() function was called (note that level-triggered TX 
+ 158:Generated_Source\PSoC4/Comm.c **** *  interrupt sources remain disabled to not cause code lock-up).
+ 159:Generated_Source\PSoC4/Comm.c **** *  For I2C and EZI2C modes the interrupt is internal and mandatory for 
+ 160:Generated_Source\PSoC4/Comm.c **** *  operation. For SPI and UART modes the interrupt can be configured as none, 
+ 161:Generated_Source\PSoC4/Comm.c **** *  internal or external.
+ 162:Generated_Source\PSoC4/Comm.c **** *  The Comm configuration should be not changed when the component
+ 163:Generated_Source\PSoC4/Comm.c **** *  is enabled. Any configuration changes should be made after disabling the 
+ 164:Generated_Source\PSoC4/Comm.c **** *  component.
+ 165:Generated_Source\PSoC4/Comm.c **** *  When configuration is set to “Unconfigured Comm”, the component 
+ 166:Generated_Source\PSoC4/Comm.c **** *  must first be initialized to operate in one of the following configurations: 
+ 167:Generated_Source\PSoC4/Comm.c **** *  I2C, SPI, UART or EZ I2C, using the mode-specific initialization API. 
+ 168:Generated_Source\PSoC4/Comm.c **** *  Otherwise this function does not enable the component.
+ 169:Generated_Source\PSoC4/Comm.c **** *
+ 170:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 171:Generated_Source\PSoC4/Comm.c **** void Comm_Enable(void)
+ 172:Generated_Source\PSoC4/Comm.c **** {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 5
+
+
+  57              		.loc 1 172 0
+  58              		.cfi_startproc
+  59 0000 10B5     		push	{r4, lr}
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 4, -8
+  62              		.cfi_offset 14, -4
+ 173:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+ 174:Generated_Source\PSoC4/Comm.c ****     /* Enable SCB block, only if it is already configured */
+ 175:Generated_Source\PSoC4/Comm.c ****     if (!Comm_SCB_MODE_UNCONFIG_RUNTM_CFG)
+  63              		.loc 1 175 0
+  64 0002 0E4B     		ldr	r3, .L15
+  65 0004 1A78     		ldrb	r2, [r3]
+  66 0006 1C1C     		mov	r4, r3
+  67 0008 FF2A     		cmp	r2, #255
+  68 000a 16D0     		beq	.L6
+  69              	.LBB8:
+ 176:Generated_Source\PSoC4/Comm.c ****     {
+ 177:Generated_Source\PSoC4/Comm.c ****         Comm_CTRL_REG |= Comm_CTRL_ENABLED;
+  70              		.loc 1 177 0
+  71 000c 8021     		mov	r1, #128
+  72 000e 0C4A     		ldr	r2, .L15+4
+  73 0010 0906     		lsl	r1, r1, #24
+  74 0012 1368     		ldr	r3, [r2]
+  75 0014 0B43     		orr	r3, r1
+  76 0016 1360     		str	r3, [r2]
+  77              	.LBB9:
+  78              	.LBB10:
+ 178:Generated_Source\PSoC4/Comm.c **** 
+ 179:Generated_Source\PSoC4/Comm.c ****         Comm_ScbEnableIntr();
+ 180:Generated_Source\PSoC4/Comm.c **** 
+ 181:Generated_Source\PSoC4/Comm.c ****         /* Call PostEnable function specific to current operation mode */
+ 182:Generated_Source\PSoC4/Comm.c ****         Comm_ScbModePostEnable();
+ 183:Generated_Source\PSoC4/Comm.c ****     }
+ 184:Generated_Source\PSoC4/Comm.c **** #else
+ 185:Generated_Source\PSoC4/Comm.c ****     Comm_CTRL_REG |= Comm_CTRL_ENABLED;
+ 186:Generated_Source\PSoC4/Comm.c **** 
+ 187:Generated_Source\PSoC4/Comm.c ****     Comm_ScbEnableIntr();
+ 188:Generated_Source\PSoC4/Comm.c **** 
+ 189:Generated_Source\PSoC4/Comm.c ****     /* Call PostEnable function specific to current operation mode */
+ 190:Generated_Source\PSoC4/Comm.c ****     Comm_ScbModePostEnable();
+ 191:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 192:Generated_Source\PSoC4/Comm.c **** }
+ 193:Generated_Source\PSoC4/Comm.c **** 
+ 194:Generated_Source\PSoC4/Comm.c **** 
+ 195:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 196:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_Start
+ 197:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 198:Generated_Source\PSoC4/Comm.c **** *
+ 199:Generated_Source\PSoC4/Comm.c **** *  Invokes Comm_Init() and Comm_Enable().
+ 200:Generated_Source\PSoC4/Comm.c **** *  After this function call, the component is enabled and ready for operation.
+ 201:Generated_Source\PSoC4/Comm.c **** *  When configuration is set to "Unconfigured SCB", the component must first be
+ 202:Generated_Source\PSoC4/Comm.c **** *  initialized to operate in one of the following configurations: I2C, SPI, UART
+ 203:Generated_Source\PSoC4/Comm.c **** *  or EZI2C. Otherwise this function does not enable the component.
+ 204:Generated_Source\PSoC4/Comm.c **** *
+ 205:Generated_Source\PSoC4/Comm.c **** * \globalvars
+ 206:Generated_Source\PSoC4/Comm.c **** *  Comm_initVar - used to check initial configuration, modified
+ 207:Generated_Source\PSoC4/Comm.c **** *  on first function call.
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 6
+
+
+ 208:Generated_Source\PSoC4/Comm.c **** *
+ 209:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 210:Generated_Source\PSoC4/Comm.c **** void Comm_Start(void)
+ 211:Generated_Source\PSoC4/Comm.c **** {
+ 212:Generated_Source\PSoC4/Comm.c ****     if (0u == Comm_initVar)
+ 213:Generated_Source\PSoC4/Comm.c ****     {
+ 214:Generated_Source\PSoC4/Comm.c ****         Comm_Init();
+ 215:Generated_Source\PSoC4/Comm.c ****         Comm_initVar = 1u; /* Component was initialized */
+ 216:Generated_Source\PSoC4/Comm.c ****     }
+ 217:Generated_Source\PSoC4/Comm.c **** 
+ 218:Generated_Source\PSoC4/Comm.c ****     Comm_Enable();
+ 219:Generated_Source\PSoC4/Comm.c **** }
+ 220:Generated_Source\PSoC4/Comm.c **** 
+ 221:Generated_Source\PSoC4/Comm.c **** 
+ 222:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 223:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_Stop
+ 224:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 225:Generated_Source\PSoC4/Comm.c **** *
+ 226:Generated_Source\PSoC4/Comm.c **** *  Disables the Comm component: disable the hardware and internal 
+ 227:Generated_Source\PSoC4/Comm.c **** *  interrupt. It also disables all TX interrupt sources so as not to cause an 
+ 228:Generated_Source\PSoC4/Comm.c **** *  unexpected interrupt trigger because after the component is enabled, the 
+ 229:Generated_Source\PSoC4/Comm.c **** *  TX FIFO is empty.
+ 230:Generated_Source\PSoC4/Comm.c **** *  Refer to the function Comm_Enable() for the interrupt 
+ 231:Generated_Source\PSoC4/Comm.c **** *  configuration details.
+ 232:Generated_Source\PSoC4/Comm.c **** *  This function disables the SCB component without checking to see if 
+ 233:Generated_Source\PSoC4/Comm.c **** *  communication is in progress. Before calling this function it may be 
+ 234:Generated_Source\PSoC4/Comm.c **** *  necessary to check the status of communication to make sure communication 
+ 235:Generated_Source\PSoC4/Comm.c **** *  is complete. If this is not done then communication could be stopped mid 
+ 236:Generated_Source\PSoC4/Comm.c **** *  byte and corrupted data could result.
+ 237:Generated_Source\PSoC4/Comm.c **** *
+ 238:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 239:Generated_Source\PSoC4/Comm.c **** void Comm_Stop(void)
+ 240:Generated_Source\PSoC4/Comm.c **** {
+ 241:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_IRQ_INTERNAL)
+ 242:Generated_Source\PSoC4/Comm.c ****     Comm_DisableInt();
+ 243:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 244:Generated_Source\PSoC4/Comm.c **** 
+ 245:Generated_Source\PSoC4/Comm.c ****     /* Call Stop function specific to current operation mode */
+ 246:Generated_Source\PSoC4/Comm.c ****     Comm_ScbModeStop();
+ 247:Generated_Source\PSoC4/Comm.c **** 
+ 248:Generated_Source\PSoC4/Comm.c ****     /* Disable SCB IP */
+ 249:Generated_Source\PSoC4/Comm.c ****     Comm_CTRL_REG &= (uint32) ~Comm_CTRL_ENABLED;
+ 250:Generated_Source\PSoC4/Comm.c **** 
+ 251:Generated_Source\PSoC4/Comm.c ****     /* Disable all TX interrupt sources so as not to cause an unexpected
+ 252:Generated_Source\PSoC4/Comm.c ****     * interrupt trigger after the component will be enabled because the 
+ 253:Generated_Source\PSoC4/Comm.c ****     * TX FIFO is empty.
+ 254:Generated_Source\PSoC4/Comm.c ****     * For SCB IP v0, it is critical as it does not mask-out interrupt
+ 255:Generated_Source\PSoC4/Comm.c ****     * sources when it is disabled. This can cause a code lock-up in the
+ 256:Generated_Source\PSoC4/Comm.c ****     * interrupt handler because TX FIFO cannot be loaded after the block
+ 257:Generated_Source\PSoC4/Comm.c ****     * is disabled.
+ 258:Generated_Source\PSoC4/Comm.c ****     */
+ 259:Generated_Source\PSoC4/Comm.c ****     Comm_SetTxInterruptMode(Comm_NO_INTR_SOURCES);
+ 260:Generated_Source\PSoC4/Comm.c **** 
+ 261:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_IRQ_INTERNAL)
+ 262:Generated_Source\PSoC4/Comm.c ****     Comm_ClearPendingInt();
+ 263:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 264:Generated_Source\PSoC4/Comm.c **** }
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 7
+
+
+ 265:Generated_Source\PSoC4/Comm.c **** 
+ 266:Generated_Source\PSoC4/Comm.c **** 
+ 267:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 268:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_SetRxFifoLevel
+ 269:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 270:Generated_Source\PSoC4/Comm.c **** *
+ 271:Generated_Source\PSoC4/Comm.c **** *  Sets level in the RX FIFO to generate a RX level interrupt.
+ 272:Generated_Source\PSoC4/Comm.c **** *  When the RX FIFO has more entries than the RX FIFO level an RX level
+ 273:Generated_Source\PSoC4/Comm.c **** *  interrupt request is generated.
+ 274:Generated_Source\PSoC4/Comm.c **** *
+ 275:Generated_Source\PSoC4/Comm.c **** *  \param level: Level in the RX FIFO to generate RX level interrupt.
+ 276:Generated_Source\PSoC4/Comm.c **** *   The range of valid level values is between 0 and RX FIFO depth - 1.
+ 277:Generated_Source\PSoC4/Comm.c **** *
+ 278:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 279:Generated_Source\PSoC4/Comm.c **** void Comm_SetRxFifoLevel(uint32 level)
+ 280:Generated_Source\PSoC4/Comm.c **** {
+ 281:Generated_Source\PSoC4/Comm.c ****     uint32 rxFifoCtrl;
+ 282:Generated_Source\PSoC4/Comm.c **** 
+ 283:Generated_Source\PSoC4/Comm.c ****     rxFifoCtrl = Comm_RX_FIFO_CTRL_REG;
+ 284:Generated_Source\PSoC4/Comm.c **** 
+ 285:Generated_Source\PSoC4/Comm.c ****     rxFifoCtrl &= ((uint32) ~Comm_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask bits */
+ 286:Generated_Source\PSoC4/Comm.c ****     rxFifoCtrl |= ((uint32) (Comm_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 287:Generated_Source\PSoC4/Comm.c **** 
+ 288:Generated_Source\PSoC4/Comm.c ****     Comm_RX_FIFO_CTRL_REG = rxFifoCtrl;
+ 289:Generated_Source\PSoC4/Comm.c **** }
+ 290:Generated_Source\PSoC4/Comm.c **** 
+ 291:Generated_Source\PSoC4/Comm.c **** 
+ 292:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 293:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_SetTxFifoLevel
+ 294:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 295:Generated_Source\PSoC4/Comm.c **** *
+ 296:Generated_Source\PSoC4/Comm.c **** *  Sets level in the TX FIFO to generate a TX level interrupt.
+ 297:Generated_Source\PSoC4/Comm.c **** *  When the TX FIFO has less entries than the TX FIFO level an TX level
+ 298:Generated_Source\PSoC4/Comm.c **** *  interrupt request is generated.
+ 299:Generated_Source\PSoC4/Comm.c **** *
+ 300:Generated_Source\PSoC4/Comm.c **** *  \param level: Level in the TX FIFO to generate TX level interrupt.
+ 301:Generated_Source\PSoC4/Comm.c **** *   The range of valid level values is between 0 and TX FIFO depth - 1.
+ 302:Generated_Source\PSoC4/Comm.c **** *
+ 303:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC4/Comm.c **** void Comm_SetTxFifoLevel(uint32 level)
+ 305:Generated_Source\PSoC4/Comm.c **** {
+ 306:Generated_Source\PSoC4/Comm.c ****     uint32 txFifoCtrl;
+ 307:Generated_Source\PSoC4/Comm.c **** 
+ 308:Generated_Source\PSoC4/Comm.c ****     txFifoCtrl = Comm_TX_FIFO_CTRL_REG;
+ 309:Generated_Source\PSoC4/Comm.c **** 
+ 310:Generated_Source\PSoC4/Comm.c ****     txFifoCtrl &= ((uint32) ~Comm_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask bits */
+ 311:Generated_Source\PSoC4/Comm.c ****     txFifoCtrl |= ((uint32) (Comm_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 312:Generated_Source\PSoC4/Comm.c **** 
+ 313:Generated_Source\PSoC4/Comm.c ****     Comm_TX_FIFO_CTRL_REG = txFifoCtrl;
+ 314:Generated_Source\PSoC4/Comm.c **** }
+ 315:Generated_Source\PSoC4/Comm.c **** 
+ 316:Generated_Source\PSoC4/Comm.c **** 
+ 317:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_IRQ_INTERNAL)
+ 318:Generated_Source\PSoC4/Comm.c ****     /*******************************************************************************
+ 319:Generated_Source\PSoC4/Comm.c ****     * Function Name: Comm_SetCustomInterruptHandler
+ 320:Generated_Source\PSoC4/Comm.c ****     ****************************************************************************//**
+ 321:Generated_Source\PSoC4/Comm.c ****     *
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 8
+
+
+ 322:Generated_Source\PSoC4/Comm.c ****     *  Registers a function to be called by the internal interrupt handler.
+ 323:Generated_Source\PSoC4/Comm.c ****     *  First the function that is registered is called, then the internal interrupt
+ 324:Generated_Source\PSoC4/Comm.c ****     *  handler performs any operation such as software buffer management functions
+ 325:Generated_Source\PSoC4/Comm.c ****     *  before the interrupt returns.  It is the user's responsibility not to break
+ 326:Generated_Source\PSoC4/Comm.c ****     *  the software buffer operations. Only one custom handler is supported, which
+ 327:Generated_Source\PSoC4/Comm.c ****     *  is the function provided by the most recent call.
+ 328:Generated_Source\PSoC4/Comm.c ****     *  At the initialization time no custom handler is registered.
+ 329:Generated_Source\PSoC4/Comm.c ****     *
+ 330:Generated_Source\PSoC4/Comm.c ****     *  \param func: Pointer to the function to register.
+ 331:Generated_Source\PSoC4/Comm.c ****     *        The value NULL indicates to remove the current custom interrupt
+ 332:Generated_Source\PSoC4/Comm.c ****     *        handler.
+ 333:Generated_Source\PSoC4/Comm.c ****     *
+ 334:Generated_Source\PSoC4/Comm.c ****     *******************************************************************************/
+ 335:Generated_Source\PSoC4/Comm.c ****     void Comm_SetCustomInterruptHandler(void (*func)(void))
+ 336:Generated_Source\PSoC4/Comm.c ****     {
+ 337:Generated_Source\PSoC4/Comm.c ****     #if !defined (CY_REMOVE_Comm_CUSTOM_INTR_HANDLER)
+ 338:Generated_Source\PSoC4/Comm.c ****         Comm_customIntrHandler = func; /* Register interrupt handler */
+ 339:Generated_Source\PSoC4/Comm.c ****     #else
+ 340:Generated_Source\PSoC4/Comm.c ****         if (NULL != func)
+ 341:Generated_Source\PSoC4/Comm.c ****         {
+ 342:Generated_Source\PSoC4/Comm.c ****             /* Suppress compiler warning */
+ 343:Generated_Source\PSoC4/Comm.c ****         }
+ 344:Generated_Source\PSoC4/Comm.c ****     #endif /* !defined (CY_REMOVE_Comm_CUSTOM_INTR_HANDLER) */
+ 345:Generated_Source\PSoC4/Comm.c ****     }
+ 346:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 347:Generated_Source\PSoC4/Comm.c **** 
+ 348:Generated_Source\PSoC4/Comm.c **** 
+ 349:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 350:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_ScbModeEnableIntr
+ 351:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 352:Generated_Source\PSoC4/Comm.c **** *
+ 353:Generated_Source\PSoC4/Comm.c **** *  Enables an interrupt for a specific mode.
+ 354:Generated_Source\PSoC4/Comm.c **** *
+ 355:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 356:Generated_Source\PSoC4/Comm.c **** static void Comm_ScbEnableIntr(void)
+ 357:Generated_Source\PSoC4/Comm.c **** {
+ 358:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_IRQ_INTERNAL)
+ 359:Generated_Source\PSoC4/Comm.c ****     /* Enable interrupt in NVIC */
+ 360:Generated_Source\PSoC4/Comm.c ****     #if (Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+ 361:Generated_Source\PSoC4/Comm.c ****         if (0u != Comm_scbEnableIntr)
+  79              		.loc 1 361 0
+  80 0018 0A4B     		ldr	r3, .L15+8
+  81 001a 1B78     		ldrb	r3, [r3]
+  82 001c 002B     		cmp	r3, #0
+  83 001e 02D0     		beq	.L9
+ 362:Generated_Source\PSoC4/Comm.c ****         {
+ 363:Generated_Source\PSoC4/Comm.c ****             Comm_EnableInt();
+  84              		.loc 1 363 0
+  85 0020 0A20     		mov	r0, #10
+  86 0022 FFF7FEFF 		bl	CyIntEnable
+  87              	.LVL0:
+  88              	.L9:
+  89              	.LBE10:
+  90              	.LBE9:
+  91              	.LBB11:
+  92              	.LBB12:
+ 364:Generated_Source\PSoC4/Comm.c ****         }
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 9
+
+
+ 365:Generated_Source\PSoC4/Comm.c **** 
+ 366:Generated_Source\PSoC4/Comm.c ****     #else
+ 367:Generated_Source\PSoC4/Comm.c ****         Comm_EnableInt();
+ 368:Generated_Source\PSoC4/Comm.c **** 
+ 369:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 370:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 371:Generated_Source\PSoC4/Comm.c **** }
+ 372:Generated_Source\PSoC4/Comm.c **** 
+ 373:Generated_Source\PSoC4/Comm.c **** 
+ 374:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 375:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_ScbModePostEnable
+ 376:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 377:Generated_Source\PSoC4/Comm.c **** *
+ 378:Generated_Source\PSoC4/Comm.c **** *  Calls the PostEnable function for a specific operation mode.
+ 379:Generated_Source\PSoC4/Comm.c **** *
+ 380:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 381:Generated_Source\PSoC4/Comm.c **** static void Comm_ScbModePostEnable(void)
+ 382:Generated_Source\PSoC4/Comm.c **** {
+ 383:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+ 384:Generated_Source\PSoC4/Comm.c **** #if (!Comm_CY_SCBIP_V1)
+ 385:Generated_Source\PSoC4/Comm.c ****     if (Comm_SCB_MODE_SPI_RUNTM_CFG)
+  93              		.loc 1 385 0
+  94 0026 2378     		ldrb	r3, [r4]
+  95 0028 022B     		cmp	r3, #2
+  96 002a 02D1     		bne	.L10
+ 386:Generated_Source\PSoC4/Comm.c ****     {
+ 387:Generated_Source\PSoC4/Comm.c ****         Comm_SpiPostEnable();
+  97              		.loc 1 387 0
+  98 002c FFF7FEFF 		bl	Comm_SpiPostEnable
+  99              	.LVL1:
+ 100 0030 03E0     		b	.L6
+ 101              	.L10:
+ 388:Generated_Source\PSoC4/Comm.c ****     }
+ 389:Generated_Source\PSoC4/Comm.c ****     else if (Comm_SCB_MODE_UART_RUNTM_CFG)
+ 102              		.loc 1 389 0
+ 103 0032 042B     		cmp	r3, #4
+ 104 0034 01D1     		bne	.L6
+ 390:Generated_Source\PSoC4/Comm.c ****     {
+ 391:Generated_Source\PSoC4/Comm.c ****         Comm_UartPostEnable();
+ 105              		.loc 1 391 0
+ 106 0036 FFF7FEFF 		bl	Comm_UartPostEnable
+ 107              	.LVL2:
+ 108              	.L6:
+ 109              	.LBE12:
+ 110              	.LBE11:
+ 111              	.LBE8:
+ 192:Generated_Source\PSoC4/Comm.c **** 
+ 112              		.loc 1 192 0
+ 113              		@ sp needed
+ 114 003a 10BD     		pop	{r4, pc}
+ 115              	.L16:
+ 116              		.align	2
+ 117              	.L15:
+ 118 003c 00000000 		.word	.LANCHOR0
+ 119 0040 00000640 		.word	1074135040
+ 120 0044 00000000 		.word	Comm_scbEnableIntr
+ 121              		.cfi_endproc
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 10
+
+
+ 122              	.LFE1:
+ 123              		.size	Comm_Enable, .-Comm_Enable
+ 124              		.section	.text.Comm_Start,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	Comm_Start
+ 127              		.code	16
+ 128              		.thumb_func
+ 129              		.type	Comm_Start, %function
+ 130              	Comm_Start:
+ 131              	.LFB2:
+ 211:Generated_Source\PSoC4/Comm.c ****     if (0u == Comm_initVar)
+ 132              		.loc 1 211 0
+ 133              		.cfi_startproc
+ 134 0000 10B5     		push	{r4, lr}
+ 135              		.cfi_def_cfa_offset 8
+ 136              		.cfi_offset 4, -8
+ 137              		.cfi_offset 14, -4
+ 212:Generated_Source\PSoC4/Comm.c ****     {
+ 138              		.loc 1 212 0
+ 139 0002 054C     		ldr	r4, .L19
+ 140 0004 2378     		ldrb	r3, [r4]
+ 141 0006 002B     		cmp	r3, #0
+ 142 0008 03D1     		bne	.L18
+ 214:Generated_Source\PSoC4/Comm.c ****         Comm_initVar = 1u; /* Component was initialized */
+ 143              		.loc 1 214 0
+ 144 000a FFF7FEFF 		bl	Comm_Init
+ 145              	.LVL3:
+ 215:Generated_Source\PSoC4/Comm.c ****     }
+ 146              		.loc 1 215 0
+ 147 000e 0123     		mov	r3, #1
+ 148 0010 2370     		strb	r3, [r4]
+ 149              	.L18:
+ 218:Generated_Source\PSoC4/Comm.c **** }
+ 150              		.loc 1 218 0
+ 151 0012 FFF7FEFF 		bl	Comm_Enable
+ 152              	.LVL4:
+ 219:Generated_Source\PSoC4/Comm.c **** 
+ 153              		.loc 1 219 0
+ 154              		@ sp needed
+ 155 0016 10BD     		pop	{r4, pc}
+ 156              	.L20:
+ 157              		.align	2
+ 158              	.L19:
+ 159 0018 00000000 		.word	.LANCHOR1
+ 160              		.cfi_endproc
+ 161              	.LFE2:
+ 162              		.size	Comm_Start, .-Comm_Start
+ 163              		.section	.text.Comm_Stop,"ax",%progbits
+ 164              		.align	1
+ 165              		.global	Comm_Stop
+ 166              		.code	16
+ 167              		.thumb_func
+ 168              		.type	Comm_Stop, %function
+ 169              	Comm_Stop:
+ 170              	.LFB3:
+ 240:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_IRQ_INTERNAL)
+ 171              		.loc 1 240 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 11
+
+
+ 172              		.cfi_startproc
+ 173 0000 08B5     		push	{r3, lr}
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 3, -8
+ 176              		.cfi_offset 14, -4
+ 242:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 177              		.loc 1 242 0
+ 178 0002 0A20     		mov	r0, #10
+ 179 0004 FFF7FEFF 		bl	CyIntDisable
+ 180              	.LVL5:
+ 181              	.LBB15:
+ 182              	.LBB16:
+ 392:Generated_Source\PSoC4/Comm.c ****     }
+ 393:Generated_Source\PSoC4/Comm.c ****     else
+ 394:Generated_Source\PSoC4/Comm.c ****     {
+ 395:Generated_Source\PSoC4/Comm.c ****         /* Unknown mode: do nothing */
+ 396:Generated_Source\PSoC4/Comm.c ****     }
+ 397:Generated_Source\PSoC4/Comm.c **** #endif /* (!Comm_CY_SCBIP_V1) */
+ 398:Generated_Source\PSoC4/Comm.c **** 
+ 399:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_SPI_CONST_CFG)
+ 400:Generated_Source\PSoC4/Comm.c ****     Comm_SpiPostEnable();
+ 401:Generated_Source\PSoC4/Comm.c **** 
+ 402:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_UART_CONST_CFG)
+ 403:Generated_Source\PSoC4/Comm.c ****     Comm_UartPostEnable();
+ 404:Generated_Source\PSoC4/Comm.c **** 
+ 405:Generated_Source\PSoC4/Comm.c **** #else
+ 406:Generated_Source\PSoC4/Comm.c ****     /* Unknown mode: do nothing */
+ 407:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 408:Generated_Source\PSoC4/Comm.c **** }
+ 409:Generated_Source\PSoC4/Comm.c **** 
+ 410:Generated_Source\PSoC4/Comm.c **** 
+ 411:Generated_Source\PSoC4/Comm.c **** /*******************************************************************************
+ 412:Generated_Source\PSoC4/Comm.c **** * Function Name: Comm_ScbModeStop
+ 413:Generated_Source\PSoC4/Comm.c **** ****************************************************************************//**
+ 414:Generated_Source\PSoC4/Comm.c **** *
+ 415:Generated_Source\PSoC4/Comm.c **** *  Calls the Stop function for a specific operation mode.
+ 416:Generated_Source\PSoC4/Comm.c **** *
+ 417:Generated_Source\PSoC4/Comm.c **** *******************************************************************************/
+ 418:Generated_Source\PSoC4/Comm.c **** static void Comm_ScbModeStop(void)
+ 419:Generated_Source\PSoC4/Comm.c **** {
+ 420:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+ 421:Generated_Source\PSoC4/Comm.c ****     if (Comm_SCB_MODE_I2C_RUNTM_CFG)
+ 183              		.loc 1 421 0
+ 184 0008 104B     		ldr	r3, .L26
+ 185 000a 1B78     		ldrb	r3, [r3]
+ 186 000c 012B     		cmp	r3, #1
+ 187 000e 02D1     		bne	.L22
+ 422:Generated_Source\PSoC4/Comm.c ****     {
+ 423:Generated_Source\PSoC4/Comm.c ****         Comm_I2CStop();
+ 188              		.loc 1 423 0
+ 189 0010 FFF7FEFF 		bl	Comm_I2CStop
+ 190              	.LVL6:
+ 191 0014 0DE0     		b	.L23
+ 192              	.L22:
+ 424:Generated_Source\PSoC4/Comm.c ****     }
+ 425:Generated_Source\PSoC4/Comm.c ****     else if (Comm_SCB_MODE_EZI2C_RUNTM_CFG)
+ 193              		.loc 1 425 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 12
+
+
+ 194 0016 082B     		cmp	r3, #8
+ 195 0018 02D1     		bne	.L24
+ 426:Generated_Source\PSoC4/Comm.c ****     {
+ 427:Generated_Source\PSoC4/Comm.c ****         Comm_EzI2CStop();
+ 196              		.loc 1 427 0
+ 197 001a FFF7FEFF 		bl	Comm_EzI2CStop
+ 198              	.LVL7:
+ 199 001e 08E0     		b	.L23
+ 200              	.L24:
+ 428:Generated_Source\PSoC4/Comm.c ****     }
+ 429:Generated_Source\PSoC4/Comm.c **** #if (!Comm_CY_SCBIP_V1)
+ 430:Generated_Source\PSoC4/Comm.c ****     else if (Comm_SCB_MODE_SPI_RUNTM_CFG)
+ 201              		.loc 1 430 0
+ 202 0020 022B     		cmp	r3, #2
+ 203 0022 02D1     		bne	.L25
+ 431:Generated_Source\PSoC4/Comm.c ****     {
+ 432:Generated_Source\PSoC4/Comm.c ****         Comm_SpiStop();
+ 204              		.loc 1 432 0
+ 205 0024 FFF7FEFF 		bl	Comm_SpiStop
+ 206              	.LVL8:
+ 207 0028 03E0     		b	.L23
+ 208              	.L25:
+ 433:Generated_Source\PSoC4/Comm.c ****     }
+ 434:Generated_Source\PSoC4/Comm.c ****     else if (Comm_SCB_MODE_UART_RUNTM_CFG)
+ 209              		.loc 1 434 0
+ 210 002a 042B     		cmp	r3, #4
+ 211 002c 01D1     		bne	.L23
+ 435:Generated_Source\PSoC4/Comm.c ****     {
+ 436:Generated_Source\PSoC4/Comm.c ****         Comm_UartStop();
+ 212              		.loc 1 436 0
+ 213 002e FFF7FEFF 		bl	Comm_UartStop
+ 214              	.LVL9:
+ 215              	.L23:
+ 216              	.LBE16:
+ 217              	.LBE15:
+ 249:Generated_Source\PSoC4/Comm.c **** 
+ 218              		.loc 1 249 0
+ 219 0032 074A     		ldr	r2, .L26+4
+ 262:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 220              		.loc 1 262 0
+ 221 0034 0A20     		mov	r0, #10
+ 249:Generated_Source\PSoC4/Comm.c **** 
+ 222              		.loc 1 249 0
+ 223 0036 1368     		ldr	r3, [r2]
+ 264:Generated_Source\PSoC4/Comm.c **** 
+ 224              		.loc 1 264 0
+ 225              		@ sp needed
+ 249:Generated_Source\PSoC4/Comm.c **** 
+ 226              		.loc 1 249 0
+ 227 0038 5B00     		lsl	r3, r3, #1
+ 228 003a 5B08     		lsr	r3, r3, #1
+ 229 003c 1360     		str	r3, [r2]
+ 259:Generated_Source\PSoC4/Comm.c **** 
+ 230              		.loc 1 259 0
+ 231 003e 0022     		mov	r2, #0
+ 232 0040 044B     		ldr	r3, .L26+8
+ 233 0042 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 13
+
+
+ 262:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 234              		.loc 1 262 0
+ 235 0044 FFF7FEFF 		bl	CyIntClearPending
+ 236              	.LVL10:
+ 264:Generated_Source\PSoC4/Comm.c **** 
+ 237              		.loc 1 264 0
+ 238 0048 08BD     		pop	{r3, pc}
+ 239              	.L27:
+ 240 004a C046     		.align	2
+ 241              	.L26:
+ 242 004c 00000000 		.word	.LANCHOR0
+ 243 0050 00000640 		.word	1074135040
+ 244 0054 880F0640 		.word	1074139016
+ 245              		.cfi_endproc
+ 246              	.LFE3:
+ 247              		.size	Comm_Stop, .-Comm_Stop
+ 248              		.section	.text.Comm_SetRxFifoLevel,"ax",%progbits
+ 249              		.align	1
+ 250              		.global	Comm_SetRxFifoLevel
+ 251              		.code	16
+ 252              		.thumb_func
+ 253              		.type	Comm_SetRxFifoLevel, %function
+ 254              	Comm_SetRxFifoLevel:
+ 255              	.LFB4:
+ 280:Generated_Source\PSoC4/Comm.c ****     uint32 rxFifoCtrl;
+ 256              		.loc 1 280 0
+ 257              		.cfi_startproc
+ 258              	.LVL11:
+ 285:Generated_Source\PSoC4/Comm.c ****     rxFifoCtrl |= ((uint32) (Comm_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 259              		.loc 1 285 0
+ 260 0000 0722     		mov	r2, #7
+ 283:Generated_Source\PSoC4/Comm.c **** 
+ 261              		.loc 1 283 0
+ 262 0002 0349     		ldr	r1, .L29
+ 286:Generated_Source\PSoC4/Comm.c **** 
+ 263              		.loc 1 286 0
+ 264 0004 1040     		and	r0, r2
+ 265              	.LVL12:
+ 283:Generated_Source\PSoC4/Comm.c **** 
+ 266              		.loc 1 283 0
+ 267 0006 0B68     		ldr	r3, [r1]
+ 268              	.LVL13:
+ 289:Generated_Source\PSoC4/Comm.c **** 
+ 269              		.loc 1 289 0
+ 270              		@ sp needed
+ 285:Generated_Source\PSoC4/Comm.c ****     rxFifoCtrl |= ((uint32) (Comm_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 271              		.loc 1 285 0
+ 272 0008 9343     		bic	r3, r2
+ 273              	.LVL14:
+ 286:Generated_Source\PSoC4/Comm.c **** 
+ 274              		.loc 1 286 0
+ 275 000a 1843     		orr	r0, r3
+ 276              	.LVL15:
+ 288:Generated_Source\PSoC4/Comm.c **** }
+ 277              		.loc 1 288 0
+ 278 000c 0860     		str	r0, [r1]
+ 289:Generated_Source\PSoC4/Comm.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 14
+
+
+ 279              		.loc 1 289 0
+ 280 000e 7047     		bx	lr
+ 281              	.L30:
+ 282              		.align	2
+ 283              	.L29:
+ 284 0010 04030640 		.word	1074135812
+ 285              		.cfi_endproc
+ 286              	.LFE4:
+ 287              		.size	Comm_SetRxFifoLevel, .-Comm_SetRxFifoLevel
+ 288              		.section	.text.Comm_SetTxFifoLevel,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	Comm_SetTxFifoLevel
+ 291              		.code	16
+ 292              		.thumb_func
+ 293              		.type	Comm_SetTxFifoLevel, %function
+ 294              	Comm_SetTxFifoLevel:
+ 295              	.LFB5:
+ 305:Generated_Source\PSoC4/Comm.c ****     uint32 txFifoCtrl;
+ 296              		.loc 1 305 0
+ 297              		.cfi_startproc
+ 298              	.LVL16:
+ 310:Generated_Source\PSoC4/Comm.c ****     txFifoCtrl |= ((uint32) (Comm_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 299              		.loc 1 310 0
+ 300 0000 0722     		mov	r2, #7
+ 308:Generated_Source\PSoC4/Comm.c **** 
+ 301              		.loc 1 308 0
+ 302 0002 0349     		ldr	r1, .L32
+ 311:Generated_Source\PSoC4/Comm.c **** 
+ 303              		.loc 1 311 0
+ 304 0004 1040     		and	r0, r2
+ 305              	.LVL17:
+ 308:Generated_Source\PSoC4/Comm.c **** 
+ 306              		.loc 1 308 0
+ 307 0006 0B68     		ldr	r3, [r1]
+ 308              	.LVL18:
+ 314:Generated_Source\PSoC4/Comm.c **** 
+ 309              		.loc 1 314 0
+ 310              		@ sp needed
+ 310:Generated_Source\PSoC4/Comm.c ****     txFifoCtrl |= ((uint32) (Comm_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 311              		.loc 1 310 0
+ 312 0008 9343     		bic	r3, r2
+ 313              	.LVL19:
+ 311:Generated_Source\PSoC4/Comm.c **** 
+ 314              		.loc 1 311 0
+ 315 000a 1843     		orr	r0, r3
+ 316              	.LVL20:
+ 313:Generated_Source\PSoC4/Comm.c **** }
+ 317              		.loc 1 313 0
+ 318 000c 0860     		str	r0, [r1]
+ 314:Generated_Source\PSoC4/Comm.c **** 
+ 319              		.loc 1 314 0
+ 320 000e 7047     		bx	lr
+ 321              	.L33:
+ 322              		.align	2
+ 323              	.L32:
+ 324 0010 04020640 		.word	1074135556
+ 325              		.cfi_endproc
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 15
+
+
+ 326              	.LFE5:
+ 327              		.size	Comm_SetTxFifoLevel, .-Comm_SetTxFifoLevel
+ 328              		.section	.text.Comm_SetCustomInterruptHandler,"ax",%progbits
+ 329              		.align	1
+ 330              		.global	Comm_SetCustomInterruptHandler
+ 331              		.code	16
+ 332              		.thumb_func
+ 333              		.type	Comm_SetCustomInterruptHandler, %function
+ 334              	Comm_SetCustomInterruptHandler:
+ 335              	.LFB6:
+ 336:Generated_Source\PSoC4/Comm.c ****     #if !defined (CY_REMOVE_Comm_CUSTOM_INTR_HANDLER)
+ 336              		.loc 1 336 0
+ 337              		.cfi_startproc
+ 338              	.LVL21:
+ 338:Generated_Source\PSoC4/Comm.c ****     #else
+ 339              		.loc 1 338 0
+ 340 0000 014B     		ldr	r3, .L35
+ 345:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 341              		.loc 1 345 0
+ 342              		@ sp needed
+ 338:Generated_Source\PSoC4/Comm.c ****     #else
+ 343              		.loc 1 338 0
+ 344 0002 5860     		str	r0, [r3, #4]
+ 345:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_IRQ_INTERNAL) */
+ 345              		.loc 1 345 0
+ 346 0004 7047     		bx	lr
+ 347              	.L36:
+ 348 0006 C046     		.align	2
+ 349              	.L35:
+ 350 0008 00000000 		.word	.LANCHOR1
+ 351              		.cfi_endproc
+ 352              	.LFE6:
+ 353              		.size	Comm_SetCustomInterruptHandler, .-Comm_SetCustomInterruptHandler
+ 354              		.section	.text.Comm_SetPins,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	Comm_SetPins
+ 357              		.code	16
+ 358              		.thumb_func
+ 359              		.type	Comm_SetPins, %function
+ 360              	Comm_SetPins:
+ 361              	.LFB10:
+ 437:Generated_Source\PSoC4/Comm.c ****     }
+ 438:Generated_Source\PSoC4/Comm.c **** #endif /* (!Comm_CY_SCBIP_V1) */
+ 439:Generated_Source\PSoC4/Comm.c ****     else
+ 440:Generated_Source\PSoC4/Comm.c ****     {
+ 441:Generated_Source\PSoC4/Comm.c ****         /* Unknown mode: do nothing */
+ 442:Generated_Source\PSoC4/Comm.c ****     }
+ 443:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_I2C_CONST_CFG)
+ 444:Generated_Source\PSoC4/Comm.c ****     Comm_I2CStop();
+ 445:Generated_Source\PSoC4/Comm.c **** 
+ 446:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_EZI2C_CONST_CFG)
+ 447:Generated_Source\PSoC4/Comm.c ****     Comm_EzI2CStop();
+ 448:Generated_Source\PSoC4/Comm.c **** 
+ 449:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_SPI_CONST_CFG)
+ 450:Generated_Source\PSoC4/Comm.c ****     Comm_SpiStop();
+ 451:Generated_Source\PSoC4/Comm.c **** 
+ 452:Generated_Source\PSoC4/Comm.c **** #elif (Comm_SCB_MODE_UART_CONST_CFG)
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 16
+
+
+ 453:Generated_Source\PSoC4/Comm.c ****     Comm_UartStop();
+ 454:Generated_Source\PSoC4/Comm.c **** 
+ 455:Generated_Source\PSoC4/Comm.c **** #else
+ 456:Generated_Source\PSoC4/Comm.c ****     /* Unknown mode: do nothing */
+ 457:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 458:Generated_Source\PSoC4/Comm.c **** }
+ 459:Generated_Source\PSoC4/Comm.c **** 
+ 460:Generated_Source\PSoC4/Comm.c **** 
+ 461:Generated_Source\PSoC4/Comm.c **** #if (Comm_SCB_MODE_UNCONFIG_CONST_CFG)
+ 462:Generated_Source\PSoC4/Comm.c ****     /*******************************************************************************
+ 463:Generated_Source\PSoC4/Comm.c ****     * Function Name: Comm_SetPins
+ 464:Generated_Source\PSoC4/Comm.c ****     ****************************************************************************//**
+ 465:Generated_Source\PSoC4/Comm.c ****     *
+ 466:Generated_Source\PSoC4/Comm.c ****     *  Sets the pins settings accordingly to the selected operation mode.
+ 467:Generated_Source\PSoC4/Comm.c ****     *  Only available in the Unconfigured operation mode. The mode specific
+ 468:Generated_Source\PSoC4/Comm.c ****     *  initialization function calls it.
+ 469:Generated_Source\PSoC4/Comm.c ****     *  Pins configuration is set by PSoC Creator when a specific mode of operation
+ 470:Generated_Source\PSoC4/Comm.c ****     *  is selected in design time.
+ 471:Generated_Source\PSoC4/Comm.c ****     *
+ 472:Generated_Source\PSoC4/Comm.c ****     *  \param mode:      Mode of SCB operation.
+ 473:Generated_Source\PSoC4/Comm.c ****     *  \param subMode:   Sub-mode of SCB operation. It is only required for SPI and UART
+ 474:Generated_Source\PSoC4/Comm.c ****     *             modes.
+ 475:Generated_Source\PSoC4/Comm.c ****     *  \param uartEnableMask: enables TX or RX direction and RTS and CTS signals.
+ 476:Generated_Source\PSoC4/Comm.c ****     *
+ 477:Generated_Source\PSoC4/Comm.c ****     *******************************************************************************/
+ 478:Generated_Source\PSoC4/Comm.c ****     void Comm_SetPins(uint32 mode, uint32 subMode, uint32 uartEnableMask)
+ 479:Generated_Source\PSoC4/Comm.c ****     {
+ 362              		.loc 1 479 0
+ 363              		.cfi_startproc
+ 364              	.LVL22:
+ 365 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 366              		.cfi_def_cfa_offset 20
+ 367              		.cfi_offset 4, -20
+ 368              		.cfi_offset 5, -16
+ 369              		.cfi_offset 6, -12
+ 370              		.cfi_offset 7, -8
+ 371              		.cfi_offset 14, -4
+ 372 0002 0024     		mov	r4, #0
+ 373 0004 89B0     		sub	sp, sp, #36
+ 374              		.cfi_def_cfa_offset 56
+ 375              	.LVL23:
+ 376              	.L38:
+ 480:Generated_Source\PSoC4/Comm.c ****         uint32 pinsDm[Comm_SCB_PINS_NUMBER];
+ 481:Generated_Source\PSoC4/Comm.c ****         uint32 i;
+ 482:Generated_Source\PSoC4/Comm.c ****         
+ 483:Generated_Source\PSoC4/Comm.c ****     #if (!Comm_CY_SCBIP_V1)
+ 484:Generated_Source\PSoC4/Comm.c ****         uint32 pinsInBuf = 0u;
+ 485:Generated_Source\PSoC4/Comm.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+ 486:Generated_Source\PSoC4/Comm.c ****         
+ 487:Generated_Source\PSoC4/Comm.c ****         uint32 hsiomSel[Comm_SCB_PINS_NUMBER] = 
+ 488:Generated_Source\PSoC4/Comm.c ****         {
+ 489:Generated_Source\PSoC4/Comm.c ****             Comm_RX_SCL_MOSI_HSIOM_SEL_GPIO,
+ 490:Generated_Source\PSoC4/Comm.c ****             Comm_TX_SDA_MISO_HSIOM_SEL_GPIO,
+ 491:Generated_Source\PSoC4/Comm.c ****             0u,
+ 492:Generated_Source\PSoC4/Comm.c ****             0u,
+ 493:Generated_Source\PSoC4/Comm.c ****             0u,
+ 494:Generated_Source\PSoC4/Comm.c ****             0u,
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 17
+
+
+ 495:Generated_Source\PSoC4/Comm.c ****             0u,
+ 496:Generated_Source\PSoC4/Comm.c ****         };
+ 497:Generated_Source\PSoC4/Comm.c **** 
+ 498:Generated_Source\PSoC4/Comm.c ****     #if (Comm_CY_SCBIP_V1)
+ 499:Generated_Source\PSoC4/Comm.c ****         /* Supress compiler warning. */
+ 500:Generated_Source\PSoC4/Comm.c ****         if ((0u == subMode) || (0u == uartEnableMask))
+ 501:Generated_Source\PSoC4/Comm.c ****         {
+ 502:Generated_Source\PSoC4/Comm.c ****         }
+ 503:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_CY_SCBIP_V1) */
+ 504:Generated_Source\PSoC4/Comm.c **** 
+ 505:Generated_Source\PSoC4/Comm.c ****         /* Set default HSIOM to GPIO and Drive Mode to Analog Hi-Z */
+ 506:Generated_Source\PSoC4/Comm.c ****         for (i = 0u; i < Comm_SCB_PINS_NUMBER; i++)
+ 507:Generated_Source\PSoC4/Comm.c ****         {
+ 508:Generated_Source\PSoC4/Comm.c ****             pinsDm[i] = Comm_PIN_DM_ALG_HIZ;
+ 377              		.loc 1 508 0 discriminator 3
+ 378 0006 0023     		mov	r3, #0
+ 379 0008 01AE     		add	r6, sp, #4
+ 380 000a A351     		str	r3, [r4, r6]
+ 381 000c 0434     		add	r4, r4, #4
+ 506:Generated_Source\PSoC4/Comm.c ****         {
+ 382              		.loc 1 506 0 discriminator 3
+ 383 000e 1C2C     		cmp	r4, #28
+ 384 0010 F9D1     		bne	.L38
+ 509:Generated_Source\PSoC4/Comm.c ****         }
+ 510:Generated_Source\PSoC4/Comm.c **** 
+ 511:Generated_Source\PSoC4/Comm.c ****         if ((Comm_SCB_MODE_I2C   == mode) ||
+ 385              		.loc 1 511 0
+ 386 0012 0128     		cmp	r0, #1
+ 387 0014 01D0     		beq	.L39
+ 388              		.loc 1 511 0 is_stmt 0 discriminator 1
+ 389 0016 0828     		cmp	r0, #8
+ 390 0018 06D1     		bne	.L40
+ 391              	.L39:
+ 392              	.LVL24:
+ 512:Generated_Source\PSoC4/Comm.c ****             (Comm_SCB_MODE_EZI2C == mode))
+ 513:Generated_Source\PSoC4/Comm.c ****         {
+ 514:Generated_Source\PSoC4/Comm.c ****         #if (Comm_RX_SCL_MOSI_PIN)
+ 515:Generated_Source\PSoC4/Comm.c ****             hsiomSel[Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_RX_SCL_MOSI_HSIOM_SEL_I2C;
+ 516:Generated_Source\PSoC4/Comm.c ****             pinsDm  [Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_PIN_DM_OD_LO;
+ 393              		.loc 1 516 0 is_stmt 1
+ 394 001a 0423     		mov	r3, #4
+ 517:Generated_Source\PSoC4/Comm.c ****         #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 518:Generated_Source\PSoC4/Comm.c ****             hsiomSel[Comm_RX_WAKE_SCL_MOSI_PIN_INDEX] = Comm_RX_WAKE_SCL_MOSI_HSIOM_SEL_I2C;
+ 519:Generated_Source\PSoC4/Comm.c ****             pinsDm  [Comm_RX_WAKE_SCL_MOSI_PIN_INDEX] = Comm_PIN_DM_OD_LO;
+ 520:Generated_Source\PSoC4/Comm.c ****         #else
+ 521:Generated_Source\PSoC4/Comm.c ****         #endif /* (Comm_RX_SCL_MOSI_PIN) */
+ 522:Generated_Source\PSoC4/Comm.c ****         
+ 523:Generated_Source\PSoC4/Comm.c ****         #if (Comm_TX_SDA_MISO_PIN)
+ 524:Generated_Source\PSoC4/Comm.c ****             hsiomSel[Comm_TX_SDA_MISO_PIN_INDEX] = Comm_TX_SDA_MISO_HSIOM_SEL_I2C;
+ 395              		.loc 1 524 0
+ 396 001c 0E24     		mov	r4, #14
+ 516:Generated_Source\PSoC4/Comm.c ****         #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 397              		.loc 1 516 0
+ 398 001e 0193     		str	r3, [sp, #4]
+ 399              	.LVL25:
+ 525:Generated_Source\PSoC4/Comm.c ****             pinsDm  [Comm_TX_SDA_MISO_PIN_INDEX] = Comm_PIN_DM_OD_LO;
+ 400              		.loc 1 525 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 18
+
+
+ 401 0020 7360     		str	r3, [r6, #4]
+ 515:Generated_Source\PSoC4/Comm.c ****             pinsDm  [Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_PIN_DM_OD_LO;
+ 402              		.loc 1 515 0
+ 403 0022 231C     		mov	r3, r4
+ 404              	.LVL26:
+ 405              	.L56:
+ 484:Generated_Source\PSoC4/Comm.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+ 406              		.loc 1 484 0
+ 407 0024 0025     		mov	r5, #0
+ 408              		.loc 1 525 0
+ 409 0026 23E0     		b	.L41
+ 410              	.LVL27:
+ 411              	.L40:
+ 412 0028 0125     		mov	r5, #1
+ 526:Generated_Source\PSoC4/Comm.c ****         #endif /* (Comm_TX_SDA_MISO_PIN) */
+ 527:Generated_Source\PSoC4/Comm.c ****         }
+ 528:Generated_Source\PSoC4/Comm.c ****     #if (!Comm_CY_SCBIP_V1)
+ 529:Generated_Source\PSoC4/Comm.c ****         else if (Comm_SCB_MODE_SPI == mode)
+ 413              		.loc 1 529 0
+ 414 002a 0228     		cmp	r0, #2
+ 415 002c 0DD1     		bne	.L42
+ 416              	.LVL28:
+ 417 002e 0623     		mov	r3, #6
+ 530:Generated_Source\PSoC4/Comm.c ****         {
+ 531:Generated_Source\PSoC4/Comm.c ****         #if (Comm_RX_SCL_MOSI_PIN)
+ 532:Generated_Source\PSoC4/Comm.c ****             hsiomSel[Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_RX_SCL_MOSI_HSIOM_SEL_SPI;
+ 533:Generated_Source\PSoC4/Comm.c ****         #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 534:Generated_Source\PSoC4/Comm.c ****             hsiomSel[Comm_RX_WAKE_SCL_MOSI_PIN_INDEX] = Comm_RX_WAKE_SCL_MOSI_HSIOM_SEL_SPI;
+ 535:Generated_Source\PSoC4/Comm.c ****         #else
+ 536:Generated_Source\PSoC4/Comm.c ****         #endif /* (Comm_RX_SCL_MOSI_PIN) */
+ 537:Generated_Source\PSoC4/Comm.c ****         
+ 538:Generated_Source\PSoC4/Comm.c ****         #if (Comm_TX_SDA_MISO_PIN)
+ 539:Generated_Source\PSoC4/Comm.c ****             hsiomSel[Comm_TX_SDA_MISO_PIN_INDEX] = Comm_TX_SDA_MISO_HSIOM_SEL_SPI;
+ 540:Generated_Source\PSoC4/Comm.c ****         #endif /* (Comm_TX_SDA_MISO_PIN) */
+ 541:Generated_Source\PSoC4/Comm.c ****         
+ 542:Generated_Source\PSoC4/Comm.c ****         #if (Comm_SCLK_PIN)
+ 543:Generated_Source\PSoC4/Comm.c ****             hsiomSel[Comm_SCLK_PIN_INDEX] = Comm_SCLK_HSIOM_SEL_SPI;
+ 544:Generated_Source\PSoC4/Comm.c ****         #endif /* (Comm_SCLK_PIN) */
+ 545:Generated_Source\PSoC4/Comm.c **** 
+ 546:Generated_Source\PSoC4/Comm.c ****             if (Comm_SPI_SLAVE == subMode)
+ 418              		.loc 1 546 0
+ 419 0030 0029     		cmp	r1, #0
+ 420 0032 05D1     		bne	.L43
+ 539:Generated_Source\PSoC4/Comm.c ****         #endif /* (Comm_TX_SDA_MISO_PIN) */
+ 421              		.loc 1 539 0
+ 422 0034 0F24     		mov	r4, #15
+ 547:Generated_Source\PSoC4/Comm.c ****             {
+ 548:Generated_Source\PSoC4/Comm.c ****                 /* Slave */
+ 549:Generated_Source\PSoC4/Comm.c ****                 pinsDm[Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_PIN_DM_DIG_HIZ;
+ 423              		.loc 1 549 0
+ 424 0036 3560     		str	r5, [r6]
+ 550:Generated_Source\PSoC4/Comm.c ****                 pinsDm[Comm_TX_SDA_MISO_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 425              		.loc 1 550 0
+ 426 0038 7360     		str	r3, [r6, #4]
+ 427              	.LVL29:
+ 551:Generated_Source\PSoC4/Comm.c ****                 pinsDm[Comm_SCLK_PIN_INDEX] = Comm_PIN_DM_DIG_HIZ;
+ 552:Generated_Source\PSoC4/Comm.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 19
+
+
+ 553:Generated_Source\PSoC4/Comm.c ****             #if (Comm_SS0_PIN)
+ 554:Generated_Source\PSoC4/Comm.c ****                 /* Only SS0 is valid choice for Slave */
+ 555:Generated_Source\PSoC4/Comm.c ****                 hsiomSel[Comm_SS0_PIN_INDEX] = Comm_SS0_HSIOM_SEL_SPI;
+ 556:Generated_Source\PSoC4/Comm.c ****                 pinsDm  [Comm_SS0_PIN_INDEX] = Comm_PIN_DM_DIG_HIZ;
+ 557:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_SS0_PIN) */
+ 558:Generated_Source\PSoC4/Comm.c **** 
+ 559:Generated_Source\PSoC4/Comm.c ****             #if (Comm_TX_SDA_MISO_PIN)
+ 560:Generated_Source\PSoC4/Comm.c ****                 /* Disable input buffer */
+ 561:Generated_Source\PSoC4/Comm.c ****                  pinsInBuf |= Comm_TX_SDA_MISO_PIN_MASK;
+ 428              		.loc 1 561 0
+ 429 003a 051C     		mov	r5, r0
+ 532:Generated_Source\PSoC4/Comm.c ****         #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 430              		.loc 1 532 0
+ 431 003c 231C     		mov	r3, r4
+ 432 003e 17E0     		b	.L41
+ 433              	.LVL30:
+ 434              	.L43:
+ 539:Generated_Source\PSoC4/Comm.c ****         #endif /* (Comm_TX_SDA_MISO_PIN) */
+ 435              		.loc 1 539 0
+ 436 0040 0F24     		mov	r4, #15
+ 562:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_TX_SDA_MISO_PIN) */
+ 563:Generated_Source\PSoC4/Comm.c ****             }
+ 564:Generated_Source\PSoC4/Comm.c ****             else 
+ 565:Generated_Source\PSoC4/Comm.c ****             {
+ 566:Generated_Source\PSoC4/Comm.c ****                 /* (Master) */
+ 567:Generated_Source\PSoC4/Comm.c ****                 pinsDm[Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 437              		.loc 1 567 0
+ 438 0042 3360     		str	r3, [r6]
+ 568:Generated_Source\PSoC4/Comm.c ****                 pinsDm[Comm_TX_SDA_MISO_PIN_INDEX] = Comm_PIN_DM_DIG_HIZ;
+ 439              		.loc 1 568 0
+ 440 0044 7560     		str	r5, [r6, #4]
+ 441              	.LVL31:
+ 532:Generated_Source\PSoC4/Comm.c ****         #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 442              		.loc 1 532 0
+ 443 0046 231C     		mov	r3, r4
+ 444 0048 12E0     		b	.L41
+ 445              	.LVL32:
+ 446              	.L42:
+ 569:Generated_Source\PSoC4/Comm.c ****                 pinsDm[Comm_SCLK_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 570:Generated_Source\PSoC4/Comm.c **** 
+ 571:Generated_Source\PSoC4/Comm.c ****             #if (Comm_SS0_PIN)
+ 572:Generated_Source\PSoC4/Comm.c ****                 hsiomSel [Comm_SS0_PIN_INDEX] = Comm_SS0_HSIOM_SEL_SPI;
+ 573:Generated_Source\PSoC4/Comm.c ****                 pinsDm   [Comm_SS0_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 574:Generated_Source\PSoC4/Comm.c ****                 pinsInBuf |= Comm_SS0_PIN_MASK;
+ 575:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_SS0_PIN) */
+ 576:Generated_Source\PSoC4/Comm.c **** 
+ 577:Generated_Source\PSoC4/Comm.c ****             #if (Comm_SS1_PIN)
+ 578:Generated_Source\PSoC4/Comm.c ****                 hsiomSel [Comm_SS1_PIN_INDEX] = Comm_SS1_HSIOM_SEL_SPI;
+ 579:Generated_Source\PSoC4/Comm.c ****                 pinsDm   [Comm_SS1_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 580:Generated_Source\PSoC4/Comm.c ****                 pinsInBuf |= Comm_SS1_PIN_MASK;
+ 581:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_SS1_PIN) */
+ 582:Generated_Source\PSoC4/Comm.c **** 
+ 583:Generated_Source\PSoC4/Comm.c ****             #if (Comm_SS2_PIN)
+ 584:Generated_Source\PSoC4/Comm.c ****                 hsiomSel [Comm_SS2_PIN_INDEX] = Comm_SS2_HSIOM_SEL_SPI;
+ 585:Generated_Source\PSoC4/Comm.c ****                 pinsDm   [Comm_SS2_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 586:Generated_Source\PSoC4/Comm.c ****                 pinsInBuf |= Comm_SS2_PIN_MASK;
+ 587:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_SS2_PIN) */
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 20
+
+
+ 588:Generated_Source\PSoC4/Comm.c **** 
+ 589:Generated_Source\PSoC4/Comm.c ****             #if (Comm_SS3_PIN)
+ 590:Generated_Source\PSoC4/Comm.c ****                 hsiomSel [Comm_SS3_PIN_INDEX] = Comm_SS3_HSIOM_SEL_SPI;
+ 591:Generated_Source\PSoC4/Comm.c ****                 pinsDm   [Comm_SS3_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 592:Generated_Source\PSoC4/Comm.c ****                 pinsInBuf |= Comm_SS3_PIN_MASK;
+ 593:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_SS3_PIN) */
+ 594:Generated_Source\PSoC4/Comm.c **** 
+ 595:Generated_Source\PSoC4/Comm.c ****                 /* Disable input buffers */
+ 596:Generated_Source\PSoC4/Comm.c ****             #if (Comm_RX_SCL_MOSI_PIN)
+ 597:Generated_Source\PSoC4/Comm.c ****                 pinsInBuf |= Comm_RX_SCL_MOSI_PIN_MASK;
+ 598:Generated_Source\PSoC4/Comm.c ****             #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 599:Generated_Source\PSoC4/Comm.c ****                 pinsInBuf |= Comm_RX_WAKE_SCL_MOSI_PIN_MASK;
+ 600:Generated_Source\PSoC4/Comm.c ****             #else
+ 601:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_RX_SCL_MOSI_PIN) */
+ 602:Generated_Source\PSoC4/Comm.c **** 
+ 603:Generated_Source\PSoC4/Comm.c ****             #if (Comm_SCLK_PIN)
+ 604:Generated_Source\PSoC4/Comm.c ****                 pinsInBuf |= Comm_SCLK_PIN_MASK;
+ 605:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_SCLK_PIN) */
+ 606:Generated_Source\PSoC4/Comm.c ****             }
+ 607:Generated_Source\PSoC4/Comm.c ****         }
+ 608:Generated_Source\PSoC4/Comm.c ****         else /* UART */
+ 609:Generated_Source\PSoC4/Comm.c ****         {
+ 610:Generated_Source\PSoC4/Comm.c ****             if (Comm_UART_MODE_SMARTCARD == subMode)
+ 447              		.loc 1 610 0
+ 448 004a 0129     		cmp	r1, #1
+ 449 004c 03D1     		bne	.L44
+ 450              	.LVL33:
+ 611:Generated_Source\PSoC4/Comm.c ****             {
+ 612:Generated_Source\PSoC4/Comm.c ****                 /* SmartCard */
+ 613:Generated_Source\PSoC4/Comm.c ****             #if (Comm_TX_SDA_MISO_PIN)
+ 614:Generated_Source\PSoC4/Comm.c ****                 hsiomSel[Comm_TX_SDA_MISO_PIN_INDEX] = Comm_TX_SDA_MISO_HSIOM_SEL_UART;
+ 615:Generated_Source\PSoC4/Comm.c ****                 pinsDm  [Comm_TX_SDA_MISO_PIN_INDEX] = Comm_PIN_DM_OD_LO;
+ 451              		.loc 1 615 0
+ 452 004e 0422     		mov	r2, #4
+ 453              	.LVL34:
+ 614:Generated_Source\PSoC4/Comm.c ****                 pinsDm  [Comm_TX_SDA_MISO_PIN_INDEX] = Comm_PIN_DM_OD_LO;
+ 454              		.loc 1 614 0
+ 455 0050 0924     		mov	r4, #9
+ 456              		.loc 1 615 0
+ 457 0052 7260     		str	r2, [r6, #4]
+ 458 0054 E6E7     		b	.L56
+ 459              	.LVL35:
+ 460              	.L44:
+ 616:Generated_Source\PSoC4/Comm.c ****             #endif /* (Comm_TX_SDA_MISO_PIN) */
+ 617:Generated_Source\PSoC4/Comm.c ****             }
+ 618:Generated_Source\PSoC4/Comm.c ****             else /* Standard or IrDA */
+ 619:Generated_Source\PSoC4/Comm.c ****             {
+ 620:Generated_Source\PSoC4/Comm.c ****                 if (0u != (Comm_UART_RX_PIN_ENABLE & uartEnableMask))
+ 461              		.loc 1 620 0
+ 462 0056 2A42     		tst	r2, r5
+ 463 0058 01D0     		beq	.L45
+ 464              	.LVL36:
+ 621:Generated_Source\PSoC4/Comm.c ****                 {
+ 622:Generated_Source\PSoC4/Comm.c ****                 #if (Comm_RX_SCL_MOSI_PIN)
+ 623:Generated_Source\PSoC4/Comm.c ****                     hsiomSel[Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_RX_SCL_MOSI_HSIOM_SEL_UART;
+ 465              		.loc 1 623 0
+ 466 005a 0923     		mov	r3, #9
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 21
+
+
+ 624:Generated_Source\PSoC4/Comm.c ****                     pinsDm  [Comm_RX_SCL_MOSI_PIN_INDEX] = Comm_PIN_DM_DIG_HIZ;
+ 467              		.loc 1 624 0
+ 468 005c 3560     		str	r5, [r6]
+ 469              	.LVL37:
+ 470              	.L45:
+ 625:Generated_Source\PSoC4/Comm.c ****                 #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 626:Generated_Source\PSoC4/Comm.c ****                     hsiomSel[Comm_RX_WAKE_SCL_MOSI_PIN_INDEX] = Comm_RX_WAKE_SCL_MOSI_HSIOM_SEL_UAR
+ 627:Generated_Source\PSoC4/Comm.c ****                     pinsDm  [Comm_RX_WAKE_SCL_MOSI_PIN_INDEX] = Comm_PIN_DM_DIG_HIZ;
+ 628:Generated_Source\PSoC4/Comm.c ****                 #else
+ 629:Generated_Source\PSoC4/Comm.c ****                 #endif /* (Comm_RX_SCL_MOSI_PIN) */
+ 630:Generated_Source\PSoC4/Comm.c ****                 }
+ 631:Generated_Source\PSoC4/Comm.c **** 
+ 632:Generated_Source\PSoC4/Comm.c ****                 if (0u != (Comm_UART_TX_PIN_ENABLE & uartEnableMask))
+ 471              		.loc 1 632 0
+ 472 005e 0225     		mov	r5, #2
+ 473 0060 2A40     		and	r2, r5
+ 474              	.LVL38:
+ 475 0062 141E     		sub	r4, r2, #0
+ 476 0064 03D0     		beq	.L51
+ 477              	.LVL39:
+ 633:Generated_Source\PSoC4/Comm.c ****                 {
+ 634:Generated_Source\PSoC4/Comm.c ****                 #if (Comm_TX_SDA_MISO_PIN)
+ 635:Generated_Source\PSoC4/Comm.c ****                     hsiomSel[Comm_TX_SDA_MISO_PIN_INDEX] = Comm_TX_SDA_MISO_HSIOM_SEL_UART;
+ 636:Generated_Source\PSoC4/Comm.c ****                     pinsDm  [Comm_TX_SDA_MISO_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 478              		.loc 1 636 0
+ 479 0066 0622     		mov	r2, #6
+ 635:Generated_Source\PSoC4/Comm.c ****                     pinsDm  [Comm_TX_SDA_MISO_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 480              		.loc 1 635 0
+ 481 0068 0924     		mov	r4, #9
+ 482              		.loc 1 636 0
+ 483 006a 7260     		str	r2, [r6, #4]
+ 484              	.LVL40:
+ 485 006c 00E0     		b	.L41
+ 486              	.LVL41:
+ 487              	.L51:
+ 484:Generated_Source\PSoC4/Comm.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+ 488              		.loc 1 484 0
+ 489 006e 151C     		mov	r5, r2
+ 490              	.LVL42:
+ 491              	.L41:
+ 637:Generated_Source\PSoC4/Comm.c ****                     
+ 638:Generated_Source\PSoC4/Comm.c ****                     /* Disable input buffer */
+ 639:Generated_Source\PSoC4/Comm.c ****                     pinsInBuf |= Comm_TX_SDA_MISO_PIN_MASK;
+ 640:Generated_Source\PSoC4/Comm.c ****                 #endif /* (Comm_TX_SDA_MISO_PIN) */
+ 641:Generated_Source\PSoC4/Comm.c ****                 }
+ 642:Generated_Source\PSoC4/Comm.c **** 
+ 643:Generated_Source\PSoC4/Comm.c ****             #if !(Comm_CY_SCBIP_V0 || Comm_CY_SCBIP_V1)
+ 644:Generated_Source\PSoC4/Comm.c ****                 if (Comm_UART_MODE_STD == subMode)
+ 645:Generated_Source\PSoC4/Comm.c ****                 {
+ 646:Generated_Source\PSoC4/Comm.c ****                     if (0u != (Comm_UART_CTS_PIN_ENABLE & uartEnableMask))
+ 647:Generated_Source\PSoC4/Comm.c ****                     {
+ 648:Generated_Source\PSoC4/Comm.c ****                         /* CTS input is multiplexed with SCLK */
+ 649:Generated_Source\PSoC4/Comm.c ****                     #if (Comm_SCLK_PIN)
+ 650:Generated_Source\PSoC4/Comm.c ****                         hsiomSel[Comm_SCLK_PIN_INDEX] = Comm_SCLK_HSIOM_SEL_UART;
+ 651:Generated_Source\PSoC4/Comm.c ****                         pinsDm  [Comm_SCLK_PIN_INDEX] = Comm_PIN_DM_DIG_HIZ;
+ 652:Generated_Source\PSoC4/Comm.c ****                     #endif /* (Comm_SCLK_PIN) */
+ 653:Generated_Source\PSoC4/Comm.c ****                     }
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 22
+
+
+ 654:Generated_Source\PSoC4/Comm.c **** 
+ 655:Generated_Source\PSoC4/Comm.c ****                     if (0u != (Comm_UART_RTS_PIN_ENABLE & uartEnableMask))
+ 656:Generated_Source\PSoC4/Comm.c ****                     {
+ 657:Generated_Source\PSoC4/Comm.c ****                         /* RTS output is multiplexed with SS0 */
+ 658:Generated_Source\PSoC4/Comm.c ****                     #if (Comm_SS0_PIN)
+ 659:Generated_Source\PSoC4/Comm.c ****                         hsiomSel[Comm_SS0_PIN_INDEX] = Comm_SS0_HSIOM_SEL_UART;
+ 660:Generated_Source\PSoC4/Comm.c ****                         pinsDm  [Comm_SS0_PIN_INDEX] = Comm_PIN_DM_STRONG;
+ 661:Generated_Source\PSoC4/Comm.c ****                         
+ 662:Generated_Source\PSoC4/Comm.c ****                         /* Disable input buffer */
+ 663:Generated_Source\PSoC4/Comm.c ****                         pinsInBuf |= Comm_SS0_PIN_MASK;
+ 664:Generated_Source\PSoC4/Comm.c ****                     #endif /* (Comm_SS0_PIN) */
+ 665:Generated_Source\PSoC4/Comm.c ****                     }
+ 666:Generated_Source\PSoC4/Comm.c ****                 }
+ 667:Generated_Source\PSoC4/Comm.c ****             #endif /* !(Comm_CY_SCBIP_V0 || Comm_CY_SCBIP_V1) */
+ 668:Generated_Source\PSoC4/Comm.c ****             }
+ 669:Generated_Source\PSoC4/Comm.c ****         }
+ 670:Generated_Source\PSoC4/Comm.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+ 671:Generated_Source\PSoC4/Comm.c **** 
+ 672:Generated_Source\PSoC4/Comm.c ****     /* Configure pins: set HSIOM, DM and InputBufEnable */
+ 673:Generated_Source\PSoC4/Comm.c ****     /* Note: the DR register settings do not effect the pin output if HSIOM is other than GPIO */
+ 674:Generated_Source\PSoC4/Comm.c **** 
+ 675:Generated_Source\PSoC4/Comm.c ****     #if (Comm_RX_SCL_MOSI_PIN)
+ 676:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_RX_SCL_MOSI_HSIOM_REG,
+ 492              		.loc 1 676 0
+ 493 0070 0F21     		mov	r1, #15
+ 494              	.LVL43:
+ 495 0072 144F     		ldr	r7, .L57
+ 496 0074 3A68     		ldr	r2, [r7]
+ 497 0076 8A43     		bic	r2, r1
+ 498 0078 1343     		orr	r3, r2
+ 499 007a 3B60     		str	r3, [r7]
+ 677:Generated_Source\PSoC4/Comm.c ****                                        Comm_RX_SCL_MOSI_HSIOM_MASK,
+ 678:Generated_Source\PSoC4/Comm.c ****                                        Comm_RX_SCL_MOSI_HSIOM_POS,
+ 679:Generated_Source\PSoC4/Comm.c ****                                         hsiomSel[Comm_RX_SCL_MOSI_PIN_INDEX]);
+ 680:Generated_Source\PSoC4/Comm.c **** 
+ 681:Generated_Source\PSoC4/Comm.c ****         Comm_uart_rx_i2c_scl_spi_mosi_SetDriveMode((uint8) pinsDm[Comm_RX_SCL_MOSI_PIN_INDEX]);
+ 500              		.loc 1 681 0
+ 501 007c 019B     		ldr	r3, [sp, #4]
+ 502 007e D8B2     		uxtb	r0, r3
+ 503              	.LVL44:
+ 504 0080 FFF7FEFF 		bl	Comm_uart_rx_i2c_scl_spi_mosi_SetDriveMode
+ 505              	.LVL45:
+ 682:Generated_Source\PSoC4/Comm.c **** 
+ 683:Generated_Source\PSoC4/Comm.c ****         #if (!Comm_CY_SCBIP_V1)
+ 684:Generated_Source\PSoC4/Comm.c ****             Comm_SET_INP_DIS(Comm_uart_rx_i2c_scl_spi_mosi_INP_DIS,
+ 506              		.loc 1 684 0
+ 507 0084 0121     		mov	r1, #1
+ 508 0086 3B1C     		mov	r3, r7
+ 509 0088 0F4F     		ldr	r7, .L57+4
+ 510 008a 3A68     		ldr	r2, [r7]
+ 511 008c 0D42     		tst	r5, r1
+ 512 008e 02D0     		beq	.L46
+ 513              		.loc 1 684 0 is_stmt 0 discriminator 1
+ 514 0090 1143     		orr	r1, r2
+ 515 0092 3960     		str	r1, [r7]
+ 516 0094 01E0     		b	.L47
+ 517              	.L46:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 23
+
+
+ 518              		.loc 1 684 0 discriminator 2
+ 519 0096 8A43     		bic	r2, r1
+ 520 0098 3A60     		str	r2, [r7]
+ 521              	.L47:
+ 685:Generated_Source\PSoC4/Comm.c ****                                          Comm_uart_rx_i2c_scl_spi_mosi_MASK,
+ 686:Generated_Source\PSoC4/Comm.c ****                                          (0u != (pinsInBuf & Comm_RX_SCL_MOSI_PIN_MASK)));
+ 687:Generated_Source\PSoC4/Comm.c ****         #endif /* (!Comm_CY_SCBIP_V1) */
+ 688:Generated_Source\PSoC4/Comm.c ****     
+ 689:Generated_Source\PSoC4/Comm.c ****     #elif (Comm_RX_WAKE_SCL_MOSI_PIN)
+ 690:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_RX_WAKE_SCL_MOSI_HSIOM_REG,
+ 691:Generated_Source\PSoC4/Comm.c ****                                        Comm_RX_WAKE_SCL_MOSI_HSIOM_MASK,
+ 692:Generated_Source\PSoC4/Comm.c ****                                        Comm_RX_WAKE_SCL_MOSI_HSIOM_POS,
+ 693:Generated_Source\PSoC4/Comm.c ****                                        hsiomSel[Comm_RX_WAKE_SCL_MOSI_PIN_INDEX]);
+ 694:Generated_Source\PSoC4/Comm.c **** 
+ 695:Generated_Source\PSoC4/Comm.c ****         Comm_uart_rx_wake_i2c_scl_spi_mosi_SetDriveMode((uint8)
+ 696:Generated_Source\PSoC4/Comm.c ****                                                                pinsDm[Comm_RX_WAKE_SCL_MOSI_PIN_IND
+ 697:Generated_Source\PSoC4/Comm.c **** 
+ 698:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INP_DIS(Comm_uart_rx_wake_i2c_scl_spi_mosi_INP_DIS,
+ 699:Generated_Source\PSoC4/Comm.c ****                                      Comm_uart_rx_wake_i2c_scl_spi_mosi_MASK,
+ 700:Generated_Source\PSoC4/Comm.c ****                                      (0u != (pinsInBuf & Comm_RX_WAKE_SCL_MOSI_PIN_MASK)));
+ 701:Generated_Source\PSoC4/Comm.c **** 
+ 702:Generated_Source\PSoC4/Comm.c ****          /* Set interrupt on falling edge */
+ 703:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INCFG_TYPE(Comm_RX_WAKE_SCL_MOSI_INTCFG_REG,
+ 704:Generated_Source\PSoC4/Comm.c ****                                         Comm_RX_WAKE_SCL_MOSI_INTCFG_TYPE_MASK,
+ 705:Generated_Source\PSoC4/Comm.c ****                                         Comm_RX_WAKE_SCL_MOSI_INTCFG_TYPE_POS,
+ 706:Generated_Source\PSoC4/Comm.c ****                                         Comm_INTCFG_TYPE_FALLING_EDGE);
+ 707:Generated_Source\PSoC4/Comm.c ****     #else
+ 708:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_RX_WAKE_SCL_MOSI_PIN) */
+ 709:Generated_Source\PSoC4/Comm.c **** 
+ 710:Generated_Source\PSoC4/Comm.c ****     #if (Comm_TX_SDA_MISO_PIN)
+ 711:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_TX_SDA_MISO_HSIOM_REG,
+ 522              		.loc 1 711 0 is_stmt 1
+ 523 009a F021     		mov	r1, #240
+ 524 009c 1A68     		ldr	r2, [r3]
+ 525 009e 2401     		lsl	r4, r4, #4
+ 526              	.LVL46:
+ 527 00a0 8A43     		bic	r2, r1
+ 528 00a2 1443     		orr	r4, r2
+ 529 00a4 1C60     		str	r4, [r3]
+ 712:Generated_Source\PSoC4/Comm.c ****                                        Comm_TX_SDA_MISO_HSIOM_MASK,
+ 713:Generated_Source\PSoC4/Comm.c ****                                        Comm_TX_SDA_MISO_HSIOM_POS,
+ 714:Generated_Source\PSoC4/Comm.c ****                                         hsiomSel[Comm_TX_SDA_MISO_PIN_INDEX]);
+ 715:Generated_Source\PSoC4/Comm.c **** 
+ 716:Generated_Source\PSoC4/Comm.c ****         Comm_uart_tx_i2c_sda_spi_miso_SetDriveMode((uint8) pinsDm[Comm_TX_SDA_MISO_PIN_INDEX]);
+ 530              		.loc 1 716 0
+ 531 00a6 7068     		ldr	r0, [r6, #4]
+ 532 00a8 C0B2     		uxtb	r0, r0
+ 533 00aa FFF7FEFF 		bl	Comm_uart_tx_i2c_sda_spi_miso_SetDriveMode
+ 534              	.LVL47:
+ 717:Generated_Source\PSoC4/Comm.c **** 
+ 718:Generated_Source\PSoC4/Comm.c ****     #if (!Comm_CY_SCBIP_V1)
+ 719:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INP_DIS(Comm_uart_tx_i2c_sda_spi_miso_INP_DIS,
+ 535              		.loc 1 719 0
+ 536 00ae 0222     		mov	r2, #2
+ 537 00b0 3B68     		ldr	r3, [r7]
+ 538 00b2 1542     		tst	r5, r2
+ 539 00b4 02D0     		beq	.L48
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 24
+
+
+ 540              		.loc 1 719 0 is_stmt 0 discriminator 1
+ 541 00b6 1A43     		orr	r2, r3
+ 542 00b8 3A60     		str	r2, [r7]
+ 543 00ba 01E0     		b	.L37
+ 544              	.L48:
+ 545              		.loc 1 719 0 discriminator 2
+ 546 00bc 9343     		bic	r3, r2
+ 547 00be 3B60     		str	r3, [r7]
+ 548              	.L37:
+ 720:Generated_Source\PSoC4/Comm.c ****                                      Comm_uart_tx_i2c_sda_spi_miso_MASK,
+ 721:Generated_Source\PSoC4/Comm.c ****                                     (0u != (pinsInBuf & Comm_TX_SDA_MISO_PIN_MASK)));
+ 722:Generated_Source\PSoC4/Comm.c ****     #endif /* (!Comm_CY_SCBIP_V1) */
+ 723:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_RX_SCL_MOSI_PIN) */
+ 724:Generated_Source\PSoC4/Comm.c **** 
+ 725:Generated_Source\PSoC4/Comm.c ****     #if (Comm_SCLK_PIN)
+ 726:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_SCLK_HSIOM_REG,
+ 727:Generated_Source\PSoC4/Comm.c ****                                        Comm_SCLK_HSIOM_MASK,
+ 728:Generated_Source\PSoC4/Comm.c ****                                        Comm_SCLK_HSIOM_POS,
+ 729:Generated_Source\PSoC4/Comm.c ****                                        hsiomSel[Comm_SCLK_PIN_INDEX]);
+ 730:Generated_Source\PSoC4/Comm.c **** 
+ 731:Generated_Source\PSoC4/Comm.c ****         Comm_spi_sclk_SetDriveMode((uint8) pinsDm[Comm_SCLK_PIN_INDEX]);
+ 732:Generated_Source\PSoC4/Comm.c **** 
+ 733:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INP_DIS(Comm_spi_sclk_INP_DIS,
+ 734:Generated_Source\PSoC4/Comm.c ****                                      Comm_spi_sclk_MASK,
+ 735:Generated_Source\PSoC4/Comm.c ****                                      (0u != (pinsInBuf & Comm_SCLK_PIN_MASK)));
+ 736:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_SCLK_PIN) */
+ 737:Generated_Source\PSoC4/Comm.c **** 
+ 738:Generated_Source\PSoC4/Comm.c ****     #if (Comm_SS0_PIN)
+ 739:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_SS0_HSIOM_REG,
+ 740:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS0_HSIOM_MASK,
+ 741:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS0_HSIOM_POS,
+ 742:Generated_Source\PSoC4/Comm.c ****                                        hsiomSel[Comm_SS0_PIN_INDEX]);
+ 743:Generated_Source\PSoC4/Comm.c **** 
+ 744:Generated_Source\PSoC4/Comm.c ****         Comm_spi_ss0_SetDriveMode((uint8) pinsDm[Comm_SS0_PIN_INDEX]);
+ 745:Generated_Source\PSoC4/Comm.c **** 
+ 746:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INP_DIS(Comm_spi_ss0_INP_DIS,
+ 747:Generated_Source\PSoC4/Comm.c ****                                      Comm_spi_ss0_MASK,
+ 748:Generated_Source\PSoC4/Comm.c ****                                      (0u != (pinsInBuf & Comm_SS0_PIN_MASK)));
+ 749:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_SS0_PIN) */
+ 750:Generated_Source\PSoC4/Comm.c **** 
+ 751:Generated_Source\PSoC4/Comm.c ****     #if (Comm_SS1_PIN)
+ 752:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_SS1_HSIOM_REG,
+ 753:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS1_HSIOM_MASK,
+ 754:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS1_HSIOM_POS,
+ 755:Generated_Source\PSoC4/Comm.c ****                                        hsiomSel[Comm_SS1_PIN_INDEX]);
+ 756:Generated_Source\PSoC4/Comm.c **** 
+ 757:Generated_Source\PSoC4/Comm.c ****         Comm_spi_ss1_SetDriveMode((uint8) pinsDm[Comm_SS1_PIN_INDEX]);
+ 758:Generated_Source\PSoC4/Comm.c **** 
+ 759:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INP_DIS(Comm_spi_ss1_INP_DIS,
+ 760:Generated_Source\PSoC4/Comm.c ****                                      Comm_spi_ss1_MASK,
+ 761:Generated_Source\PSoC4/Comm.c ****                                      (0u != (pinsInBuf & Comm_SS1_PIN_MASK)));
+ 762:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_SS1_PIN) */
+ 763:Generated_Source\PSoC4/Comm.c **** 
+ 764:Generated_Source\PSoC4/Comm.c ****     #if (Comm_SS2_PIN)
+ 765:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_SS2_HSIOM_REG,
+ 766:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS2_HSIOM_MASK,
+ 767:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS2_HSIOM_POS,
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 25
+
+
+ 768:Generated_Source\PSoC4/Comm.c ****                                        hsiomSel[Comm_SS2_PIN_INDEX]);
+ 769:Generated_Source\PSoC4/Comm.c **** 
+ 770:Generated_Source\PSoC4/Comm.c ****         Comm_spi_ss2_SetDriveMode((uint8) pinsDm[Comm_SS2_PIN_INDEX]);
+ 771:Generated_Source\PSoC4/Comm.c **** 
+ 772:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INP_DIS(Comm_spi_ss2_INP_DIS,
+ 773:Generated_Source\PSoC4/Comm.c ****                                      Comm_spi_ss2_MASK,
+ 774:Generated_Source\PSoC4/Comm.c ****                                      (0u != (pinsInBuf & Comm_SS2_PIN_MASK)));
+ 775:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_SS2_PIN) */
+ 776:Generated_Source\PSoC4/Comm.c **** 
+ 777:Generated_Source\PSoC4/Comm.c ****     #if (Comm_SS3_PIN)
+ 778:Generated_Source\PSoC4/Comm.c ****         Comm_SET_HSIOM_SEL(Comm_SS3_HSIOM_REG,
+ 779:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS3_HSIOM_MASK,
+ 780:Generated_Source\PSoC4/Comm.c ****                                        Comm_SS3_HSIOM_POS,
+ 781:Generated_Source\PSoC4/Comm.c ****                                        hsiomSel[Comm_SS3_PIN_INDEX]);
+ 782:Generated_Source\PSoC4/Comm.c **** 
+ 783:Generated_Source\PSoC4/Comm.c ****         Comm_spi_ss3_SetDriveMode((uint8) pinsDm[Comm_SS3_PIN_INDEX]);
+ 784:Generated_Source\PSoC4/Comm.c **** 
+ 785:Generated_Source\PSoC4/Comm.c ****         Comm_SET_INP_DIS(Comm_spi_ss3_INP_DIS,
+ 786:Generated_Source\PSoC4/Comm.c ****                                      Comm_spi_ss3_MASK,
+ 787:Generated_Source\PSoC4/Comm.c ****                                      (0u != (pinsInBuf & Comm_SS3_PIN_MASK)));
+ 788:Generated_Source\PSoC4/Comm.c ****     #endif /* (Comm_SS3_PIN) */
+ 789:Generated_Source\PSoC4/Comm.c ****     }
+ 549              		.loc 1 789 0 is_stmt 1
+ 550 00c0 09B0     		add	sp, sp, #36
+ 551              		@ sp needed
+ 552              	.LVL48:
+ 553 00c2 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 554              	.L58:
+ 555              		.align	2
+ 556              	.L57:
+ 557 00c4 10000140 		.word	1073807376
+ 558 00c8 18040440 		.word	1074005016
+ 559              		.cfi_endproc
+ 560              	.LFE10:
+ 561              		.size	Comm_SetPins, .-Comm_SetPins
+ 562              		.section	.text.Comm_I2CSlaveNackGeneration,"ax",%progbits
+ 563              		.align	1
+ 564              		.global	Comm_I2CSlaveNackGeneration
+ 565              		.code	16
+ 566              		.thumb_func
+ 567              		.type	Comm_I2CSlaveNackGeneration, %function
+ 568              	Comm_I2CSlaveNackGeneration:
+ 569              	.LFB11:
+ 790:Generated_Source\PSoC4/Comm.c **** 
+ 791:Generated_Source\PSoC4/Comm.c **** #endif /* (Comm_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 792:Generated_Source\PSoC4/Comm.c **** 
+ 793:Generated_Source\PSoC4/Comm.c **** 
+ 794:Generated_Source\PSoC4/Comm.c **** #if (Comm_CY_SCBIP_V0 || Comm_CY_SCBIP_V1)
+ 795:Generated_Source\PSoC4/Comm.c ****     /*******************************************************************************
+ 796:Generated_Source\PSoC4/Comm.c ****     * Function Name: Comm_I2CSlaveNackGeneration
+ 797:Generated_Source\PSoC4/Comm.c ****     ****************************************************************************//**
+ 798:Generated_Source\PSoC4/Comm.c ****     *
+ 799:Generated_Source\PSoC4/Comm.c ****     *  Sets command to generate NACK to the address or data.
+ 800:Generated_Source\PSoC4/Comm.c ****     *
+ 801:Generated_Source\PSoC4/Comm.c ****     *******************************************************************************/
+ 802:Generated_Source\PSoC4/Comm.c ****     void Comm_I2CSlaveNackGeneration(void)
+ 803:Generated_Source\PSoC4/Comm.c ****     {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 26
+
+
+ 570              		.loc 1 803 0
+ 571              		.cfi_startproc
+ 804:Generated_Source\PSoC4/Comm.c ****         /* Check for EC_AM toggle condition: EC_AM and clock stretching for address are enabled */
+ 805:Generated_Source\PSoC4/Comm.c ****         if ((0u != (Comm_CTRL_REG & Comm_CTRL_EC_AM_MODE)) &&
+ 572              		.loc 1 805 0
+ 573 0000 8020     		mov	r0, #128
+ 574 0002 0A4B     		ldr	r3, .L64
+ 575 0004 4000     		lsl	r0, r0, #1
+ 576 0006 1A68     		ldr	r2, [r3]
+ 577 0008 0242     		tst	r2, r0
+ 578 000a 0AD0     		beq	.L60
+ 806:Generated_Source\PSoC4/Comm.c ****             (0u == (Comm_I2C_CTRL_REG & Comm_I2C_CTRL_S_NOT_READY_ADDR_NACK)))
+ 579              		.loc 1 806 0 discriminator 1
+ 580 000c 084A     		ldr	r2, .L64+4
+ 581 000e 1268     		ldr	r2, [r2]
+ 805:Generated_Source\PSoC4/Comm.c ****             (0u == (Comm_I2C_CTRL_REG & Comm_I2C_CTRL_S_NOT_READY_ADDR_NACK)))
+ 582              		.loc 1 805 0 discriminator 1
+ 583 0010 5204     		lsl	r2, r2, #17
+ 584 0012 06D4     		bmi	.L60
+ 807:Generated_Source\PSoC4/Comm.c ****         {
+ 808:Generated_Source\PSoC4/Comm.c ****             /* Toggle EC_AM before NACK generation */
+ 809:Generated_Source\PSoC4/Comm.c ****             Comm_CTRL_REG &= ~Comm_CTRL_EC_AM_MODE;
+ 585              		.loc 1 809 0
+ 586 0014 1A68     		ldr	r2, [r3]
+ 587 0016 0749     		ldr	r1, .L64+8
+ 588 0018 1140     		and	r1, r2
+ 589 001a 1960     		str	r1, [r3]
+ 810:Generated_Source\PSoC4/Comm.c ****             Comm_CTRL_REG |=  Comm_CTRL_EC_AM_MODE;
+ 590              		.loc 1 810 0
+ 591 001c 1A68     		ldr	r2, [r3]
+ 592 001e 0243     		orr	r2, r0
+ 593 0020 1A60     		str	r2, [r3]
+ 594              	.L60:
+ 811:Generated_Source\PSoC4/Comm.c ****         }
+ 812:Generated_Source\PSoC4/Comm.c **** 
+ 813:Generated_Source\PSoC4/Comm.c ****         Comm_I2C_SLAVE_CMD_REG = Comm_I2C_SLAVE_CMD_S_NACK;
+ 595              		.loc 1 813 0
+ 596 0022 0222     		mov	r2, #2
+ 597 0024 044B     		ldr	r3, .L64+12
+ 814:Generated_Source\PSoC4/Comm.c ****     }
+ 598              		.loc 1 814 0
+ 599              		@ sp needed
+ 813:Generated_Source\PSoC4/Comm.c ****     }
+ 600              		.loc 1 813 0
+ 601 0026 1A60     		str	r2, [r3]
+ 602              		.loc 1 814 0
+ 603 0028 7047     		bx	lr
+ 604              	.L65:
+ 605 002a C046     		.align	2
+ 606              	.L64:
+ 607 002c 00000640 		.word	1074135040
+ 608 0030 60000640 		.word	1074135136
+ 609 0034 FFFEFFFF 		.word	-257
+ 610 0038 6C000640 		.word	1074135148
+ 611              		.cfi_endproc
+ 612              	.LFE11:
+ 613              		.size	Comm_I2CSlaveNackGeneration, .-Comm_I2CSlaveNackGeneration
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 27
+
+
+ 614              		.global	Comm_customIntrHandler
+ 615              		.global	Comm_IntrTxMask
+ 616              		.global	Comm_initVar
+ 617              		.comm	Comm_subAddrSize,1,1
+ 618              		.comm	Comm_numberOfAddr,1,1
+ 619              		.comm	Comm_txBufferSize,4,4
+ 620              		.comm	Comm_txDataBits,1,1
+ 621              		.comm	Comm_txBuffer,4,4
+ 622              		.comm	Comm_rxBufferSize,4,4
+ 623              		.comm	Comm_rxDataBits,1,1
+ 624              		.comm	Comm_rxBuffer,4,4
+ 625              		.comm	Comm_acceptAddr,1,1
+ 626              		.comm	Comm_mode,1,1
+ 627              		.comm	Comm_scbEnableIntr,1,1
+ 628              		.comm	Comm_scbEnableWake,1,1
+ 629              		.global	Comm_scbMode
+ 630              		.data
+ 631              		.set	.LANCHOR0,. + 0
+ 632              		.type	Comm_scbMode, %object
+ 633              		.size	Comm_scbMode, 1
+ 634              	Comm_scbMode:
+ 635 0000 FF       		.byte	-1
+ 636              		.bss
+ 637              		.align	2
+ 638              		.set	.LANCHOR1,. + 0
+ 639              		.type	Comm_initVar, %object
+ 640              		.size	Comm_initVar, 1
+ 641              	Comm_initVar:
+ 642 0000 00       		.space	1
+ 643 0001 000000   		.space	3
+ 644              		.type	Comm_customIntrHandler, %object
+ 645              		.size	Comm_customIntrHandler, 4
+ 646              	Comm_customIntrHandler:
+ 647 0004 00000000 		.space	4
+ 648              		.type	Comm_IntrTxMask, %object
+ 649              		.size	Comm_IntrTxMask, 2
+ 650              	Comm_IntrTxMask:
+ 651 0008 0000     		.space	2
+ 652 000a 0000     		.text
+ 653              	.Letext0:
+ 654              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 655              		.file 3 "Generated_Source\\PSoC4\\Comm_SPI_UART_PVT.h"
+ 656              		.file 4 "Generated_Source\\PSoC4\\Comm_I2C_PVT.h"
+ 657              		.file 5 "Generated_Source\\PSoC4\\Comm_EZI2C_PVT.h"
+ 658              		.file 6 "Generated_Source\\PSoC4/CyLib.h"
+ 659              		.file 7 "Generated_Source\\PSoC4\\Comm_uart_rx_i2c_scl_spi_mosi.h"
+ 660              		.file 8 "Generated_Source\\PSoC4\\Comm_uart_tx_i2c_sda_spi_miso.h"
+ 661              		.section	.debug_info,"",%progbits
+ 662              	.Ldebug_info0:
+ 663 0000 C6040000 		.4byte	0x4c6
+ 664 0004 0400     		.2byte	0x4
+ 665 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 666 000a 04       		.byte	0x4
+ 667 000b 01       		.uleb128 0x1
+ 668 000c 1A000000 		.4byte	.LASF65
+ 669 0010 01       		.byte	0x1
+ 670 0011 79010000 		.4byte	.LASF66
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 28
+
+
+ 671 0015 71030000 		.4byte	.LASF67
+ 672 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 673 001d 00000000 		.4byte	0
+ 674 0021 00000000 		.4byte	.Ldebug_line0
+ 675 0025 02       		.uleb128 0x2
+ 676 0026 01       		.byte	0x1
+ 677 0027 06       		.byte	0x6
+ 678 0028 FB000000 		.4byte	.LASF0
+ 679 002c 02       		.uleb128 0x2
+ 680 002d 01       		.byte	0x1
+ 681 002e 08       		.byte	0x8
+ 682 002f CA020000 		.4byte	.LASF1
+ 683 0033 02       		.uleb128 0x2
+ 684 0034 02       		.byte	0x2
+ 685 0035 05       		.byte	0x5
+ 686 0036 E8020000 		.4byte	.LASF2
+ 687 003a 02       		.uleb128 0x2
+ 688 003b 02       		.byte	0x2
+ 689 003c 07       		.byte	0x7
+ 690 003d DA010000 		.4byte	.LASF3
+ 691 0041 02       		.uleb128 0x2
+ 692 0042 04       		.byte	0x4
+ 693 0043 05       		.byte	0x5
+ 694 0044 11010000 		.4byte	.LASF4
+ 695 0048 02       		.uleb128 0x2
+ 696 0049 04       		.byte	0x4
+ 697 004a 07       		.byte	0x7
+ 698 004b C2010000 		.4byte	.LASF5
+ 699 004f 02       		.uleb128 0x2
+ 700 0050 08       		.byte	0x8
+ 701 0051 05       		.byte	0x5
+ 702 0052 ED000000 		.4byte	.LASF6
+ 703 0056 02       		.uleb128 0x2
+ 704 0057 08       		.byte	0x8
+ 705 0058 07       		.byte	0x7
+ 706 0059 BB000000 		.4byte	.LASF7
+ 707 005d 03       		.uleb128 0x3
+ 708 005e 04       		.byte	0x4
+ 709 005f 05       		.byte	0x5
+ 710 0060 696E7400 		.ascii	"int\000"
+ 711 0064 02       		.uleb128 0x2
+ 712 0065 04       		.byte	0x4
+ 713 0066 07       		.byte	0x7
+ 714 0067 97010000 		.4byte	.LASF8
+ 715 006b 04       		.uleb128 0x4
+ 716 006c 38010000 		.4byte	.LASF9
+ 717 0070 02       		.byte	0x2
+ 718 0071 B901     		.2byte	0x1b9
+ 719 0073 2C000000 		.4byte	0x2c
+ 720 0077 04       		.uleb128 0x4
+ 721 0078 13000000 		.4byte	.LASF10
+ 722 007c 02       		.byte	0x2
+ 723 007d BA01     		.2byte	0x1ba
+ 724 007f 3A000000 		.4byte	0x3a
+ 725 0083 04       		.uleb128 0x4
+ 726 0084 52010000 		.4byte	.LASF11
+ 727 0088 02       		.byte	0x2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 29
+
+
+ 728 0089 BB01     		.2byte	0x1bb
+ 729 008b 48000000 		.4byte	0x48
+ 730 008f 02       		.uleb128 0x2
+ 731 0090 04       		.byte	0x4
+ 732 0091 04       		.byte	0x4
+ 733 0092 91020000 		.4byte	.LASF12
+ 734 0096 02       		.uleb128 0x2
+ 735 0097 08       		.byte	0x8
+ 736 0098 04       		.byte	0x4
+ 737 0099 3E010000 		.4byte	.LASF13
+ 738 009d 02       		.uleb128 0x2
+ 739 009e 01       		.byte	0x1
+ 740 009f 08       		.byte	0x8
+ 741 00a0 3B030000 		.4byte	.LASF14
+ 742 00a4 05       		.uleb128 0x5
+ 743 00a5 6B000000 		.4byte	0x6b
+ 744 00a9 04       		.uleb128 0x4
+ 745 00aa 28020000 		.4byte	.LASF15
+ 746 00ae 02       		.byte	0x2
+ 747 00af 6502     		.2byte	0x265
+ 748 00b1 B5000000 		.4byte	0xb5
+ 749 00b5 05       		.uleb128 0x5
+ 750 00b6 83000000 		.4byte	0x83
+ 751 00ba 06       		.uleb128 0x6
+ 752 00bb 04       		.byte	0x4
+ 753 00bc C0000000 		.4byte	0xc0
+ 754 00c0 07       		.uleb128 0x7
+ 755 00c1 02       		.uleb128 0x2
+ 756 00c2 04       		.byte	0x4
+ 757 00c3 07       		.byte	0x7
+ 758 00c4 37020000 		.4byte	.LASF16
+ 759 00c8 08       		.uleb128 0x8
+ 760 00c9 27010000 		.4byte	.LASF54
+ 761 00cd 01       		.byte	0x1
+ 762 00ce AB       		.byte	0xab
+ 763 00cf 01       		.byte	0x1
+ 764 00d0 09       		.uleb128 0x9
+ 765 00d1 07010000 		.4byte	.LASF36
+ 766 00d5 01       		.byte	0x1
+ 767 00d6 7B       		.byte	0x7b
+ 768 00d7 00000000 		.4byte	.LFB0
+ 769 00db 18000000 		.4byte	.LFE0-.LFB0
+ 770 00df 01       		.uleb128 0x1
+ 771 00e0 9C       		.byte	0x9c
+ 772 00e1 0A       		.uleb128 0xa
+ 773 00e2 4A040000 		.4byte	.LASF17
+ 774 00e6 01       		.byte	0x1
+ 775 00e7 6401     		.2byte	0x164
+ 776 00e9 01       		.byte	0x1
+ 777 00ea 0A       		.uleb128 0xa
+ 778 00eb A4020000 		.4byte	.LASF18
+ 779 00ef 01       		.byte	0x1
+ 780 00f0 7D01     		.2byte	0x17d
+ 781 00f2 01       		.byte	0x1
+ 782 00f3 0B       		.uleb128 0xb
+ 783 00f4 C8000000 		.4byte	0xc8
+ 784 00f8 00000000 		.4byte	.LFB1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 30
+
+
+ 785 00fc 48000000 		.4byte	.LFE1-.LFB1
+ 786 0100 01       		.uleb128 0x1
+ 787 0101 9C       		.byte	0x9c
+ 788 0102 4C010000 		.4byte	0x14c
+ 789 0106 0C       		.uleb128 0xc
+ 790 0107 E1000000 		.4byte	0xe1
+ 791 010b 18000000 		.4byte	.LBB9
+ 792 010f 0E000000 		.4byte	.LBE9-.LBB9
+ 793 0113 01       		.byte	0x1
+ 794 0114 B3       		.byte	0xb3
+ 795 0115 29010000 		.4byte	0x129
+ 796 0119 0D       		.uleb128 0xd
+ 797 011a 26000000 		.4byte	.LVL0
+ 798 011e 4E040000 		.4byte	0x44e
+ 799 0122 0E       		.uleb128 0xe
+ 800 0123 01       		.uleb128 0x1
+ 801 0124 50       		.byte	0x50
+ 802 0125 01       		.uleb128 0x1
+ 803 0126 3A       		.byte	0x3a
+ 804 0127 00       		.byte	0
+ 805 0128 00       		.byte	0
+ 806 0129 0F       		.uleb128 0xf
+ 807 012a EA000000 		.4byte	0xea
+ 808 012e 26000000 		.4byte	.LBB11
+ 809 0132 14000000 		.4byte	.LBE11-.LBB11
+ 810 0136 01       		.byte	0x1
+ 811 0137 B6       		.byte	0xb6
+ 812 0138 10       		.uleb128 0x10
+ 813 0139 30000000 		.4byte	.LVL1
+ 814 013d 5F040000 		.4byte	0x45f
+ 815 0141 10       		.uleb128 0x10
+ 816 0142 3A000000 		.4byte	.LVL2
+ 817 0146 66040000 		.4byte	0x466
+ 818 014a 00       		.byte	0
+ 819 014b 00       		.byte	0
+ 820 014c 11       		.uleb128 0x11
+ 821 014d 00020000 		.4byte	.LASF20
+ 822 0151 01       		.byte	0x1
+ 823 0152 D2       		.byte	0xd2
+ 824 0153 00000000 		.4byte	.LFB2
+ 825 0157 1C000000 		.4byte	.LFE2-.LFB2
+ 826 015b 01       		.uleb128 0x1
+ 827 015c 9C       		.byte	0x9c
+ 828 015d 74010000 		.4byte	0x174
+ 829 0161 10       		.uleb128 0x10
+ 830 0162 0E000000 		.4byte	.LVL3
+ 831 0166 D0000000 		.4byte	0xd0
+ 832 016a 10       		.uleb128 0x10
+ 833 016b 16000000 		.4byte	.LVL4
+ 834 016f C8000000 		.4byte	0xc8
+ 835 0173 00       		.byte	0
+ 836 0174 0A       		.uleb128 0xa
+ 837 0175 C9040000 		.4byte	.LASF19
+ 838 0179 01       		.byte	0x1
+ 839 017a A201     		.2byte	0x1a2
+ 840 017c 01       		.byte	0x1
+ 841 017d 11       		.uleb128 0x11
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 31
+
+
+ 842 017e 40030000 		.4byte	.LASF21
+ 843 0182 01       		.byte	0x1
+ 844 0183 EF       		.byte	0xef
+ 845 0184 00000000 		.4byte	.LFB3
+ 846 0188 58000000 		.4byte	.LFE3-.LFB3
+ 847 018c 01       		.uleb128 0x1
+ 848 018d 9C       		.byte	0x9c
+ 849 018e ED010000 		.4byte	0x1ed
+ 850 0192 0C       		.uleb128 0xc
+ 851 0193 74010000 		.4byte	0x174
+ 852 0197 08000000 		.4byte	.LBB15
+ 853 019b 2A000000 		.4byte	.LBE15-.LBB15
+ 854 019f 01       		.byte	0x1
+ 855 01a0 F6       		.byte	0xf6
+ 856 01a1 CA010000 		.4byte	0x1ca
+ 857 01a5 10       		.uleb128 0x10
+ 858 01a6 14000000 		.4byte	.LVL6
+ 859 01aa 6D040000 		.4byte	0x46d
+ 860 01ae 10       		.uleb128 0x10
+ 861 01af 1E000000 		.4byte	.LVL7
+ 862 01b3 74040000 		.4byte	0x474
+ 863 01b7 10       		.uleb128 0x10
+ 864 01b8 28000000 		.4byte	.LVL8
+ 865 01bc 7B040000 		.4byte	0x47b
+ 866 01c0 10       		.uleb128 0x10
+ 867 01c1 32000000 		.4byte	.LVL9
+ 868 01c5 82040000 		.4byte	0x482
+ 869 01c9 00       		.byte	0
+ 870 01ca 12       		.uleb128 0x12
+ 871 01cb 08000000 		.4byte	.LVL5
+ 872 01cf 89040000 		.4byte	0x489
+ 873 01d3 DD010000 		.4byte	0x1dd
+ 874 01d7 0E       		.uleb128 0xe
+ 875 01d8 01       		.uleb128 0x1
+ 876 01d9 50       		.byte	0x50
+ 877 01da 01       		.uleb128 0x1
+ 878 01db 3A       		.byte	0x3a
+ 879 01dc 00       		.byte	0
+ 880 01dd 0D       		.uleb128 0xd
+ 881 01de 48000000 		.4byte	.LVL10
+ 882 01e2 9A040000 		.4byte	0x49a
+ 883 01e6 0E       		.uleb128 0xe
+ 884 01e7 01       		.uleb128 0x1
+ 885 01e8 50       		.byte	0x50
+ 886 01e9 01       		.uleb128 0x1
+ 887 01ea 3A       		.byte	0x3a
+ 888 01eb 00       		.byte	0
+ 889 01ec 00       		.byte	0
+ 890 01ed 13       		.uleb128 0x13
+ 891 01ee 5D030000 		.4byte	.LASF22
+ 892 01f2 01       		.byte	0x1
+ 893 01f3 1701     		.2byte	0x117
+ 894 01f5 00000000 		.4byte	.LFB4
+ 895 01f9 14000000 		.4byte	.LFE4-.LFB4
+ 896 01fd 01       		.uleb128 0x1
+ 897 01fe 9C       		.byte	0x9c
+ 898 01ff 24020000 		.4byte	0x224
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 32
+
+
+ 899 0203 14       		.uleb128 0x14
+ 900 0204 D4010000 		.4byte	.LASF24
+ 901 0208 01       		.byte	0x1
+ 902 0209 1701     		.2byte	0x117
+ 903 020b 83000000 		.4byte	0x83
+ 904 020f 00000000 		.4byte	.LLST0
+ 905 0213 15       		.uleb128 0x15
+ 906 0214 BE040000 		.4byte	.LASF25
+ 907 0218 01       		.byte	0x1
+ 908 0219 1901     		.2byte	0x119
+ 909 021b 83000000 		.4byte	0x83
+ 910 021f 21000000 		.4byte	.LLST1
+ 911 0223 00       		.byte	0
+ 912 0224 13       		.uleb128 0x13
+ 913 0225 F2020000 		.4byte	.LASF23
+ 914 0229 01       		.byte	0x1
+ 915 022a 3001     		.2byte	0x130
+ 916 022c 00000000 		.4byte	.LFB5
+ 917 0230 14000000 		.4byte	.LFE5-.LFB5
+ 918 0234 01       		.uleb128 0x1
+ 919 0235 9C       		.byte	0x9c
+ 920 0236 5B020000 		.4byte	0x25b
+ 921 023a 14       		.uleb128 0x14
+ 922 023b D4010000 		.4byte	.LASF24
+ 923 023f 01       		.byte	0x1
+ 924 0240 3001     		.2byte	0x130
+ 925 0242 83000000 		.4byte	0x83
+ 926 0246 3F000000 		.4byte	.LLST2
+ 927 024a 15       		.uleb128 0x15
+ 928 024b DA040000 		.4byte	.LASF26
+ 929 024f 01       		.byte	0x1
+ 930 0250 3201     		.2byte	0x132
+ 931 0252 83000000 		.4byte	0x83
+ 932 0256 60000000 		.4byte	.LLST3
+ 933 025a 00       		.byte	0
+ 934 025b 13       		.uleb128 0x13
+ 935 025c 6B020000 		.4byte	.LASF27
+ 936 0260 01       		.byte	0x1
+ 937 0261 4F01     		.2byte	0x14f
+ 938 0263 00000000 		.4byte	.LFB6
+ 939 0267 0C000000 		.4byte	.LFE6-.LFB6
+ 940 026b 01       		.uleb128 0x1
+ 941 026c 9C       		.byte	0x9c
+ 942 026d 80020000 		.4byte	0x280
+ 943 0271 16       		.uleb128 0x16
+ 944 0272 33010000 		.4byte	.LASF28
+ 945 0276 01       		.byte	0x1
+ 946 0277 4F01     		.2byte	0x14f
+ 947 0279 BA000000 		.4byte	0xba
+ 948 027d 01       		.uleb128 0x1
+ 949 027e 50       		.byte	0x50
+ 950 027f 00       		.byte	0
+ 951 0280 13       		.uleb128 0x13
+ 952 0281 D2000000 		.4byte	.LASF29
+ 953 0285 01       		.byte	0x1
+ 954 0286 DE01     		.2byte	0x1de
+ 955 0288 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 33
+
+
+ 956 028c CC000000 		.4byte	.LFE10-.LFB10
+ 957 0290 01       		.uleb128 0x1
+ 958 0291 9C       		.byte	0x9c
+ 959 0292 16030000 		.4byte	0x316
+ 960 0296 14       		.uleb128 0x14
+ 961 0297 4A030000 		.4byte	.LASF30
+ 962 029b 01       		.byte	0x1
+ 963 029c DE01     		.2byte	0x1de
+ 964 029e 83000000 		.4byte	0x83
+ 965 02a2 7E000000 		.4byte	.LLST4
+ 966 02a6 14       		.uleb128 0x14
+ 967 02a7 E5040000 		.4byte	.LASF31
+ 968 02ab 01       		.byte	0x1
+ 969 02ac DE01     		.2byte	0x1de
+ 970 02ae 83000000 		.4byte	0x83
+ 971 02b2 9F000000 		.4byte	.LLST5
+ 972 02b6 14       		.uleb128 0x14
+ 973 02b7 19020000 		.4byte	.LASF32
+ 974 02bb 01       		.byte	0x1
+ 975 02bc DE01     		.2byte	0x1de
+ 976 02be 83000000 		.4byte	0x83
+ 977 02c2 C0000000 		.4byte	.LLST6
+ 978 02c6 17       		.uleb128 0x17
+ 979 02c7 8A020000 		.4byte	.LASF33
+ 980 02cb 01       		.byte	0x1
+ 981 02cc E001     		.2byte	0x1e0
+ 982 02ce 16030000 		.4byte	0x316
+ 983 02d2 02       		.uleb128 0x2
+ 984 02d3 91       		.byte	0x91
+ 985 02d4 4C       		.sleb128 -52
+ 986 02d5 18       		.uleb128 0x18
+ 987 02d6 6900     		.ascii	"i\000"
+ 988 02d8 01       		.byte	0x1
+ 989 02d9 E101     		.2byte	0x1e1
+ 990 02db 83000000 		.4byte	0x83
+ 991 02df 13010000 		.4byte	.LLST7
+ 992 02e3 15       		.uleb128 0x15
+ 993 02e4 40040000 		.4byte	.LASF34
+ 994 02e8 01       		.byte	0x1
+ 995 02e9 E401     		.2byte	0x1e4
+ 996 02eb 83000000 		.4byte	0x83
+ 997 02ef 27010000 		.4byte	.LLST8
+ 998 02f3 15       		.uleb128 0x15
+ 999 02f4 2E020000 		.4byte	.LASF35
+ 1000 02f8 01       		.byte	0x1
+ 1001 02f9 E701     		.2byte	0x1e7
+ 1002 02fb 16030000 		.4byte	0x316
+ 1003 02ff 8E010000 		.4byte	.LLST9
+ 1004 0303 10       		.uleb128 0x10
+ 1005 0304 84000000 		.4byte	.LVL45
+ 1006 0308 AB040000 		.4byte	0x4ab
+ 1007 030c 10       		.uleb128 0x10
+ 1008 030d AE000000 		.4byte	.LVL47
+ 1009 0311 BC040000 		.4byte	0x4bc
+ 1010 0315 00       		.byte	0
+ 1011 0316 19       		.uleb128 0x19
+ 1012 0317 83000000 		.4byte	0x83
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 34
+
+
+ 1013 031b 26030000 		.4byte	0x326
+ 1014 031f 1A       		.uleb128 0x1a
+ 1015 0320 C1000000 		.4byte	0xc1
+ 1016 0324 06       		.byte	0x6
+ 1017 0325 00       		.byte	0
+ 1018 0326 1B       		.uleb128 0x1b
+ 1019 0327 E9030000 		.4byte	.LASF37
+ 1020 032b 01       		.byte	0x1
+ 1021 032c 2203     		.2byte	0x322
+ 1022 032e 00000000 		.4byte	.LFB11
+ 1023 0332 3C000000 		.4byte	.LFE11-.LFB11
+ 1024 0336 01       		.uleb128 0x1
+ 1025 0337 9C       		.byte	0x9c
+ 1026 0338 1C       		.uleb128 0x1c
+ 1027 0339 5E020000 		.4byte	.LASF38
+ 1028 033d 01       		.byte	0x1
+ 1029 033e 51       		.byte	0x51
+ 1030 033f 6B000000 		.4byte	0x6b
+ 1031 0343 05       		.uleb128 0x5
+ 1032 0344 03       		.byte	0x3
+ 1033 0345 00000000 		.4byte	Comm_initVar
+ 1034 0349 1C       		.uleb128 0x1c
+ 1035 034a 6F040000 		.4byte	.LASF39
+ 1036 034e 01       		.byte	0x1
+ 1037 034f 61       		.byte	0x61
+ 1038 0350 BA000000 		.4byte	0xba
+ 1039 0354 05       		.uleb128 0x5
+ 1040 0355 03       		.byte	0x3
+ 1041 0356 00000000 		.4byte	Comm_customIntrHandler
+ 1042 035a 1C       		.uleb128 0x1c
+ 1043 035b 86040000 		.4byte	.LASF40
+ 1044 035f 01       		.byte	0x1
+ 1045 0360 28       		.byte	0x28
+ 1046 0361 6B000000 		.4byte	0x6b
+ 1047 0365 05       		.uleb128 0x5
+ 1048 0366 03       		.byte	0x3
+ 1049 0367 00000000 		.4byte	Comm_scbMode
+ 1050 036b 1C       		.uleb128 0x1c
+ 1051 036c 00000000 		.4byte	.LASF41
+ 1052 0370 01       		.byte	0x1
+ 1053 0371 29       		.byte	0x29
+ 1054 0372 6B000000 		.4byte	0x6b
+ 1055 0376 05       		.uleb128 0x5
+ 1056 0377 03       		.byte	0x3
+ 1057 0378 00000000 		.4byte	Comm_scbEnableWake
+ 1058 037c 1C       		.uleb128 0x1c
+ 1059 037d ED010000 		.4byte	.LASF42
+ 1060 0381 01       		.byte	0x1
+ 1061 0382 2A       		.byte	0x2a
+ 1062 0383 6B000000 		.4byte	0x6b
+ 1063 0387 05       		.uleb128 0x5
+ 1064 0388 03       		.byte	0x3
+ 1065 0389 00000000 		.4byte	Comm_scbEnableIntr
+ 1066 038d 1C       		.uleb128 0x1c
+ 1067 038e A4010000 		.4byte	.LASF43
+ 1068 0392 01       		.byte	0x1
+ 1069 0393 2D       		.byte	0x2d
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 35
+
+
+ 1070 0394 6B000000 		.4byte	0x6b
+ 1071 0398 05       		.uleb128 0x5
+ 1072 0399 03       		.byte	0x3
+ 1073 039a 00000000 		.4byte	Comm_mode
+ 1074 039e 1C       		.uleb128 0x1c
+ 1075 039f D8020000 		.4byte	.LASF44
+ 1076 03a3 01       		.byte	0x1
+ 1077 03a4 2E       		.byte	0x2e
+ 1078 03a5 6B000000 		.4byte	0x6b
+ 1079 03a9 05       		.uleb128 0x5
+ 1080 03aa 03       		.byte	0x3
+ 1081 03ab 00000000 		.4byte	Comm_acceptAddr
+ 1082 03af 1C       		.uleb128 0x1c
+ 1083 03b0 0B020000 		.4byte	.LASF45
+ 1084 03b4 01       		.byte	0x1
+ 1085 03b5 31       		.byte	0x31
+ 1086 03b6 C0030000 		.4byte	0x3c0
+ 1087 03ba 05       		.uleb128 0x5
+ 1088 03bb 03       		.byte	0x3
+ 1089 03bc 00000000 		.4byte	Comm_rxBuffer
+ 1090 03c0 06       		.uleb128 0x6
+ 1091 03c1 04       		.byte	0x4
+ 1092 03c2 A4000000 		.4byte	0xa4
+ 1093 03c6 1C       		.uleb128 0x1c
+ 1094 03c7 59010000 		.4byte	.LASF46
+ 1095 03cb 01       		.byte	0x1
+ 1096 03cc 32       		.byte	0x32
+ 1097 03cd 6B000000 		.4byte	0x6b
+ 1098 03d1 05       		.uleb128 0x5
+ 1099 03d2 03       		.byte	0x3
+ 1100 03d3 00000000 		.4byte	Comm_rxDataBits
+ 1101 03d7 1C       		.uleb128 0x1c
+ 1102 03d8 5D040000 		.4byte	.LASF47
+ 1103 03dc 01       		.byte	0x1
+ 1104 03dd 33       		.byte	0x33
+ 1105 03de 83000000 		.4byte	0x83
+ 1106 03e2 05       		.uleb128 0x5
+ 1107 03e3 03       		.byte	0x3
+ 1108 03e4 00000000 		.4byte	Comm_rxBufferSize
+ 1109 03e8 1C       		.uleb128 0x1c
+ 1110 03e9 DF000000 		.4byte	.LASF48
+ 1111 03ed 01       		.byte	0x1
+ 1112 03ee 35       		.byte	0x35
+ 1113 03ef C0030000 		.4byte	0x3c0
+ 1114 03f3 05       		.uleb128 0x5
+ 1115 03f4 03       		.byte	0x3
+ 1116 03f5 00000000 		.4byte	Comm_txBuffer
+ 1117 03f9 1C       		.uleb128 0x1c
+ 1118 03fa 69010000 		.4byte	.LASF49
+ 1119 03fe 01       		.byte	0x1
+ 1120 03ff 36       		.byte	0x36
+ 1121 0400 6B000000 		.4byte	0x6b
+ 1122 0404 05       		.uleb128 0x5
+ 1123 0405 03       		.byte	0x3
+ 1124 0406 00000000 		.4byte	Comm_txDataBits
+ 1125 040a 1C       		.uleb128 0x1c
+ 1126 040b 06030000 		.4byte	.LASF50
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 36
+
+
+ 1127 040f 01       		.byte	0x1
+ 1128 0410 37       		.byte	0x37
+ 1129 0411 83000000 		.4byte	0x83
+ 1130 0415 05       		.uleb128 0x5
+ 1131 0416 03       		.byte	0x3
+ 1132 0417 00000000 		.4byte	Comm_txBufferSize
+ 1133 041b 1C       		.uleb128 0x1c
+ 1134 041c 18030000 		.4byte	.LASF51
+ 1135 0420 01       		.byte	0x1
+ 1136 0421 3A       		.byte	0x3a
+ 1137 0422 6B000000 		.4byte	0x6b
+ 1138 0426 05       		.uleb128 0x5
+ 1139 0427 03       		.byte	0x3
+ 1140 0428 00000000 		.4byte	Comm_numberOfAddr
+ 1141 042c 1C       		.uleb128 0x1c
+ 1142 042d 2A030000 		.4byte	.LASF52
+ 1143 0431 01       		.byte	0x1
+ 1144 0432 3B       		.byte	0x3b
+ 1145 0433 6B000000 		.4byte	0x6b
+ 1146 0437 05       		.uleb128 0x5
+ 1147 0438 03       		.byte	0x3
+ 1148 0439 00000000 		.4byte	Comm_subAddrSize
+ 1149 043d 1C       		.uleb128 0x1c
+ 1150 043e 30040000 		.4byte	.LASF53
+ 1151 0442 01       		.byte	0x1
+ 1152 0443 5A       		.byte	0x5a
+ 1153 0444 77000000 		.4byte	0x77
+ 1154 0448 05       		.uleb128 0x5
+ 1155 0449 03       		.byte	0x3
+ 1156 044a 00000000 		.4byte	Comm_IntrTxMask
+ 1157 044e 1D       		.uleb128 0x1d
+ 1158 044f 52020000 		.4byte	.LASF61
+ 1159 0453 06       		.byte	0x6
+ 1160 0454 C3       		.byte	0xc3
+ 1161 0455 5F040000 		.4byte	0x45f
+ 1162 0459 1E       		.uleb128 0x1e
+ 1163 045a 6B000000 		.4byte	0x6b
+ 1164 045e 00       		.byte	0
+ 1165 045f 1F       		.uleb128 0x1f
+ 1166 0460 A8000000 		.4byte	.LASF55
+ 1167 0464 03       		.byte	0x3
+ 1168 0465 40       		.byte	0x40
+ 1169 0466 1F       		.uleb128 0x1f
+ 1170 0467 AE010000 		.4byte	.LASF56
+ 1171 046b 03       		.byte	0x3
+ 1172 046c 4C       		.byte	0x4c
+ 1173 046d 1F       		.uleb128 0x1f
+ 1174 046e 97020000 		.4byte	.LASF57
+ 1175 0472 04       		.byte	0x4
+ 1176 0473 4C       		.byte	0x4c
+ 1177 0474 1F       		.uleb128 0x1f
+ 1178 0475 BB020000 		.4byte	.LASF58
+ 1179 0479 05       		.byte	0x5
+ 1180 047a 3D       		.byte	0x3d
+ 1181 047b 1F       		.uleb128 0x1f
+ 1182 047c 45010000 		.4byte	.LASF59
+ 1183 0480 03       		.byte	0x3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 37
+
+
+ 1184 0481 41       		.byte	0x41
+ 1185 0482 1F       		.uleb128 0x1f
+ 1186 0483 4F030000 		.4byte	.LASF60
+ 1187 0487 03       		.byte	0x3
+ 1188 0488 4D       		.byte	0x4d
+ 1189 0489 1D       		.uleb128 0x1d
+ 1190 048a 1A010000 		.4byte	.LASF62
+ 1191 048e 06       		.byte	0x6
+ 1192 048f C5       		.byte	0xc5
+ 1193 0490 9A040000 		.4byte	0x49a
+ 1194 0494 1E       		.uleb128 0x1e
+ 1195 0495 6B000000 		.4byte	0x6b
+ 1196 0499 00       		.byte	0
+ 1197 049a 1D       		.uleb128 0x1d
+ 1198 049b 40020000 		.4byte	.LASF63
+ 1199 049f 06       		.byte	0x6
+ 1200 04a0 C8       		.byte	0xc8
+ 1201 04a1 AB040000 		.4byte	0x4ab
+ 1202 04a5 1E       		.uleb128 0x1e
+ 1203 04a6 6B000000 		.4byte	0x6b
+ 1204 04aa 00       		.byte	0
+ 1205 04ab 1D       		.uleb128 0x1d
+ 1206 04ac 05040000 		.4byte	.LASF64
+ 1207 04b0 07       		.byte	0x7
+ 1208 04b1 36       		.byte	0x36
+ 1209 04b2 BC040000 		.4byte	0x4bc
+ 1210 04b6 1E       		.uleb128 0x1e
+ 1211 04b7 6B000000 		.4byte	0x6b
+ 1212 04bb 00       		.byte	0
+ 1213 04bc 20       		.uleb128 0x20
+ 1214 04bd 93040000 		.4byte	.LASF68
+ 1215 04c1 08       		.byte	0x8
+ 1216 04c2 36       		.byte	0x36
+ 1217 04c3 1E       		.uleb128 0x1e
+ 1218 04c4 6B000000 		.4byte	0x6b
+ 1219 04c8 00       		.byte	0
+ 1220 04c9 00       		.byte	0
+ 1221              		.section	.debug_abbrev,"",%progbits
+ 1222              	.Ldebug_abbrev0:
+ 1223 0000 01       		.uleb128 0x1
+ 1224 0001 11       		.uleb128 0x11
+ 1225 0002 01       		.byte	0x1
+ 1226 0003 25       		.uleb128 0x25
+ 1227 0004 0E       		.uleb128 0xe
+ 1228 0005 13       		.uleb128 0x13
+ 1229 0006 0B       		.uleb128 0xb
+ 1230 0007 03       		.uleb128 0x3
+ 1231 0008 0E       		.uleb128 0xe
+ 1232 0009 1B       		.uleb128 0x1b
+ 1233 000a 0E       		.uleb128 0xe
+ 1234 000b 55       		.uleb128 0x55
+ 1235 000c 17       		.uleb128 0x17
+ 1236 000d 11       		.uleb128 0x11
+ 1237 000e 01       		.uleb128 0x1
+ 1238 000f 10       		.uleb128 0x10
+ 1239 0010 17       		.uleb128 0x17
+ 1240 0011 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 38
+
+
+ 1241 0012 00       		.byte	0
+ 1242 0013 02       		.uleb128 0x2
+ 1243 0014 24       		.uleb128 0x24
+ 1244 0015 00       		.byte	0
+ 1245 0016 0B       		.uleb128 0xb
+ 1246 0017 0B       		.uleb128 0xb
+ 1247 0018 3E       		.uleb128 0x3e
+ 1248 0019 0B       		.uleb128 0xb
+ 1249 001a 03       		.uleb128 0x3
+ 1250 001b 0E       		.uleb128 0xe
+ 1251 001c 00       		.byte	0
+ 1252 001d 00       		.byte	0
+ 1253 001e 03       		.uleb128 0x3
+ 1254 001f 24       		.uleb128 0x24
+ 1255 0020 00       		.byte	0
+ 1256 0021 0B       		.uleb128 0xb
+ 1257 0022 0B       		.uleb128 0xb
+ 1258 0023 3E       		.uleb128 0x3e
+ 1259 0024 0B       		.uleb128 0xb
+ 1260 0025 03       		.uleb128 0x3
+ 1261 0026 08       		.uleb128 0x8
+ 1262 0027 00       		.byte	0
+ 1263 0028 00       		.byte	0
+ 1264 0029 04       		.uleb128 0x4
+ 1265 002a 16       		.uleb128 0x16
+ 1266 002b 00       		.byte	0
+ 1267 002c 03       		.uleb128 0x3
+ 1268 002d 0E       		.uleb128 0xe
+ 1269 002e 3A       		.uleb128 0x3a
+ 1270 002f 0B       		.uleb128 0xb
+ 1271 0030 3B       		.uleb128 0x3b
+ 1272 0031 05       		.uleb128 0x5
+ 1273 0032 49       		.uleb128 0x49
+ 1274 0033 13       		.uleb128 0x13
+ 1275 0034 00       		.byte	0
+ 1276 0035 00       		.byte	0
+ 1277 0036 05       		.uleb128 0x5
+ 1278 0037 35       		.uleb128 0x35
+ 1279 0038 00       		.byte	0
+ 1280 0039 49       		.uleb128 0x49
+ 1281 003a 13       		.uleb128 0x13
+ 1282 003b 00       		.byte	0
+ 1283 003c 00       		.byte	0
+ 1284 003d 06       		.uleb128 0x6
+ 1285 003e 0F       		.uleb128 0xf
+ 1286 003f 00       		.byte	0
+ 1287 0040 0B       		.uleb128 0xb
+ 1288 0041 0B       		.uleb128 0xb
+ 1289 0042 49       		.uleb128 0x49
+ 1290 0043 13       		.uleb128 0x13
+ 1291 0044 00       		.byte	0
+ 1292 0045 00       		.byte	0
+ 1293 0046 07       		.uleb128 0x7
+ 1294 0047 15       		.uleb128 0x15
+ 1295 0048 00       		.byte	0
+ 1296 0049 27       		.uleb128 0x27
+ 1297 004a 19       		.uleb128 0x19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 39
+
+
+ 1298 004b 00       		.byte	0
+ 1299 004c 00       		.byte	0
+ 1300 004d 08       		.uleb128 0x8
+ 1301 004e 2E       		.uleb128 0x2e
+ 1302 004f 00       		.byte	0
+ 1303 0050 3F       		.uleb128 0x3f
+ 1304 0051 19       		.uleb128 0x19
+ 1305 0052 03       		.uleb128 0x3
+ 1306 0053 0E       		.uleb128 0xe
+ 1307 0054 3A       		.uleb128 0x3a
+ 1308 0055 0B       		.uleb128 0xb
+ 1309 0056 3B       		.uleb128 0x3b
+ 1310 0057 0B       		.uleb128 0xb
+ 1311 0058 27       		.uleb128 0x27
+ 1312 0059 19       		.uleb128 0x19
+ 1313 005a 20       		.uleb128 0x20
+ 1314 005b 0B       		.uleb128 0xb
+ 1315 005c 00       		.byte	0
+ 1316 005d 00       		.byte	0
+ 1317 005e 09       		.uleb128 0x9
+ 1318 005f 2E       		.uleb128 0x2e
+ 1319 0060 00       		.byte	0
+ 1320 0061 3F       		.uleb128 0x3f
+ 1321 0062 19       		.uleb128 0x19
+ 1322 0063 03       		.uleb128 0x3
+ 1323 0064 0E       		.uleb128 0xe
+ 1324 0065 3A       		.uleb128 0x3a
+ 1325 0066 0B       		.uleb128 0xb
+ 1326 0067 3B       		.uleb128 0x3b
+ 1327 0068 0B       		.uleb128 0xb
+ 1328 0069 27       		.uleb128 0x27
+ 1329 006a 19       		.uleb128 0x19
+ 1330 006b 11       		.uleb128 0x11
+ 1331 006c 01       		.uleb128 0x1
+ 1332 006d 12       		.uleb128 0x12
+ 1333 006e 06       		.uleb128 0x6
+ 1334 006f 40       		.uleb128 0x40
+ 1335 0070 18       		.uleb128 0x18
+ 1336 0071 9742     		.uleb128 0x2117
+ 1337 0073 19       		.uleb128 0x19
+ 1338 0074 00       		.byte	0
+ 1339 0075 00       		.byte	0
+ 1340 0076 0A       		.uleb128 0xa
+ 1341 0077 2E       		.uleb128 0x2e
+ 1342 0078 00       		.byte	0
+ 1343 0079 03       		.uleb128 0x3
+ 1344 007a 0E       		.uleb128 0xe
+ 1345 007b 3A       		.uleb128 0x3a
+ 1346 007c 0B       		.uleb128 0xb
+ 1347 007d 3B       		.uleb128 0x3b
+ 1348 007e 05       		.uleb128 0x5
+ 1349 007f 27       		.uleb128 0x27
+ 1350 0080 19       		.uleb128 0x19
+ 1351 0081 20       		.uleb128 0x20
+ 1352 0082 0B       		.uleb128 0xb
+ 1353 0083 00       		.byte	0
+ 1354 0084 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 40
+
+
+ 1355 0085 0B       		.uleb128 0xb
+ 1356 0086 2E       		.uleb128 0x2e
+ 1357 0087 01       		.byte	0x1
+ 1358 0088 31       		.uleb128 0x31
+ 1359 0089 13       		.uleb128 0x13
+ 1360 008a 11       		.uleb128 0x11
+ 1361 008b 01       		.uleb128 0x1
+ 1362 008c 12       		.uleb128 0x12
+ 1363 008d 06       		.uleb128 0x6
+ 1364 008e 40       		.uleb128 0x40
+ 1365 008f 18       		.uleb128 0x18
+ 1366 0090 9742     		.uleb128 0x2117
+ 1367 0092 19       		.uleb128 0x19
+ 1368 0093 01       		.uleb128 0x1
+ 1369 0094 13       		.uleb128 0x13
+ 1370 0095 00       		.byte	0
+ 1371 0096 00       		.byte	0
+ 1372 0097 0C       		.uleb128 0xc
+ 1373 0098 1D       		.uleb128 0x1d
+ 1374 0099 01       		.byte	0x1
+ 1375 009a 31       		.uleb128 0x31
+ 1376 009b 13       		.uleb128 0x13
+ 1377 009c 11       		.uleb128 0x11
+ 1378 009d 01       		.uleb128 0x1
+ 1379 009e 12       		.uleb128 0x12
+ 1380 009f 06       		.uleb128 0x6
+ 1381 00a0 58       		.uleb128 0x58
+ 1382 00a1 0B       		.uleb128 0xb
+ 1383 00a2 59       		.uleb128 0x59
+ 1384 00a3 0B       		.uleb128 0xb
+ 1385 00a4 01       		.uleb128 0x1
+ 1386 00a5 13       		.uleb128 0x13
+ 1387 00a6 00       		.byte	0
+ 1388 00a7 00       		.byte	0
+ 1389 00a8 0D       		.uleb128 0xd
+ 1390 00a9 898201   		.uleb128 0x4109
+ 1391 00ac 01       		.byte	0x1
+ 1392 00ad 11       		.uleb128 0x11
+ 1393 00ae 01       		.uleb128 0x1
+ 1394 00af 31       		.uleb128 0x31
+ 1395 00b0 13       		.uleb128 0x13
+ 1396 00b1 00       		.byte	0
+ 1397 00b2 00       		.byte	0
+ 1398 00b3 0E       		.uleb128 0xe
+ 1399 00b4 8A8201   		.uleb128 0x410a
+ 1400 00b7 00       		.byte	0
+ 1401 00b8 02       		.uleb128 0x2
+ 1402 00b9 18       		.uleb128 0x18
+ 1403 00ba 9142     		.uleb128 0x2111
+ 1404 00bc 18       		.uleb128 0x18
+ 1405 00bd 00       		.byte	0
+ 1406 00be 00       		.byte	0
+ 1407 00bf 0F       		.uleb128 0xf
+ 1408 00c0 1D       		.uleb128 0x1d
+ 1409 00c1 01       		.byte	0x1
+ 1410 00c2 31       		.uleb128 0x31
+ 1411 00c3 13       		.uleb128 0x13
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 41
+
+
+ 1412 00c4 11       		.uleb128 0x11
+ 1413 00c5 01       		.uleb128 0x1
+ 1414 00c6 12       		.uleb128 0x12
+ 1415 00c7 06       		.uleb128 0x6
+ 1416 00c8 58       		.uleb128 0x58
+ 1417 00c9 0B       		.uleb128 0xb
+ 1418 00ca 59       		.uleb128 0x59
+ 1419 00cb 0B       		.uleb128 0xb
+ 1420 00cc 00       		.byte	0
+ 1421 00cd 00       		.byte	0
+ 1422 00ce 10       		.uleb128 0x10
+ 1423 00cf 898201   		.uleb128 0x4109
+ 1424 00d2 00       		.byte	0
+ 1425 00d3 11       		.uleb128 0x11
+ 1426 00d4 01       		.uleb128 0x1
+ 1427 00d5 31       		.uleb128 0x31
+ 1428 00d6 13       		.uleb128 0x13
+ 1429 00d7 00       		.byte	0
+ 1430 00d8 00       		.byte	0
+ 1431 00d9 11       		.uleb128 0x11
+ 1432 00da 2E       		.uleb128 0x2e
+ 1433 00db 01       		.byte	0x1
+ 1434 00dc 3F       		.uleb128 0x3f
+ 1435 00dd 19       		.uleb128 0x19
+ 1436 00de 03       		.uleb128 0x3
+ 1437 00df 0E       		.uleb128 0xe
+ 1438 00e0 3A       		.uleb128 0x3a
+ 1439 00e1 0B       		.uleb128 0xb
+ 1440 00e2 3B       		.uleb128 0x3b
+ 1441 00e3 0B       		.uleb128 0xb
+ 1442 00e4 27       		.uleb128 0x27
+ 1443 00e5 19       		.uleb128 0x19
+ 1444 00e6 11       		.uleb128 0x11
+ 1445 00e7 01       		.uleb128 0x1
+ 1446 00e8 12       		.uleb128 0x12
+ 1447 00e9 06       		.uleb128 0x6
+ 1448 00ea 40       		.uleb128 0x40
+ 1449 00eb 18       		.uleb128 0x18
+ 1450 00ec 9742     		.uleb128 0x2117
+ 1451 00ee 19       		.uleb128 0x19
+ 1452 00ef 01       		.uleb128 0x1
+ 1453 00f0 13       		.uleb128 0x13
+ 1454 00f1 00       		.byte	0
+ 1455 00f2 00       		.byte	0
+ 1456 00f3 12       		.uleb128 0x12
+ 1457 00f4 898201   		.uleb128 0x4109
+ 1458 00f7 01       		.byte	0x1
+ 1459 00f8 11       		.uleb128 0x11
+ 1460 00f9 01       		.uleb128 0x1
+ 1461 00fa 31       		.uleb128 0x31
+ 1462 00fb 13       		.uleb128 0x13
+ 1463 00fc 01       		.uleb128 0x1
+ 1464 00fd 13       		.uleb128 0x13
+ 1465 00fe 00       		.byte	0
+ 1466 00ff 00       		.byte	0
+ 1467 0100 13       		.uleb128 0x13
+ 1468 0101 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 42
+
+
+ 1469 0102 01       		.byte	0x1
+ 1470 0103 3F       		.uleb128 0x3f
+ 1471 0104 19       		.uleb128 0x19
+ 1472 0105 03       		.uleb128 0x3
+ 1473 0106 0E       		.uleb128 0xe
+ 1474 0107 3A       		.uleb128 0x3a
+ 1475 0108 0B       		.uleb128 0xb
+ 1476 0109 3B       		.uleb128 0x3b
+ 1477 010a 05       		.uleb128 0x5
+ 1478 010b 27       		.uleb128 0x27
+ 1479 010c 19       		.uleb128 0x19
+ 1480 010d 11       		.uleb128 0x11
+ 1481 010e 01       		.uleb128 0x1
+ 1482 010f 12       		.uleb128 0x12
+ 1483 0110 06       		.uleb128 0x6
+ 1484 0111 40       		.uleb128 0x40
+ 1485 0112 18       		.uleb128 0x18
+ 1486 0113 9742     		.uleb128 0x2117
+ 1487 0115 19       		.uleb128 0x19
+ 1488 0116 01       		.uleb128 0x1
+ 1489 0117 13       		.uleb128 0x13
+ 1490 0118 00       		.byte	0
+ 1491 0119 00       		.byte	0
+ 1492 011a 14       		.uleb128 0x14
+ 1493 011b 05       		.uleb128 0x5
+ 1494 011c 00       		.byte	0
+ 1495 011d 03       		.uleb128 0x3
+ 1496 011e 0E       		.uleb128 0xe
+ 1497 011f 3A       		.uleb128 0x3a
+ 1498 0120 0B       		.uleb128 0xb
+ 1499 0121 3B       		.uleb128 0x3b
+ 1500 0122 05       		.uleb128 0x5
+ 1501 0123 49       		.uleb128 0x49
+ 1502 0124 13       		.uleb128 0x13
+ 1503 0125 02       		.uleb128 0x2
+ 1504 0126 17       		.uleb128 0x17
+ 1505 0127 00       		.byte	0
+ 1506 0128 00       		.byte	0
+ 1507 0129 15       		.uleb128 0x15
+ 1508 012a 34       		.uleb128 0x34
+ 1509 012b 00       		.byte	0
+ 1510 012c 03       		.uleb128 0x3
+ 1511 012d 0E       		.uleb128 0xe
+ 1512 012e 3A       		.uleb128 0x3a
+ 1513 012f 0B       		.uleb128 0xb
+ 1514 0130 3B       		.uleb128 0x3b
+ 1515 0131 05       		.uleb128 0x5
+ 1516 0132 49       		.uleb128 0x49
+ 1517 0133 13       		.uleb128 0x13
+ 1518 0134 02       		.uleb128 0x2
+ 1519 0135 17       		.uleb128 0x17
+ 1520 0136 00       		.byte	0
+ 1521 0137 00       		.byte	0
+ 1522 0138 16       		.uleb128 0x16
+ 1523 0139 05       		.uleb128 0x5
+ 1524 013a 00       		.byte	0
+ 1525 013b 03       		.uleb128 0x3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 43
+
+
+ 1526 013c 0E       		.uleb128 0xe
+ 1527 013d 3A       		.uleb128 0x3a
+ 1528 013e 0B       		.uleb128 0xb
+ 1529 013f 3B       		.uleb128 0x3b
+ 1530 0140 05       		.uleb128 0x5
+ 1531 0141 49       		.uleb128 0x49
+ 1532 0142 13       		.uleb128 0x13
+ 1533 0143 02       		.uleb128 0x2
+ 1534 0144 18       		.uleb128 0x18
+ 1535 0145 00       		.byte	0
+ 1536 0146 00       		.byte	0
+ 1537 0147 17       		.uleb128 0x17
+ 1538 0148 34       		.uleb128 0x34
+ 1539 0149 00       		.byte	0
+ 1540 014a 03       		.uleb128 0x3
+ 1541 014b 0E       		.uleb128 0xe
+ 1542 014c 3A       		.uleb128 0x3a
+ 1543 014d 0B       		.uleb128 0xb
+ 1544 014e 3B       		.uleb128 0x3b
+ 1545 014f 05       		.uleb128 0x5
+ 1546 0150 49       		.uleb128 0x49
+ 1547 0151 13       		.uleb128 0x13
+ 1548 0152 02       		.uleb128 0x2
+ 1549 0153 18       		.uleb128 0x18
+ 1550 0154 00       		.byte	0
+ 1551 0155 00       		.byte	0
+ 1552 0156 18       		.uleb128 0x18
+ 1553 0157 34       		.uleb128 0x34
+ 1554 0158 00       		.byte	0
+ 1555 0159 03       		.uleb128 0x3
+ 1556 015a 08       		.uleb128 0x8
+ 1557 015b 3A       		.uleb128 0x3a
+ 1558 015c 0B       		.uleb128 0xb
+ 1559 015d 3B       		.uleb128 0x3b
+ 1560 015e 05       		.uleb128 0x5
+ 1561 015f 49       		.uleb128 0x49
+ 1562 0160 13       		.uleb128 0x13
+ 1563 0161 02       		.uleb128 0x2
+ 1564 0162 17       		.uleb128 0x17
+ 1565 0163 00       		.byte	0
+ 1566 0164 00       		.byte	0
+ 1567 0165 19       		.uleb128 0x19
+ 1568 0166 01       		.uleb128 0x1
+ 1569 0167 01       		.byte	0x1
+ 1570 0168 49       		.uleb128 0x49
+ 1571 0169 13       		.uleb128 0x13
+ 1572 016a 01       		.uleb128 0x1
+ 1573 016b 13       		.uleb128 0x13
+ 1574 016c 00       		.byte	0
+ 1575 016d 00       		.byte	0
+ 1576 016e 1A       		.uleb128 0x1a
+ 1577 016f 21       		.uleb128 0x21
+ 1578 0170 00       		.byte	0
+ 1579 0171 49       		.uleb128 0x49
+ 1580 0172 13       		.uleb128 0x13
+ 1581 0173 2F       		.uleb128 0x2f
+ 1582 0174 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 44
+
+
+ 1583 0175 00       		.byte	0
+ 1584 0176 00       		.byte	0
+ 1585 0177 1B       		.uleb128 0x1b
+ 1586 0178 2E       		.uleb128 0x2e
+ 1587 0179 00       		.byte	0
+ 1588 017a 3F       		.uleb128 0x3f
+ 1589 017b 19       		.uleb128 0x19
+ 1590 017c 03       		.uleb128 0x3
+ 1591 017d 0E       		.uleb128 0xe
+ 1592 017e 3A       		.uleb128 0x3a
+ 1593 017f 0B       		.uleb128 0xb
+ 1594 0180 3B       		.uleb128 0x3b
+ 1595 0181 05       		.uleb128 0x5
+ 1596 0182 27       		.uleb128 0x27
+ 1597 0183 19       		.uleb128 0x19
+ 1598 0184 11       		.uleb128 0x11
+ 1599 0185 01       		.uleb128 0x1
+ 1600 0186 12       		.uleb128 0x12
+ 1601 0187 06       		.uleb128 0x6
+ 1602 0188 40       		.uleb128 0x40
+ 1603 0189 18       		.uleb128 0x18
+ 1604 018a 9742     		.uleb128 0x2117
+ 1605 018c 19       		.uleb128 0x19
+ 1606 018d 00       		.byte	0
+ 1607 018e 00       		.byte	0
+ 1608 018f 1C       		.uleb128 0x1c
+ 1609 0190 34       		.uleb128 0x34
+ 1610 0191 00       		.byte	0
+ 1611 0192 03       		.uleb128 0x3
+ 1612 0193 0E       		.uleb128 0xe
+ 1613 0194 3A       		.uleb128 0x3a
+ 1614 0195 0B       		.uleb128 0xb
+ 1615 0196 3B       		.uleb128 0x3b
+ 1616 0197 0B       		.uleb128 0xb
+ 1617 0198 49       		.uleb128 0x49
+ 1618 0199 13       		.uleb128 0x13
+ 1619 019a 3F       		.uleb128 0x3f
+ 1620 019b 19       		.uleb128 0x19
+ 1621 019c 02       		.uleb128 0x2
+ 1622 019d 18       		.uleb128 0x18
+ 1623 019e 00       		.byte	0
+ 1624 019f 00       		.byte	0
+ 1625 01a0 1D       		.uleb128 0x1d
+ 1626 01a1 2E       		.uleb128 0x2e
+ 1627 01a2 01       		.byte	0x1
+ 1628 01a3 3F       		.uleb128 0x3f
+ 1629 01a4 19       		.uleb128 0x19
+ 1630 01a5 03       		.uleb128 0x3
+ 1631 01a6 0E       		.uleb128 0xe
+ 1632 01a7 3A       		.uleb128 0x3a
+ 1633 01a8 0B       		.uleb128 0xb
+ 1634 01a9 3B       		.uleb128 0x3b
+ 1635 01aa 0B       		.uleb128 0xb
+ 1636 01ab 27       		.uleb128 0x27
+ 1637 01ac 19       		.uleb128 0x19
+ 1638 01ad 3C       		.uleb128 0x3c
+ 1639 01ae 19       		.uleb128 0x19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 45
+
+
+ 1640 01af 01       		.uleb128 0x1
+ 1641 01b0 13       		.uleb128 0x13
+ 1642 01b1 00       		.byte	0
+ 1643 01b2 00       		.byte	0
+ 1644 01b3 1E       		.uleb128 0x1e
+ 1645 01b4 05       		.uleb128 0x5
+ 1646 01b5 00       		.byte	0
+ 1647 01b6 49       		.uleb128 0x49
+ 1648 01b7 13       		.uleb128 0x13
+ 1649 01b8 00       		.byte	0
+ 1650 01b9 00       		.byte	0
+ 1651 01ba 1F       		.uleb128 0x1f
+ 1652 01bb 2E       		.uleb128 0x2e
+ 1653 01bc 00       		.byte	0
+ 1654 01bd 3F       		.uleb128 0x3f
+ 1655 01be 19       		.uleb128 0x19
+ 1656 01bf 03       		.uleb128 0x3
+ 1657 01c0 0E       		.uleb128 0xe
+ 1658 01c1 3A       		.uleb128 0x3a
+ 1659 01c2 0B       		.uleb128 0xb
+ 1660 01c3 3B       		.uleb128 0x3b
+ 1661 01c4 0B       		.uleb128 0xb
+ 1662 01c5 27       		.uleb128 0x27
+ 1663 01c6 19       		.uleb128 0x19
+ 1664 01c7 3C       		.uleb128 0x3c
+ 1665 01c8 19       		.uleb128 0x19
+ 1666 01c9 00       		.byte	0
+ 1667 01ca 00       		.byte	0
+ 1668 01cb 20       		.uleb128 0x20
+ 1669 01cc 2E       		.uleb128 0x2e
+ 1670 01cd 01       		.byte	0x1
+ 1671 01ce 3F       		.uleb128 0x3f
+ 1672 01cf 19       		.uleb128 0x19
+ 1673 01d0 03       		.uleb128 0x3
+ 1674 01d1 0E       		.uleb128 0xe
+ 1675 01d2 3A       		.uleb128 0x3a
+ 1676 01d3 0B       		.uleb128 0xb
+ 1677 01d4 3B       		.uleb128 0x3b
+ 1678 01d5 0B       		.uleb128 0xb
+ 1679 01d6 27       		.uleb128 0x27
+ 1680 01d7 19       		.uleb128 0x19
+ 1681 01d8 3C       		.uleb128 0x3c
+ 1682 01d9 19       		.uleb128 0x19
+ 1683 01da 00       		.byte	0
+ 1684 01db 00       		.byte	0
+ 1685 01dc 00       		.byte	0
+ 1686              		.section	.debug_loc,"",%progbits
+ 1687              	.Ldebug_loc0:
+ 1688              	.LLST0:
+ 1689 0000 00000000 		.4byte	.LVL11
+ 1690 0004 06000000 		.4byte	.LVL12
+ 1691 0008 0100     		.2byte	0x1
+ 1692 000a 50       		.byte	0x50
+ 1693 000b 06000000 		.4byte	.LVL12
+ 1694 000f 14000000 		.4byte	.LFE4
+ 1695 0013 0400     		.2byte	0x4
+ 1696 0015 F3       		.byte	0xf3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 46
+
+
+ 1697 0016 01       		.uleb128 0x1
+ 1698 0017 50       		.byte	0x50
+ 1699 0018 9F       		.byte	0x9f
+ 1700 0019 00000000 		.4byte	0
+ 1701 001d 00000000 		.4byte	0
+ 1702              	.LLST1:
+ 1703 0021 08000000 		.4byte	.LVL13
+ 1704 0025 0C000000 		.4byte	.LVL15
+ 1705 0029 0100     		.2byte	0x1
+ 1706 002b 53       		.byte	0x53
+ 1707 002c 0C000000 		.4byte	.LVL15
+ 1708 0030 14000000 		.4byte	.LFE4
+ 1709 0034 0100     		.2byte	0x1
+ 1710 0036 50       		.byte	0x50
+ 1711 0037 00000000 		.4byte	0
+ 1712 003b 00000000 		.4byte	0
+ 1713              	.LLST2:
+ 1714 003f 00000000 		.4byte	.LVL16
+ 1715 0043 06000000 		.4byte	.LVL17
+ 1716 0047 0100     		.2byte	0x1
+ 1717 0049 50       		.byte	0x50
+ 1718 004a 06000000 		.4byte	.LVL17
+ 1719 004e 14000000 		.4byte	.LFE5
+ 1720 0052 0400     		.2byte	0x4
+ 1721 0054 F3       		.byte	0xf3
+ 1722 0055 01       		.uleb128 0x1
+ 1723 0056 50       		.byte	0x50
+ 1724 0057 9F       		.byte	0x9f
+ 1725 0058 00000000 		.4byte	0
+ 1726 005c 00000000 		.4byte	0
+ 1727              	.LLST3:
+ 1728 0060 08000000 		.4byte	.LVL18
+ 1729 0064 0C000000 		.4byte	.LVL20
+ 1730 0068 0100     		.2byte	0x1
+ 1731 006a 53       		.byte	0x53
+ 1732 006b 0C000000 		.4byte	.LVL20
+ 1733 006f 14000000 		.4byte	.LFE5
+ 1734 0073 0100     		.2byte	0x1
+ 1735 0075 50       		.byte	0x50
+ 1736 0076 00000000 		.4byte	0
+ 1737 007a 00000000 		.4byte	0
+ 1738              	.LLST4:
+ 1739 007e 00000000 		.4byte	.LVL22
+ 1740 0082 80000000 		.4byte	.LVL44
+ 1741 0086 0100     		.2byte	0x1
+ 1742 0088 50       		.byte	0x50
+ 1743 0089 80000000 		.4byte	.LVL44
+ 1744 008d CC000000 		.4byte	.LFE10
+ 1745 0091 0400     		.2byte	0x4
+ 1746 0093 F3       		.byte	0xf3
+ 1747 0094 01       		.uleb128 0x1
+ 1748 0095 50       		.byte	0x50
+ 1749 0096 9F       		.byte	0x9f
+ 1750 0097 00000000 		.4byte	0
+ 1751 009b 00000000 		.4byte	0
+ 1752              	.LLST5:
+ 1753 009f 00000000 		.4byte	.LVL22
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 47
+
+
+ 1754 00a3 72000000 		.4byte	.LVL43
+ 1755 00a7 0100     		.2byte	0x1
+ 1756 00a9 51       		.byte	0x51
+ 1757 00aa 72000000 		.4byte	.LVL43
+ 1758 00ae CC000000 		.4byte	.LFE10
+ 1759 00b2 0400     		.2byte	0x4
+ 1760 00b4 F3       		.byte	0xf3
+ 1761 00b5 01       		.uleb128 0x1
+ 1762 00b6 51       		.byte	0x51
+ 1763 00b7 9F       		.byte	0x9f
+ 1764 00b8 00000000 		.4byte	0
+ 1765 00bc 00000000 		.4byte	0
+ 1766              	.LLST6:
+ 1767 00c0 00000000 		.4byte	.LVL22
+ 1768 00c4 24000000 		.4byte	.LVL26
+ 1769 00c8 0100     		.2byte	0x1
+ 1770 00ca 52       		.byte	0x52
+ 1771 00cb 24000000 		.4byte	.LVL26
+ 1772 00cf 28000000 		.4byte	.LVL27
+ 1773 00d3 0400     		.2byte	0x4
+ 1774 00d5 F3       		.byte	0xf3
+ 1775 00d6 01       		.uleb128 0x1
+ 1776 00d7 52       		.byte	0x52
+ 1777 00d8 9F       		.byte	0x9f
+ 1778 00d9 28000000 		.4byte	.LVL27
+ 1779 00dd 50000000 		.4byte	.LVL34
+ 1780 00e1 0100     		.2byte	0x1
+ 1781 00e3 52       		.byte	0x52
+ 1782 00e4 50000000 		.4byte	.LVL34
+ 1783 00e8 56000000 		.4byte	.LVL35
+ 1784 00ec 0400     		.2byte	0x4
+ 1785 00ee F3       		.byte	0xf3
+ 1786 00ef 01       		.uleb128 0x1
+ 1787 00f0 52       		.byte	0x52
+ 1788 00f1 9F       		.byte	0x9f
+ 1789 00f2 56000000 		.4byte	.LVL35
+ 1790 00f6 62000000 		.4byte	.LVL38
+ 1791 00fa 0100     		.2byte	0x1
+ 1792 00fc 52       		.byte	0x52
+ 1793 00fd 62000000 		.4byte	.LVL38
+ 1794 0101 CC000000 		.4byte	.LFE10
+ 1795 0105 0400     		.2byte	0x4
+ 1796 0107 F3       		.byte	0xf3
+ 1797 0108 01       		.uleb128 0x1
+ 1798 0109 52       		.byte	0x52
+ 1799 010a 9F       		.byte	0x9f
+ 1800 010b 00000000 		.4byte	0
+ 1801 010f 00000000 		.4byte	0
+ 1802              	.LLST7:
+ 1803 0113 00000000 		.4byte	.LVL22
+ 1804 0117 06000000 		.4byte	.LVL23
+ 1805 011b 0200     		.2byte	0x2
+ 1806 011d 30       		.byte	0x30
+ 1807 011e 9F       		.byte	0x9f
+ 1808 011f 00000000 		.4byte	0
+ 1809 0123 00000000 		.4byte	0
+ 1810              	.LLST8:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 48
+
+
+ 1811 0127 00000000 		.4byte	.LVL22
+ 1812 012b 3A000000 		.4byte	.LVL29
+ 1813 012f 0200     		.2byte	0x2
+ 1814 0131 30       		.byte	0x30
+ 1815 0132 9F       		.byte	0x9f
+ 1816 0133 3A000000 		.4byte	.LVL29
+ 1817 0137 40000000 		.4byte	.LVL30
+ 1818 013b 0200     		.2byte	0x2
+ 1819 013d 32       		.byte	0x32
+ 1820 013e 9F       		.byte	0x9f
+ 1821 013f 40000000 		.4byte	.LVL30
+ 1822 0143 46000000 		.4byte	.LVL31
+ 1823 0147 0200     		.2byte	0x2
+ 1824 0149 30       		.byte	0x30
+ 1825 014a 9F       		.byte	0x9f
+ 1826 014b 46000000 		.4byte	.LVL31
+ 1827 014f 4A000000 		.4byte	.LVL32
+ 1828 0153 0200     		.2byte	0x2
+ 1829 0155 31       		.byte	0x31
+ 1830 0156 9F       		.byte	0x9f
+ 1831 0157 4A000000 		.4byte	.LVL32
+ 1832 015b 6C000000 		.4byte	.LVL40
+ 1833 015f 0200     		.2byte	0x2
+ 1834 0161 30       		.byte	0x30
+ 1835 0162 9F       		.byte	0x9f
+ 1836 0163 6C000000 		.4byte	.LVL40
+ 1837 0167 6E000000 		.4byte	.LVL41
+ 1838 016b 0200     		.2byte	0x2
+ 1839 016d 32       		.byte	0x32
+ 1840 016e 9F       		.byte	0x9f
+ 1841 016f 6E000000 		.4byte	.LVL41
+ 1842 0173 70000000 		.4byte	.LVL42
+ 1843 0177 0200     		.2byte	0x2
+ 1844 0179 30       		.byte	0x30
+ 1845 017a 9F       		.byte	0x9f
+ 1846 017b 70000000 		.4byte	.LVL42
+ 1847 017f C2000000 		.4byte	.LVL48
+ 1848 0183 0100     		.2byte	0x1
+ 1849 0185 55       		.byte	0x55
+ 1850 0186 00000000 		.4byte	0
+ 1851 018a 00000000 		.4byte	0
+ 1852              	.LLST9:
+ 1853 018e 00000000 		.4byte	.LVL22
+ 1854 0192 1A000000 		.4byte	.LVL24
+ 1855 0196 0A00     		.2byte	0xa
+ 1856 0198 30       		.byte	0x30
+ 1857 0199 9F       		.byte	0x9f
+ 1858 019a 93       		.byte	0x93
+ 1859 019b 04       		.uleb128 0x4
+ 1860 019c 30       		.byte	0x30
+ 1861 019d 9F       		.byte	0x9f
+ 1862 019e 93       		.byte	0x93
+ 1863 019f 04       		.uleb128 0x4
+ 1864 01a0 93       		.byte	0x93
+ 1865 01a1 14       		.uleb128 0x14
+ 1866 01a2 1A000000 		.4byte	.LVL24
+ 1867 01a6 20000000 		.4byte	.LVL25
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 49
+
+
+ 1868 01aa 0A00     		.2byte	0xa
+ 1869 01ac 3E       		.byte	0x3e
+ 1870 01ad 9F       		.byte	0x9f
+ 1871 01ae 93       		.byte	0x93
+ 1872 01af 04       		.uleb128 0x4
+ 1873 01b0 30       		.byte	0x30
+ 1874 01b1 9F       		.byte	0x9f
+ 1875 01b2 93       		.byte	0x93
+ 1876 01b3 04       		.uleb128 0x4
+ 1877 01b4 93       		.byte	0x93
+ 1878 01b5 14       		.uleb128 0x14
+ 1879 01b6 20000000 		.4byte	.LVL25
+ 1880 01ba 24000000 		.4byte	.LVL26
+ 1881 01be 0A00     		.2byte	0xa
+ 1882 01c0 3E       		.byte	0x3e
+ 1883 01c1 9F       		.byte	0x9f
+ 1884 01c2 93       		.byte	0x93
+ 1885 01c3 04       		.uleb128 0x4
+ 1886 01c4 3E       		.byte	0x3e
+ 1887 01c5 9F       		.byte	0x9f
+ 1888 01c6 93       		.byte	0x93
+ 1889 01c7 04       		.uleb128 0x4
+ 1890 01c8 93       		.byte	0x93
+ 1891 01c9 14       		.uleb128 0x14
+ 1892 01ca 28000000 		.4byte	.LVL27
+ 1893 01ce 2E000000 		.4byte	.LVL28
+ 1894 01d2 0A00     		.2byte	0xa
+ 1895 01d4 30       		.byte	0x30
+ 1896 01d5 9F       		.byte	0x9f
+ 1897 01d6 93       		.byte	0x93
+ 1898 01d7 04       		.uleb128 0x4
+ 1899 01d8 30       		.byte	0x30
+ 1900 01d9 9F       		.byte	0x9f
+ 1901 01da 93       		.byte	0x93
+ 1902 01db 04       		.uleb128 0x4
+ 1903 01dc 93       		.byte	0x93
+ 1904 01dd 14       		.uleb128 0x14
+ 1905 01de 2E000000 		.4byte	.LVL28
+ 1906 01e2 4A000000 		.4byte	.LVL32
+ 1907 01e6 0A00     		.2byte	0xa
+ 1908 01e8 3F       		.byte	0x3f
+ 1909 01e9 9F       		.byte	0x9f
+ 1910 01ea 93       		.byte	0x93
+ 1911 01eb 04       		.uleb128 0x4
+ 1912 01ec 3F       		.byte	0x3f
+ 1913 01ed 9F       		.byte	0x9f
+ 1914 01ee 93       		.byte	0x93
+ 1915 01ef 04       		.uleb128 0x4
+ 1916 01f0 93       		.byte	0x93
+ 1917 01f1 14       		.uleb128 0x14
+ 1918 01f2 4A000000 		.4byte	.LVL32
+ 1919 01f6 4E000000 		.4byte	.LVL33
+ 1920 01fa 0A00     		.2byte	0xa
+ 1921 01fc 30       		.byte	0x30
+ 1922 01fd 9F       		.byte	0x9f
+ 1923 01fe 93       		.byte	0x93
+ 1924 01ff 04       		.uleb128 0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 50
+
+
+ 1925 0200 30       		.byte	0x30
+ 1926 0201 9F       		.byte	0x9f
+ 1927 0202 93       		.byte	0x93
+ 1928 0203 04       		.uleb128 0x4
+ 1929 0204 93       		.byte	0x93
+ 1930 0205 14       		.uleb128 0x14
+ 1931 0206 4E000000 		.4byte	.LVL33
+ 1932 020a 56000000 		.4byte	.LVL35
+ 1933 020e 0A00     		.2byte	0xa
+ 1934 0210 30       		.byte	0x30
+ 1935 0211 9F       		.byte	0x9f
+ 1936 0212 93       		.byte	0x93
+ 1937 0213 04       		.uleb128 0x4
+ 1938 0214 39       		.byte	0x39
+ 1939 0215 9F       		.byte	0x9f
+ 1940 0216 93       		.byte	0x93
+ 1941 0217 04       		.uleb128 0x4
+ 1942 0218 93       		.byte	0x93
+ 1943 0219 14       		.uleb128 0x14
+ 1944 021a 56000000 		.4byte	.LVL35
+ 1945 021e 5A000000 		.4byte	.LVL36
+ 1946 0222 0A00     		.2byte	0xa
+ 1947 0224 30       		.byte	0x30
+ 1948 0225 9F       		.byte	0x9f
+ 1949 0226 93       		.byte	0x93
+ 1950 0227 04       		.uleb128 0x4
+ 1951 0228 30       		.byte	0x30
+ 1952 0229 9F       		.byte	0x9f
+ 1953 022a 93       		.byte	0x93
+ 1954 022b 04       		.uleb128 0x4
+ 1955 022c 93       		.byte	0x93
+ 1956 022d 14       		.uleb128 0x14
+ 1957 022e 5A000000 		.4byte	.LVL36
+ 1958 0232 5E000000 		.4byte	.LVL37
+ 1959 0236 0A00     		.2byte	0xa
+ 1960 0238 39       		.byte	0x39
+ 1961 0239 9F       		.byte	0x9f
+ 1962 023a 93       		.byte	0x93
+ 1963 023b 04       		.uleb128 0x4
+ 1964 023c 30       		.byte	0x30
+ 1965 023d 9F       		.byte	0x9f
+ 1966 023e 93       		.byte	0x93
+ 1967 023f 04       		.uleb128 0x4
+ 1968 0240 93       		.byte	0x93
+ 1969 0241 14       		.uleb128 0x14
+ 1970 0242 5E000000 		.4byte	.LVL37
+ 1971 0246 66000000 		.4byte	.LVL39
+ 1972 024a 0800     		.2byte	0x8
+ 1973 024c 93       		.byte	0x93
+ 1974 024d 04       		.uleb128 0x4
+ 1975 024e 30       		.byte	0x30
+ 1976 024f 9F       		.byte	0x9f
+ 1977 0250 93       		.byte	0x93
+ 1978 0251 04       		.uleb128 0x4
+ 1979 0252 93       		.byte	0x93
+ 1980 0253 14       		.uleb128 0x14
+ 1981 0254 66000000 		.4byte	.LVL39
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 51
+
+
+ 1982 0258 6E000000 		.4byte	.LVL41
+ 1983 025c 0800     		.2byte	0x8
+ 1984 025e 93       		.byte	0x93
+ 1985 025f 04       		.uleb128 0x4
+ 1986 0260 39       		.byte	0x39
+ 1987 0261 9F       		.byte	0x9f
+ 1988 0262 93       		.byte	0x93
+ 1989 0263 04       		.uleb128 0x4
+ 1990 0264 93       		.byte	0x93
+ 1991 0265 14       		.uleb128 0x14
+ 1992 0266 6E000000 		.4byte	.LVL41
+ 1993 026a 70000000 		.4byte	.LVL42
+ 1994 026e 0800     		.2byte	0x8
+ 1995 0270 93       		.byte	0x93
+ 1996 0271 04       		.uleb128 0x4
+ 1997 0272 30       		.byte	0x30
+ 1998 0273 9F       		.byte	0x9f
+ 1999 0274 93       		.byte	0x93
+ 2000 0275 04       		.uleb128 0x4
+ 2001 0276 93       		.byte	0x93
+ 2002 0277 14       		.uleb128 0x14
+ 2003 0278 70000000 		.4byte	.LVL42
+ 2004 027c A0000000 		.4byte	.LVL46
+ 2005 0280 0700     		.2byte	0x7
+ 2006 0282 93       		.byte	0x93
+ 2007 0283 04       		.uleb128 0x4
+ 2008 0284 54       		.byte	0x54
+ 2009 0285 93       		.byte	0x93
+ 2010 0286 04       		.uleb128 0x4
+ 2011 0287 93       		.byte	0x93
+ 2012 0288 14       		.uleb128 0x14
+ 2013 0289 00000000 		.4byte	0
+ 2014 028d 00000000 		.4byte	0
+ 2015              		.section	.debug_aranges,"",%progbits
+ 2016 0000 5C000000 		.4byte	0x5c
+ 2017 0004 0200     		.2byte	0x2
+ 2018 0006 00000000 		.4byte	.Ldebug_info0
+ 2019 000a 04       		.byte	0x4
+ 2020 000b 00       		.byte	0
+ 2021 000c 0000     		.2byte	0
+ 2022 000e 0000     		.2byte	0
+ 2023 0010 00000000 		.4byte	.LFB0
+ 2024 0014 18000000 		.4byte	.LFE0-.LFB0
+ 2025 0018 00000000 		.4byte	.LFB1
+ 2026 001c 48000000 		.4byte	.LFE1-.LFB1
+ 2027 0020 00000000 		.4byte	.LFB2
+ 2028 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 2029 0028 00000000 		.4byte	.LFB3
+ 2030 002c 58000000 		.4byte	.LFE3-.LFB3
+ 2031 0030 00000000 		.4byte	.LFB4
+ 2032 0034 14000000 		.4byte	.LFE4-.LFB4
+ 2033 0038 00000000 		.4byte	.LFB5
+ 2034 003c 14000000 		.4byte	.LFE5-.LFB5
+ 2035 0040 00000000 		.4byte	.LFB6
+ 2036 0044 0C000000 		.4byte	.LFE6-.LFB6
+ 2037 0048 00000000 		.4byte	.LFB10
+ 2038 004c CC000000 		.4byte	.LFE10-.LFB10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 52
+
+
+ 2039 0050 00000000 		.4byte	.LFB11
+ 2040 0054 3C000000 		.4byte	.LFE11-.LFB11
+ 2041 0058 00000000 		.4byte	0
+ 2042 005c 00000000 		.4byte	0
+ 2043              		.section	.debug_ranges,"",%progbits
+ 2044              	.Ldebug_ranges0:
+ 2045 0000 00000000 		.4byte	.LFB0
+ 2046 0004 18000000 		.4byte	.LFE0
+ 2047 0008 00000000 		.4byte	.LFB1
+ 2048 000c 48000000 		.4byte	.LFE1
+ 2049 0010 00000000 		.4byte	.LFB2
+ 2050 0014 1C000000 		.4byte	.LFE2
+ 2051 0018 00000000 		.4byte	.LFB3
+ 2052 001c 58000000 		.4byte	.LFE3
+ 2053 0020 00000000 		.4byte	.LFB4
+ 2054 0024 14000000 		.4byte	.LFE4
+ 2055 0028 00000000 		.4byte	.LFB5
+ 2056 002c 14000000 		.4byte	.LFE5
+ 2057 0030 00000000 		.4byte	.LFB6
+ 2058 0034 0C000000 		.4byte	.LFE6
+ 2059 0038 00000000 		.4byte	.LFB10
+ 2060 003c CC000000 		.4byte	.LFE10
+ 2061 0040 00000000 		.4byte	.LFB11
+ 2062 0044 3C000000 		.4byte	.LFE11
+ 2063 0048 00000000 		.4byte	0
+ 2064 004c 00000000 		.4byte	0
+ 2065              		.section	.debug_line,"",%progbits
+ 2066              	.Ldebug_line0:
+ 2067 0000 41020000 		.section	.debug_str,"MS",%progbits,1
+ 2067      0200CF00 
+ 2067      00000201 
+ 2067      FB0E0D00 
+ 2067      01010101 
+ 2068              	.LASF41:
+ 2069 0000 436F6D6D 		.ascii	"Comm_scbEnableWake\000"
+ 2069      5F736362 
+ 2069      456E6162 
+ 2069      6C655761 
+ 2069      6B6500
+ 2070              	.LASF10:
+ 2071 0013 75696E74 		.ascii	"uint16\000"
+ 2071      313600
+ 2072              	.LASF65:
+ 2073 001a 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2073      4320342E 
+ 2073      392E3320 
+ 2073      32303135 
+ 2073      30333033 
+ 2074 004d 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 2074      20726576 
+ 2074      6973696F 
+ 2074      6E203232 
+ 2074      31323230 
+ 2075 0080 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 2075      66756E63 
+ 2075      74696F6E 
+ 2075      2D736563 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 53
+
+
+ 2075      74696F6E 
+ 2076              	.LASF55:
+ 2077 00a8 436F6D6D 		.ascii	"Comm_SpiPostEnable\000"
+ 2077      5F537069 
+ 2077      506F7374 
+ 2077      456E6162 
+ 2077      6C6500
+ 2078              	.LASF7:
+ 2079 00bb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2079      206C6F6E 
+ 2079      6720756E 
+ 2079      7369676E 
+ 2079      65642069 
+ 2080              	.LASF29:
+ 2081 00d2 436F6D6D 		.ascii	"Comm_SetPins\000"
+ 2081      5F536574 
+ 2081      50696E73 
+ 2081      00
+ 2082              	.LASF48:
+ 2083 00df 436F6D6D 		.ascii	"Comm_txBuffer\000"
+ 2083      5F747842 
+ 2083      75666665 
+ 2083      7200
+ 2084              	.LASF6:
+ 2085 00ed 6C6F6E67 		.ascii	"long long int\000"
+ 2085      206C6F6E 
+ 2085      6720696E 
+ 2085      7400
+ 2086              	.LASF0:
+ 2087 00fb 7369676E 		.ascii	"signed char\000"
+ 2087      65642063 
+ 2087      68617200 
+ 2088              	.LASF36:
+ 2089 0107 436F6D6D 		.ascii	"Comm_Init\000"
+ 2089      5F496E69 
+ 2089      7400
+ 2090              	.LASF4:
+ 2091 0111 6C6F6E67 		.ascii	"long int\000"
+ 2091      20696E74 
+ 2091      00
+ 2092              	.LASF62:
+ 2093 011a 4379496E 		.ascii	"CyIntDisable\000"
+ 2093      74446973 
+ 2093      61626C65 
+ 2093      00
+ 2094              	.LASF54:
+ 2095 0127 436F6D6D 		.ascii	"Comm_Enable\000"
+ 2095      5F456E61 
+ 2095      626C6500 
+ 2096              	.LASF28:
+ 2097 0133 66756E63 		.ascii	"func\000"
+ 2097      00
+ 2098              	.LASF9:
+ 2099 0138 75696E74 		.ascii	"uint8\000"
+ 2099      3800
+ 2100              	.LASF13:
+ 2101 013e 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 54
+
+
+ 2101      6C6500
+ 2102              	.LASF59:
+ 2103 0145 436F6D6D 		.ascii	"Comm_SpiStop\000"
+ 2103      5F537069 
+ 2103      53746F70 
+ 2103      00
+ 2104              	.LASF11:
+ 2105 0152 75696E74 		.ascii	"uint32\000"
+ 2105      333200
+ 2106              	.LASF46:
+ 2107 0159 436F6D6D 		.ascii	"Comm_rxDataBits\000"
+ 2107      5F727844 
+ 2107      61746142 
+ 2107      69747300 
+ 2108              	.LASF49:
+ 2109 0169 436F6D6D 		.ascii	"Comm_txDataBits\000"
+ 2109      5F747844 
+ 2109      61746142 
+ 2109      69747300 
+ 2110              	.LASF66:
+ 2111 0179 47656E65 		.ascii	"Generated_Source\\PSoC4\\Comm.c\000"
+ 2111      72617465 
+ 2111      645F536F 
+ 2111      75726365 
+ 2111      5C50536F 
+ 2112              	.LASF8:
+ 2113 0197 756E7369 		.ascii	"unsigned int\000"
+ 2113      676E6564 
+ 2113      20696E74 
+ 2113      00
+ 2114              	.LASF43:
+ 2115 01a4 436F6D6D 		.ascii	"Comm_mode\000"
+ 2115      5F6D6F64 
+ 2115      6500
+ 2116              	.LASF56:
+ 2117 01ae 436F6D6D 		.ascii	"Comm_UartPostEnable\000"
+ 2117      5F556172 
+ 2117      74506F73 
+ 2117      74456E61 
+ 2117      626C6500 
+ 2118              	.LASF5:
+ 2119 01c2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2119      20756E73 
+ 2119      69676E65 
+ 2119      6420696E 
+ 2119      7400
+ 2120              	.LASF24:
+ 2121 01d4 6C657665 		.ascii	"level\000"
+ 2121      6C00
+ 2122              	.LASF3:
+ 2123 01da 73686F72 		.ascii	"short unsigned int\000"
+ 2123      7420756E 
+ 2123      7369676E 
+ 2123      65642069 
+ 2123      6E7400
+ 2124              	.LASF42:
+ 2125 01ed 436F6D6D 		.ascii	"Comm_scbEnableIntr\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 55
+
+
+ 2125      5F736362 
+ 2125      456E6162 
+ 2125      6C65496E 
+ 2125      747200
+ 2126              	.LASF20:
+ 2127 0200 436F6D6D 		.ascii	"Comm_Start\000"
+ 2127      5F537461 
+ 2127      727400
+ 2128              	.LASF45:
+ 2129 020b 436F6D6D 		.ascii	"Comm_rxBuffer\000"
+ 2129      5F727842 
+ 2129      75666665 
+ 2129      7200
+ 2130              	.LASF32:
+ 2131 0219 75617274 		.ascii	"uartEnableMask\000"
+ 2131      456E6162 
+ 2131      6C654D61 
+ 2131      736B00
+ 2132              	.LASF15:
+ 2133 0228 72656733 		.ascii	"reg32\000"
+ 2133      3200
+ 2134              	.LASF35:
+ 2135 022e 6873696F 		.ascii	"hsiomSel\000"
+ 2135      6D53656C 
+ 2135      00
+ 2136              	.LASF16:
+ 2137 0237 73697A65 		.ascii	"sizetype\000"
+ 2137      74797065 
+ 2137      00
+ 2138              	.LASF63:
+ 2139 0240 4379496E 		.ascii	"CyIntClearPending\000"
+ 2139      74436C65 
+ 2139      61725065 
+ 2139      6E64696E 
+ 2139      6700
+ 2140              	.LASF61:
+ 2141 0252 4379496E 		.ascii	"CyIntEnable\000"
+ 2141      74456E61 
+ 2141      626C6500 
+ 2142              	.LASF38:
+ 2143 025e 436F6D6D 		.ascii	"Comm_initVar\000"
+ 2143      5F696E69 
+ 2143      74566172 
+ 2143      00
+ 2144              	.LASF27:
+ 2145 026b 436F6D6D 		.ascii	"Comm_SetCustomInterruptHandler\000"
+ 2145      5F536574 
+ 2145      43757374 
+ 2145      6F6D496E 
+ 2145      74657272 
+ 2146              	.LASF33:
+ 2147 028a 70696E73 		.ascii	"pinsDm\000"
+ 2147      446D00
+ 2148              	.LASF12:
+ 2149 0291 666C6F61 		.ascii	"float\000"
+ 2149      7400
+ 2150              	.LASF57:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 56
+
+
+ 2151 0297 436F6D6D 		.ascii	"Comm_I2CStop\000"
+ 2151      5F493243 
+ 2151      53746F70 
+ 2151      00
+ 2152              	.LASF18:
+ 2153 02a4 436F6D6D 		.ascii	"Comm_ScbModePostEnable\000"
+ 2153      5F536362 
+ 2153      4D6F6465 
+ 2153      506F7374 
+ 2153      456E6162 
+ 2154              	.LASF58:
+ 2155 02bb 436F6D6D 		.ascii	"Comm_EzI2CStop\000"
+ 2155      5F457A49 
+ 2155      32435374 
+ 2155      6F7000
+ 2156              	.LASF1:
+ 2157 02ca 756E7369 		.ascii	"unsigned char\000"
+ 2157      676E6564 
+ 2157      20636861 
+ 2157      7200
+ 2158              	.LASF44:
+ 2159 02d8 436F6D6D 		.ascii	"Comm_acceptAddr\000"
+ 2159      5F616363 
+ 2159      65707441 
+ 2159      64647200 
+ 2160              	.LASF2:
+ 2161 02e8 73686F72 		.ascii	"short int\000"
+ 2161      7420696E 
+ 2161      7400
+ 2162              	.LASF23:
+ 2163 02f2 436F6D6D 		.ascii	"Comm_SetTxFifoLevel\000"
+ 2163      5F536574 
+ 2163      54784669 
+ 2163      666F4C65 
+ 2163      76656C00 
+ 2164              	.LASF50:
+ 2165 0306 436F6D6D 		.ascii	"Comm_txBufferSize\000"
+ 2165      5F747842 
+ 2165      75666665 
+ 2165      7253697A 
+ 2165      6500
+ 2166              	.LASF51:
+ 2167 0318 436F6D6D 		.ascii	"Comm_numberOfAddr\000"
+ 2167      5F6E756D 
+ 2167      6265724F 
+ 2167      66416464 
+ 2167      7200
+ 2168              	.LASF52:
+ 2169 032a 436F6D6D 		.ascii	"Comm_subAddrSize\000"
+ 2169      5F737562 
+ 2169      41646472 
+ 2169      53697A65 
+ 2169      00
+ 2170              	.LASF14:
+ 2171 033b 63686172 		.ascii	"char\000"
+ 2171      00
+ 2172              	.LASF21:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 57
+
+
+ 2173 0340 436F6D6D 		.ascii	"Comm_Stop\000"
+ 2173      5F53746F 
+ 2173      7000
+ 2174              	.LASF30:
+ 2175 034a 6D6F6465 		.ascii	"mode\000"
+ 2175      00
+ 2176              	.LASF60:
+ 2177 034f 436F6D6D 		.ascii	"Comm_UartStop\000"
+ 2177      5F556172 
+ 2177      7453746F 
+ 2177      7000
+ 2178              	.LASF22:
+ 2179 035d 436F6D6D 		.ascii	"Comm_SetRxFifoLevel\000"
+ 2179      5F536574 
+ 2179      52784669 
+ 2179      666F4C65 
+ 2179      76656C00 
+ 2180              	.LASF67:
+ 2181 0371 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 2181      73657273 
+ 2181      5C546563 
+ 2181      6820436F 
+ 2181      6E73756C 
+ 2182 03a0 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 2182      70706572 
+ 2182      2050726F 
+ 2182      6A656374 
+ 2182      73204765 
+ 2183 03d1 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 2183      34323030 
+ 2183      2D476561 
+ 2183      72426573 
+ 2183      742E6379 
+ 2184              	.LASF37:
+ 2185 03e9 436F6D6D 		.ascii	"Comm_I2CSlaveNackGeneration\000"
+ 2185      5F493243 
+ 2185      536C6176 
+ 2185      654E6163 
+ 2185      6B47656E 
+ 2186              	.LASF64:
+ 2187 0405 436F6D6D 		.ascii	"Comm_uart_rx_i2c_scl_spi_mosi_SetDriveMode\000"
+ 2187      5F756172 
+ 2187      745F7278 
+ 2187      5F693263 
+ 2187      5F73636C 
+ 2188              	.LASF53:
+ 2189 0430 436F6D6D 		.ascii	"Comm_IntrTxMask\000"
+ 2189      5F496E74 
+ 2189      7254784D 
+ 2189      61736B00 
+ 2190              	.LASF34:
+ 2191 0440 70696E73 		.ascii	"pinsInBuf\000"
+ 2191      496E4275 
+ 2191      6600
+ 2192              	.LASF17:
+ 2193 044a 436F6D6D 		.ascii	"Comm_ScbEnableIntr\000"
+ 2193      5F536362 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccimnBS9.s 			page 58
+
+
+ 2193      456E6162 
+ 2193      6C65496E 
+ 2193      747200
+ 2194              	.LASF47:
+ 2195 045d 436F6D6D 		.ascii	"Comm_rxBufferSize\000"
+ 2195      5F727842 
+ 2195      75666665 
+ 2195      7253697A 
+ 2195      6500
+ 2196              	.LASF39:
+ 2197 046f 436F6D6D 		.ascii	"Comm_customIntrHandler\000"
+ 2197      5F637573 
+ 2197      746F6D49 
+ 2197      6E747248 
+ 2197      616E646C 
+ 2198              	.LASF40:
+ 2199 0486 436F6D6D 		.ascii	"Comm_scbMode\000"
+ 2199      5F736362 
+ 2199      4D6F6465 
+ 2199      00
+ 2200              	.LASF68:
+ 2201 0493 436F6D6D 		.ascii	"Comm_uart_tx_i2c_sda_spi_miso_SetDriveMode\000"
+ 2201      5F756172 
+ 2201      745F7478 
+ 2201      5F693263 
+ 2201      5F736461 
+ 2202              	.LASF25:
+ 2203 04be 72784669 		.ascii	"rxFifoCtrl\000"
+ 2203      666F4374 
+ 2203      726C00
+ 2204              	.LASF19:
+ 2205 04c9 436F6D6D 		.ascii	"Comm_ScbModeStop\000"
+ 2205      5F536362 
+ 2205      4D6F6465 
+ 2205      53746F70 
+ 2205      00
+ 2206              	.LASF26:
+ 2207 04da 74784669 		.ascii	"txFifoCtrl\000"
+ 2207      666F4374 
+ 2207      726C00
+ 2208              	.LASF31:
+ 2209 04e5 7375624D 		.ascii	"subMode\000"
+ 2209      6F646500 
+ 2210              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

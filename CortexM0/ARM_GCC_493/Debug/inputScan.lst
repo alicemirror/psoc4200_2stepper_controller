@@ -1,0 +1,659 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"inputScan.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	dirReg,1,1
+  18              		.comm	dirReg1,1,1
+  19              		.section	.text.inputScan,"ax",%progbits
+  20              		.align	2
+  21              		.global	inputScan
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	inputScan, %function
+  25              	inputScan:
+  26              	.LFB0:
+  27              		.file 1 ".\\inputScan.c"
+   1:.\inputScan.c **** /* ========================================
+   2:.\inputScan.c ****  *
+   3:.\inputScan.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\inputScan.c ****  * All Rights Reserved
+   5:.\inputScan.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\inputScan.c ****  *
+   7:.\inputScan.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\inputScan.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\inputScan.c ****  *
+  10:.\inputScan.c ****  * ========================================
+  11:.\inputScan.c **** */
+  12:.\inputScan.c **** 
+  13:.\inputScan.c **** #include <inputScan.h>
+  14:.\inputScan.c **** 
+  15:.\inputScan.c **** void inputScan(uint8 motor) {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30 0000 80B5     		push	{r7, lr}
+  31              		.cfi_def_cfa_offset 8
+  32              		.cfi_offset 7, -8
+  33              		.cfi_offset 14, -4
+  34 0002 82B0     		sub	sp, sp, #8
+  35              		.cfi_def_cfa_offset 16
+  36 0004 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  38 0006 021C     		mov	r2, r0
+  39 0008 FB1D     		add	r3, r7, #7
+  40 000a 1A70     		strb	r2, [r3]
+  16:.\inputScan.c ****     
+  17:.\inputScan.c ****     if(motor == 1) {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 2
+
+
+  41              		.loc 1 17 0
+  42 000c FB1D     		add	r3, r7, #7
+  43 000e 1B78     		ldrb	r3, [r3]
+  44 0010 012B     		cmp	r3, #1
+  45 0012 27D1     		bne	.L2
+  18:.\inputScan.c ****         // Motor 1
+  19:.\inputScan.c ****         if (STEP_INPUT_SOURCE_Read() == 0){
+  46              		.loc 1 19 0
+  47 0014 FFF7FEFF 		bl	STEP_INPUT_SOURCE_Read
+  48 0018 031E     		sub	r3, r0, #0
+  49 001a 0AD1     		bne	.L3
+  20:.\inputScan.c ****             previousStepPulse  = stepPulse;
+  50              		.loc 1 20 0
+  51 001c 264B     		ldr	r3, .L11
+  52 001e 1A78     		ldrb	r2, [r3]
+  53 0020 264B     		ldr	r3, .L11+4
+  54 0022 1A70     		strb	r2, [r3]
+  21:.\inputScan.c ****             stepPulse = STEP_INPUT_Read(); // rising edge, reserved for potential glith
+  55              		.loc 1 21 0
+  56 0024 FFF7FEFF 		bl	STEP_INPUT_Read
+  57 0028 031C     		mov	r3, r0
+  58 002a 1A1C     		mov	r2, r3
+  59 002c 224B     		ldr	r3, .L11
+  60 002e 1A70     		strb	r2, [r3]
+  61 0030 09E0     		b	.L4
+  62              	.L3:
+  22:.\inputScan.c ****         }
+  23:.\inputScan.c ****         else{
+  24:.\inputScan.c ****             previousStepPulse = stepPulse;
+  63              		.loc 1 24 0
+  64 0032 214B     		ldr	r3, .L11
+  65 0034 1A78     		ldrb	r2, [r3]
+  66 0036 214B     		ldr	r3, .L11+4
+  67 0038 1A70     		strb	r2, [r3]
+  25:.\inputScan.c ****             stepPulse = INTERNAL_STEP_OUT_Read();
+  68              		.loc 1 25 0
+  69 003a FFF7FEFF 		bl	INTERNAL_STEP_OUT_Read
+  70 003e 031C     		mov	r3, r0
+  71 0040 1A1C     		mov	r2, r3
+  72 0042 1D4B     		ldr	r3, .L11
+  73 0044 1A70     		strb	r2, [r3]
+  74              	.L4:
+  26:.\inputScan.c ****         }
+  27:.\inputScan.c ****         if (DIR_INPUT_SOURCE_Read()== 0){
+  75              		.loc 1 27 0
+  76 0046 FFF7FEFF 		bl	DIR_INPUT_SOURCE_Read
+  77 004a 031E     		sub	r3, r0, #0
+  78 004c 06D1     		bne	.L5
+  28:.\inputScan.c ****             dirReg = DIR_INPUT_Read();
+  79              		.loc 1 28 0
+  80 004e FFF7FEFF 		bl	DIR_INPUT_Read
+  81 0052 031C     		mov	r3, r0
+  82 0054 1A1C     		mov	r2, r3
+  83 0056 1A4B     		ldr	r3, .L11+8
+  84 0058 1A70     		strb	r2, [r3]
+  85 005a 2AE0     		b	.L1
+  86              	.L5:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 3
+
+
+  29:.\inputScan.c ****             
+  30:.\inputScan.c ****         }
+  31:.\inputScan.c ****         else{
+  32:.\inputScan.c ****             dirReg = 0;
+  87              		.loc 1 32 0
+  88 005c 184B     		ldr	r3, .L11+8
+  89 005e 0022     		mov	r2, #0
+  90 0060 1A70     		strb	r2, [r3]
+  91 0062 26E0     		b	.L1
+  92              	.L2:
+  33:.\inputScan.c ****         }
+  34:.\inputScan.c ****     } // Motor 1
+  35:.\inputScan.c ****     else {
+  36:.\inputScan.c ****         // Motor 2
+  37:.\inputScan.c ****         if (STEP_INPUT_SOURCE_1_Read() == 0){
+  93              		.loc 1 37 0
+  94 0064 FFF7FEFF 		bl	STEP_INPUT_SOURCE_1_Read
+  95 0068 031E     		sub	r3, r0, #0
+  96 006a 0AD1     		bne	.L8
+  38:.\inputScan.c ****             previousStepPulse1 = stepPulse1;
+  97              		.loc 1 38 0
+  98 006c 154B     		ldr	r3, .L11+12
+  99 006e 1A78     		ldrb	r2, [r3]
+ 100 0070 154B     		ldr	r3, .L11+16
+ 101 0072 1A70     		strb	r2, [r3]
+  39:.\inputScan.c ****             stepPulse1 = STEP_INPUT_1_Read(); // rising edge, reserved for potential glith
+ 102              		.loc 1 39 0
+ 103 0074 FFF7FEFF 		bl	STEP_INPUT_1_Read
+ 104 0078 031C     		mov	r3, r0
+ 105 007a 1A1C     		mov	r2, r3
+ 106 007c 114B     		ldr	r3, .L11+12
+ 107 007e 1A70     		strb	r2, [r3]
+ 108 0080 09E0     		b	.L9
+ 109              	.L8:
+  40:.\inputScan.c ****         }
+  41:.\inputScan.c ****         else{
+  42:.\inputScan.c ****             previousStepPulse1 = stepPulse1;
+ 110              		.loc 1 42 0
+ 111 0082 104B     		ldr	r3, .L11+12
+ 112 0084 1A78     		ldrb	r2, [r3]
+ 113 0086 104B     		ldr	r3, .L11+16
+ 114 0088 1A70     		strb	r2, [r3]
+  43:.\inputScan.c ****             stepPulse1 = INTERNAL_STEP_OUT_1_Read();
+ 115              		.loc 1 43 0
+ 116 008a FFF7FEFF 		bl	INTERNAL_STEP_OUT_1_Read
+ 117 008e 031C     		mov	r3, r0
+ 118 0090 1A1C     		mov	r2, r3
+ 119 0092 0C4B     		ldr	r3, .L11+12
+ 120 0094 1A70     		strb	r2, [r3]
+ 121              	.L9:
+  44:.\inputScan.c ****         }
+  45:.\inputScan.c ****         if (DIR_INPUT_SOURCE_1_Read()== 0){
+ 122              		.loc 1 45 0
+ 123 0096 FFF7FEFF 		bl	DIR_INPUT_SOURCE_1_Read
+ 124 009a 031E     		sub	r3, r0, #0
+ 125 009c 06D1     		bne	.L10
+  46:.\inputScan.c ****             dirReg1 = DIR_INPUT_1_Read();
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 4
+
+
+ 126              		.loc 1 46 0
+ 127 009e FFF7FEFF 		bl	DIR_INPUT_1_Read
+ 128 00a2 031C     		mov	r3, r0
+ 129 00a4 1A1C     		mov	r2, r3
+ 130 00a6 094B     		ldr	r3, .L11+20
+ 131 00a8 1A70     		strb	r2, [r3]
+ 132 00aa 02E0     		b	.L1
+ 133              	.L10:
+  47:.\inputScan.c ****             
+  48:.\inputScan.c ****         }
+  49:.\inputScan.c ****         else{
+  50:.\inputScan.c ****             dirReg1 = 0;
+ 134              		.loc 1 50 0
+ 135 00ac 074B     		ldr	r3, .L11+20
+ 136 00ae 0022     		mov	r2, #0
+ 137 00b0 1A70     		strb	r2, [r3]
+ 138              	.L1:
+  51:.\inputScan.c ****         }
+  52:.\inputScan.c ****     }
+  53:.\inputScan.c **** }...
+ 139              		.loc 1 53 0
+ 140 00b2 BD46     		mov	sp, r7
+ 141 00b4 02B0     		add	sp, sp, #8
+ 142              		@ sp needed
+ 143 00b6 80BD     		pop	{r7, pc}
+ 144              	.L12:
+ 145              		.align	2
+ 146              	.L11:
+ 147 00b8 00000000 		.word	stepPulse
+ 148 00bc 00000000 		.word	previousStepPulse
+ 149 00c0 00000000 		.word	dirReg
+ 150 00c4 00000000 		.word	stepPulse1
+ 151 00c8 00000000 		.word	previousStepPulse1
+ 152 00cc 00000000 		.word	dirReg1
+ 153              		.cfi_endproc
+ 154              	.LFE0:
+ 155              		.size	inputScan, .-inputScan
+ 156              		.text
+ 157              	.Letext0:
+ 158              		.file 2 "./inputScan.h"
+ 159              		.file 3 "Generated_Source\\PSoC4/cytypes.h"
+ 160              		.section	.debug_info,"",%progbits
+ 161              	.Ldebug_info0:
+ 162 0000 02010000 		.4byte	0x102
+ 163 0004 0400     		.2byte	0x4
+ 164 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 165 000a 04       		.byte	0x4
+ 166 000b 01       		.uleb128 0x1
+ 167 000c 0E000000 		.4byte	.LASF19
+ 168 0010 01       		.byte	0x1
+ 169 0011 C2000000 		.4byte	.LASF20
+ 170 0015 23010000 		.4byte	.LASF21
+ 171 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 172 001d 00000000 		.4byte	0
+ 173 0021 00000000 		.4byte	.Ldebug_line0
+ 174 0025 02       		.uleb128 0x2
+ 175 0026 01       		.byte	0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 5
+
+
+ 176 0027 06       		.byte	0x6
+ 177 0028 C4010000 		.4byte	.LASF0
+ 178 002c 02       		.uleb128 0x2
+ 179 002d 01       		.byte	0x1
+ 180 002e 08       		.byte	0x8
+ 181 002f A9000000 		.4byte	.LASF1
+ 182 0033 02       		.uleb128 0x2
+ 183 0034 02       		.byte	0x2
+ 184 0035 05       		.byte	0x5
+ 185 0036 D6010000 		.4byte	.LASF2
+ 186 003a 02       		.uleb128 0x2
+ 187 003b 02       		.byte	0x2
+ 188 003c 07       		.byte	0x7
+ 189 003d B1010000 		.4byte	.LASF3
+ 190 0041 02       		.uleb128 0x2
+ 191 0042 04       		.byte	0x4
+ 192 0043 05       		.byte	0x5
+ 193 0044 8E010000 		.4byte	.LASF4
+ 194 0048 02       		.uleb128 0x2
+ 195 0049 04       		.byte	0x4
+ 196 004a 07       		.byte	0x7
+ 197 004b D6000000 		.4byte	.LASF5
+ 198 004f 02       		.uleb128 0x2
+ 199 0050 08       		.byte	0x8
+ 200 0051 05       		.byte	0x5
+ 201 0052 00000000 		.4byte	.LASF6
+ 202 0056 02       		.uleb128 0x2
+ 203 0057 08       		.byte	0x8
+ 204 0058 07       		.byte	0x7
+ 205 0059 E8000000 		.4byte	.LASF7
+ 206 005d 03       		.uleb128 0x3
+ 207 005e 04       		.byte	0x4
+ 208 005f 05       		.byte	0x5
+ 209 0060 696E7400 		.ascii	"int\000"
+ 210 0064 02       		.uleb128 0x2
+ 211 0065 04       		.byte	0x4
+ 212 0066 07       		.byte	0x7
+ 213 0067 9C000000 		.4byte	.LASF8
+ 214 006b 04       		.uleb128 0x4
+ 215 006c D0000000 		.4byte	.LASF22
+ 216 0070 03       		.byte	0x3
+ 217 0071 3801     		.2byte	0x138
+ 218 0073 2C000000 		.4byte	0x2c
+ 219 0077 02       		.uleb128 0x2
+ 220 0078 04       		.byte	0x4
+ 221 0079 04       		.byte	0x4
+ 222 007a D0010000 		.4byte	.LASF9
+ 223 007e 02       		.uleb128 0x2
+ 224 007f 08       		.byte	0x8
+ 225 0080 04       		.byte	0x4
+ 226 0081 AA010000 		.4byte	.LASF10
+ 227 0085 02       		.uleb128 0x2
+ 228 0086 01       		.byte	0x1
+ 229 0087 08       		.byte	0x8
+ 230 0088 07010000 		.4byte	.LASF11
+ 231 008c 02       		.uleb128 0x2
+ 232 008d 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 6
+
+
+ 233 008e 07       		.byte	0x7
+ 234 008f F2010000 		.4byte	.LASF12
+ 235 0093 05       		.uleb128 0x5
+ 236 0094 84010000 		.4byte	.LASF23
+ 237 0098 01       		.byte	0x1
+ 238 0099 0F       		.byte	0xf
+ 239 009a 00000000 		.4byte	.LFB0
+ 240 009e D0000000 		.4byte	.LFE0-.LFB0
+ 241 00a2 01       		.uleb128 0x1
+ 242 00a3 9C       		.byte	0x9c
+ 243 00a4 B7000000 		.4byte	0xb7
+ 244 00a8 06       		.uleb128 0x6
+ 245 00a9 1D010000 		.4byte	.LASF24
+ 246 00ad 01       		.byte	0x1
+ 247 00ae 0F       		.byte	0xf
+ 248 00af 6B000000 		.4byte	0x6b
+ 249 00b3 02       		.uleb128 0x2
+ 250 00b4 91       		.byte	0x91
+ 251 00b5 77       		.sleb128 -9
+ 252 00b6 00       		.byte	0
+ 253 00b7 07       		.uleb128 0x7
+ 254 00b8 13010000 		.4byte	.LASF13
+ 255 00bc 02       		.byte	0x2
+ 256 00bd 19       		.byte	0x19
+ 257 00be 6B000000 		.4byte	0x6b
+ 258 00c2 07       		.uleb128 0x7
+ 259 00c3 E0010000 		.4byte	.LASF14
+ 260 00c7 02       		.byte	0x2
+ 261 00c8 1A       		.byte	0x1a
+ 262 00c9 6B000000 		.4byte	0x6b
+ 263 00cd 08       		.uleb128 0x8
+ 264 00ce 0C010000 		.4byte	.LASF15
+ 265 00d2 02       		.byte	0x2
+ 266 00d3 1B       		.byte	0x1b
+ 267 00d4 6B000000 		.4byte	0x6b
+ 268 00d8 05       		.uleb128 0x5
+ 269 00d9 03       		.byte	0x3
+ 270 00da 00000000 		.4byte	dirReg
+ 271 00de 07       		.uleb128 0x7
+ 272 00df B7000000 		.4byte	.LASF16
+ 273 00e3 02       		.byte	0x2
+ 274 00e4 1D       		.byte	0x1d
+ 275 00e5 6B000000 		.4byte	0x6b
+ 276 00e9 07       		.uleb128 0x7
+ 277 00ea 97010000 		.4byte	.LASF17
+ 278 00ee 02       		.byte	0x2
+ 279 00ef 1E       		.byte	0x1e
+ 280 00f0 6B000000 		.4byte	0x6b
+ 281 00f4 08       		.uleb128 0x8
+ 282 00f5 FF000000 		.4byte	.LASF18
+ 283 00f9 02       		.byte	0x2
+ 284 00fa 1F       		.byte	0x1f
+ 285 00fb 6B000000 		.4byte	0x6b
+ 286 00ff 05       		.uleb128 0x5
+ 287 0100 03       		.byte	0x3
+ 288 0101 00000000 		.4byte	dirReg1
+ 289 0105 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 7
+
+
+ 290              		.section	.debug_abbrev,"",%progbits
+ 291              	.Ldebug_abbrev0:
+ 292 0000 01       		.uleb128 0x1
+ 293 0001 11       		.uleb128 0x11
+ 294 0002 01       		.byte	0x1
+ 295 0003 25       		.uleb128 0x25
+ 296 0004 0E       		.uleb128 0xe
+ 297 0005 13       		.uleb128 0x13
+ 298 0006 0B       		.uleb128 0xb
+ 299 0007 03       		.uleb128 0x3
+ 300 0008 0E       		.uleb128 0xe
+ 301 0009 1B       		.uleb128 0x1b
+ 302 000a 0E       		.uleb128 0xe
+ 303 000b 55       		.uleb128 0x55
+ 304 000c 17       		.uleb128 0x17
+ 305 000d 11       		.uleb128 0x11
+ 306 000e 01       		.uleb128 0x1
+ 307 000f 10       		.uleb128 0x10
+ 308 0010 17       		.uleb128 0x17
+ 309 0011 00       		.byte	0
+ 310 0012 00       		.byte	0
+ 311 0013 02       		.uleb128 0x2
+ 312 0014 24       		.uleb128 0x24
+ 313 0015 00       		.byte	0
+ 314 0016 0B       		.uleb128 0xb
+ 315 0017 0B       		.uleb128 0xb
+ 316 0018 3E       		.uleb128 0x3e
+ 317 0019 0B       		.uleb128 0xb
+ 318 001a 03       		.uleb128 0x3
+ 319 001b 0E       		.uleb128 0xe
+ 320 001c 00       		.byte	0
+ 321 001d 00       		.byte	0
+ 322 001e 03       		.uleb128 0x3
+ 323 001f 24       		.uleb128 0x24
+ 324 0020 00       		.byte	0
+ 325 0021 0B       		.uleb128 0xb
+ 326 0022 0B       		.uleb128 0xb
+ 327 0023 3E       		.uleb128 0x3e
+ 328 0024 0B       		.uleb128 0xb
+ 329 0025 03       		.uleb128 0x3
+ 330 0026 08       		.uleb128 0x8
+ 331 0027 00       		.byte	0
+ 332 0028 00       		.byte	0
+ 333 0029 04       		.uleb128 0x4
+ 334 002a 16       		.uleb128 0x16
+ 335 002b 00       		.byte	0
+ 336 002c 03       		.uleb128 0x3
+ 337 002d 0E       		.uleb128 0xe
+ 338 002e 3A       		.uleb128 0x3a
+ 339 002f 0B       		.uleb128 0xb
+ 340 0030 3B       		.uleb128 0x3b
+ 341 0031 05       		.uleb128 0x5
+ 342 0032 49       		.uleb128 0x49
+ 343 0033 13       		.uleb128 0x13
+ 344 0034 00       		.byte	0
+ 345 0035 00       		.byte	0
+ 346 0036 05       		.uleb128 0x5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 8
+
+
+ 347 0037 2E       		.uleb128 0x2e
+ 348 0038 01       		.byte	0x1
+ 349 0039 3F       		.uleb128 0x3f
+ 350 003a 19       		.uleb128 0x19
+ 351 003b 03       		.uleb128 0x3
+ 352 003c 0E       		.uleb128 0xe
+ 353 003d 3A       		.uleb128 0x3a
+ 354 003e 0B       		.uleb128 0xb
+ 355 003f 3B       		.uleb128 0x3b
+ 356 0040 0B       		.uleb128 0xb
+ 357 0041 27       		.uleb128 0x27
+ 358 0042 19       		.uleb128 0x19
+ 359 0043 11       		.uleb128 0x11
+ 360 0044 01       		.uleb128 0x1
+ 361 0045 12       		.uleb128 0x12
+ 362 0046 06       		.uleb128 0x6
+ 363 0047 40       		.uleb128 0x40
+ 364 0048 18       		.uleb128 0x18
+ 365 0049 9642     		.uleb128 0x2116
+ 366 004b 19       		.uleb128 0x19
+ 367 004c 01       		.uleb128 0x1
+ 368 004d 13       		.uleb128 0x13
+ 369 004e 00       		.byte	0
+ 370 004f 00       		.byte	0
+ 371 0050 06       		.uleb128 0x6
+ 372 0051 05       		.uleb128 0x5
+ 373 0052 00       		.byte	0
+ 374 0053 03       		.uleb128 0x3
+ 375 0054 0E       		.uleb128 0xe
+ 376 0055 3A       		.uleb128 0x3a
+ 377 0056 0B       		.uleb128 0xb
+ 378 0057 3B       		.uleb128 0x3b
+ 379 0058 0B       		.uleb128 0xb
+ 380 0059 49       		.uleb128 0x49
+ 381 005a 13       		.uleb128 0x13
+ 382 005b 02       		.uleb128 0x2
+ 383 005c 18       		.uleb128 0x18
+ 384 005d 00       		.byte	0
+ 385 005e 00       		.byte	0
+ 386 005f 07       		.uleb128 0x7
+ 387 0060 34       		.uleb128 0x34
+ 388 0061 00       		.byte	0
+ 389 0062 03       		.uleb128 0x3
+ 390 0063 0E       		.uleb128 0xe
+ 391 0064 3A       		.uleb128 0x3a
+ 392 0065 0B       		.uleb128 0xb
+ 393 0066 3B       		.uleb128 0x3b
+ 394 0067 0B       		.uleb128 0xb
+ 395 0068 49       		.uleb128 0x49
+ 396 0069 13       		.uleb128 0x13
+ 397 006a 3F       		.uleb128 0x3f
+ 398 006b 19       		.uleb128 0x19
+ 399 006c 3C       		.uleb128 0x3c
+ 400 006d 19       		.uleb128 0x19
+ 401 006e 00       		.byte	0
+ 402 006f 00       		.byte	0
+ 403 0070 08       		.uleb128 0x8
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 9
+
+
+ 404 0071 34       		.uleb128 0x34
+ 405 0072 00       		.byte	0
+ 406 0073 03       		.uleb128 0x3
+ 407 0074 0E       		.uleb128 0xe
+ 408 0075 3A       		.uleb128 0x3a
+ 409 0076 0B       		.uleb128 0xb
+ 410 0077 3B       		.uleb128 0x3b
+ 411 0078 0B       		.uleb128 0xb
+ 412 0079 49       		.uleb128 0x49
+ 413 007a 13       		.uleb128 0x13
+ 414 007b 3F       		.uleb128 0x3f
+ 415 007c 19       		.uleb128 0x19
+ 416 007d 02       		.uleb128 0x2
+ 417 007e 18       		.uleb128 0x18
+ 418 007f 00       		.byte	0
+ 419 0080 00       		.byte	0
+ 420 0081 00       		.byte	0
+ 421              		.section	.debug_aranges,"",%progbits
+ 422 0000 1C000000 		.4byte	0x1c
+ 423 0004 0200     		.2byte	0x2
+ 424 0006 00000000 		.4byte	.Ldebug_info0
+ 425 000a 04       		.byte	0x4
+ 426 000b 00       		.byte	0
+ 427 000c 0000     		.2byte	0
+ 428 000e 0000     		.2byte	0
+ 429 0010 00000000 		.4byte	.LFB0
+ 430 0014 D0000000 		.4byte	.LFE0-.LFB0
+ 431 0018 00000000 		.4byte	0
+ 432 001c 00000000 		.4byte	0
+ 433              		.section	.debug_ranges,"",%progbits
+ 434              	.Ldebug_ranges0:
+ 435 0000 00000000 		.4byte	.LFB0
+ 436 0004 D0000000 		.4byte	.LFE0
+ 437 0008 00000000 		.4byte	0
+ 438 000c 00000000 		.4byte	0
+ 439              		.section	.debug_line,"",%progbits
+ 440              	.Ldebug_line0:
+ 441 0000 80000000 		.section	.debug_str,"MS",%progbits,1
+ 441      02005900 
+ 441      00000201 
+ 441      FB0E0D00 
+ 441      01010101 
+ 442              	.LASF6:
+ 443 0000 6C6F6E67 		.ascii	"long long int\000"
+ 443      206C6F6E 
+ 443      6720696E 
+ 443      7400
+ 444              	.LASF19:
+ 445 000e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 445      4320342E 
+ 445      392E3320 
+ 445      32303135 
+ 445      30333033 
+ 446 0041 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 446      20726576 
+ 446      6973696F 
+ 446      6E203232 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 10
+
+
+ 446      31323230 
+ 447 0074 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 447      66756E63 
+ 447      74696F6E 
+ 447      2D736563 
+ 447      74696F6E 
+ 448              	.LASF8:
+ 449 009c 756E7369 		.ascii	"unsigned int\000"
+ 449      676E6564 
+ 449      20696E74 
+ 449      00
+ 450              	.LASF1:
+ 451 00a9 756E7369 		.ascii	"unsigned char\000"
+ 451      676E6564 
+ 451      20636861 
+ 451      7200
+ 452              	.LASF16:
+ 453 00b7 73746570 		.ascii	"stepPulse1\000"
+ 453      50756C73 
+ 453      653100
+ 454              	.LASF20:
+ 455 00c2 2E5C696E 		.ascii	".\\inputScan.c\000"
+ 455      70757453 
+ 455      63616E2E 
+ 455      6300
+ 456              	.LASF22:
+ 457 00d0 75696E74 		.ascii	"uint8\000"
+ 457      3800
+ 458              	.LASF5:
+ 459 00d6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 459      20756E73 
+ 459      69676E65 
+ 459      6420696E 
+ 459      7400
+ 460              	.LASF7:
+ 461 00e8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 461      206C6F6E 
+ 461      6720756E 
+ 461      7369676E 
+ 461      65642069 
+ 462              	.LASF18:
+ 463 00ff 64697252 		.ascii	"dirReg1\000"
+ 463      65673100 
+ 464              	.LASF11:
+ 465 0107 63686172 		.ascii	"char\000"
+ 465      00
+ 466              	.LASF15:
+ 467 010c 64697252 		.ascii	"dirReg\000"
+ 467      656700
+ 468              	.LASF13:
+ 469 0113 73746570 		.ascii	"stepPulse\000"
+ 469      50756C73 
+ 469      6500
+ 470              	.LASF24:
+ 471 011d 6D6F746F 		.ascii	"motor\000"
+ 471      7200
+ 472              	.LASF21:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccWhHjjd.s 			page 11
+
+
+ 473 0123 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 473      73657273 
+ 473      5C546563 
+ 473      6820436F 
+ 473      6E73756C 
+ 474 0152 5C537465 		.ascii	"\\StepMotor_PSoC4200\\StepMotor_PSoC4200_Dual.cydsn"
+ 474      704D6F74 
+ 474      6F725F50 
+ 474      536F4334 
+ 474      3230305C 
+ 475 0183 00       		.ascii	"\000"
+ 476              	.LASF23:
+ 477 0184 696E7075 		.ascii	"inputScan\000"
+ 477      74536361 
+ 477      6E00
+ 478              	.LASF4:
+ 479 018e 6C6F6E67 		.ascii	"long int\000"
+ 479      20696E74 
+ 479      00
+ 480              	.LASF17:
+ 481 0197 70726576 		.ascii	"previousStepPulse1\000"
+ 481      696F7573 
+ 481      53746570 
+ 481      50756C73 
+ 481      653100
+ 482              	.LASF10:
+ 483 01aa 646F7562 		.ascii	"double\000"
+ 483      6C6500
+ 484              	.LASF3:
+ 485 01b1 73686F72 		.ascii	"short unsigned int\000"
+ 485      7420756E 
+ 485      7369676E 
+ 485      65642069 
+ 485      6E7400
+ 486              	.LASF0:
+ 487 01c4 7369676E 		.ascii	"signed char\000"
+ 487      65642063 
+ 487      68617200 
+ 488              	.LASF9:
+ 489 01d0 666C6F61 		.ascii	"float\000"
+ 489      7400
+ 490              	.LASF2:
+ 491 01d6 73686F72 		.ascii	"short int\000"
+ 491      7420696E 
+ 491      7400
+ 492              	.LASF14:
+ 493 01e0 70726576 		.ascii	"previousStepPulse\000"
+ 493      696F7573 
+ 493      53746570 
+ 493      50756C73 
+ 493      6500
+ 494              	.LASF12:
+ 495 01f2 73697A65 		.ascii	"sizetype\000"
+ 495      74797065 
+ 495      00
+ 496              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

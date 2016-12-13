@@ -1,0 +1,2632 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"INTERNAL_STEP.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	INTERNAL_STEP_initVar
+  18              		.bss
+  19              		.type	INTERNAL_STEP_initVar, %object
+  20              		.size	INTERNAL_STEP_initVar, 1
+  21              	INTERNAL_STEP_initVar:
+  22 0000 00       		.space	1
+  23              		.section	.text.INTERNAL_STEP_Start,"ax",%progbits
+  24              		.align	2
+  25              		.global	INTERNAL_STEP_Start
+  26              		.code	16
+  27              		.thumb_func
+  28              		.type	INTERNAL_STEP_Start, %function
+  29              	INTERNAL_STEP_Start:
+  30              	.LFB0:
+  31              		.file 1 ".\\Generated_Source\\PSoC4\\INTERNAL_STEP.c"
+   1:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * File Name: INTERNAL_STEP.c
+   3:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Version 3.30
+   4:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+   5:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Description:
+   6:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
+   7:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  comparitors. Each instance of this user module is capable of generating
+   8:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  two PWM outputs with the same period. The pulse width is selectable between
+   9:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks.
+  10:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  The compare value output may be configured to be active when the present
+  11:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  counter is less than or less than/equal to the compare value.
+  12:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  A terminal count output is also provided. It generates a pulse one clock
+  13:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  width wide when the counter is equal to zero.
+  14:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  15:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Note:
+  16:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  17:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *******************************************************************************
+  18:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * the software package with which this file was provided.
+  22:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** ********************************************************************************/
+  23:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  24:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #include "INTERNAL_STEP.h"
+  25:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  26:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /* Error message for removed <resource> through optimization */
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 2
+
+
+  27:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #ifdef INTERNAL_STEP_PWMUDB_genblk1_ctrlreg__REMOVED
+  28:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #error PWM_v3_30 detected with a constant 0 for the enable or \
+  29:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****          constant 1 for reset. This will prevent the component from operating.
+  30:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* INTERNAL_STEP_PWMUDB_genblk1_ctrlreg__REMOVED */
+  31:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  32:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** uint8 INTERNAL_STEP_initVar = 0u;
+  33:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  34:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  35:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /*******************************************************************************
+  36:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Function Name: INTERNAL_STEP_Start
+  37:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** ********************************************************************************
+  38:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  39:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Summary:
+  40:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  The start function initializes the pwm with the default values, the
+  41:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  enables the counter to begin counting.  It does not enable interrupts,
+  42:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  the EnableInt command should be called if interrupt generation is required.
+  43:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  44:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Parameters:
+  45:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+  46:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  47:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Return:
+  48:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+  49:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  50:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Global variables:
+  51:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  INTERNAL_STEP_initVar: Is modified when this function is called for the
+  52:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *   first time. Is used to ensure that initialization happens only once.
+  53:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  54:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *******************************************************************************/
+  55:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** void INTERNAL_STEP_Start(void) 
+  56:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** {
+  32              		.loc 1 56 0
+  33              		.cfi_startproc
+  34 0000 80B5     		push	{r7, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  57:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /* If not Initialized then initialize all required hardware and software */
+  58:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     if(INTERNAL_STEP_initVar == 0u)
+  40              		.loc 1 58 0
+  41 0004 064B     		ldr	r3, .L3
+  42 0006 1B78     		ldrb	r3, [r3]
+  43 0008 002B     		cmp	r3, #0
+  44 000a 04D1     		bne	.L2
+  59:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+  60:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_Init();
+  45              		.loc 1 60 0
+  46 000c FFF7FEFF 		bl	INTERNAL_STEP_Init
+  61:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_initVar = 1u;
+  47              		.loc 1 61 0
+  48 0010 034B     		ldr	r3, .L3
+  49 0012 0122     		mov	r2, #1
+  50 0014 1A70     		strb	r2, [r3]
+  51              	.L2:
+  62:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+  63:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     INTERNAL_STEP_Enable();
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 3
+
+
+  52              		.loc 1 63 0
+  53 0016 FFF7FEFF 		bl	INTERNAL_STEP_Enable
+  64:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  65:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** }
+  54              		.loc 1 65 0
+  55 001a BD46     		mov	sp, r7
+  56              		@ sp needed
+  57 001c 80BD     		pop	{r7, pc}
+  58              	.L4:
+  59 001e C046     		.align	2
+  60              	.L3:
+  61 0020 00000000 		.word	INTERNAL_STEP_initVar
+  62              		.cfi_endproc
+  63              	.LFE0:
+  64              		.size	INTERNAL_STEP_Start, .-INTERNAL_STEP_Start
+  65              		.section	.text.INTERNAL_STEP_Init,"ax",%progbits
+  66              		.align	2
+  67              		.global	INTERNAL_STEP_Init
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	INTERNAL_STEP_Init, %function
+  71              	INTERNAL_STEP_Init:
+  72              	.LFB1:
+  66:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  67:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  68:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /*******************************************************************************
+  69:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Function Name: INTERNAL_STEP_Init
+  70:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** ********************************************************************************
+  71:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  72:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Summary:
+  73:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  Initialize component's parameters to the parameters set by user in the
+  74:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  customizer of the component placed onto schematic. Usually called in
+  75:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  INTERNAL_STEP_Start().
+  76:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  77:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+  79:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  80:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Return:
+  81:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+  82:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+  83:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *******************************************************************************/
+  84:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** void INTERNAL_STEP_Init(void) 
+  85:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** {
+  73              		.loc 1 85 0
+  74              		.cfi_startproc
+  75 0000 90B5     		push	{r4, r7, lr}
+  76              		.cfi_def_cfa_offset 12
+  77              		.cfi_offset 4, -12
+  78              		.cfi_offset 7, -8
+  79              		.cfi_offset 14, -4
+  80 0002 83B0     		sub	sp, sp, #12
+  81              		.cfi_def_cfa_offset 24
+  82 0004 00AF     		add	r7, sp, #0
+  83              		.cfi_def_cfa_register 7
+  86:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UsingFixedFunction || INTERNAL_STEP_UseControl)
+  87:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         uint8 ctrl;
+  88:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UsingFixedFunction || INTERNAL_STEP_UseControl) */
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 4
+
+
+  89:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  90:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if(!INTERNAL_STEP_UsingFixedFunction)
+  91:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(INTERNAL_STEP_UseStatus)
+  92:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Interrupt State Backup for Critical Region*/
+  93:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             uint8 INTERNAL_STEP_interruptState;
+  94:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UseStatus) */
+  95:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (!INTERNAL_STEP_UsingFixedFunction) */
+  96:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+  97:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UsingFixedFunction)
+  98:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* You are allowed to write the compare value (FF only) */
+  99:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_CONTROL |= INTERNAL_STEP_CFG0_MODE;
+ 100:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if (INTERNAL_STEP_DeadBand2_4)
+ 101:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_CONTROL |= INTERNAL_STEP_CFG0_DB;
+ 102:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_DeadBand2_4) */
+ 103:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 104:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         ctrl = INTERNAL_STEP_CONTROL3 & ((uint8 )(~INTERNAL_STEP_CTRL_CMPMODE1_MASK));
+ 105:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_CONTROL3 = ctrl | INTERNAL_STEP_DEFAULT_COMPARE1_MODE;
+ 106:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 107:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 108:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_RT1 &= ((uint8)(~INTERNAL_STEP_RT1_MASK));
+ 109:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_RT1 |= INTERNAL_STEP_SYNC;
+ 110:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 111:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /*Enable DSI Sync all all inputs of the PWM*/
+ 112:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_RT1 &= ((uint8)(~INTERNAL_STEP_SYNCDSI_MASK));
+ 113:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_RT1 |= INTERNAL_STEP_SYNCDSI_EN;
+ 114:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 115:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #elif (INTERNAL_STEP_UseControl)
+ 116:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* Set the default compare mode defined in the parameter */
+ 117:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         ctrl = INTERNAL_STEP_CONTROL & ((uint8)(~INTERNAL_STEP_CTRL_CMPMODE2_MASK)) &
+  84              		.loc 1 117 0
+  85 0006 234B     		ldr	r3, .L6
+  86 0008 1B78     		ldrb	r3, [r3]
+  87 000a DAB2     		uxtb	r2, r3
+  88 000c FB1D     		add	r3, r7, #7
+  89 000e 3F21     		mov	r1, #63
+  90 0010 8A43     		bic	r2, r1
+  91 0012 1A70     		strb	r2, [r3]
+ 118:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 ((uint8)(~INTERNAL_STEP_CTRL_CMPMODE1_MASK));
+ 119:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_CONTROL = ctrl | INTERNAL_STEP_DEFAULT_COMPARE2_MODE |
+  92              		.loc 1 119 0
+  93 0014 1F4A     		ldr	r2, .L6
+  94 0016 FB1D     		add	r3, r7, #7
+  95 0018 1B78     		ldrb	r3, [r3]
+  96 001a 0921     		mov	r1, #9
+  97 001c 0B43     		orr	r3, r1
+  98 001e DBB2     		uxtb	r3, r3
+  99 0020 1370     		strb	r3, [r2]
+ 120:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                    INTERNAL_STEP_DEFAULT_COMPARE1_MODE;
+ 121:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 122:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 123:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (!INTERNAL_STEP_UsingFixedFunction)
+ 124:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if (INTERNAL_STEP_Resolution == 8)
+ 125:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Set FIFO 0 to 1 byte register for period*/
+ 126:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_AUX_CONTROLDP0 |= (INTERNAL_STEP_AUX_CTRL_FIFO0_CLR);
+ 127:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else /* (INTERNAL_STEP_Resolution == 16)*/
+ 128:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Set FIFO 0 to 1 byte register for period */
+ 129:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_AUX_CONTROLDP0 |= (INTERNAL_STEP_AUX_CTRL_FIFO0_CLR);
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 5
+
+
+ 100              		.loc 1 129 0
+ 101 0022 1D4A     		ldr	r2, .L6+4
+ 102 0024 1C4B     		ldr	r3, .L6+4
+ 103 0026 1B78     		ldrb	r3, [r3]
+ 104 0028 DBB2     		uxtb	r3, r3
+ 105 002a 0121     		mov	r1, #1
+ 106 002c 0B43     		orr	r3, r1
+ 107 002e DBB2     		uxtb	r3, r3
+ 108 0030 1370     		strb	r3, [r2]
+ 130:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_AUX_CONTROLDP1 |= (INTERNAL_STEP_AUX_CTRL_FIFO0_CLR);
+ 109              		.loc 1 130 0
+ 110 0032 1A4A     		ldr	r2, .L6+8
+ 111 0034 194B     		ldr	r3, .L6+8
+ 112 0036 1B78     		ldrb	r3, [r3]
+ 113 0038 DBB2     		uxtb	r3, r3
+ 114 003a 0121     		mov	r1, #1
+ 115 003c 0B43     		orr	r3, r1
+ 116 003e DBB2     		uxtb	r3, r3
+ 117 0040 1370     		strb	r3, [r2]
+ 131:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_Resolution == 8) */
+ 132:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 133:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_WriteCounter(INTERNAL_STEP_INIT_PERIOD_VALUE);
+ 118              		.loc 1 133 0
+ 119 0042 FA23     		mov	r3, #250
+ 120 0044 5B01     		lsl	r3, r3, #5
+ 121 0046 181C     		mov	r0, r3
+ 122 0048 FFF7FEFF 		bl	INTERNAL_STEP_WriteCounter
+ 134:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (!INTERNAL_STEP_UsingFixedFunction) */
+ 135:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 136:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     INTERNAL_STEP_WritePeriod(INTERNAL_STEP_INIT_PERIOD_VALUE);
+ 123              		.loc 1 136 0
+ 124 004c FA23     		mov	r3, #250
+ 125 004e 5B01     		lsl	r3, r3, #5
+ 126 0050 181C     		mov	r0, r3
+ 127 0052 FFF7FEFF 		bl	INTERNAL_STEP_WritePeriod
+ 137:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 138:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if (INTERNAL_STEP_UseOneCompareMode)
+ 139:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_WriteCompare(INTERNAL_STEP_INIT_COMPARE_VALUE1);
+ 128              		.loc 1 139 0
+ 129 0056 FA23     		mov	r3, #250
+ 130 0058 1B01     		lsl	r3, r3, #4
+ 131 005a 181C     		mov	r0, r3
+ 132 005c FFF7FEFF 		bl	INTERNAL_STEP_WriteCompare
+ 140:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 141:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_WriteCompare1(INTERNAL_STEP_INIT_COMPARE_VALUE1);
+ 142:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_WriteCompare2(INTERNAL_STEP_INIT_COMPARE_VALUE2);
+ 143:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UseOneCompareMode) */
+ 144:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 145:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if (INTERNAL_STEP_KillModeMinTime)
+ 146:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_WriteKillTime(INTERNAL_STEP_MinimumKillTime);
+ 147:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_KillModeMinTime) */
+ 148:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 149:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if (INTERNAL_STEP_DeadBandUsed)
+ 150:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_WriteDeadTime(INTERNAL_STEP_INIT_DEAD_TIME);
+ 151:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_DeadBandUsed) */
+ 152:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 153:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UseStatus || INTERNAL_STEP_UsingFixedFunction)
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 6
+
+
+ 154:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_SetInterruptMode(INTERNAL_STEP_INIT_INTERRUPTS_MODE);
+ 133              		.loc 1 154 0
+ 134 0060 0020     		mov	r0, #0
+ 135 0062 FFF7FEFF 		bl	INTERNAL_STEP_SetInterruptMode
+ 155:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UseStatus || INTERNAL_STEP_UsingFixedFunction) */
+ 156:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 157:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UsingFixedFunction)
+ 158:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* Globally Enable the Fixed Function Block chosen */
+ 159:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_GLOBAL_ENABLE |= INTERNAL_STEP_BLOCK_EN_MASK;
+ 160:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* Set the Interrupt source to come from the status register */
+ 161:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_CONTROL2 |= INTERNAL_STEP_CTRL2_IRQ_SEL;
+ 162:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #else
+ 163:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(INTERNAL_STEP_UseStatus)
+ 164:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 165:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 166:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Enter Critical Region*/
+ 167:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_interruptState = CyEnterCriticalSection();
+ 136              		.loc 1 167 0
+ 137 0066 BC1D     		add	r4, r7, #6
+ 138 0068 FFF7FEFF 		bl	CyEnterCriticalSection
+ 139 006c 031C     		mov	r3, r0
+ 140 006e 2370     		strb	r3, [r4]
+ 168:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 169:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_STATUS_AUX_CTRL |= INTERNAL_STEP_STATUS_ACTL_INT_EN_MASK;
+ 141              		.loc 1 169 0
+ 142 0070 0A4A     		ldr	r2, .L6+8
+ 143 0072 0A4B     		ldr	r3, .L6+8
+ 144 0074 1B78     		ldrb	r3, [r3]
+ 145 0076 DBB2     		uxtb	r3, r3
+ 146 0078 1021     		mov	r1, #16
+ 147 007a 0B43     		orr	r3, r1
+ 148 007c DBB2     		uxtb	r3, r3
+ 149 007e 1370     		strb	r3, [r2]
+ 170:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 171:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****              /* Exit Critical Region*/
+ 172:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CyExitCriticalSection(INTERNAL_STEP_interruptState);
+ 150              		.loc 1 172 0
+ 151 0080 BB1D     		add	r3, r7, #6
+ 152 0082 1B78     		ldrb	r3, [r3]
+ 153 0084 181C     		mov	r0, r3
+ 154 0086 FFF7FEFF 		bl	CyExitCriticalSection
+ 173:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 174:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Clear the FIFO to enable the INTERNAL_STEP_STATUS_FIFOFULL
+ 175:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                    bit to be set on FIFO full. */
+ 176:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_ClearFIFO();
+ 155              		.loc 1 176 0
+ 156 008a FFF7FEFF 		bl	INTERNAL_STEP_ClearFIFO
+ 177:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UseStatus) */
+ 178:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 179:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** }
+ 157              		.loc 1 179 0
+ 158 008e BD46     		mov	sp, r7
+ 159 0090 03B0     		add	sp, sp, #12
+ 160              		@ sp needed
+ 161 0092 90BD     		pop	{r4, r7, pc}
+ 162              	.L7:
+ 163              		.align	2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 7
+
+
+ 164              	.L6:
+ 165 0094 73000F40 		.word	1074724979
+ 166 0098 92000F40 		.word	1074725010
+ 167 009c 93000F40 		.word	1074725011
+ 168              		.cfi_endproc
+ 169              	.LFE1:
+ 170              		.size	INTERNAL_STEP_Init, .-INTERNAL_STEP_Init
+ 171              		.section	.text.INTERNAL_STEP_Enable,"ax",%progbits
+ 172              		.align	2
+ 173              		.global	INTERNAL_STEP_Enable
+ 174              		.code	16
+ 175              		.thumb_func
+ 176              		.type	INTERNAL_STEP_Enable, %function
+ 177              	INTERNAL_STEP_Enable:
+ 178              	.LFB2:
+ 180:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 181:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 182:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /*******************************************************************************
+ 183:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Function Name: INTERNAL_STEP_Enable
+ 184:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** ********************************************************************************
+ 185:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 186:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Summary:
+ 187:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  Enables the PWM block operation
+ 188:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 189:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Parameters:
+ 190:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+ 191:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 192:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Return:
+ 193:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+ 194:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 195:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Side Effects:
+ 196:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  This works only if software enable mode is chosen
+ 197:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 198:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *******************************************************************************/
+ 199:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** void INTERNAL_STEP_Enable(void) 
+ 200:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** {
+ 179              		.loc 1 200 0
+ 180              		.cfi_startproc
+ 181 0000 80B5     		push	{r7, lr}
+ 182              		.cfi_def_cfa_offset 8
+ 183              		.cfi_offset 7, -8
+ 184              		.cfi_offset 14, -4
+ 185 0002 00AF     		add	r7, sp, #0
+ 186              		.cfi_def_cfa_register 7
+ 201:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 202:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UsingFixedFunction)
+ 203:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_GLOBAL_ENABLE |= INTERNAL_STEP_BLOCK_EN_MASK;
+ 204:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_GLOBAL_STBY_ENABLE |= INTERNAL_STEP_BLOCK_STBY_EN_MASK;
+ 205:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 206:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 207:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /* Enable the PWM from the control register  */
+ 208:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UseControl || INTERNAL_STEP_UsingFixedFunction)
+ 209:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_CONTROL |= INTERNAL_STEP_CTRL_ENABLE;
+ 187              		.loc 1 209 0
+ 188 0004 0549     		ldr	r1, .L9
+ 189 0006 054B     		ldr	r3, .L9
+ 190 0008 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 8
+
+
+ 191 000a DBB2     		uxtb	r3, r3
+ 192 000c 8022     		mov	r2, #128
+ 193 000e 5242     		neg	r2, r2
+ 194 0010 1343     		orr	r3, r2
+ 195 0012 DBB2     		uxtb	r3, r3
+ 196 0014 0B70     		strb	r3, [r1]
+ 210:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UseControl || INTERNAL_STEP_UsingFixedFunction) */
+ 211:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** }
+ 197              		.loc 1 211 0
+ 198 0016 BD46     		mov	sp, r7
+ 199              		@ sp needed
+ 200 0018 80BD     		pop	{r7, pc}
+ 201              	.L10:
+ 202 001a C046     		.align	2
+ 203              	.L9:
+ 204 001c 73000F40 		.word	1074724979
+ 205              		.cfi_endproc
+ 206              	.LFE2:
+ 207              		.size	INTERNAL_STEP_Enable, .-INTERNAL_STEP_Enable
+ 208              		.section	.text.INTERNAL_STEP_Stop,"ax",%progbits
+ 209              		.align	2
+ 210              		.global	INTERNAL_STEP_Stop
+ 211              		.code	16
+ 212              		.thumb_func
+ 213              		.type	INTERNAL_STEP_Stop, %function
+ 214              	INTERNAL_STEP_Stop:
+ 215              	.LFB3:
+ 212:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 213:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 214:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /*******************************************************************************
+ 215:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Function Name: INTERNAL_STEP_Stop
+ 216:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** ********************************************************************************
+ 217:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 218:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Summary:
+ 219:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  The stop function halts the PWM, but does not change any modes or disable
+ 220:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  interrupts.
+ 221:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 222:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Parameters:
+ 223:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+ 224:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 225:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Return:
+ 226:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+ 227:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 228:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Side Effects:
+ 229:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  If the Enable mode is set to Hardware only then this function
+ 230:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  has no effect on the operation of the PWM
+ 231:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 232:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *******************************************************************************/
+ 233:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** void INTERNAL_STEP_Stop(void) 
+ 234:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** {
+ 216              		.loc 1 234 0
+ 217              		.cfi_startproc
+ 218 0000 80B5     		push	{r7, lr}
+ 219              		.cfi_def_cfa_offset 8
+ 220              		.cfi_offset 7, -8
+ 221              		.cfi_offset 14, -4
+ 222 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 9
+
+
+ 223              		.cfi_def_cfa_register 7
+ 235:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UseControl || INTERNAL_STEP_UsingFixedFunction)
+ 236:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_CONTROL &= ((uint8)(~INTERNAL_STEP_CTRL_ENABLE));
+ 224              		.loc 1 236 0
+ 225 0004 044A     		ldr	r2, .L12
+ 226 0006 044B     		ldr	r3, .L12
+ 227 0008 1B78     		ldrb	r3, [r3]
+ 228 000a DBB2     		uxtb	r3, r3
+ 229 000c 7F21     		mov	r1, #127
+ 230 000e 0B40     		and	r3, r1
+ 231 0010 DBB2     		uxtb	r3, r3
+ 232 0012 1370     		strb	r3, [r2]
+ 237:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UseControl || INTERNAL_STEP_UsingFixedFunction) */
+ 238:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 239:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /* Globally disable the Fixed Function Block chosen */
+ 240:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UsingFixedFunction)
+ 241:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_GLOBAL_ENABLE &= ((uint8)(~INTERNAL_STEP_BLOCK_EN_MASK));
+ 242:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         INTERNAL_STEP_GLOBAL_STBY_ENABLE &= ((uint8)(~INTERNAL_STEP_BLOCK_STBY_EN_MASK));
+ 243:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 244:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** }
+ 233              		.loc 1 244 0
+ 234 0014 BD46     		mov	sp, r7
+ 235              		@ sp needed
+ 236 0016 80BD     		pop	{r7, pc}
+ 237              	.L13:
+ 238              		.align	2
+ 239              	.L12:
+ 240 0018 73000F40 		.word	1074724979
+ 241              		.cfi_endproc
+ 242              	.LFE3:
+ 243              		.size	INTERNAL_STEP_Stop, .-INTERNAL_STEP_Stop
+ 244              		.section	.text.INTERNAL_STEP_WriteCounter,"ax",%progbits
+ 245              		.align	2
+ 246              		.global	INTERNAL_STEP_WriteCounter
+ 247              		.code	16
+ 248              		.thumb_func
+ 249              		.type	INTERNAL_STEP_WriteCounter, %function
+ 250              	INTERNAL_STEP_WriteCounter:
+ 251              	.LFB4:
+ 245:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 246:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (INTERNAL_STEP_UseOneCompareMode)
+ 247:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_CompareMode1SW)
+ 248:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 249:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 250:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /*******************************************************************************
+ 251:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Function Name: INTERNAL_STEP_SetCompareMode
+ 252:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         ********************************************************************************
+ 253:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 254:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Summary:
+ 255:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  This function writes the Compare Mode for the pwm output when in Dither mode,
+ 256:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  Center Align Mode or One Output Mode.
+ 257:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 258:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Parameters:
+ 259:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 260:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *                defined in the H file as input arguments.
+ 261:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 262:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Return:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 10
+
+
+ 263:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  None
+ 264:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 265:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *******************************************************************************/
+ 266:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         void INTERNAL_STEP_SetCompareMode(uint8 comparemode) 
+ 267:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         {
+ 268:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #if(INTERNAL_STEP_UsingFixedFunction)
+ 269:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 270:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #if(0 != INTERNAL_STEP_CTRL_CMPMODE1_SHIFT)
+ 271:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << INTERNAL_STEP_CTRL_CMP
+ 272:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #else
+ 273:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                     uint8 comparemodemasked = comparemode;
+ 274:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #endif /* (0 != INTERNAL_STEP_CTRL_CMPMODE1_SHIFT) */
+ 275:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 276:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_CONTROL3 &= ((uint8)(~INTERNAL_STEP_CTRL_CMPMODE1_MASK)); /*Clear Exi
+ 277:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_CONTROL3 |= comparemodemasked;
+ 278:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 279:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #elif (INTERNAL_STEP_UseControl)
+ 280:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 281:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #if(0 != INTERNAL_STEP_CTRL_CMPMODE1_SHIFT)
+ 282:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << INTERNAL_STEP_CTRL_CM
+ 283:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                                 INTERNAL_STEP_CTRL_CMPMODE1_MASK;
+ 284:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #else
+ 285:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                     uint8 comparemode1masked = comparemode & INTERNAL_STEP_CTRL_CMPMODE1_MASK;
+ 286:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #endif /* (0 != INTERNAL_STEP_CTRL_CMPMODE1_SHIFT) */
+ 287:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 288:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #if(0 != INTERNAL_STEP_CTRL_CMPMODE2_SHIFT)
+ 289:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                     uint8 comparemode2masked = ((uint8)((uint8)comparemode << INTERNAL_STEP_CTRL_CM
+ 290:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                                INTERNAL_STEP_CTRL_CMPMODE2_MASK;
+ 291:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #else
+ 292:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                     uint8 comparemode2masked = comparemode & INTERNAL_STEP_CTRL_CMPMODE2_MASK;
+ 293:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 #endif /* (0 != INTERNAL_STEP_CTRL_CMPMODE2_SHIFT) */
+ 294:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 295:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 /*Clear existing mode */
+ 296:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_CONTROL &= ((uint8)(~(INTERNAL_STEP_CTRL_CMPMODE1_MASK |
+ 297:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                             INTERNAL_STEP_CTRL_CMPMODE2_MASK)));
+ 298:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_CONTROL |= (comparemode1masked | comparemode2masked);
+ 299:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 300:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #else
+ 301:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 uint8 temp = comparemode;
+ 302:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 303:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         }
+ 304:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* INTERNAL_STEP_CompareMode1SW */
+ 305:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 306:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #else /* UseOneCompareMode */
+ 307:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 308:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_CompareMode1SW)
+ 309:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 310:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 311:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /*******************************************************************************
+ 312:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Function Name: INTERNAL_STEP_SetCompareMode1
+ 313:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         ********************************************************************************
+ 314:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 315:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Summary:
+ 316:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  This function writes the Compare Mode for the pwm or pwm1 output
+ 317:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 318:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Parameters:
+ 319:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 11
+
+
+ 320:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *                defined in the H file as input arguments.
+ 321:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 322:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Return:
+ 323:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  None
+ 324:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 325:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *******************************************************************************/
+ 326:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         void INTERNAL_STEP_SetCompareMode1(uint8 comparemode) 
+ 327:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         {
+ 328:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #if(0 != INTERNAL_STEP_CTRL_CMPMODE1_SHIFT)
+ 329:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << INTERNAL_STEP_CTRL_CMPMODE
+ 330:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                            INTERNAL_STEP_CTRL_CMPMODE1_MASK;
+ 331:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #else
+ 332:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 uint8 comparemodemasked = comparemode & INTERNAL_STEP_CTRL_CMPMODE1_MASK;
+ 333:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #endif /* (0 != INTERNAL_STEP_CTRL_CMPMODE1_SHIFT) */
+ 334:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 335:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #if (INTERNAL_STEP_UseControl)
+ 336:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_CONTROL &= ((uint8)(~INTERNAL_STEP_CTRL_CMPMODE1_MASK)); /*Clear exis
+ 337:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_CONTROL |= comparemodemasked;
+ 338:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #endif /* (INTERNAL_STEP_UseControl) */
+ 339:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         }
+ 340:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* INTERNAL_STEP_CompareMode1SW */
+ 341:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 342:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (INTERNAL_STEP_CompareMode2SW)
+ 343:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 344:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 345:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 346:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_SetCompareMode2
+ 347:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 348:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 349:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 350:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
+ 351:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 352:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 353:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 354:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *                defined in the H file as input arguments.
+ 355:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 356:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 357:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 358:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 359:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 360:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_SetCompareMode2(uint8 comparemode) 
+ 361:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 362:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 363:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(0 != INTERNAL_STEP_CTRL_CMPMODE2_SHIFT)
+ 364:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << INTERNAL_STEP_CTRL_CMPMODE2_SH
+ 365:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                                  INTERNAL_STEP_CTRL_CMPMODE2_MASK;
+ 366:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 367:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             uint8 comparemodemasked = comparemode & INTERNAL_STEP_CTRL_CMPMODE2_MASK;
+ 368:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (0 != INTERNAL_STEP_CTRL_CMPMODE2_SHIFT) */
+ 369:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 370:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if (INTERNAL_STEP_UseControl)
+ 371:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_CONTROL &= ((uint8)(~INTERNAL_STEP_CTRL_CMPMODE2_MASK)); /*Clear existing
+ 372:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_CONTROL |= comparemodemasked;
+ 373:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UseControl) */
+ 374:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 375:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /*INTERNAL_STEP_CompareMode2SW */
+ 376:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 12
+
+
+ 377:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* UseOneCompareMode */
+ 378:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 379:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 380:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (!INTERNAL_STEP_UsingFixedFunction)
+ 381:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 382:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 383:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 384:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_WriteCounter
+ 385:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 386:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 387:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 388:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Writes a new counter value directly to the counter register. This will be
+ 389:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  implemented for that currently running period and only that period. This API
+ 390:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  is valid only for UDB implementation and not available for fixed function
+ 391:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  PWM implementation.
+ 392:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 393:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 394:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  counter:  The period new period counter value.
+ 395:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 396:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 397:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 398:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 399:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Side Effects:
+ 400:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
+ 401:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 402:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 403:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_WriteCounter(uint16 counter) \
+ 404:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                        
+ 405:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 252              		.loc 1 405 0
+ 253              		.cfi_startproc
+ 254 0000 80B5     		push	{r7, lr}
+ 255              		.cfi_def_cfa_offset 8
+ 256              		.cfi_offset 7, -8
+ 257              		.cfi_offset 14, -4
+ 258 0002 82B0     		sub	sp, sp, #8
+ 259              		.cfi_def_cfa_offset 16
+ 260 0004 00AF     		add	r7, sp, #0
+ 261              		.cfi_def_cfa_register 7
+ 262 0006 021C     		mov	r2, r0
+ 263 0008 BB1D     		add	r3, r7, #6
+ 264 000a 1A80     		strh	r2, [r3]
+ 406:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         CY_SET_REG16(INTERNAL_STEP_COUNTER_LSB_PTR, counter);
+ 265              		.loc 1 406 0
+ 266 000c 034A     		ldr	r2, .L15
+ 267 000e BB1D     		add	r3, r7, #6
+ 268 0010 1B88     		ldrh	r3, [r3]
+ 269 0012 1380     		strh	r3, [r2]
+ 407:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 270              		.loc 1 407 0
+ 271 0014 BD46     		mov	sp, r7
+ 272 0016 02B0     		add	sp, sp, #8
+ 273              		@ sp needed
+ 274 0018 80BD     		pop	{r7, pc}
+ 275              	.L16:
+ 276 001a C046     		.align	2
+ 277              	.L15:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 13
+
+
+ 278 001c 04100F40 		.word	1074728964
+ 279              		.cfi_endproc
+ 280              	.LFE4:
+ 281              		.size	INTERNAL_STEP_WriteCounter, .-INTERNAL_STEP_WriteCounter
+ 282              		.section	.text.INTERNAL_STEP_ReadCounter,"ax",%progbits
+ 283              		.align	2
+ 284              		.global	INTERNAL_STEP_ReadCounter
+ 285              		.code	16
+ 286              		.thumb_func
+ 287              		.type	INTERNAL_STEP_ReadCounter, %function
+ 288              	INTERNAL_STEP_ReadCounter:
+ 289              	.LFB5:
+ 408:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 409:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 410:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 411:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadCounter
+ 412:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 413:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 414:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 415:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This function returns the current value of the counter.  It doesn't matter
+ 416:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  if the counter is enabled or running.
+ 417:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 418:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 419:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 420:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 421:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 422:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  The current value of the counter.
+ 423:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 424:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 425:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint16 INTERNAL_STEP_ReadCounter(void) 
+ 426:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 290              		.loc 1 426 0
+ 291              		.cfi_startproc
+ 292 0000 80B5     		push	{r7, lr}
+ 293              		.cfi_def_cfa_offset 8
+ 294              		.cfi_offset 7, -8
+ 295              		.cfi_offset 14, -4
+ 296 0002 00AF     		add	r7, sp, #0
+ 297              		.cfi_def_cfa_register 7
+ 427:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* Force capture by reading Accumulator */
+ 428:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* Must first do a software capture to be able to read the counter */
+ 429:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 430:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****           (void)CY_GET_REG8(INTERNAL_STEP_COUNTERCAP_LSB_PTR_8BIT);
+ 298              		.loc 1 430 0
+ 299 0004 034B     		ldr	r3, .L19
+ 300 0006 1B78     		ldrb	r3, [r3]
+ 431:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 432:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* Read the data from the FIFO */
+ 433:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return (CY_GET_REG16(INTERNAL_STEP_CAPTURE_LSB_PTR));
+ 301              		.loc 1 433 0
+ 302 0008 034B     		ldr	r3, .L19+4
+ 303 000a 1B88     		ldrh	r3, [r3]
+ 304 000c 9BB2     		uxth	r3, r3
+ 434:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 305              		.loc 1 434 0
+ 306 000e 181C     		mov	r0, r3
+ 307 0010 BD46     		mov	sp, r7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 14
+
+
+ 308              		@ sp needed
+ 309 0012 80BD     		pop	{r7, pc}
+ 310              	.L20:
+ 311              		.align	2
+ 312              	.L19:
+ 313 0014 12000F40 		.word	1074724882
+ 314 0018 A4100F40 		.word	1074729124
+ 315              		.cfi_endproc
+ 316              	.LFE5:
+ 317              		.size	INTERNAL_STEP_ReadCounter, .-INTERNAL_STEP_ReadCounter
+ 318              		.section	.text.INTERNAL_STEP_ClearFIFO,"ax",%progbits
+ 319              		.align	2
+ 320              		.global	INTERNAL_STEP_ClearFIFO
+ 321              		.code	16
+ 322              		.thumb_func
+ 323              		.type	INTERNAL_STEP_ClearFIFO, %function
+ 324              	INTERNAL_STEP_ClearFIFO:
+ 325              	.LFB6:
+ 435:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 436:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if (INTERNAL_STEP_UseStatus)
+ 437:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 438:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 439:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /*******************************************************************************
+ 440:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Function Name: INTERNAL_STEP_ClearFIFO
+ 441:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         ********************************************************************************
+ 442:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 443:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Summary:
+ 444:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  This function clears all capture data from the capture FIFO
+ 445:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 446:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Parameters:
+ 447:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  None
+ 448:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 449:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         * Return:
+ 450:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *  None
+ 451:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *
+ 452:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         *******************************************************************************/
+ 453:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         void INTERNAL_STEP_ClearFIFO(void) 
+ 454:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         {
+ 326              		.loc 1 454 0
+ 327              		.cfi_startproc
+ 328 0000 80B5     		push	{r7, lr}
+ 329              		.cfi_def_cfa_offset 8
+ 330              		.cfi_offset 7, -8
+ 331              		.cfi_offset 14, -4
+ 332 0002 00AF     		add	r7, sp, #0
+ 333              		.cfi_def_cfa_register 7
+ 455:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             while(0u != (INTERNAL_STEP_ReadStatusRegister() & INTERNAL_STEP_STATUS_FIFONEMPTY))
+ 334              		.loc 1 455 0
+ 335 0004 01E0     		b	.L22
+ 336              	.L23:
+ 456:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             {
+ 457:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 (void)INTERNAL_STEP_ReadCapture();
+ 337              		.loc 1 457 0
+ 338 0006 FFF7FEFF 		bl	INTERNAL_STEP_ReadCapture
+ 339              	.L22:
+ 455:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             while(0u != (INTERNAL_STEP_ReadStatusRegister() & INTERNAL_STEP_STATUS_FIFONEMPTY))
+ 340              		.loc 1 455 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 15
+
+
+ 341 000a FFF7FEFF 		bl	INTERNAL_STEP_ReadStatusRegister
+ 342 000e 031C     		mov	r3, r0
+ 343 0010 1A1C     		mov	r2, r3
+ 344 0012 1023     		mov	r3, #16
+ 345 0014 1340     		and	r3, r2
+ 346 0016 F6D1     		bne	.L23
+ 458:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             }
+ 459:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         }
+ 347              		.loc 1 459 0
+ 348 0018 BD46     		mov	sp, r7
+ 349              		@ sp needed
+ 350 001a 80BD     		pop	{r7, pc}
+ 351              		.cfi_endproc
+ 352              	.LFE6:
+ 353              		.size	INTERNAL_STEP_ClearFIFO, .-INTERNAL_STEP_ClearFIFO
+ 354              		.section	.text.INTERNAL_STEP_WritePeriod,"ax",%progbits
+ 355              		.align	2
+ 356              		.global	INTERNAL_STEP_WritePeriod
+ 357              		.code	16
+ 358              		.thumb_func
+ 359              		.type	INTERNAL_STEP_WritePeriod, %function
+ 360              	INTERNAL_STEP_WritePeriod:
+ 361              	.LFB7:
+ 460:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 461:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* INTERNAL_STEP_UseStatus */
+ 462:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 463:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* !INTERNAL_STEP_UsingFixedFunction */
+ 464:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 465:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 466:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /*******************************************************************************
+ 467:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Function Name: INTERNAL_STEP_WritePeriod
+ 468:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** ********************************************************************************
+ 469:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 470:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Summary:
+ 471:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  This function is used to change the period of the counter.  The new period
+ 472:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  will be loaded the next time terminal count is detected.
+ 473:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 474:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Parameters:
+ 475:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0
+ 476:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *           will result in the counter remaining at zero.
+ 477:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 478:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Return:
+ 479:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+ 480:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 481:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *******************************************************************************/
+ 482:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** void INTERNAL_STEP_WritePeriod(uint16 period) 
+ 483:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** {
+ 362              		.loc 1 483 0
+ 363              		.cfi_startproc
+ 364 0000 80B5     		push	{r7, lr}
+ 365              		.cfi_def_cfa_offset 8
+ 366              		.cfi_offset 7, -8
+ 367              		.cfi_offset 14, -4
+ 368 0002 82B0     		sub	sp, sp, #8
+ 369              		.cfi_def_cfa_offset 16
+ 370 0004 00AF     		add	r7, sp, #0
+ 371              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 16
+
+
+ 372 0006 021C     		mov	r2, r0
+ 373 0008 BB1D     		add	r3, r7, #6
+ 374 000a 1A80     		strh	r2, [r3]
+ 484:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if(INTERNAL_STEP_UsingFixedFunction)
+ 485:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         CY_SET_REG16(INTERNAL_STEP_PERIOD_LSB_PTR, (uint16)period);
+ 486:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #else
+ 487:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         CY_SET_REG16(INTERNAL_STEP_PERIOD_LSB_PTR, period);
+ 375              		.loc 1 487 0
+ 376 000c 034A     		ldr	r2, .L25
+ 377 000e BB1D     		add	r3, r7, #6
+ 378 0010 1B88     		ldrh	r3, [r3]
+ 379 0012 1380     		strh	r3, [r2]
+ 488:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 489:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** }
+ 380              		.loc 1 489 0
+ 381 0014 BD46     		mov	sp, r7
+ 382 0016 02B0     		add	sp, sp, #8
+ 383              		@ sp needed
+ 384 0018 80BD     		pop	{r7, pc}
+ 385              	.L26:
+ 386 001a C046     		.align	2
+ 387              	.L25:
+ 388 001c 84100F40 		.word	1074729092
+ 389              		.cfi_endproc
+ 390              	.LFE7:
+ 391              		.size	INTERNAL_STEP_WritePeriod, .-INTERNAL_STEP_WritePeriod
+ 392              		.section	.text.INTERNAL_STEP_WriteCompare,"ax",%progbits
+ 393              		.align	2
+ 394              		.global	INTERNAL_STEP_WriteCompare
+ 395              		.code	16
+ 396              		.thumb_func
+ 397              		.type	INTERNAL_STEP_WriteCompare, %function
+ 398              	INTERNAL_STEP_WriteCompare:
+ 399              	.LFB8:
+ 490:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 491:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (INTERNAL_STEP_UseOneCompareMode)
+ 492:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 493:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 494:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 495:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_WriteCompare
+ 496:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 497:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 498:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 499:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
+ 500:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  mode. The compare output will reflect the new value on the next UDB clock.
+ 501:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  The compare output will be driven high when the present counter value is
+ 502:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  compared to the compare value based on the compare mode defined in
+ 503:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Dither Mode.
+ 504:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 505:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 506:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  compare:  New compare value.
+ 507:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 508:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 509:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 510:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 511:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Side Effects:
+ 512:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This function is only available if the PWM mode parameter is set to
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 17
+
+
+ 513:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
+ 514:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 515:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 516:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_WriteCompare(uint16 compare) \
+ 517:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                        
+ 518:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 400              		.loc 1 518 0
+ 401              		.cfi_startproc
+ 402 0000 80B5     		push	{r7, lr}
+ 403              		.cfi_def_cfa_offset 8
+ 404              		.cfi_offset 7, -8
+ 405              		.cfi_offset 14, -4
+ 406 0002 82B0     		sub	sp, sp, #8
+ 407              		.cfi_def_cfa_offset 16
+ 408 0004 00AF     		add	r7, sp, #0
+ 409              		.cfi_def_cfa_register 7
+ 410 0006 021C     		mov	r2, r0
+ 411 0008 BB1D     		add	r3, r7, #6
+ 412 000a 1A80     		strh	r2, [r3]
+ 519:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(INTERNAL_STEP_UsingFixedFunction)
+ 520:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CY_SET_REG16(INTERNAL_STEP_COMPARE1_LSB_PTR, (uint16)compare);
+ 521:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 522:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CY_SET_REG16(INTERNAL_STEP_COMPARE1_LSB_PTR, compare);
+ 413              		.loc 1 522 0
+ 414 000c 034A     		ldr	r2, .L28
+ 415 000e BB1D     		add	r3, r7, #6
+ 416 0010 1B88     		ldrh	r3, [r3]
+ 417 0012 1380     		strh	r3, [r2]
+ 523:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 524:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 525:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if (INTERNAL_STEP_PWMMode == INTERNAL_STEP__B_PWM__DITHER)
+ 526:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #if(INTERNAL_STEP_UsingFixedFunction)
+ 527:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 CY_SET_REG16(INTERNAL_STEP_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+ 528:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #else
+ 529:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 CY_SET_REG16(INTERNAL_STEP_COMPARE2_LSB_PTR, (compare + 1u));
+ 530:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 531:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_PWMMode == INTERNAL_STEP__B_PWM__DITHER) */
+ 532:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 418              		.loc 1 532 0
+ 419 0014 BD46     		mov	sp, r7
+ 420 0016 02B0     		add	sp, sp, #8
+ 421              		@ sp needed
+ 422 0018 80BD     		pop	{r7, pc}
+ 423              	.L29:
+ 424 001a C046     		.align	2
+ 425              	.L28:
+ 426 001c 44100F40 		.word	1074729028
+ 427              		.cfi_endproc
+ 428              	.LFE8:
+ 429              		.size	INTERNAL_STEP_WriteCompare, .-INTERNAL_STEP_WriteCompare
+ 430              		.section	.text.INTERNAL_STEP_SetInterruptMode,"ax",%progbits
+ 431              		.align	2
+ 432              		.global	INTERNAL_STEP_SetInterruptMode
+ 433              		.code	16
+ 434              		.thumb_func
+ 435              		.type	INTERNAL_STEP_SetInterruptMode, %function
+ 436              	INTERNAL_STEP_SetInterruptMode:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 18
+
+
+ 437              	.LFB9:
+ 533:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 534:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 535:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #else
+ 536:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 537:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 538:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 539:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_WriteCompare1
+ 540:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 541:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 542:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 543:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This funtion is used to change the compare1 value.  The compare output will
+ 544:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  reflect the new value on the next UDB clock.  The compare output will be
+ 545:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  driven high when the present counter value is less than or less than or
+ 546:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  equal to the compare register, depending on the mode.
+ 547:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 548:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 549:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  compare:  New compare value.
+ 550:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 551:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 552:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 553:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 554:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 555:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_WriteCompare1(uint16 compare) \
+ 556:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                         
+ 557:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 558:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(INTERNAL_STEP_UsingFixedFunction)
+ 559:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CY_SET_REG16(INTERNAL_STEP_COMPARE1_LSB_PTR, (uint16)compare);
+ 560:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 561:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CY_SET_REG16(INTERNAL_STEP_COMPARE1_LSB_PTR, compare);
+ 562:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 563:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 564:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 565:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 566:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 567:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_WriteCompare2
+ 568:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 569:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 570:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 571:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This funtion is used to change the compare value, for compare1 output.
+ 572:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  The compare output will reflect the new value on the next UDB clock.
+ 573:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  The compare output will be driven high when the present counter value is
+ 574:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  less than or less than or equal to the compare register, depending on the
+ 575:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  mode.
+ 576:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 577:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 578:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  compare:  New compare value.
+ 579:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 580:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 581:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 582:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 583:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 584:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_WriteCompare2(uint16 compare) \
+ 585:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                         
+ 586:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 587:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(INTERNAL_STEP_UsingFixedFunction)
+ 588:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CY_SET_REG16(INTERNAL_STEP_COMPARE2_LSB_PTR, compare);
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 19
+
+
+ 589:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 590:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CY_SET_REG16(INTERNAL_STEP_COMPARE2_LSB_PTR, compare);
+ 591:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 592:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 593:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* UseOneCompareMode */
+ 594:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 595:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (INTERNAL_STEP_DeadBandUsed)
+ 596:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 597:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 598:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 599:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_WriteDeadTime
+ 600:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 601:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 602:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 603:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This function writes the dead-band counts to the corresponding register
+ 604:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 605:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 606:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  deadtime:  Number of counts for dead time
+ 607:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 608:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 609:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 610:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 611:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 612:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_WriteDeadTime(uint8 deadtime) 
+ 613:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 614:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* If using the Dead Band 1-255 mode then just write the register */
+ 615:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(!INTERNAL_STEP_DeadBand2_4)
+ 616:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             CY_SET_REG8(INTERNAL_STEP_DEADBAND_COUNT_PTR, deadtime);
+ 617:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 618:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Otherwise the data has to be masked and offset */
+ 619:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Clear existing data */
+ 620:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             INTERNAL_STEP_DEADBAND_COUNT &= ((uint8)(~INTERNAL_STEP_DEADBAND_COUNT_MASK));
+ 621:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 622:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Set new dead time */
+ 623:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #if(INTERNAL_STEP_DEADBAND_COUNT_SHIFT)
+ 624:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << INTERNAL_STEP_DEADBAND_
+ 625:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                                     INTERNAL_STEP_DEADBAND_COUNT_MASK;
+ 626:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #else
+ 627:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 INTERNAL_STEP_DEADBAND_COUNT |= deadtime & INTERNAL_STEP_DEADBAND_COUNT_MASK;
+ 628:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #endif /* (INTERNAL_STEP_DEADBAND_COUNT_SHIFT) */
+ 629:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 630:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (!INTERNAL_STEP_DeadBand2_4) */
+ 631:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 632:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 633:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 634:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 635:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadDeadTime
+ 636:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 637:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 638:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 639:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This function reads the dead-band counts from the corresponding register
+ 640:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 641:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 642:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 643:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 644:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 645:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Dead Band Counts
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 20
+
+
+ 646:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 647:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 648:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint8 INTERNAL_STEP_ReadDeadTime(void) 
+ 649:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 650:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         /* If using the Dead Band 1-255 mode then just read the register */
+ 651:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(!INTERNAL_STEP_DeadBand2_4)
+ 652:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             return (CY_GET_REG8(INTERNAL_STEP_DEADBAND_COUNT_PTR));
+ 653:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 654:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 655:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             /* Otherwise the data has to be masked and offset */
+ 656:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #if(INTERNAL_STEP_DEADBAND_COUNT_SHIFT)
+ 657:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 return ((uint8)(((uint8)(INTERNAL_STEP_DEADBAND_COUNT & INTERNAL_STEP_DEADBAND_COUN
+ 658:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                                                                            INTERNAL_STEP_DEADBAND_C
+ 659:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #else
+ 660:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****                 return (INTERNAL_STEP_DEADBAND_COUNT & INTERNAL_STEP_DEADBAND_COUNT_MASK);
+ 661:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             #endif /* (INTERNAL_STEP_DEADBAND_COUNT_SHIFT) */
+ 662:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (!INTERNAL_STEP_DeadBand2_4) */
+ 663:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 664:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* DeadBandUsed */
+ 665:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 666:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (INTERNAL_STEP_UseStatus || INTERNAL_STEP_UsingFixedFunction)
+ 667:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 668:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 669:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 670:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_SetInterruptMode
+ 671:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 672:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 673:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 674:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This function configures the interrupts mask control of theinterrupt
+ 675:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  source status register.
+ 676:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 677:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 678:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled
+ 679:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 680:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 681:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 682:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 683:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 684:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_SetInterruptMode(uint8 interruptMode) 
+ 685:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 438              		.loc 1 685 0
+ 439              		.cfi_startproc
+ 440 0000 80B5     		push	{r7, lr}
+ 441              		.cfi_def_cfa_offset 8
+ 442              		.cfi_offset 7, -8
+ 443              		.cfi_offset 14, -4
+ 444 0002 82B0     		sub	sp, sp, #8
+ 445              		.cfi_def_cfa_offset 16
+ 446 0004 00AF     		add	r7, sp, #0
+ 447              		.cfi_def_cfa_register 7
+ 448 0006 021C     		mov	r2, r0
+ 449 0008 FB1D     		add	r3, r7, #7
+ 450 000a 1A70     		strb	r2, [r3]
+ 686:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         CY_SET_REG8(INTERNAL_STEP_STATUS_MASK_PTR, interruptMode);
+ 451              		.loc 1 686 0
+ 452 000c 034A     		ldr	r2, .L31
+ 453 000e FB1D     		add	r3, r7, #7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 21
+
+
+ 454 0010 1B78     		ldrb	r3, [r3]
+ 455 0012 1370     		strb	r3, [r2]
+ 687:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 456              		.loc 1 687 0
+ 457 0014 BD46     		mov	sp, r7
+ 458 0016 02B0     		add	sp, sp, #8
+ 459              		@ sp needed
+ 460 0018 80BD     		pop	{r7, pc}
+ 461              	.L32:
+ 462 001a C046     		.align	2
+ 463              	.L31:
+ 464 001c 83000F40 		.word	1074724995
+ 465              		.cfi_endproc
+ 466              	.LFE9:
+ 467              		.size	INTERNAL_STEP_SetInterruptMode, .-INTERNAL_STEP_SetInterruptMode
+ 468              		.section	.text.INTERNAL_STEP_ReadStatusRegister,"ax",%progbits
+ 469              		.align	2
+ 470              		.global	INTERNAL_STEP_ReadStatusRegister
+ 471              		.code	16
+ 472              		.thumb_func
+ 473              		.type	INTERNAL_STEP_ReadStatusRegister, %function
+ 474              	INTERNAL_STEP_ReadStatusRegister:
+ 475              	.LFB10:
+ 688:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 689:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 690:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 691:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadStatusRegister
+ 692:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 693:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 694:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 695:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  This function returns the current state of the status register.
+ 696:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 697:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 698:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 699:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 700:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 701:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8 : Current status register value. The status register bits are:
+ 702:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [7:6] : Unused(0)
+ 703:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [5]   : Kill event output
+ 704:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [4]   : FIFO not empty
+ 705:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [3]   : FIFO full
+ 706:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [2]   : Terminal count
+ 707:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [1]   : Compare output 2
+ 708:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [0]   : Compare output 1
+ 709:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 710:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 711:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint8 INTERNAL_STEP_ReadStatusRegister(void) 
+ 712:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 476              		.loc 1 712 0
+ 477              		.cfi_startproc
+ 478 0000 80B5     		push	{r7, lr}
+ 479              		.cfi_def_cfa_offset 8
+ 480              		.cfi_offset 7, -8
+ 481              		.cfi_offset 14, -4
+ 482 0002 00AF     		add	r7, sp, #0
+ 483              		.cfi_def_cfa_register 7
+ 713:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return (CY_GET_REG8(INTERNAL_STEP_STATUS_PTR));
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 22
+
+
+ 484              		.loc 1 713 0
+ 485 0004 024B     		ldr	r3, .L35
+ 486 0006 1B78     		ldrb	r3, [r3]
+ 487 0008 DBB2     		uxtb	r3, r3
+ 714:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 488              		.loc 1 714 0
+ 489 000a 181C     		mov	r0, r3
+ 490 000c BD46     		mov	sp, r7
+ 491              		@ sp needed
+ 492 000e 80BD     		pop	{r7, pc}
+ 493              	.L36:
+ 494              		.align	2
+ 495              	.L35:
+ 496 0010 63000F40 		.word	1074724963
+ 497              		.cfi_endproc
+ 498              	.LFE10:
+ 499              		.size	INTERNAL_STEP_ReadStatusRegister, .-INTERNAL_STEP_ReadStatusRegister
+ 500              		.section	.text.INTERNAL_STEP_ReadControlRegister,"ax",%progbits
+ 501              		.align	2
+ 502              		.global	INTERNAL_STEP_ReadControlRegister
+ 503              		.code	16
+ 504              		.thumb_func
+ 505              		.type	INTERNAL_STEP_ReadControlRegister, %function
+ 506              	INTERNAL_STEP_ReadControlRegister:
+ 507              	.LFB11:
+ 715:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 716:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* (INTERNAL_STEP_UseStatus || INTERNAL_STEP_UsingFixedFunction) */
+ 717:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 718:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 719:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (INTERNAL_STEP_UseControl)
+ 720:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 721:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 722:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 723:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadControlRegister
+ 724:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 725:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 726:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 727:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Returns the current state of the control register. This API is available
+ 728:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  only if the control register is not removed.
+ 729:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 730:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 731:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 732:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 733:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 734:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8 : Current control register value
+ 735:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 736:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 737:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint8 INTERNAL_STEP_ReadControlRegister(void) 
+ 738:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 508              		.loc 1 738 0
+ 509              		.cfi_startproc
+ 510 0000 80B5     		push	{r7, lr}
+ 511              		.cfi_def_cfa_offset 8
+ 512              		.cfi_offset 7, -8
+ 513              		.cfi_offset 14, -4
+ 514 0002 82B0     		sub	sp, sp, #8
+ 515              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 23
+
+
+ 516 0004 00AF     		add	r7, sp, #0
+ 517              		.cfi_def_cfa_register 7
+ 739:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         uint8 result;
+ 740:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 741:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         result = CY_GET_REG8(INTERNAL_STEP_CONTROL_PTR);
+ 518              		.loc 1 741 0
+ 519 0006 054A     		ldr	r2, .L39
+ 520 0008 FB1D     		add	r3, r7, #7
+ 521 000a 1278     		ldrb	r2, [r2]
+ 522 000c 1A70     		strb	r2, [r3]
+ 742:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return (result);
+ 523              		.loc 1 742 0
+ 524 000e FB1D     		add	r3, r7, #7
+ 525 0010 1B78     		ldrb	r3, [r3]
+ 743:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 526              		.loc 1 743 0
+ 527 0012 181C     		mov	r0, r3
+ 528 0014 BD46     		mov	sp, r7
+ 529 0016 02B0     		add	sp, sp, #8
+ 530              		@ sp needed
+ 531 0018 80BD     		pop	{r7, pc}
+ 532              	.L40:
+ 533 001a C046     		.align	2
+ 534              	.L39:
+ 535 001c 73000F40 		.word	1074724979
+ 536              		.cfi_endproc
+ 537              	.LFE11:
+ 538              		.size	INTERNAL_STEP_ReadControlRegister, .-INTERNAL_STEP_ReadControlRegister
+ 539              		.section	.text.INTERNAL_STEP_WriteControlRegister,"ax",%progbits
+ 540              		.align	2
+ 541              		.global	INTERNAL_STEP_WriteControlRegister
+ 542              		.code	16
+ 543              		.thumb_func
+ 544              		.type	INTERNAL_STEP_WriteControlRegister, %function
+ 545              	INTERNAL_STEP_WriteControlRegister:
+ 546              	.LFB12:
+ 744:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 745:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 746:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 747:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_WriteControlRegister
+ 748:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 749:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 750:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 751:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Sets the bit field of the control register. This API is available only if
+ 752:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  the control register is not removed.
+ 753:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 754:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 755:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8 control: Control register bit field, The status register bits are:
+ 756:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [7]   : PWM Enable
+ 757:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [6]   : Reset
+ 758:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [5:3] : Compare Mode2
+ 759:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  [2:0] : Compare Mode2
+ 760:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 761:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 762:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 763:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 764:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 24
+
+
+ 765:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     void INTERNAL_STEP_WriteControlRegister(uint8 control) 
+ 766:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 547              		.loc 1 766 0
+ 548              		.cfi_startproc
+ 549 0000 80B5     		push	{r7, lr}
+ 550              		.cfi_def_cfa_offset 8
+ 551              		.cfi_offset 7, -8
+ 552              		.cfi_offset 14, -4
+ 553 0002 82B0     		sub	sp, sp, #8
+ 554              		.cfi_def_cfa_offset 16
+ 555 0004 00AF     		add	r7, sp, #0
+ 556              		.cfi_def_cfa_register 7
+ 557 0006 021C     		mov	r2, r0
+ 558 0008 FB1D     		add	r3, r7, #7
+ 559 000a 1A70     		strb	r2, [r3]
+ 767:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         CY_SET_REG8(INTERNAL_STEP_CONTROL_PTR, control);
+ 560              		.loc 1 767 0
+ 561 000c 034A     		ldr	r2, .L42
+ 562 000e FB1D     		add	r3, r7, #7
+ 563 0010 1B78     		ldrb	r3, [r3]
+ 564 0012 1370     		strb	r3, [r2]
+ 768:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 565              		.loc 1 768 0
+ 566 0014 BD46     		mov	sp, r7
+ 567 0016 02B0     		add	sp, sp, #8
+ 568              		@ sp needed
+ 569 0018 80BD     		pop	{r7, pc}
+ 570              	.L43:
+ 571 001a C046     		.align	2
+ 572              	.L42:
+ 573 001c 73000F40 		.word	1074724979
+ 574              		.cfi_endproc
+ 575              	.LFE12:
+ 576              		.size	INTERNAL_STEP_WriteControlRegister, .-INTERNAL_STEP_WriteControlRegister
+ 577              		.section	.text.INTERNAL_STEP_ReadCapture,"ax",%progbits
+ 578              		.align	2
+ 579              		.global	INTERNAL_STEP_ReadCapture
+ 580              		.code	16
+ 581              		.thumb_func
+ 582              		.type	INTERNAL_STEP_ReadCapture, %function
+ 583              	INTERNAL_STEP_ReadCapture:
+ 584              	.LFB13:
+ 769:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 770:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* (INTERNAL_STEP_UseControl) */
+ 771:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 772:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 773:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (!INTERNAL_STEP_UsingFixedFunction)
+ 774:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 775:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 776:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 777:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadCapture
+ 778:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 779:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 780:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 781:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Reads the capture value from the capture FIFO.
+ 782:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 783:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 25
+
+
+ 784:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 785:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 786:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 787:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8/uint16: The current capture value
+ 788:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 789:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 790:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint16 INTERNAL_STEP_ReadCapture(void) 
+ 791:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 585              		.loc 1 791 0
+ 586              		.cfi_startproc
+ 587 0000 80B5     		push	{r7, lr}
+ 588              		.cfi_def_cfa_offset 8
+ 589              		.cfi_offset 7, -8
+ 590              		.cfi_offset 14, -4
+ 591 0002 00AF     		add	r7, sp, #0
+ 592              		.cfi_def_cfa_register 7
+ 792:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return (CY_GET_REG16(INTERNAL_STEP_CAPTURE_LSB_PTR));
+ 593              		.loc 1 792 0
+ 594 0004 024B     		ldr	r3, .L46
+ 595 0006 1B88     		ldrh	r3, [r3]
+ 596 0008 9BB2     		uxth	r3, r3
+ 793:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 597              		.loc 1 793 0
+ 598 000a 181C     		mov	r0, r3
+ 599 000c BD46     		mov	sp, r7
+ 600              		@ sp needed
+ 601 000e 80BD     		pop	{r7, pc}
+ 602              	.L47:
+ 603              		.align	2
+ 604              	.L46:
+ 605 0010 A4100F40 		.word	1074729124
+ 606              		.cfi_endproc
+ 607              	.LFE13:
+ 608              		.size	INTERNAL_STEP_ReadCapture, .-INTERNAL_STEP_ReadCapture
+ 609              		.section	.text.INTERNAL_STEP_ReadCompare,"ax",%progbits
+ 610              		.align	2
+ 611              		.global	INTERNAL_STEP_ReadCompare
+ 612              		.code	16
+ 613              		.thumb_func
+ 614              		.type	INTERNAL_STEP_ReadCompare, %function
+ 615              	INTERNAL_STEP_ReadCompare:
+ 616              	.LFB14:
+ 794:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 795:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* (!INTERNAL_STEP_UsingFixedFunction) */
+ 796:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 797:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 798:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #if (INTERNAL_STEP_UseOneCompareMode)
+ 799:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 800:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 801:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 802:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadCompare
+ 803:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 804:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 805:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 806:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is
+ 807:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
+ 808:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 26
+
+
+ 809:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 810:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 811:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 812:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 813:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8/uint16: Current compare value
+ 814:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 815:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 816:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint16 INTERNAL_STEP_ReadCompare(void) 
+ 817:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 617              		.loc 1 817 0
+ 618              		.cfi_startproc
+ 619 0000 80B5     		push	{r7, lr}
+ 620              		.cfi_def_cfa_offset 8
+ 621              		.cfi_offset 7, -8
+ 622              		.cfi_offset 14, -4
+ 623 0002 00AF     		add	r7, sp, #0
+ 624              		.cfi_def_cfa_register 7
+ 818:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #if(INTERNAL_STEP_UsingFixedFunction)
+ 819:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             return ((uint16)CY_GET_REG16(INTERNAL_STEP_COMPARE1_LSB_PTR));
+ 820:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #else
+ 821:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****             return (CY_GET_REG16(INTERNAL_STEP_COMPARE1_LSB_PTR));
+ 625              		.loc 1 821 0
+ 626 0004 024B     		ldr	r3, .L50
+ 627 0006 1B88     		ldrh	r3, [r3]
+ 628 0008 9BB2     		uxth	r3, r3
+ 822:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 823:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 629              		.loc 1 823 0
+ 630 000a 181C     		mov	r0, r3
+ 631 000c BD46     		mov	sp, r7
+ 632              		@ sp needed
+ 633 000e 80BD     		pop	{r7, pc}
+ 634              	.L51:
+ 635              		.align	2
+ 636              	.L50:
+ 637 0010 44100F40 		.word	1074729028
+ 638              		.cfi_endproc
+ 639              	.LFE14:
+ 640              		.size	INTERNAL_STEP_ReadCompare, .-INTERNAL_STEP_ReadCompare
+ 641              		.section	.text.INTERNAL_STEP_ReadPeriod,"ax",%progbits
+ 642              		.align	2
+ 643              		.global	INTERNAL_STEP_ReadPeriod
+ 644              		.code	16
+ 645              		.thumb_func
+ 646              		.type	INTERNAL_STEP_ReadPeriod, %function
+ 647              	INTERNAL_STEP_ReadPeriod:
+ 648              	.LFB15:
+ 824:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 825:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #else
+ 826:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 827:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 828:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 829:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadCompare1
+ 830:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 831:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 832:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 833:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Reads the compare value for the compare1 output.
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 27
+
+
+ 834:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 835:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 836:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 837:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 838:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 839:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8/uint16: Current compare value.
+ 840:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 841:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 842:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint16 INTERNAL_STEP_ReadCompare1(void) 
+ 843:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 844:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return (CY_GET_REG16(INTERNAL_STEP_COMPARE1_LSB_PTR));
+ 845:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 846:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 847:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 848:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     /*******************************************************************************
+ 849:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Function Name: INTERNAL_STEP_ReadCompare2
+ 850:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     ********************************************************************************
+ 851:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 852:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Summary:
+ 853:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  Reads the compare value for the compare2 output.
+ 854:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 855:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Parameters:
+ 856:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  None
+ 857:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 858:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     * Return:
+ 859:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *  uint8/uint16: Current compare value.
+ 860:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *
+ 861:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     *******************************************************************************/
+ 862:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     uint16 INTERNAL_STEP_ReadCompare2(void) 
+ 863:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     {
+ 864:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return (CY_GET_REG16(INTERNAL_STEP_COMPARE2_LSB_PTR));
+ 865:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     }
+ 866:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 867:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** #endif /* (INTERNAL_STEP_UseOneCompareMode) */
+ 868:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 869:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** 
+ 870:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** /*******************************************************************************
+ 871:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Function Name: INTERNAL_STEP_ReadPeriod
+ 872:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** ********************************************************************************
+ 873:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 874:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Summary:
+ 875:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  Reads the period value used by the PWM hardware.
+ 876:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 877:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Parameters:
+ 878:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  None
+ 879:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 880:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** * Return:
+ 881:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *  uint8/16: Period value
+ 882:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *
+ 883:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** *******************************************************************************/
+ 884:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** uint16 INTERNAL_STEP_ReadPeriod(void) 
+ 885:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** {
+ 649              		.loc 1 885 0
+ 650              		.cfi_startproc
+ 651 0000 80B5     		push	{r7, lr}
+ 652              		.cfi_def_cfa_offset 8
+ 653              		.cfi_offset 7, -8
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 28
+
+
+ 654              		.cfi_offset 14, -4
+ 655 0002 00AF     		add	r7, sp, #0
+ 656              		.cfi_def_cfa_register 7
+ 886:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #if(INTERNAL_STEP_UsingFixedFunction)
+ 887:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return ((uint16)CY_GET_REG16(INTERNAL_STEP_PERIOD_LSB_PTR));
+ 888:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #else
+ 889:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****         return (CY_GET_REG16(INTERNAL_STEP_PERIOD_LSB_PTR));
+ 657              		.loc 1 889 0
+ 658 0004 024B     		ldr	r3, .L54
+ 659 0006 1B88     		ldrh	r3, [r3]
+ 660 0008 9BB2     		uxth	r3, r3
+ 890:.\Generated_Source\PSoC4/INTERNAL_STEP.c ****     #endif /* (INTERNAL_STEP_UsingFixedFunction) */
+ 891:.\Generated_Source\PSoC4/INTERNAL_STEP.c **** }
+ 661              		.loc 1 891 0
+ 662 000a 181C     		mov	r0, r3
+ 663 000c BD46     		mov	sp, r7
+ 664              		@ sp needed
+ 665 000e 80BD     		pop	{r7, pc}
+ 666              	.L55:
+ 667              		.align	2
+ 668              	.L54:
+ 669 0010 84100F40 		.word	1074729092
+ 670              		.cfi_endproc
+ 671              	.LFE15:
+ 672              		.size	INTERNAL_STEP_ReadPeriod, .-INTERNAL_STEP_ReadPeriod
+ 673              		.text
+ 674              	.Letext0:
+ 675              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 676              		.section	.debug_info,"",%progbits
+ 677              	.Ldebug_info0:
+ 678 0000 9C020000 		.4byte	0x29c
+ 679 0004 0400     		.2byte	0x4
+ 680 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 681 000a 04       		.byte	0x4
+ 682 000b 01       		.uleb128 0x1
+ 683 000c 71010000 		.4byte	.LASF40
+ 684 0010 01       		.byte	0x1
+ 685 0011 B8020000 		.4byte	.LASF41
+ 686 0015 26020000 		.4byte	.LASF42
+ 687 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 688 001d 00000000 		.4byte	0
+ 689 0021 00000000 		.4byte	.Ldebug_line0
+ 690 0025 02       		.uleb128 0x2
+ 691 0026 01       		.byte	0x1
+ 692 0027 06       		.byte	0x6
+ 693 0028 8E030000 		.4byte	.LASF0
+ 694 002c 02       		.uleb128 0x2
+ 695 002d 01       		.byte	0x1
+ 696 002e 08       		.byte	0x8
+ 697 002f 38010000 		.4byte	.LASF1
+ 698 0033 02       		.uleb128 0x2
+ 699 0034 02       		.byte	0x2
+ 700 0035 05       		.byte	0x5
+ 701 0036 67010000 		.4byte	.LASF2
+ 702 003a 02       		.uleb128 0x2
+ 703 003b 02       		.byte	0x2
+ 704 003c 07       		.byte	0x7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 29
+
+
+ 705 003d 6F000000 		.4byte	.LASF3
+ 706 0041 02       		.uleb128 0x2
+ 707 0042 04       		.byte	0x4
+ 708 0043 05       		.byte	0x5
+ 709 0044 40030000 		.4byte	.LASF4
+ 710 0048 02       		.uleb128 0x2
+ 711 0049 04       		.byte	0x4
+ 712 004a 07       		.byte	0x7
+ 713 004b E3000000 		.4byte	.LASF5
+ 714 004f 02       		.uleb128 0x2
+ 715 0050 08       		.byte	0x8
+ 716 0051 05       		.byte	0x5
+ 717 0052 EF020000 		.4byte	.LASF6
+ 718 0056 02       		.uleb128 0x2
+ 719 0057 08       		.byte	0x8
+ 720 0058 07       		.byte	0x7
+ 721 0059 87020000 		.4byte	.LASF7
+ 722 005d 03       		.uleb128 0x3
+ 723 005e 04       		.byte	0x4
+ 724 005f 05       		.byte	0x5
+ 725 0060 696E7400 		.ascii	"int\000"
+ 726 0064 02       		.uleb128 0x2
+ 727 0065 04       		.byte	0x4
+ 728 0066 07       		.byte	0x7
+ 729 0067 06020000 		.4byte	.LASF8
+ 730 006b 04       		.uleb128 0x4
+ 731 006c 14010000 		.4byte	.LASF9
+ 732 0070 02       		.byte	0x2
+ 733 0071 3801     		.2byte	0x138
+ 734 0073 2C000000 		.4byte	0x2c
+ 735 0077 04       		.uleb128 0x4
+ 736 0078 FF010000 		.4byte	.LASF10
+ 737 007c 02       		.byte	0x2
+ 738 007d 3901     		.2byte	0x139
+ 739 007f 3A000000 		.4byte	0x3a
+ 740 0083 02       		.uleb128 0x2
+ 741 0084 04       		.byte	0x4
+ 742 0085 04       		.byte	0x4
+ 743 0086 AF000000 		.4byte	.LASF11
+ 744 008a 02       		.uleb128 0x2
+ 745 008b 08       		.byte	0x8
+ 746 008c 04       		.byte	0x4
+ 747 008d 60010000 		.4byte	.LASF12
+ 748 0091 02       		.uleb128 0x2
+ 749 0092 01       		.byte	0x1
+ 750 0093 08       		.byte	0x8
+ 751 0094 21000000 		.4byte	.LASF13
+ 752 0098 04       		.uleb128 0x4
+ 753 0099 DE000000 		.4byte	.LASF14
+ 754 009d 02       		.byte	0x2
+ 755 009e E201     		.2byte	0x1e2
+ 756 00a0 A4000000 		.4byte	0xa4
+ 757 00a4 05       		.uleb128 0x5
+ 758 00a5 6B000000 		.4byte	0x6b
+ 759 00a9 04       		.uleb128 0x4
+ 760 00aa 00000000 		.4byte	.LASF15
+ 761 00ae 02       		.byte	0x2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 30
+
+
+ 762 00af E301     		.2byte	0x1e3
+ 763 00b1 B5000000 		.4byte	0xb5
+ 764 00b5 05       		.uleb128 0x5
+ 765 00b6 77000000 		.4byte	0x77
+ 766 00ba 02       		.uleb128 0x2
+ 767 00bb 04       		.byte	0x4
+ 768 00bc 07       		.byte	0x7
+ 769 00bd E6020000 		.4byte	.LASF16
+ 770 00c1 06       		.uleb128 0x6
+ 771 00c2 26000000 		.4byte	.LASF19
+ 772 00c6 01       		.byte	0x1
+ 773 00c7 37       		.byte	0x37
+ 774 00c8 00000000 		.4byte	.LFB0
+ 775 00cc 24000000 		.4byte	.LFE0-.LFB0
+ 776 00d0 01       		.uleb128 0x1
+ 777 00d1 9C       		.byte	0x9c
+ 778 00d2 07       		.uleb128 0x7
+ 779 00d3 9C000000 		.4byte	.LASF22
+ 780 00d7 01       		.byte	0x1
+ 781 00d8 54       		.byte	0x54
+ 782 00d9 00000000 		.4byte	.LFB1
+ 783 00dd A0000000 		.4byte	.LFE1-.LFB1
+ 784 00e1 01       		.uleb128 0x1
+ 785 00e2 9C       		.byte	0x9c
+ 786 00e3 04010000 		.4byte	0x104
+ 787 00e7 08       		.uleb128 0x8
+ 788 00e8 E1020000 		.4byte	.LASF17
+ 789 00ec 01       		.byte	0x1
+ 790 00ed 57       		.byte	0x57
+ 791 00ee 6B000000 		.4byte	0x6b
+ 792 00f2 02       		.uleb128 0x2
+ 793 00f3 91       		.byte	0x91
+ 794 00f4 6F       		.sleb128 -17
+ 795 00f5 08       		.uleb128 0x8
+ 796 00f6 0B030000 		.4byte	.LASF18
+ 797 00fa 01       		.byte	0x1
+ 798 00fb 5D       		.byte	0x5d
+ 799 00fc 6B000000 		.4byte	0x6b
+ 800 0100 02       		.uleb128 0x2
+ 801 0101 91       		.byte	0x91
+ 802 0102 6E       		.sleb128 -18
+ 803 0103 00       		.byte	0
+ 804 0104 09       		.uleb128 0x9
+ 805 0105 5A000000 		.4byte	.LASF20
+ 806 0109 01       		.byte	0x1
+ 807 010a C7       		.byte	0xc7
+ 808 010b 00000000 		.4byte	.LFB2
+ 809 010f 20000000 		.4byte	.LFE2-.LFB2
+ 810 0113 01       		.uleb128 0x1
+ 811 0114 9C       		.byte	0x9c
+ 812 0115 09       		.uleb128 0x9
+ 813 0116 13020000 		.4byte	.LASF21
+ 814 011a 01       		.byte	0x1
+ 815 011b E9       		.byte	0xe9
+ 816 011c 00000000 		.4byte	.LFB3
+ 817 0120 1C000000 		.4byte	.LFE3-.LFB3
+ 818 0124 01       		.uleb128 0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 31
+
+
+ 819 0125 9C       		.byte	0x9c
+ 820 0126 0A       		.uleb128 0xa
+ 821 0127 C3030000 		.4byte	.LASF23
+ 822 012b 01       		.byte	0x1
+ 823 012c 9301     		.2byte	0x193
+ 824 012e 00000000 		.4byte	.LFB4
+ 825 0132 20000000 		.4byte	.LFE4-.LFB4
+ 826 0136 01       		.uleb128 0x1
+ 827 0137 9C       		.byte	0x9c
+ 828 0138 4C010000 		.4byte	0x14c
+ 829 013c 0B       		.uleb128 0xb
+ 830 013d B5000000 		.4byte	.LASF26
+ 831 0141 01       		.byte	0x1
+ 832 0142 9301     		.2byte	0x193
+ 833 0144 77000000 		.4byte	0x77
+ 834 0148 02       		.uleb128 0x2
+ 835 0149 91       		.byte	0x91
+ 836 014a 76       		.sleb128 -10
+ 837 014b 00       		.byte	0
+ 838 014c 0C       		.uleb128 0xc
+ 839 014d 9E020000 		.4byte	.LASF32
+ 840 0151 01       		.byte	0x1
+ 841 0152 A901     		.2byte	0x1a9
+ 842 0154 77000000 		.4byte	0x77
+ 843 0158 00000000 		.4byte	.LFB5
+ 844 015c 1C000000 		.4byte	.LFE5-.LFB5
+ 845 0160 01       		.uleb128 0x1
+ 846 0161 9C       		.byte	0x9c
+ 847 0162 0D       		.uleb128 0xd
+ 848 0163 28030000 		.4byte	.LASF24
+ 849 0167 01       		.byte	0x1
+ 850 0168 C501     		.2byte	0x1c5
+ 851 016a 00000000 		.4byte	.LFB6
+ 852 016e 1C000000 		.4byte	.LFE6-.LFB6
+ 853 0172 01       		.uleb128 0x1
+ 854 0173 9C       		.byte	0x9c
+ 855 0174 0A       		.uleb128 0xa
+ 856 0175 A2030000 		.4byte	.LASF25
+ 857 0179 01       		.byte	0x1
+ 858 017a E201     		.2byte	0x1e2
+ 859 017c 00000000 		.4byte	.LFB7
+ 860 0180 20000000 		.4byte	.LFE7-.LFB7
+ 861 0184 01       		.uleb128 0x1
+ 862 0185 9C       		.byte	0x9c
+ 863 0186 9A010000 		.4byte	0x19a
+ 864 018a 0B       		.uleb128 0xb
+ 865 018b 53000000 		.4byte	.LASF27
+ 866 018f 01       		.byte	0x1
+ 867 0190 E201     		.2byte	0x1e2
+ 868 0192 77000000 		.4byte	0x77
+ 869 0196 02       		.uleb128 0x2
+ 870 0197 91       		.byte	0x91
+ 871 0198 76       		.sleb128 -10
+ 872 0199 00       		.byte	0
+ 873 019a 0A       		.uleb128 0xa
+ 874 019b 06000000 		.4byte	.LASF28
+ 875 019f 01       		.byte	0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 32
+
+
+ 876 01a0 0402     		.2byte	0x204
+ 877 01a2 00000000 		.4byte	.LFB8
+ 878 01a6 20000000 		.4byte	.LFE8-.LFB8
+ 879 01aa 01       		.uleb128 0x1
+ 880 01ab 9C       		.byte	0x9c
+ 881 01ac C0010000 		.4byte	0x1c0
+ 882 01b0 0B       		.uleb128 0xb
+ 883 01b1 9A030000 		.4byte	.LASF29
+ 884 01b5 01       		.byte	0x1
+ 885 01b6 0402     		.2byte	0x204
+ 886 01b8 77000000 		.4byte	0x77
+ 887 01bc 02       		.uleb128 0x2
+ 888 01bd 91       		.byte	0x91
+ 889 01be 76       		.sleb128 -10
+ 890 01bf 00       		.byte	0
+ 891 01c0 0A       		.uleb128 0xa
+ 892 01c1 F5000000 		.4byte	.LASF30
+ 893 01c5 01       		.byte	0x1
+ 894 01c6 AC02     		.2byte	0x2ac
+ 895 01c8 00000000 		.4byte	.LFB9
+ 896 01cc 20000000 		.4byte	.LFE9-.LFB9
+ 897 01d0 01       		.uleb128 0x1
+ 898 01d1 9C       		.byte	0x9c
+ 899 01d2 E6010000 		.4byte	0x1e6
+ 900 01d6 0B       		.uleb128 0xb
+ 901 01d7 FD020000 		.4byte	.LASF31
+ 902 01db 01       		.byte	0x1
+ 903 01dc AC02     		.2byte	0x2ac
+ 904 01de 6B000000 		.4byte	0x6b
+ 905 01e2 02       		.uleb128 0x2
+ 906 01e3 91       		.byte	0x91
+ 907 01e4 77       		.sleb128 -9
+ 908 01e5 00       		.byte	0
+ 909 01e6 0C       		.uleb128 0xc
+ 910 01e7 BD000000 		.4byte	.LASF33
+ 911 01eb 01       		.byte	0x1
+ 912 01ec C702     		.2byte	0x2c7
+ 913 01ee 6B000000 		.4byte	0x6b
+ 914 01f2 00000000 		.4byte	.LFB10
+ 915 01f6 14000000 		.4byte	.LFE10-.LFB10
+ 916 01fa 01       		.uleb128 0x1
+ 917 01fb 9C       		.byte	0x9c
+ 918 01fc 0E       		.uleb128 0xe
+ 919 01fd 6C030000 		.4byte	.LASF43
+ 920 0201 01       		.byte	0x1
+ 921 0202 E102     		.2byte	0x2e1
+ 922 0204 6B000000 		.4byte	0x6b
+ 923 0208 00000000 		.4byte	.LFB11
+ 924 020c 20000000 		.4byte	.LFE11-.LFB11
+ 925 0210 01       		.uleb128 0x1
+ 926 0211 9C       		.byte	0x9c
+ 927 0212 26020000 		.4byte	0x226
+ 928 0216 0F       		.uleb128 0xf
+ 929 0217 BC030000 		.4byte	.LASF34
+ 930 021b 01       		.byte	0x1
+ 931 021c E302     		.2byte	0x2e3
+ 932 021e 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 33
+
+
+ 933 0222 02       		.uleb128 0x2
+ 934 0223 91       		.byte	0x91
+ 935 0224 77       		.sleb128 -9
+ 936 0225 00       		.byte	0
+ 937 0226 0A       		.uleb128 0xa
+ 938 0227 49030000 		.4byte	.LASF35
+ 939 022b 01       		.byte	0x1
+ 940 022c FD02     		.2byte	0x2fd
+ 941 022e 00000000 		.4byte	.LFB12
+ 942 0232 20000000 		.4byte	.LFE12-.LFB12
+ 943 0236 01       		.uleb128 0x1
+ 944 0237 9C       		.byte	0x9c
+ 945 0238 4C020000 		.4byte	0x24c
+ 946 023c 0B       		.uleb128 0xb
+ 947 023d 1A010000 		.4byte	.LASF36
+ 948 0241 01       		.byte	0x1
+ 949 0242 FD02     		.2byte	0x2fd
+ 950 0244 6B000000 		.4byte	0x6b
+ 951 0248 02       		.uleb128 0x2
+ 952 0249 91       		.byte	0x91
+ 953 024a 77       		.sleb128 -9
+ 954 024b 00       		.byte	0
+ 955 024c 0C       		.uleb128 0xc
+ 956 024d 46010000 		.4byte	.LASF37
+ 957 0251 01       		.byte	0x1
+ 958 0252 1603     		.2byte	0x316
+ 959 0254 77000000 		.4byte	0x77
+ 960 0258 00000000 		.4byte	.LFB13
+ 961 025c 14000000 		.4byte	.LFE13-.LFB13
+ 962 0260 01       		.uleb128 0x1
+ 963 0261 9C       		.byte	0x9c
+ 964 0262 0C       		.uleb128 0xc
+ 965 0263 82000000 		.4byte	.LASF38
+ 966 0267 01       		.byte	0x1
+ 967 0268 3003     		.2byte	0x330
+ 968 026a 77000000 		.4byte	0x77
+ 969 026e 00000000 		.4byte	.LFB14
+ 970 0272 14000000 		.4byte	.LFE14-.LFB14
+ 971 0276 01       		.uleb128 0x1
+ 972 0277 9C       		.byte	0x9c
+ 973 0278 0C       		.uleb128 0xc
+ 974 0279 3A000000 		.4byte	.LASF39
+ 975 027d 01       		.byte	0x1
+ 976 027e 7403     		.2byte	0x374
+ 977 0280 77000000 		.4byte	0x77
+ 978 0284 00000000 		.4byte	.LFB15
+ 979 0288 14000000 		.4byte	.LFE15-.LFB15
+ 980 028c 01       		.uleb128 0x1
+ 981 028d 9C       		.byte	0x9c
+ 982 028e 10       		.uleb128 0x10
+ 983 028f 22010000 		.4byte	.LASF44
+ 984 0293 01       		.byte	0x1
+ 985 0294 20       		.byte	0x20
+ 986 0295 6B000000 		.4byte	0x6b
+ 987 0299 05       		.uleb128 0x5
+ 988 029a 03       		.byte	0x3
+ 989 029b 00000000 		.4byte	INTERNAL_STEP_initVar
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 34
+
+
+ 990 029f 00       		.byte	0
+ 991              		.section	.debug_abbrev,"",%progbits
+ 992              	.Ldebug_abbrev0:
+ 993 0000 01       		.uleb128 0x1
+ 994 0001 11       		.uleb128 0x11
+ 995 0002 01       		.byte	0x1
+ 996 0003 25       		.uleb128 0x25
+ 997 0004 0E       		.uleb128 0xe
+ 998 0005 13       		.uleb128 0x13
+ 999 0006 0B       		.uleb128 0xb
+ 1000 0007 03       		.uleb128 0x3
+ 1001 0008 0E       		.uleb128 0xe
+ 1002 0009 1B       		.uleb128 0x1b
+ 1003 000a 0E       		.uleb128 0xe
+ 1004 000b 55       		.uleb128 0x55
+ 1005 000c 17       		.uleb128 0x17
+ 1006 000d 11       		.uleb128 0x11
+ 1007 000e 01       		.uleb128 0x1
+ 1008 000f 10       		.uleb128 0x10
+ 1009 0010 17       		.uleb128 0x17
+ 1010 0011 00       		.byte	0
+ 1011 0012 00       		.byte	0
+ 1012 0013 02       		.uleb128 0x2
+ 1013 0014 24       		.uleb128 0x24
+ 1014 0015 00       		.byte	0
+ 1015 0016 0B       		.uleb128 0xb
+ 1016 0017 0B       		.uleb128 0xb
+ 1017 0018 3E       		.uleb128 0x3e
+ 1018 0019 0B       		.uleb128 0xb
+ 1019 001a 03       		.uleb128 0x3
+ 1020 001b 0E       		.uleb128 0xe
+ 1021 001c 00       		.byte	0
+ 1022 001d 00       		.byte	0
+ 1023 001e 03       		.uleb128 0x3
+ 1024 001f 24       		.uleb128 0x24
+ 1025 0020 00       		.byte	0
+ 1026 0021 0B       		.uleb128 0xb
+ 1027 0022 0B       		.uleb128 0xb
+ 1028 0023 3E       		.uleb128 0x3e
+ 1029 0024 0B       		.uleb128 0xb
+ 1030 0025 03       		.uleb128 0x3
+ 1031 0026 08       		.uleb128 0x8
+ 1032 0027 00       		.byte	0
+ 1033 0028 00       		.byte	0
+ 1034 0029 04       		.uleb128 0x4
+ 1035 002a 16       		.uleb128 0x16
+ 1036 002b 00       		.byte	0
+ 1037 002c 03       		.uleb128 0x3
+ 1038 002d 0E       		.uleb128 0xe
+ 1039 002e 3A       		.uleb128 0x3a
+ 1040 002f 0B       		.uleb128 0xb
+ 1041 0030 3B       		.uleb128 0x3b
+ 1042 0031 05       		.uleb128 0x5
+ 1043 0032 49       		.uleb128 0x49
+ 1044 0033 13       		.uleb128 0x13
+ 1045 0034 00       		.byte	0
+ 1046 0035 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 35
+
+
+ 1047 0036 05       		.uleb128 0x5
+ 1048 0037 35       		.uleb128 0x35
+ 1049 0038 00       		.byte	0
+ 1050 0039 49       		.uleb128 0x49
+ 1051 003a 13       		.uleb128 0x13
+ 1052 003b 00       		.byte	0
+ 1053 003c 00       		.byte	0
+ 1054 003d 06       		.uleb128 0x6
+ 1055 003e 2E       		.uleb128 0x2e
+ 1056 003f 00       		.byte	0
+ 1057 0040 3F       		.uleb128 0x3f
+ 1058 0041 19       		.uleb128 0x19
+ 1059 0042 03       		.uleb128 0x3
+ 1060 0043 0E       		.uleb128 0xe
+ 1061 0044 3A       		.uleb128 0x3a
+ 1062 0045 0B       		.uleb128 0xb
+ 1063 0046 3B       		.uleb128 0x3b
+ 1064 0047 0B       		.uleb128 0xb
+ 1065 0048 27       		.uleb128 0x27
+ 1066 0049 19       		.uleb128 0x19
+ 1067 004a 11       		.uleb128 0x11
+ 1068 004b 01       		.uleb128 0x1
+ 1069 004c 12       		.uleb128 0x12
+ 1070 004d 06       		.uleb128 0x6
+ 1071 004e 40       		.uleb128 0x40
+ 1072 004f 18       		.uleb128 0x18
+ 1073 0050 9642     		.uleb128 0x2116
+ 1074 0052 19       		.uleb128 0x19
+ 1075 0053 00       		.byte	0
+ 1076 0054 00       		.byte	0
+ 1077 0055 07       		.uleb128 0x7
+ 1078 0056 2E       		.uleb128 0x2e
+ 1079 0057 01       		.byte	0x1
+ 1080 0058 3F       		.uleb128 0x3f
+ 1081 0059 19       		.uleb128 0x19
+ 1082 005a 03       		.uleb128 0x3
+ 1083 005b 0E       		.uleb128 0xe
+ 1084 005c 3A       		.uleb128 0x3a
+ 1085 005d 0B       		.uleb128 0xb
+ 1086 005e 3B       		.uleb128 0x3b
+ 1087 005f 0B       		.uleb128 0xb
+ 1088 0060 27       		.uleb128 0x27
+ 1089 0061 19       		.uleb128 0x19
+ 1090 0062 11       		.uleb128 0x11
+ 1091 0063 01       		.uleb128 0x1
+ 1092 0064 12       		.uleb128 0x12
+ 1093 0065 06       		.uleb128 0x6
+ 1094 0066 40       		.uleb128 0x40
+ 1095 0067 18       		.uleb128 0x18
+ 1096 0068 9642     		.uleb128 0x2116
+ 1097 006a 19       		.uleb128 0x19
+ 1098 006b 01       		.uleb128 0x1
+ 1099 006c 13       		.uleb128 0x13
+ 1100 006d 00       		.byte	0
+ 1101 006e 00       		.byte	0
+ 1102 006f 08       		.uleb128 0x8
+ 1103 0070 34       		.uleb128 0x34
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 36
+
+
+ 1104 0071 00       		.byte	0
+ 1105 0072 03       		.uleb128 0x3
+ 1106 0073 0E       		.uleb128 0xe
+ 1107 0074 3A       		.uleb128 0x3a
+ 1108 0075 0B       		.uleb128 0xb
+ 1109 0076 3B       		.uleb128 0x3b
+ 1110 0077 0B       		.uleb128 0xb
+ 1111 0078 49       		.uleb128 0x49
+ 1112 0079 13       		.uleb128 0x13
+ 1113 007a 02       		.uleb128 0x2
+ 1114 007b 18       		.uleb128 0x18
+ 1115 007c 00       		.byte	0
+ 1116 007d 00       		.byte	0
+ 1117 007e 09       		.uleb128 0x9
+ 1118 007f 2E       		.uleb128 0x2e
+ 1119 0080 00       		.byte	0
+ 1120 0081 3F       		.uleb128 0x3f
+ 1121 0082 19       		.uleb128 0x19
+ 1122 0083 03       		.uleb128 0x3
+ 1123 0084 0E       		.uleb128 0xe
+ 1124 0085 3A       		.uleb128 0x3a
+ 1125 0086 0B       		.uleb128 0xb
+ 1126 0087 3B       		.uleb128 0x3b
+ 1127 0088 0B       		.uleb128 0xb
+ 1128 0089 27       		.uleb128 0x27
+ 1129 008a 19       		.uleb128 0x19
+ 1130 008b 11       		.uleb128 0x11
+ 1131 008c 01       		.uleb128 0x1
+ 1132 008d 12       		.uleb128 0x12
+ 1133 008e 06       		.uleb128 0x6
+ 1134 008f 40       		.uleb128 0x40
+ 1135 0090 18       		.uleb128 0x18
+ 1136 0091 9742     		.uleb128 0x2117
+ 1137 0093 19       		.uleb128 0x19
+ 1138 0094 00       		.byte	0
+ 1139 0095 00       		.byte	0
+ 1140 0096 0A       		.uleb128 0xa
+ 1141 0097 2E       		.uleb128 0x2e
+ 1142 0098 01       		.byte	0x1
+ 1143 0099 3F       		.uleb128 0x3f
+ 1144 009a 19       		.uleb128 0x19
+ 1145 009b 03       		.uleb128 0x3
+ 1146 009c 0E       		.uleb128 0xe
+ 1147 009d 3A       		.uleb128 0x3a
+ 1148 009e 0B       		.uleb128 0xb
+ 1149 009f 3B       		.uleb128 0x3b
+ 1150 00a0 05       		.uleb128 0x5
+ 1151 00a1 27       		.uleb128 0x27
+ 1152 00a2 19       		.uleb128 0x19
+ 1153 00a3 11       		.uleb128 0x11
+ 1154 00a4 01       		.uleb128 0x1
+ 1155 00a5 12       		.uleb128 0x12
+ 1156 00a6 06       		.uleb128 0x6
+ 1157 00a7 40       		.uleb128 0x40
+ 1158 00a8 18       		.uleb128 0x18
+ 1159 00a9 9742     		.uleb128 0x2117
+ 1160 00ab 19       		.uleb128 0x19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 37
+
+
+ 1161 00ac 01       		.uleb128 0x1
+ 1162 00ad 13       		.uleb128 0x13
+ 1163 00ae 00       		.byte	0
+ 1164 00af 00       		.byte	0
+ 1165 00b0 0B       		.uleb128 0xb
+ 1166 00b1 05       		.uleb128 0x5
+ 1167 00b2 00       		.byte	0
+ 1168 00b3 03       		.uleb128 0x3
+ 1169 00b4 0E       		.uleb128 0xe
+ 1170 00b5 3A       		.uleb128 0x3a
+ 1171 00b6 0B       		.uleb128 0xb
+ 1172 00b7 3B       		.uleb128 0x3b
+ 1173 00b8 05       		.uleb128 0x5
+ 1174 00b9 49       		.uleb128 0x49
+ 1175 00ba 13       		.uleb128 0x13
+ 1176 00bb 02       		.uleb128 0x2
+ 1177 00bc 18       		.uleb128 0x18
+ 1178 00bd 00       		.byte	0
+ 1179 00be 00       		.byte	0
+ 1180 00bf 0C       		.uleb128 0xc
+ 1181 00c0 2E       		.uleb128 0x2e
+ 1182 00c1 00       		.byte	0
+ 1183 00c2 3F       		.uleb128 0x3f
+ 1184 00c3 19       		.uleb128 0x19
+ 1185 00c4 03       		.uleb128 0x3
+ 1186 00c5 0E       		.uleb128 0xe
+ 1187 00c6 3A       		.uleb128 0x3a
+ 1188 00c7 0B       		.uleb128 0xb
+ 1189 00c8 3B       		.uleb128 0x3b
+ 1190 00c9 05       		.uleb128 0x5
+ 1191 00ca 27       		.uleb128 0x27
+ 1192 00cb 19       		.uleb128 0x19
+ 1193 00cc 49       		.uleb128 0x49
+ 1194 00cd 13       		.uleb128 0x13
+ 1195 00ce 11       		.uleb128 0x11
+ 1196 00cf 01       		.uleb128 0x1
+ 1197 00d0 12       		.uleb128 0x12
+ 1198 00d1 06       		.uleb128 0x6
+ 1199 00d2 40       		.uleb128 0x40
+ 1200 00d3 18       		.uleb128 0x18
+ 1201 00d4 9742     		.uleb128 0x2117
+ 1202 00d6 19       		.uleb128 0x19
+ 1203 00d7 00       		.byte	0
+ 1204 00d8 00       		.byte	0
+ 1205 00d9 0D       		.uleb128 0xd
+ 1206 00da 2E       		.uleb128 0x2e
+ 1207 00db 00       		.byte	0
+ 1208 00dc 3F       		.uleb128 0x3f
+ 1209 00dd 19       		.uleb128 0x19
+ 1210 00de 03       		.uleb128 0x3
+ 1211 00df 0E       		.uleb128 0xe
+ 1212 00e0 3A       		.uleb128 0x3a
+ 1213 00e1 0B       		.uleb128 0xb
+ 1214 00e2 3B       		.uleb128 0x3b
+ 1215 00e3 05       		.uleb128 0x5
+ 1216 00e4 27       		.uleb128 0x27
+ 1217 00e5 19       		.uleb128 0x19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 38
+
+
+ 1218 00e6 11       		.uleb128 0x11
+ 1219 00e7 01       		.uleb128 0x1
+ 1220 00e8 12       		.uleb128 0x12
+ 1221 00e9 06       		.uleb128 0x6
+ 1222 00ea 40       		.uleb128 0x40
+ 1223 00eb 18       		.uleb128 0x18
+ 1224 00ec 9642     		.uleb128 0x2116
+ 1225 00ee 19       		.uleb128 0x19
+ 1226 00ef 00       		.byte	0
+ 1227 00f0 00       		.byte	0
+ 1228 00f1 0E       		.uleb128 0xe
+ 1229 00f2 2E       		.uleb128 0x2e
+ 1230 00f3 01       		.byte	0x1
+ 1231 00f4 3F       		.uleb128 0x3f
+ 1232 00f5 19       		.uleb128 0x19
+ 1233 00f6 03       		.uleb128 0x3
+ 1234 00f7 0E       		.uleb128 0xe
+ 1235 00f8 3A       		.uleb128 0x3a
+ 1236 00f9 0B       		.uleb128 0xb
+ 1237 00fa 3B       		.uleb128 0x3b
+ 1238 00fb 05       		.uleb128 0x5
+ 1239 00fc 27       		.uleb128 0x27
+ 1240 00fd 19       		.uleb128 0x19
+ 1241 00fe 49       		.uleb128 0x49
+ 1242 00ff 13       		.uleb128 0x13
+ 1243 0100 11       		.uleb128 0x11
+ 1244 0101 01       		.uleb128 0x1
+ 1245 0102 12       		.uleb128 0x12
+ 1246 0103 06       		.uleb128 0x6
+ 1247 0104 40       		.uleb128 0x40
+ 1248 0105 18       		.uleb128 0x18
+ 1249 0106 9742     		.uleb128 0x2117
+ 1250 0108 19       		.uleb128 0x19
+ 1251 0109 01       		.uleb128 0x1
+ 1252 010a 13       		.uleb128 0x13
+ 1253 010b 00       		.byte	0
+ 1254 010c 00       		.byte	0
+ 1255 010d 0F       		.uleb128 0xf
+ 1256 010e 34       		.uleb128 0x34
+ 1257 010f 00       		.byte	0
+ 1258 0110 03       		.uleb128 0x3
+ 1259 0111 0E       		.uleb128 0xe
+ 1260 0112 3A       		.uleb128 0x3a
+ 1261 0113 0B       		.uleb128 0xb
+ 1262 0114 3B       		.uleb128 0x3b
+ 1263 0115 05       		.uleb128 0x5
+ 1264 0116 49       		.uleb128 0x49
+ 1265 0117 13       		.uleb128 0x13
+ 1266 0118 02       		.uleb128 0x2
+ 1267 0119 18       		.uleb128 0x18
+ 1268 011a 00       		.byte	0
+ 1269 011b 00       		.byte	0
+ 1270 011c 10       		.uleb128 0x10
+ 1271 011d 34       		.uleb128 0x34
+ 1272 011e 00       		.byte	0
+ 1273 011f 03       		.uleb128 0x3
+ 1274 0120 0E       		.uleb128 0xe
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 39
+
+
+ 1275 0121 3A       		.uleb128 0x3a
+ 1276 0122 0B       		.uleb128 0xb
+ 1277 0123 3B       		.uleb128 0x3b
+ 1278 0124 0B       		.uleb128 0xb
+ 1279 0125 49       		.uleb128 0x49
+ 1280 0126 13       		.uleb128 0x13
+ 1281 0127 3F       		.uleb128 0x3f
+ 1282 0128 19       		.uleb128 0x19
+ 1283 0129 02       		.uleb128 0x2
+ 1284 012a 18       		.uleb128 0x18
+ 1285 012b 00       		.byte	0
+ 1286 012c 00       		.byte	0
+ 1287 012d 00       		.byte	0
+ 1288              		.section	.debug_aranges,"",%progbits
+ 1289 0000 94000000 		.4byte	0x94
+ 1290 0004 0200     		.2byte	0x2
+ 1291 0006 00000000 		.4byte	.Ldebug_info0
+ 1292 000a 04       		.byte	0x4
+ 1293 000b 00       		.byte	0
+ 1294 000c 0000     		.2byte	0
+ 1295 000e 0000     		.2byte	0
+ 1296 0010 00000000 		.4byte	.LFB0
+ 1297 0014 24000000 		.4byte	.LFE0-.LFB0
+ 1298 0018 00000000 		.4byte	.LFB1
+ 1299 001c A0000000 		.4byte	.LFE1-.LFB1
+ 1300 0020 00000000 		.4byte	.LFB2
+ 1301 0024 20000000 		.4byte	.LFE2-.LFB2
+ 1302 0028 00000000 		.4byte	.LFB3
+ 1303 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 1304 0030 00000000 		.4byte	.LFB4
+ 1305 0034 20000000 		.4byte	.LFE4-.LFB4
+ 1306 0038 00000000 		.4byte	.LFB5
+ 1307 003c 1C000000 		.4byte	.LFE5-.LFB5
+ 1308 0040 00000000 		.4byte	.LFB6
+ 1309 0044 1C000000 		.4byte	.LFE6-.LFB6
+ 1310 0048 00000000 		.4byte	.LFB7
+ 1311 004c 20000000 		.4byte	.LFE7-.LFB7
+ 1312 0050 00000000 		.4byte	.LFB8
+ 1313 0054 20000000 		.4byte	.LFE8-.LFB8
+ 1314 0058 00000000 		.4byte	.LFB9
+ 1315 005c 20000000 		.4byte	.LFE9-.LFB9
+ 1316 0060 00000000 		.4byte	.LFB10
+ 1317 0064 14000000 		.4byte	.LFE10-.LFB10
+ 1318 0068 00000000 		.4byte	.LFB11
+ 1319 006c 20000000 		.4byte	.LFE11-.LFB11
+ 1320 0070 00000000 		.4byte	.LFB12
+ 1321 0074 20000000 		.4byte	.LFE12-.LFB12
+ 1322 0078 00000000 		.4byte	.LFB13
+ 1323 007c 14000000 		.4byte	.LFE13-.LFB13
+ 1324 0080 00000000 		.4byte	.LFB14
+ 1325 0084 14000000 		.4byte	.LFE14-.LFB14
+ 1326 0088 00000000 		.4byte	.LFB15
+ 1327 008c 14000000 		.4byte	.LFE15-.LFB15
+ 1328 0090 00000000 		.4byte	0
+ 1329 0094 00000000 		.4byte	0
+ 1330              		.section	.debug_ranges,"",%progbits
+ 1331              	.Ldebug_ranges0:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 40
+
+
+ 1332 0000 00000000 		.4byte	.LFB0
+ 1333 0004 24000000 		.4byte	.LFE0
+ 1334 0008 00000000 		.4byte	.LFB1
+ 1335 000c A0000000 		.4byte	.LFE1
+ 1336 0010 00000000 		.4byte	.LFB2
+ 1337 0014 20000000 		.4byte	.LFE2
+ 1338 0018 00000000 		.4byte	.LFB3
+ 1339 001c 1C000000 		.4byte	.LFE3
+ 1340 0020 00000000 		.4byte	.LFB4
+ 1341 0024 20000000 		.4byte	.LFE4
+ 1342 0028 00000000 		.4byte	.LFB5
+ 1343 002c 1C000000 		.4byte	.LFE5
+ 1344 0030 00000000 		.4byte	.LFB6
+ 1345 0034 1C000000 		.4byte	.LFE6
+ 1346 0038 00000000 		.4byte	.LFB7
+ 1347 003c 20000000 		.4byte	.LFE7
+ 1348 0040 00000000 		.4byte	.LFB8
+ 1349 0044 20000000 		.4byte	.LFE8
+ 1350 0048 00000000 		.4byte	.LFB9
+ 1351 004c 20000000 		.4byte	.LFE9
+ 1352 0050 00000000 		.4byte	.LFB10
+ 1353 0054 14000000 		.4byte	.LFE10
+ 1354 0058 00000000 		.4byte	.LFB11
+ 1355 005c 20000000 		.4byte	.LFE11
+ 1356 0060 00000000 		.4byte	.LFB12
+ 1357 0064 20000000 		.4byte	.LFE12
+ 1358 0068 00000000 		.4byte	.LFB13
+ 1359 006c 14000000 		.4byte	.LFE13
+ 1360 0070 00000000 		.4byte	.LFB14
+ 1361 0074 14000000 		.4byte	.LFE14
+ 1362 0078 00000000 		.4byte	.LFB15
+ 1363 007c 14000000 		.4byte	.LFE15
+ 1364 0080 00000000 		.4byte	0
+ 1365 0084 00000000 		.4byte	0
+ 1366              		.section	.debug_line,"",%progbits
+ 1367              	.Ldebug_line0:
+ 1368 0000 8F010000 		.section	.debug_str,"MS",%progbits,1
+ 1368      02004C00 
+ 1368      00000201 
+ 1368      FB0E0D00 
+ 1368      01010101 
+ 1369              	.LASF15:
+ 1370 0000 72656731 		.ascii	"reg16\000"
+ 1370      3600
+ 1371              	.LASF28:
+ 1372 0006 494E5445 		.ascii	"INTERNAL_STEP_WriteCompare\000"
+ 1372      524E414C 
+ 1372      5F535445 
+ 1372      505F5772 
+ 1372      69746543 
+ 1373              	.LASF13:
+ 1374 0021 63686172 		.ascii	"char\000"
+ 1374      00
+ 1375              	.LASF19:
+ 1376 0026 494E5445 		.ascii	"INTERNAL_STEP_Start\000"
+ 1376      524E414C 
+ 1376      5F535445 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 41
+
+
+ 1376      505F5374 
+ 1376      61727400 
+ 1377              	.LASF39:
+ 1378 003a 494E5445 		.ascii	"INTERNAL_STEP_ReadPeriod\000"
+ 1378      524E414C 
+ 1378      5F535445 
+ 1378      505F5265 
+ 1378      61645065 
+ 1379              	.LASF27:
+ 1380 0053 70657269 		.ascii	"period\000"
+ 1380      6F6400
+ 1381              	.LASF20:
+ 1382 005a 494E5445 		.ascii	"INTERNAL_STEP_Enable\000"
+ 1382      524E414C 
+ 1382      5F535445 
+ 1382      505F456E 
+ 1382      61626C65 
+ 1383              	.LASF3:
+ 1384 006f 73686F72 		.ascii	"short unsigned int\000"
+ 1384      7420756E 
+ 1384      7369676E 
+ 1384      65642069 
+ 1384      6E7400
+ 1385              	.LASF38:
+ 1386 0082 494E5445 		.ascii	"INTERNAL_STEP_ReadCompare\000"
+ 1386      524E414C 
+ 1386      5F535445 
+ 1386      505F5265 
+ 1386      6164436F 
+ 1387              	.LASF22:
+ 1388 009c 494E5445 		.ascii	"INTERNAL_STEP_Init\000"
+ 1388      524E414C 
+ 1388      5F535445 
+ 1388      505F496E 
+ 1388      697400
+ 1389              	.LASF11:
+ 1390 00af 666C6F61 		.ascii	"float\000"
+ 1390      7400
+ 1391              	.LASF26:
+ 1392 00b5 636F756E 		.ascii	"counter\000"
+ 1392      74657200 
+ 1393              	.LASF33:
+ 1394 00bd 494E5445 		.ascii	"INTERNAL_STEP_ReadStatusRegister\000"
+ 1394      524E414C 
+ 1394      5F535445 
+ 1394      505F5265 
+ 1394      61645374 
+ 1395              	.LASF14:
+ 1396 00de 72656738 		.ascii	"reg8\000"
+ 1396      00
+ 1397              	.LASF5:
+ 1398 00e3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1398      20756E73 
+ 1398      69676E65 
+ 1398      6420696E 
+ 1398      7400
+ 1399              	.LASF30:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 42
+
+
+ 1400 00f5 494E5445 		.ascii	"INTERNAL_STEP_SetInterruptMode\000"
+ 1400      524E414C 
+ 1400      5F535445 
+ 1400      505F5365 
+ 1400      74496E74 
+ 1401              	.LASF9:
+ 1402 0114 75696E74 		.ascii	"uint8\000"
+ 1402      3800
+ 1403              	.LASF36:
+ 1404 011a 636F6E74 		.ascii	"control\000"
+ 1404      726F6C00 
+ 1405              	.LASF44:
+ 1406 0122 494E5445 		.ascii	"INTERNAL_STEP_initVar\000"
+ 1406      524E414C 
+ 1406      5F535445 
+ 1406      505F696E 
+ 1406      69745661 
+ 1407              	.LASF1:
+ 1408 0138 756E7369 		.ascii	"unsigned char\000"
+ 1408      676E6564 
+ 1408      20636861 
+ 1408      7200
+ 1409              	.LASF37:
+ 1410 0146 494E5445 		.ascii	"INTERNAL_STEP_ReadCapture\000"
+ 1410      524E414C 
+ 1410      5F535445 
+ 1410      505F5265 
+ 1410      61644361 
+ 1411              	.LASF12:
+ 1412 0160 646F7562 		.ascii	"double\000"
+ 1412      6C6500
+ 1413              	.LASF2:
+ 1414 0167 73686F72 		.ascii	"short int\000"
+ 1414      7420696E 
+ 1414      7400
+ 1415              	.LASF40:
+ 1416 0171 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1416      4320342E 
+ 1416      392E3320 
+ 1416      32303135 
+ 1416      30333033 
+ 1417 01a4 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1417      20726576 
+ 1417      6973696F 
+ 1417      6E203232 
+ 1417      31323230 
+ 1418 01d7 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1418      66756E63 
+ 1418      74696F6E 
+ 1418      2D736563 
+ 1418      74696F6E 
+ 1419              	.LASF10:
+ 1420 01ff 75696E74 		.ascii	"uint16\000"
+ 1420      313600
+ 1421              	.LASF8:
+ 1422 0206 756E7369 		.ascii	"unsigned int\000"
+ 1422      676E6564 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 43
+
+
+ 1422      20696E74 
+ 1422      00
+ 1423              	.LASF21:
+ 1424 0213 494E5445 		.ascii	"INTERNAL_STEP_Stop\000"
+ 1424      524E414C 
+ 1424      5F535445 
+ 1424      505F5374 
+ 1424      6F7000
+ 1425              	.LASF42:
+ 1426 0226 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 1426      73657273 
+ 1426      5C546563 
+ 1426      6820436F 
+ 1426      6E73756C 
+ 1427 0255 5C537465 		.ascii	"\\StepMotor_PSoC4200\\StepMotor_PSoC4200_Dual.cydsn"
+ 1427      704D6F74 
+ 1427      6F725F50 
+ 1427      536F4334 
+ 1427      3230305C 
+ 1428 0286 00       		.ascii	"\000"
+ 1429              	.LASF7:
+ 1430 0287 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1430      206C6F6E 
+ 1430      6720756E 
+ 1430      7369676E 
+ 1430      65642069 
+ 1431              	.LASF32:
+ 1432 029e 494E5445 		.ascii	"INTERNAL_STEP_ReadCounter\000"
+ 1432      524E414C 
+ 1432      5F535445 
+ 1432      505F5265 
+ 1432      6164436F 
+ 1433              	.LASF41:
+ 1434 02b8 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\INTERNAL_STEP.c\000"
+ 1434      6E657261 
+ 1434      7465645F 
+ 1434      536F7572 
+ 1434      63655C50 
+ 1435              	.LASF17:
+ 1436 02e1 6374726C 		.ascii	"ctrl\000"
+ 1436      00
+ 1437              	.LASF16:
+ 1438 02e6 73697A65 		.ascii	"sizetype\000"
+ 1438      74797065 
+ 1438      00
+ 1439              	.LASF6:
+ 1440 02ef 6C6F6E67 		.ascii	"long long int\000"
+ 1440      206C6F6E 
+ 1440      6720696E 
+ 1440      7400
+ 1441              	.LASF31:
+ 1442 02fd 696E7465 		.ascii	"interruptMode\000"
+ 1442      72727570 
+ 1442      744D6F64 
+ 1442      6500
+ 1443              	.LASF18:
+ 1444 030b 494E5445 		.ascii	"INTERNAL_STEP_interruptState\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccyBdwq6.s 			page 44
+
+
+ 1444      524E414C 
+ 1444      5F535445 
+ 1444      505F696E 
+ 1444      74657272 
+ 1445              	.LASF24:
+ 1446 0328 494E5445 		.ascii	"INTERNAL_STEP_ClearFIFO\000"
+ 1446      524E414C 
+ 1446      5F535445 
+ 1446      505F436C 
+ 1446      65617246 
+ 1447              	.LASF4:
+ 1448 0340 6C6F6E67 		.ascii	"long int\000"
+ 1448      20696E74 
+ 1448      00
+ 1449              	.LASF35:
+ 1450 0349 494E5445 		.ascii	"INTERNAL_STEP_WriteControlRegister\000"
+ 1450      524E414C 
+ 1450      5F535445 
+ 1450      505F5772 
+ 1450      69746543 
+ 1451              	.LASF43:
+ 1452 036c 494E5445 		.ascii	"INTERNAL_STEP_ReadControlRegister\000"
+ 1452      524E414C 
+ 1452      5F535445 
+ 1452      505F5265 
+ 1452      6164436F 
+ 1453              	.LASF0:
+ 1454 038e 7369676E 		.ascii	"signed char\000"
+ 1454      65642063 
+ 1454      68617200 
+ 1455              	.LASF29:
+ 1456 039a 636F6D70 		.ascii	"compare\000"
+ 1456      61726500 
+ 1457              	.LASF25:
+ 1458 03a2 494E5445 		.ascii	"INTERNAL_STEP_WritePeriod\000"
+ 1458      524E414C 
+ 1458      5F535445 
+ 1458      505F5772 
+ 1458      69746550 
+ 1459              	.LASF34:
+ 1460 03bc 72657375 		.ascii	"result\000"
+ 1460      6C7400
+ 1461              	.LASF23:
+ 1462 03c3 494E5445 		.ascii	"INTERNAL_STEP_WriteCounter\000"
+ 1462      524E414C 
+ 1462      5F535445 
+ 1462      505F5772 
+ 1462      69746543 
+ 1463              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

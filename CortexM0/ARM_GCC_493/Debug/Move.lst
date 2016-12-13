@@ -1,0 +1,1305 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Move.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Move,"ax",%progbits
+  18              		.align	2
+  19              		.global	Move
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	Move, %function
+  23              	Move:
+  24              	.LFB0:
+  25              		.file 1 ".\\Move.c"
+   1:.\Move.c      **** /* ========================================
+   2:.\Move.c      ****  *
+   3:.\Move.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\Move.c      ****  * All Rights Reserved
+   5:.\Move.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\Move.c      ****  *
+   7:.\Move.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\Move.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\Move.c      ****  *
+  10:.\Move.c      ****  * ========================================
+  11:.\Move.c      **** */
+  12:.\Move.c      **** 
+  13:.\Move.c      **** /* [] END OF FILE */
+  14:.\Move.c      **** #include <Move.h>
+  15:.\Move.c      **** #include <TCPWM_1.h>
+  16:.\Move.c      **** #include <TCPWM_2.h>
+  17:.\Move.c      **** #include <TCPWM_3.h>
+  18:.\Move.c      **** #include <TCPWM_4.h>
+  19:.\Move.c      **** #include <genSine.h>
+  20:.\Move.c      **** void Move(uint8 motor) {
+  26              		.loc 1 20 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 82B0     		sub	sp, sp, #8
+  33              		.cfi_def_cfa_offset 16
+  34 0004 00AF     		add	r7, sp, #0
+  35              		.cfi_def_cfa_register 7
+  36 0006 021C     		mov	r2, r0
+  37 0008 FB1D     		add	r3, r7, #7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 2
+
+
+  38 000a 1A70     		strb	r2, [r3]
+  21:.\Move.c      ****     
+  22:.\Move.c      ****     if(motor == 1) {
+  39              		.loc 1 22 0
+  40 000c FB1D     		add	r3, r7, #7
+  41 000e 1B78     		ldrb	r3, [r3]
+  42 0010 012B     		cmp	r3, #1
+  43 0012 00D0     		beq	.LCB18
+  44 0014 CCE0     		b	.L2	@long jump
+  45              	.LCB18:
+  23:.\Move.c      ****         if(divider != previousDivider) {
+  46              		.loc 1 23 0
+  47 0016 B94B     		ldr	r3, .L38
+  48 0018 1A78     		ldrb	r2, [r3]
+  49 001a B94B     		ldr	r3, .L38+4
+  50 001c 1B78     		ldrb	r3, [r3]
+  51 001e 9A42     		cmp	r2, r3
+  52 0020 49D0     		beq	.L3
+  24:.\Move.c      ****         //reset the step is the divider number is changed
+  25:.\Move.c      ****     		switch(divider) {
+  53              		.loc 1 25 0
+  54 0022 B64B     		ldr	r3, .L38
+  55 0024 1B78     		ldrb	r3, [r3]
+  56 0026 042B     		cmp	r3, #4
+  57 0028 0FD0     		beq	.L5
+  58 002a 02DC     		bgt	.L6
+  59 002c 022B     		cmp	r3, #2
+  60 002e 05D0     		beq	.L7
+  26:.\Move.c      ****     			case 2:
+  27:.\Move.c      ****     			    step = 8;
+  28:.\Move.c      ****     			    FullScale = 16;
+  29:.\Move.c      ****     			break;
+  30:.\Move.c      ****     		    case 4:
+  31:.\Move.c      ****     			    step = 4;
+  32:.\Move.c      ****     			    FullScale = 16;
+  33:.\Move.c      ****     			break;
+  34:.\Move.c      ****     			case 8:
+  35:.\Move.c      ****     				step = 2;
+  36:.\Move.c      ****     				FullScale = 16;
+  37:.\Move.c      ****     			break;
+  38:.\Move.c      ****     			case 16:
+  39:.\Move.c      ****     				step = 1;
+  40:.\Move.c      ****     				FullScale = 16;
+  41:.\Move.c      ****     			break;
+  42:.\Move.c      ****     			default:
+  43:.\Move.c      ****     			break;
+  61              		.loc 1 43 0
+  62 0030 20E0     		b	.L10
+  63              	.L6:
+  25:.\Move.c      ****     			case 2:
+  64              		.loc 1 25 0
+  65 0032 082B     		cmp	r3, #8
+  66 0034 10D0     		beq	.L8
+  67 0036 102B     		cmp	r3, #16
+  68 0038 15D0     		beq	.L9
+  69              		.loc 1 43 0
+  70 003a 1BE0     		b	.L10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 3
+
+
+  71              	.L7:
+  27:.\Move.c      ****     			    FullScale = 16;
+  72              		.loc 1 27 0
+  73 003c B14B     		ldr	r3, .L38+8
+  74 003e 0822     		mov	r2, #8
+  75 0040 1A70     		strb	r2, [r3]
+  28:.\Move.c      ****     			break;
+  76              		.loc 1 28 0
+  77 0042 B14B     		ldr	r3, .L38+12
+  78 0044 1022     		mov	r2, #16
+  79 0046 1A70     		strb	r2, [r3]
+  29:.\Move.c      ****     		    case 4:
+  80              		.loc 1 29 0
+  81 0048 14E0     		b	.L10
+  82              	.L5:
+  31:.\Move.c      ****     			    FullScale = 16;
+  83              		.loc 1 31 0
+  84 004a AE4B     		ldr	r3, .L38+8
+  85 004c 0422     		mov	r2, #4
+  86 004e 1A70     		strb	r2, [r3]
+  32:.\Move.c      ****     			break;
+  87              		.loc 1 32 0
+  88 0050 AD4B     		ldr	r3, .L38+12
+  89 0052 1022     		mov	r2, #16
+  90 0054 1A70     		strb	r2, [r3]
+  33:.\Move.c      ****     			case 8:
+  91              		.loc 1 33 0
+  92 0056 0DE0     		b	.L10
+  93              	.L8:
+  35:.\Move.c      ****     				FullScale = 16;
+  94              		.loc 1 35 0
+  95 0058 AA4B     		ldr	r3, .L38+8
+  96 005a 0222     		mov	r2, #2
+  97 005c 1A70     		strb	r2, [r3]
+  36:.\Move.c      ****     			break;
+  98              		.loc 1 36 0
+  99 005e AA4B     		ldr	r3, .L38+12
+ 100 0060 1022     		mov	r2, #16
+ 101 0062 1A70     		strb	r2, [r3]
+  37:.\Move.c      ****     			case 16:
+ 102              		.loc 1 37 0
+ 103 0064 06E0     		b	.L10
+ 104              	.L9:
+  39:.\Move.c      ****     				FullScale = 16;
+ 105              		.loc 1 39 0
+ 106 0066 A74B     		ldr	r3, .L38+8
+ 107 0068 0122     		mov	r2, #1
+ 108 006a 1A70     		strb	r2, [r3]
+  40:.\Move.c      ****     			break;
+ 109              		.loc 1 40 0
+ 110 006c A64B     		ldr	r3, .L38+12
+ 111 006e 1022     		mov	r2, #16
+ 112 0070 1A70     		strb	r2, [r3]
+  41:.\Move.c      ****     			default:
+ 113              		.loc 1 41 0
+ 114 0072 C046     		mov	r8, r8
+ 115              	.L10:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 4
+
+
+  44:.\Move.c      ****             } // Step settings
+  45:.\Move.c      ****             currentStepA = 0;
+ 116              		.loc 1 45 0
+ 117 0074 A54B     		ldr	r3, .L38+16
+ 118 0076 0022     		mov	r2, #0
+ 119 0078 1A70     		strb	r2, [r3]
+  46:.\Move.c      ****             // CHA and CHB have 90 degree phase delay
+  47:.\Move.c      ****     	    if(currentStepA < FullScale) {
+ 120              		.loc 1 47 0
+ 121 007a A44B     		ldr	r3, .L38+16
+ 122 007c 1A78     		ldrb	r2, [r3]
+ 123 007e A24B     		ldr	r3, .L38+12
+ 124 0080 1B78     		ldrb	r3, [r3]
+ 125 0082 9A42     		cmp	r2, r3
+ 126 0084 08D2     		bcs	.L11
+  48:.\Move.c      ****     		    currentStepB = currentStepA + FullScale;
+ 127              		.loc 1 48 0
+ 128 0086 A14B     		ldr	r3, .L38+16
+ 129 0088 1A78     		ldrb	r2, [r3]
+ 130 008a 9F4B     		ldr	r3, .L38+12
+ 131 008c 1B78     		ldrb	r3, [r3]
+ 132 008e D318     		add	r3, r2, r3
+ 133 0090 DAB2     		uxtb	r2, r3
+ 134 0092 9F4B     		ldr	r3, .L38+20
+ 135 0094 1A70     		strb	r2, [r3]
+ 136 0096 55E0     		b	.L13
+ 137              	.L11:
+  49:.\Move.c      ****     	    } // Step A smaller than FullScale
+  50:.\Move.c      ****     	    else if(currentStepA >= FullScale) {
+ 138              		.loc 1 50 0
+ 139 0098 9C4B     		ldr	r3, .L38+16
+ 140 009a 1A78     		ldrb	r2, [r3]
+ 141 009c 9A4B     		ldr	r3, .L38+12
+ 142 009e 1B78     		ldrb	r3, [r3]
+ 143 00a0 9A42     		cmp	r2, r3
+ 144 00a2 4FD3     		bcc	.L13
+  51:.\Move.c      ****     			currentStepB = currentStepA - FullScale;
+ 145              		.loc 1 51 0
+ 146 00a4 994B     		ldr	r3, .L38+16
+ 147 00a6 1A78     		ldrb	r2, [r3]
+ 148 00a8 974B     		ldr	r3, .L38+12
+ 149 00aa 1B78     		ldrb	r3, [r3]
+ 150 00ac D31A     		sub	r3, r2, r3
+ 151 00ae DAB2     		uxtb	r2, r3
+ 152 00b0 974B     		ldr	r3, .L38+20
+ 153 00b2 1A70     		strb	r2, [r3]
+ 154 00b4 46E0     		b	.L13
+ 155              	.L3:
+  52:.\Move.c      ****     	    } // stap A greater than FullScale
+  53:.\Move.c      ****         } // Divider changed (!= previous divider)
+  54:.\Move.c      ****         else { // nomal operation
+  55:.\Move.c      ****         //The total step is 2 times to the fullscale
+  56:.\Move.c      ****     	    phaseMove(motor);
+ 156              		.loc 1 56 0
+ 157 00b6 FB1D     		add	r3, r7, #7
+ 158 00b8 1B78     		ldrb	r3, [r3]
+ 159 00ba 181C     		mov	r0, r3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 5
+
+
+ 160 00bc FFF7FEFF 		bl	phaseMove
+  57:.\Move.c      ****         	phaseControl(phase, motor);
+ 161              		.loc 1 57 0
+ 162 00c0 944B     		ldr	r3, .L38+24
+ 163 00c2 1A78     		ldrb	r2, [r3]
+ 164 00c4 FB1D     		add	r3, r7, #7
+ 165 00c6 1B78     		ldrb	r3, [r3]
+ 166 00c8 101C     		mov	r0, r2
+ 167 00ca 191C     		mov	r1, r3
+ 168 00cc FFF7FEFF 		bl	phaseControl
+  58:.\Move.c      ****         	if(dirReg == 1) { //Clockwise 
+ 169              		.loc 1 58 0
+ 170 00d0 914B     		ldr	r3, .L38+28
+ 171 00d2 1B78     		ldrb	r3, [r3]
+ 172 00d4 012B     		cmp	r3, #1
+ 173 00d6 1AD1     		bne	.L14
+  59:.\Move.c      ****     			if (currentStepA < (FullScale-step+FullScale)) {
+ 174              		.loc 1 59 0
+ 175 00d8 8C4B     		ldr	r3, .L38+16
+ 176 00da 1B78     		ldrb	r3, [r3]
+ 177 00dc 191C     		mov	r1, r3
+ 178 00de 8A4B     		ldr	r3, .L38+12
+ 179 00e0 1B78     		ldrb	r3, [r3]
+ 180 00e2 1A1C     		mov	r2, r3
+ 181 00e4 874B     		ldr	r3, .L38+8
+ 182 00e6 1B78     		ldrb	r3, [r3]
+ 183 00e8 D31A     		sub	r3, r2, r3
+ 184 00ea 874A     		ldr	r2, .L38+12
+ 185 00ec 1278     		ldrb	r2, [r2]
+ 186 00ee 9B18     		add	r3, r3, r2
+ 187 00f0 9942     		cmp	r1, r3
+ 188 00f2 08DA     		bge	.L15
+  60:.\Move.c      ****     				currentStepA = currentStepA +step;
+ 189              		.loc 1 60 0
+ 190 00f4 854B     		ldr	r3, .L38+16
+ 191 00f6 1A78     		ldrb	r2, [r3]
+ 192 00f8 824B     		ldr	r3, .L38+8
+ 193 00fa 1B78     		ldrb	r3, [r3]
+ 194 00fc D318     		add	r3, r2, r3
+ 195 00fe DAB2     		uxtb	r2, r3
+ 196 0100 824B     		ldr	r3, .L38+16
+ 197 0102 1A70     		strb	r2, [r3]
+ 198 0104 1EE0     		b	.L13
+ 199              	.L15:
+  61:.\Move.c      ****     			}
+  62:.\Move.c      ****     			else {
+  63:.\Move.c      ****     				currentStepA = 0;
+ 200              		.loc 1 63 0
+ 201 0106 814B     		ldr	r3, .L38+16
+ 202 0108 0022     		mov	r2, #0
+ 203 010a 1A70     		strb	r2, [r3]
+ 204 010c 1AE0     		b	.L13
+ 205              	.L14:
+  64:.\Move.c      ****     			}
+  65:.\Move.c      ****     		} // Clockwise direction
+  66:.\Move.c      ****             else { // Counterclockwise
+  67:.\Move.c      ****     			if (currentStepA>=step) {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 6
+
+
+ 206              		.loc 1 67 0
+ 207 010e 7F4B     		ldr	r3, .L38+16
+ 208 0110 1A78     		ldrb	r2, [r3]
+ 209 0112 7C4B     		ldr	r3, .L38+8
+ 210 0114 1B78     		ldrb	r3, [r3]
+ 211 0116 9A42     		cmp	r2, r3
+ 212 0118 08D3     		bcc	.L17
+  68:.\Move.c      ****     				currentStepA = currentStepA - step;
+ 213              		.loc 1 68 0
+ 214 011a 7C4B     		ldr	r3, .L38+16
+ 215 011c 1A78     		ldrb	r2, [r3]
+ 216 011e 794B     		ldr	r3, .L38+8
+ 217 0120 1B78     		ldrb	r3, [r3]
+ 218 0122 D31A     		sub	r3, r2, r3
+ 219 0124 DAB2     		uxtb	r2, r3
+ 220 0126 794B     		ldr	r3, .L38+16
+ 221 0128 1A70     		strb	r2, [r3]
+ 222 012a 0BE0     		b	.L13
+ 223              	.L17:
+  69:.\Move.c      ****     			}
+  70:.\Move.c      ****     			else {
+  71:.\Move.c      ****     				currentStepA = FullScale-step+FullScale;
+ 224              		.loc 1 71 0
+ 225 012c 764B     		ldr	r3, .L38+12
+ 226 012e 1A78     		ldrb	r2, [r3]
+ 227 0130 744B     		ldr	r3, .L38+8
+ 228 0132 1B78     		ldrb	r3, [r3]
+ 229 0134 D31A     		sub	r3, r2, r3
+ 230 0136 DAB2     		uxtb	r2, r3
+ 231 0138 734B     		ldr	r3, .L38+12
+ 232 013a 1B78     		ldrb	r3, [r3]
+ 233 013c D318     		add	r3, r2, r3
+ 234 013e DAB2     		uxtb	r2, r3
+ 235 0140 724B     		ldr	r3, .L38+16
+ 236 0142 1A70     		strb	r2, [r3]
+ 237              	.L13:
+  72:.\Move.c      ****     			}
+  73:.\Move.c      ****     		} // Counterclockwise direction
+  74:.\Move.c      ****         } // Divider unchanged, normal operation
+  75:.\Move.c      ****     	
+  76:.\Move.c      ****     	if(currentStepA < FullScale) {
+ 238              		.loc 1 76 0
+ 239 0144 714B     		ldr	r3, .L38+16
+ 240 0146 1A78     		ldrb	r2, [r3]
+ 241 0148 6F4B     		ldr	r3, .L38+12
+ 242 014a 1B78     		ldrb	r3, [r3]
+ 243 014c 9A42     		cmp	r2, r3
+ 244 014e 08D2     		bcs	.L18
+  77:.\Move.c      ****     		currentStepB = currentStepA + FullScale;
+ 245              		.loc 1 77 0
+ 246 0150 6E4B     		ldr	r3, .L38+16
+ 247 0152 1A78     		ldrb	r2, [r3]
+ 248 0154 6C4B     		ldr	r3, .L38+12
+ 249 0156 1B78     		ldrb	r3, [r3]
+ 250 0158 D318     		add	r3, r2, r3
+ 251 015a DAB2     		uxtb	r2, r3
+ 252 015c 6C4B     		ldr	r3, .L38+20
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 7
+
+
+ 253 015e 1A70     		strb	r2, [r3]
+ 254 0160 0DE0     		b	.L19
+ 255              	.L18:
+  78:.\Move.c      ****     	} // Step A smaller than FulLScale
+  79:.\Move.c      ****     	else if(currentStepA >= FullScale) {
+ 256              		.loc 1 79 0
+ 257 0162 6A4B     		ldr	r3, .L38+16
+ 258 0164 1A78     		ldrb	r2, [r3]
+ 259 0166 684B     		ldr	r3, .L38+12
+ 260 0168 1B78     		ldrb	r3, [r3]
+ 261 016a 9A42     		cmp	r2, r3
+ 262 016c 07D3     		bcc	.L19
+  80:.\Move.c      ****     		currentStepB = currentStepA - FullScale;
+ 263              		.loc 1 80 0
+ 264 016e 674B     		ldr	r3, .L38+16
+ 265 0170 1A78     		ldrb	r2, [r3]
+ 266 0172 654B     		ldr	r3, .L38+12
+ 267 0174 1B78     		ldrb	r3, [r3]
+ 268 0176 D31A     		sub	r3, r2, r3
+ 269 0178 DAB2     		uxtb	r2, r3
+ 270 017a 654B     		ldr	r3, .L38+20
+ 271 017c 1A70     		strb	r2, [r3]
+ 272              	.L19:
+  81:.\Move.c      ****     	} // Step A greater than FullScale
+  82:.\Move.c      **** 
+  83:.\Move.c      ****         // Pwm write on motor
+  84:.\Move.c      ****         TCPWM_1_WriteCompare(genSine(currentStepA, motor));
+ 273              		.loc 1 84 0
+ 274 017e 634B     		ldr	r3, .L38+16
+ 275 0180 1A78     		ldrb	r2, [r3]
+ 276 0182 FB1D     		add	r3, r7, #7
+ 277 0184 1B78     		ldrb	r3, [r3]
+ 278 0186 101C     		mov	r0, r2
+ 279 0188 191C     		mov	r1, r3
+ 280 018a FFF7FEFF 		bl	genSine
+ 281 018e 031C     		mov	r3, r0
+ 282 0190 181C     		mov	r0, r3
+ 283 0192 FFF7FEFF 		bl	TCPWM_1_WriteCompare
+  85:.\Move.c      ****         TCPWM_2_WriteCompare(genSine(currentStepB, motor));
+ 284              		.loc 1 85 0
+ 285 0196 5E4B     		ldr	r3, .L38+20
+ 286 0198 1A78     		ldrb	r2, [r3]
+ 287 019a FB1D     		add	r3, r7, #7
+ 288 019c 1B78     		ldrb	r3, [r3]
+ 289 019e 101C     		mov	r0, r2
+ 290 01a0 191C     		mov	r1, r3
+ 291 01a2 FFF7FEFF 		bl	genSine
+ 292 01a6 031C     		mov	r3, r0
+ 293 01a8 181C     		mov	r0, r3
+ 294 01aa FFF7FEFF 		bl	TCPWM_2_WriteCompare
+ 295 01ae EBE0     		b	.L1
+ 296              	.L2:
+  86:.\Move.c      ****     } // Motor 1
+  87:.\Move.c      ****     else { // Motor 2
+  88:.\Move.c      ****         if(divider1 != previousDivider1) {
+ 297              		.loc 1 88 0
+ 298 01b0 5A4B     		ldr	r3, .L38+32
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 8
+
+
+ 299 01b2 1A78     		ldrb	r2, [r3]
+ 300 01b4 5A4B     		ldr	r3, .L38+36
+ 301 01b6 1B78     		ldrb	r3, [r3]
+ 302 01b8 9A42     		cmp	r2, r3
+ 303 01ba 49D0     		beq	.L21
+  89:.\Move.c      ****         //reset the step is the divider number is changed
+  90:.\Move.c      ****     		switch(divider1) {
+ 304              		.loc 1 90 0
+ 305 01bc 574B     		ldr	r3, .L38+32
+ 306 01be 1B78     		ldrb	r3, [r3]
+ 307 01c0 042B     		cmp	r3, #4
+ 308 01c2 0FD0     		beq	.L23
+ 309 01c4 02DC     		bgt	.L24
+ 310 01c6 022B     		cmp	r3, #2
+ 311 01c8 05D0     		beq	.L25
+  91:.\Move.c      ****     			case 2:
+  92:.\Move.c      ****     			    step1 = 8;
+  93:.\Move.c      ****     			    FullScale1 = 16;
+  94:.\Move.c      ****     			break;
+  95:.\Move.c      ****     		    case 4:
+  96:.\Move.c      ****     			    step1 = 4;
+  97:.\Move.c      ****     			    FullScale1 = 16;
+  98:.\Move.c      ****     			break;
+  99:.\Move.c      ****     			case 8:
+ 100:.\Move.c      ****     				step1 = 2;
+ 101:.\Move.c      ****     				FullScale1 = 16;
+ 102:.\Move.c      ****     			break;
+ 103:.\Move.c      ****     			case 16:
+ 104:.\Move.c      ****     				step1 = 1;
+ 105:.\Move.c      ****     				FullScale1 = 16;
+ 106:.\Move.c      ****     			break;
+ 107:.\Move.c      ****     			default:
+ 108:.\Move.c      ****     			break;
+ 312              		.loc 1 108 0
+ 313 01ca 20E0     		b	.L28
+ 314              	.L24:
+  90:.\Move.c      ****     			case 2:
+ 315              		.loc 1 90 0
+ 316 01cc 082B     		cmp	r3, #8
+ 317 01ce 10D0     		beq	.L26
+ 318 01d0 102B     		cmp	r3, #16
+ 319 01d2 15D0     		beq	.L27
+ 320              		.loc 1 108 0
+ 321 01d4 1BE0     		b	.L28
+ 322              	.L25:
+  92:.\Move.c      ****     			    FullScale1 = 16;
+ 323              		.loc 1 92 0
+ 324 01d6 534B     		ldr	r3, .L38+40
+ 325 01d8 0822     		mov	r2, #8
+ 326 01da 1A70     		strb	r2, [r3]
+  93:.\Move.c      ****     			break;
+ 327              		.loc 1 93 0
+ 328 01dc 524B     		ldr	r3, .L38+44
+ 329 01de 1022     		mov	r2, #16
+ 330 01e0 1A70     		strb	r2, [r3]
+  94:.\Move.c      ****     		    case 4:
+ 331              		.loc 1 94 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 9
+
+
+ 332 01e2 14E0     		b	.L28
+ 333              	.L23:
+  96:.\Move.c      ****     			    FullScale1 = 16;
+ 334              		.loc 1 96 0
+ 335 01e4 4F4B     		ldr	r3, .L38+40
+ 336 01e6 0422     		mov	r2, #4
+ 337 01e8 1A70     		strb	r2, [r3]
+  97:.\Move.c      ****     			break;
+ 338              		.loc 1 97 0
+ 339 01ea 4F4B     		ldr	r3, .L38+44
+ 340 01ec 1022     		mov	r2, #16
+ 341 01ee 1A70     		strb	r2, [r3]
+  98:.\Move.c      ****     			case 8:
+ 342              		.loc 1 98 0
+ 343 01f0 0DE0     		b	.L28
+ 344              	.L26:
+ 100:.\Move.c      ****     				FullScale1 = 16;
+ 345              		.loc 1 100 0
+ 346 01f2 4C4B     		ldr	r3, .L38+40
+ 347 01f4 0222     		mov	r2, #2
+ 348 01f6 1A70     		strb	r2, [r3]
+ 101:.\Move.c      ****     			break;
+ 349              		.loc 1 101 0
+ 350 01f8 4B4B     		ldr	r3, .L38+44
+ 351 01fa 1022     		mov	r2, #16
+ 352 01fc 1A70     		strb	r2, [r3]
+ 102:.\Move.c      ****     			case 16:
+ 353              		.loc 1 102 0
+ 354 01fe 06E0     		b	.L28
+ 355              	.L27:
+ 104:.\Move.c      ****     				FullScale1 = 16;
+ 356              		.loc 1 104 0
+ 357 0200 484B     		ldr	r3, .L38+40
+ 358 0202 0122     		mov	r2, #1
+ 359 0204 1A70     		strb	r2, [r3]
+ 105:.\Move.c      ****     			break;
+ 360              		.loc 1 105 0
+ 361 0206 484B     		ldr	r3, .L38+44
+ 362 0208 1022     		mov	r2, #16
+ 363 020a 1A70     		strb	r2, [r3]
+ 106:.\Move.c      ****     			default:
+ 364              		.loc 1 106 0
+ 365 020c C046     		mov	r8, r8
+ 366              	.L28:
+ 109:.\Move.c      ****             } // Step settings
+ 110:.\Move.c      ****             currentStepA1 = 0;
+ 367              		.loc 1 110 0
+ 368 020e 474B     		ldr	r3, .L38+48
+ 369 0210 0022     		mov	r2, #0
+ 370 0212 1A70     		strb	r2, [r3]
+ 111:.\Move.c      ****             // CHA and CHB have 90 degree phase delay
+ 112:.\Move.c      ****     	    if(currentStepA1 < FullScale1) {
+ 371              		.loc 1 112 0
+ 372 0214 454B     		ldr	r3, .L38+48
+ 373 0216 1A78     		ldrb	r2, [r3]
+ 374 0218 434B     		ldr	r3, .L38+44
+ 375 021a 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 10
+
+
+ 376 021c 9A42     		cmp	r2, r3
+ 377 021e 08D2     		bcs	.L29
+ 113:.\Move.c      ****     		    currentStepB1 = currentStepA1 + FullScale1;
+ 378              		.loc 1 113 0
+ 379 0220 424B     		ldr	r3, .L38+48
+ 380 0222 1A78     		ldrb	r2, [r3]
+ 381 0224 404B     		ldr	r3, .L38+44
+ 382 0226 1B78     		ldrb	r3, [r3]
+ 383 0228 D318     		add	r3, r2, r3
+ 384 022a DAB2     		uxtb	r2, r3
+ 385 022c 404B     		ldr	r3, .L38+52
+ 386 022e 1A70     		strb	r2, [r3]
+ 387 0230 55E0     		b	.L31
+ 388              	.L29:
+ 114:.\Move.c      ****     	    } // Step A smaller than FullScale
+ 115:.\Move.c      ****     	    else if(currentStepA1 >= FullScale1) {
+ 389              		.loc 1 115 0
+ 390 0232 3E4B     		ldr	r3, .L38+48
+ 391 0234 1A78     		ldrb	r2, [r3]
+ 392 0236 3C4B     		ldr	r3, .L38+44
+ 393 0238 1B78     		ldrb	r3, [r3]
+ 394 023a 9A42     		cmp	r2, r3
+ 395 023c 4FD3     		bcc	.L31
+ 116:.\Move.c      ****     			currentStepB1 = currentStepA1 - FullScale1;
+ 396              		.loc 1 116 0
+ 397 023e 3B4B     		ldr	r3, .L38+48
+ 398 0240 1A78     		ldrb	r2, [r3]
+ 399 0242 394B     		ldr	r3, .L38+44
+ 400 0244 1B78     		ldrb	r3, [r3]
+ 401 0246 D31A     		sub	r3, r2, r3
+ 402 0248 DAB2     		uxtb	r2, r3
+ 403 024a 394B     		ldr	r3, .L38+52
+ 404 024c 1A70     		strb	r2, [r3]
+ 405 024e 46E0     		b	.L31
+ 406              	.L21:
+ 117:.\Move.c      ****     	    } // stap A greater than FullScale
+ 118:.\Move.c      ****         } // Divider changed (!= previous divider)
+ 119:.\Move.c      ****         else { // nomal operation
+ 120:.\Move.c      ****         //The total step is 2 times to the fullscale
+ 121:.\Move.c      ****     	    phaseMove(motor);
+ 407              		.loc 1 121 0
+ 408 0250 FB1D     		add	r3, r7, #7
+ 409 0252 1B78     		ldrb	r3, [r3]
+ 410 0254 181C     		mov	r0, r3
+ 411 0256 FFF7FEFF 		bl	phaseMove
+ 122:.\Move.c      ****         	phaseControl(phase1, motor);
+ 412              		.loc 1 122 0
+ 413 025a 364B     		ldr	r3, .L38+56
+ 414 025c 1A78     		ldrb	r2, [r3]
+ 415 025e FB1D     		add	r3, r7, #7
+ 416 0260 1B78     		ldrb	r3, [r3]
+ 417 0262 101C     		mov	r0, r2
+ 418 0264 191C     		mov	r1, r3
+ 419 0266 FFF7FEFF 		bl	phaseControl
+ 123:.\Move.c      ****         	if(dirReg1 == 1) { //Clockwise 
+ 420              		.loc 1 123 0
+ 421 026a 334B     		ldr	r3, .L38+60
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 11
+
+
+ 422 026c 1B78     		ldrb	r3, [r3]
+ 423 026e 012B     		cmp	r3, #1
+ 424 0270 1AD1     		bne	.L32
+ 124:.\Move.c      ****     			if (currentStepA1 < (FullScale1 - step1 + FullScale1)) {
+ 425              		.loc 1 124 0
+ 426 0272 2E4B     		ldr	r3, .L38+48
+ 427 0274 1B78     		ldrb	r3, [r3]
+ 428 0276 191C     		mov	r1, r3
+ 429 0278 2B4B     		ldr	r3, .L38+44
+ 430 027a 1B78     		ldrb	r3, [r3]
+ 431 027c 1A1C     		mov	r2, r3
+ 432 027e 294B     		ldr	r3, .L38+40
+ 433 0280 1B78     		ldrb	r3, [r3]
+ 434 0282 D31A     		sub	r3, r2, r3
+ 435 0284 284A     		ldr	r2, .L38+44
+ 436 0286 1278     		ldrb	r2, [r2]
+ 437 0288 9B18     		add	r3, r3, r2
+ 438 028a 9942     		cmp	r1, r3
+ 439 028c 08DA     		bge	.L33
+ 125:.\Move.c      ****     				currentStepA1 = currentStepA1 + step1;
+ 440              		.loc 1 125 0
+ 441 028e 274B     		ldr	r3, .L38+48
+ 442 0290 1A78     		ldrb	r2, [r3]
+ 443 0292 244B     		ldr	r3, .L38+40
+ 444 0294 1B78     		ldrb	r3, [r3]
+ 445 0296 D318     		add	r3, r2, r3
+ 446 0298 DAB2     		uxtb	r2, r3
+ 447 029a 244B     		ldr	r3, .L38+48
+ 448 029c 1A70     		strb	r2, [r3]
+ 449 029e 1EE0     		b	.L31
+ 450              	.L33:
+ 126:.\Move.c      ****     			}
+ 127:.\Move.c      ****     			else {
+ 128:.\Move.c      ****     				currentStepA1 = 0;
+ 451              		.loc 1 128 0
+ 452 02a0 224B     		ldr	r3, .L38+48
+ 453 02a2 0022     		mov	r2, #0
+ 454 02a4 1A70     		strb	r2, [r3]
+ 455 02a6 1AE0     		b	.L31
+ 456              	.L32:
+ 129:.\Move.c      ****     			}
+ 130:.\Move.c      ****     		} // Clockwise direction
+ 131:.\Move.c      ****             else { // Counterclockwise
+ 132:.\Move.c      ****     			if (currentStepA1 >= step1) {
+ 457              		.loc 1 132 0
+ 458 02a8 204B     		ldr	r3, .L38+48
+ 459 02aa 1A78     		ldrb	r2, [r3]
+ 460 02ac 1D4B     		ldr	r3, .L38+40
+ 461 02ae 1B78     		ldrb	r3, [r3]
+ 462 02b0 9A42     		cmp	r2, r3
+ 463 02b2 08D3     		bcc	.L35
+ 133:.\Move.c      ****     				currentStepA1 = currentStepA1 - step1;
+ 464              		.loc 1 133 0
+ 465 02b4 1D4B     		ldr	r3, .L38+48
+ 466 02b6 1A78     		ldrb	r2, [r3]
+ 467 02b8 1A4B     		ldr	r3, .L38+40
+ 468 02ba 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 12
+
+
+ 469 02bc D31A     		sub	r3, r2, r3
+ 470 02be DAB2     		uxtb	r2, r3
+ 471 02c0 1A4B     		ldr	r3, .L38+48
+ 472 02c2 1A70     		strb	r2, [r3]
+ 473 02c4 0BE0     		b	.L31
+ 474              	.L35:
+ 134:.\Move.c      ****     			}
+ 135:.\Move.c      ****     			else {
+ 136:.\Move.c      ****     				currentStepA1 = FullScale1 - step1 + FullScale1;
+ 475              		.loc 1 136 0
+ 476 02c6 184B     		ldr	r3, .L38+44
+ 477 02c8 1A78     		ldrb	r2, [r3]
+ 478 02ca 164B     		ldr	r3, .L38+40
+ 479 02cc 1B78     		ldrb	r3, [r3]
+ 480 02ce D31A     		sub	r3, r2, r3
+ 481 02d0 DAB2     		uxtb	r2, r3
+ 482 02d2 154B     		ldr	r3, .L38+44
+ 483 02d4 1B78     		ldrb	r3, [r3]
+ 484 02d6 D318     		add	r3, r2, r3
+ 485 02d8 DAB2     		uxtb	r2, r3
+ 486 02da 144B     		ldr	r3, .L38+48
+ 487 02dc 1A70     		strb	r2, [r3]
+ 488              	.L31:
+ 137:.\Move.c      ****     			}
+ 138:.\Move.c      ****     		} // Counterclockwise direction
+ 139:.\Move.c      ****         } // Divider unchanged, normal operation
+ 140:.\Move.c      ****     	
+ 141:.\Move.c      ****     	if(currentStepA1 < FullScale1) {
+ 489              		.loc 1 141 0
+ 490 02de 134B     		ldr	r3, .L38+48
+ 491 02e0 1A78     		ldrb	r2, [r3]
+ 492 02e2 114B     		ldr	r3, .L38+44
+ 493 02e4 1B78     		ldrb	r3, [r3]
+ 494 02e6 9A42     		cmp	r2, r3
+ 495 02e8 28D2     		bcs	.L36
+ 142:.\Move.c      ****     		currentStepB1 = currentStepA1 + FullScale1;
+ 496              		.loc 1 142 0
+ 497 02ea 104B     		ldr	r3, .L38+48
+ 498 02ec 1A78     		ldrb	r2, [r3]
+ 499 02ee 0E4B     		ldr	r3, .L38+44
+ 500 02f0 1B78     		ldrb	r3, [r3]
+ 501 02f2 D318     		add	r3, r2, r3
+ 502 02f4 DAB2     		uxtb	r2, r3
+ 503 02f6 0E4B     		ldr	r3, .L38+52
+ 504 02f8 1A70     		strb	r2, [r3]
+ 505 02fa 2DE0     		b	.L37
+ 506              	.L39:
+ 507              		.align	2
+ 508              	.L38:
+ 509 02fc 00000000 		.word	divider
+ 510 0300 00000000 		.word	previousDivider
+ 511 0304 00000000 		.word	step
+ 512 0308 00000000 		.word	FullScale
+ 513 030c 00000000 		.word	currentStepA
+ 514 0310 00000000 		.word	currentStepB
+ 515 0314 00000000 		.word	phase
+ 516 0318 00000000 		.word	dirReg
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 13
+
+
+ 517 031c 00000000 		.word	divider1
+ 518 0320 00000000 		.word	previousDivider1
+ 519 0324 00000000 		.word	step1
+ 520 0328 00000000 		.word	FullScale1
+ 521 032c 00000000 		.word	currentStepA1
+ 522 0330 00000000 		.word	currentStepB1
+ 523 0334 00000000 		.word	phase1
+ 524 0338 00000000 		.word	dirReg1
+ 525              	.L36:
+ 143:.\Move.c      ****     	} // Step A smaller than FulLScale
+ 144:.\Move.c      ****     	else if(currentStepA1 >= FullScale1) {
+ 526              		.loc 1 144 0
+ 527 033c 144B     		ldr	r3, .L40
+ 528 033e 1A78     		ldrb	r2, [r3]
+ 529 0340 144B     		ldr	r3, .L40+4
+ 530 0342 1B78     		ldrb	r3, [r3]
+ 531 0344 9A42     		cmp	r2, r3
+ 532 0346 07D3     		bcc	.L37
+ 145:.\Move.c      ****     		currentStepB1 = currentStepA1 - FullScale1;
+ 533              		.loc 1 145 0
+ 534 0348 114B     		ldr	r3, .L40
+ 535 034a 1A78     		ldrb	r2, [r3]
+ 536 034c 114B     		ldr	r3, .L40+4
+ 537 034e 1B78     		ldrb	r3, [r3]
+ 538 0350 D31A     		sub	r3, r2, r3
+ 539 0352 DAB2     		uxtb	r2, r3
+ 540 0354 104B     		ldr	r3, .L40+8
+ 541 0356 1A70     		strb	r2, [r3]
+ 542              	.L37:
+ 146:.\Move.c      ****     	} // Step A greater than FullScale
+ 147:.\Move.c      **** 
+ 148:.\Move.c      ****         // Pwm write on motor
+ 149:.\Move.c      ****         TCPWM_3_WriteCompare(genSine(currentStepA1, motor));
+ 543              		.loc 1 149 0
+ 544 0358 0D4B     		ldr	r3, .L40
+ 545 035a 1A78     		ldrb	r2, [r3]
+ 546 035c FB1D     		add	r3, r7, #7
+ 547 035e 1B78     		ldrb	r3, [r3]
+ 548 0360 101C     		mov	r0, r2
+ 549 0362 191C     		mov	r1, r3
+ 550 0364 FFF7FEFF 		bl	genSine
+ 551 0368 031C     		mov	r3, r0
+ 552 036a 181C     		mov	r0, r3
+ 553 036c FFF7FEFF 		bl	TCPWM_3_WriteCompare
+ 150:.\Move.c      ****         TCPWM_4_WriteCompare(genSine(currentStepB1, motor));
+ 554              		.loc 1 150 0
+ 555 0370 094B     		ldr	r3, .L40+8
+ 556 0372 1A78     		ldrb	r2, [r3]
+ 557 0374 FB1D     		add	r3, r7, #7
+ 558 0376 1B78     		ldrb	r3, [r3]
+ 559 0378 101C     		mov	r0, r2
+ 560 037a 191C     		mov	r1, r3
+ 561 037c FFF7FEFF 		bl	genSine
+ 562 0380 031C     		mov	r3, r0
+ 563 0382 181C     		mov	r0, r3
+ 564 0384 FFF7FEFF 		bl	TCPWM_4_WriteCompare
+ 565              	.L1:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 14
+
+
+ 151:.\Move.c      ****     } // Motor 2
+ 152:.\Move.c      **** }...
+ 566              		.loc 1 152 0
+ 567 0388 BD46     		mov	sp, r7
+ 568 038a 02B0     		add	sp, sp, #8
+ 569              		@ sp needed
+ 570 038c 80BD     		pop	{r7, pc}
+ 571              	.L41:
+ 572 038e C046     		.align	2
+ 573              	.L40:
+ 574 0390 00000000 		.word	currentStepA1
+ 575 0394 00000000 		.word	FullScale1
+ 576 0398 00000000 		.word	currentStepB1
+ 577              		.cfi_endproc
+ 578              	.LFE0:
+ 579              		.size	Move, .-Move
+ 580              		.text
+ 581              	.Letext0:
+ 582              		.file 2 "./Move.h"
+ 583              		.file 3 "./genSine.h"
+ 584              		.file 4 "Generated_Source\\PSoC4/cytypes.h"
+ 585              		.section	.debug_info,"",%progbits
+ 586              	.Ldebug_info0:
+ 587 0000 64010000 		.4byte	0x164
+ 588 0004 0400     		.2byte	0x4
+ 589 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 590 000a 04       		.byte	0x4
+ 591 000b 01       		.uleb128 0x1
+ 592 000c B0000000 		.4byte	.LASF29
+ 593 0010 01       		.byte	0x1
+ 594 0011 A7000000 		.4byte	.LASF30
+ 595 0015 66010000 		.4byte	.LASF31
+ 596 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 597 001d 00000000 		.4byte	0
+ 598 0021 00000000 		.4byte	.Ldebug_line0
+ 599 0025 02       		.uleb128 0x2
+ 600 0026 01       		.byte	0x1
+ 601 0027 06       		.byte	0x6
+ 602 0028 3A020000 		.4byte	.LASF0
+ 603 002c 02       		.uleb128 0x2
+ 604 002d 01       		.byte	0x1
+ 605 002e 08       		.byte	0x8
+ 606 002f 67000000 		.4byte	.LASF1
+ 607 0033 02       		.uleb128 0x2
+ 608 0034 02       		.byte	0x2
+ 609 0035 05       		.byte	0x5
+ 610 0036 0E020000 		.4byte	.LASF2
+ 611 003a 02       		.uleb128 0x2
+ 612 003b 02       		.byte	0x2
+ 613 003c 07       		.byte	0x7
+ 614 003d 2D000000 		.4byte	.LASF3
+ 615 0041 02       		.uleb128 0x2
+ 616 0042 04       		.byte	0x4
+ 617 0043 05       		.byte	0x5
+ 618 0044 31020000 		.4byte	.LASF4
+ 619 0048 02       		.uleb128 0x2
+ 620 0049 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 15
+
+
+ 621 004a 07       		.byte	0x7
+ 622 004b 7A000000 		.4byte	.LASF5
+ 623 004f 02       		.uleb128 0x2
+ 624 0050 08       		.byte	0x8
+ 625 0051 05       		.byte	0x5
+ 626 0052 FB010000 		.4byte	.LASF6
+ 627 0056 02       		.uleb128 0x2
+ 628 0057 08       		.byte	0x8
+ 629 0058 07       		.byte	0x7
+ 630 0059 C7010000 		.4byte	.LASF7
+ 631 005d 03       		.uleb128 0x3
+ 632 005e 04       		.byte	0x4
+ 633 005f 05       		.byte	0x5
+ 634 0060 696E7400 		.ascii	"int\000"
+ 635 0064 02       		.uleb128 0x2
+ 636 0065 04       		.byte	0x4
+ 637 0066 07       		.byte	0x7
+ 638 0067 48010000 		.4byte	.LASF8
+ 639 006b 04       		.uleb128 0x4
+ 640 006c 8C000000 		.4byte	.LASF32
+ 641 0070 04       		.byte	0x4
+ 642 0071 3801     		.2byte	0x138
+ 643 0073 2C000000 		.4byte	0x2c
+ 644 0077 02       		.uleb128 0x2
+ 645 0078 04       		.byte	0x4
+ 646 0079 04       		.byte	0x4
+ 647 007a 61000000 		.4byte	.LASF9
+ 648 007e 02       		.uleb128 0x2
+ 649 007f 08       		.byte	0x8
+ 650 0080 04       		.byte	0x4
+ 651 0081 A0000000 		.4byte	.LASF10
+ 652 0085 02       		.uleb128 0x2
+ 653 0086 01       		.byte	0x1
+ 654 0087 08       		.byte	0x8
+ 655 0088 09020000 		.4byte	.LASF11
+ 656 008c 02       		.uleb128 0x2
+ 657 008d 04       		.byte	0x4
+ 658 008e 07       		.byte	0x7
+ 659 008f F2010000 		.4byte	.LASF12
+ 660 0093 05       		.uleb128 0x5
+ 661 0094 75000000 		.4byte	.LASF33
+ 662 0098 01       		.byte	0x1
+ 663 0099 14       		.byte	0x14
+ 664 009a 00000000 		.4byte	.LFB0
+ 665 009e 9C030000 		.4byte	.LFE0-.LFB0
+ 666 00a2 01       		.uleb128 0x1
+ 667 00a3 9C       		.byte	0x9c
+ 668 00a4 B7000000 		.4byte	0xb7
+ 669 00a8 06       		.uleb128 0x6
+ 670 00a9 DE010000 		.4byte	.LASF34
+ 671 00ad 01       		.byte	0x1
+ 672 00ae 14       		.byte	0x14
+ 673 00af 6B000000 		.4byte	0x6b
+ 674 00b3 02       		.uleb128 0x2
+ 675 00b4 91       		.byte	0x91
+ 676 00b5 77       		.sleb128 -9
+ 677 00b6 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 16
+
+
+ 678 00b7 07       		.uleb128 0x7
+ 679 00b8 9A000000 		.4byte	.LASF13
+ 680 00bc 02       		.byte	0x2
+ 681 00bd 15       		.byte	0x15
+ 682 00be 6B000000 		.4byte	0x6b
+ 683 00c2 07       		.uleb128 0x7
+ 684 00c3 07000000 		.4byte	.LASF14
+ 685 00c7 02       		.byte	0x2
+ 686 00c8 10       		.byte	0x10
+ 687 00c9 6B000000 		.4byte	0x6b
+ 688 00cd 07       		.uleb128 0x7
+ 689 00ce 14000000 		.4byte	.LASF15
+ 690 00d2 02       		.byte	0x2
+ 691 00d3 11       		.byte	0x11
+ 692 00d4 6B000000 		.4byte	0x6b
+ 693 00d8 07       		.uleb128 0x7
+ 694 00d9 26000000 		.4byte	.LASF16
+ 695 00dd 02       		.byte	0x2
+ 696 00de 17       		.byte	0x17
+ 697 00df 6B000000 		.4byte	0x6b
+ 698 00e3 07       		.uleb128 0x7
+ 699 00e4 00000000 		.4byte	.LASF17
+ 700 00e8 02       		.byte	0x2
+ 701 00e9 1E       		.byte	0x1e
+ 702 00ea 6B000000 		.4byte	0x6b
+ 703 00ee 07       		.uleb128 0x7
+ 704 00ef E4010000 		.4byte	.LASF18
+ 705 00f3 02       		.byte	0x2
+ 706 00f4 19       		.byte	0x19
+ 707 00f5 6B000000 		.4byte	0x6b
+ 708 00f9 07       		.uleb128 0x7
+ 709 00fa 48000000 		.4byte	.LASF19
+ 710 00fe 02       		.byte	0x2
+ 711 00ff 1A       		.byte	0x1a
+ 712 0100 6B000000 		.4byte	0x6b
+ 713 0104 07       		.uleb128 0x7
+ 714 0105 40000000 		.4byte	.LASF20
+ 715 0109 02       		.byte	0x2
+ 716 010a 20       		.byte	0x20
+ 717 010b 6B000000 		.4byte	0x6b
+ 718 010f 07       		.uleb128 0x7
+ 719 0110 92000000 		.4byte	.LASF21
+ 720 0114 02       		.byte	0x2
+ 721 0115 12       		.byte	0x12
+ 722 0116 6B000000 		.4byte	0x6b
+ 723 011a 07       		.uleb128 0x7
+ 724 011b 21020000 		.4byte	.LASF22
+ 725 011f 02       		.byte	0x2
+ 726 0120 13       		.byte	0x13
+ 727 0121 6B000000 		.4byte	0x6b
+ 728 0125 07       		.uleb128 0x7
+ 729 0126 3E010000 		.4byte	.LASF23
+ 730 012a 03       		.byte	0x3
+ 731 012b 10       		.byte	0x10
+ 732 012c 6B000000 		.4byte	0x6b
+ 733 0130 07       		.uleb128 0x7
+ 734 0131 21000000 		.4byte	.LASF24
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 17
+
+
+ 735 0135 02       		.byte	0x2
+ 736 0136 16       		.byte	0x16
+ 737 0137 6B000000 		.4byte	0x6b
+ 738 013b 07       		.uleb128 0x7
+ 739 013c 18020000 		.4byte	.LASF25
+ 740 0140 02       		.byte	0x2
+ 741 0141 1B       		.byte	0x1b
+ 742 0142 6B000000 		.4byte	0x6b
+ 743 0146 07       		.uleb128 0x7
+ 744 0147 55010000 		.4byte	.LASF26
+ 745 014b 02       		.byte	0x2
+ 746 014c 1C       		.byte	0x1c
+ 747 014d 6B000000 		.4byte	0x6b
+ 748 0151 07       		.uleb128 0x7
+ 749 0152 56000000 		.4byte	.LASF27
+ 750 0156 03       		.byte	0x3
+ 751 0157 11       		.byte	0x11
+ 752 0158 6B000000 		.4byte	0x6b
+ 753 015c 07       		.uleb128 0x7
+ 754 015d 46020000 		.4byte	.LASF28
+ 755 0161 02       		.byte	0x2
+ 756 0162 1F       		.byte	0x1f
+ 757 0163 6B000000 		.4byte	0x6b
+ 758 0167 00       		.byte	0
+ 759              		.section	.debug_abbrev,"",%progbits
+ 760              	.Ldebug_abbrev0:
+ 761 0000 01       		.uleb128 0x1
+ 762 0001 11       		.uleb128 0x11
+ 763 0002 01       		.byte	0x1
+ 764 0003 25       		.uleb128 0x25
+ 765 0004 0E       		.uleb128 0xe
+ 766 0005 13       		.uleb128 0x13
+ 767 0006 0B       		.uleb128 0xb
+ 768 0007 03       		.uleb128 0x3
+ 769 0008 0E       		.uleb128 0xe
+ 770 0009 1B       		.uleb128 0x1b
+ 771 000a 0E       		.uleb128 0xe
+ 772 000b 55       		.uleb128 0x55
+ 773 000c 17       		.uleb128 0x17
+ 774 000d 11       		.uleb128 0x11
+ 775 000e 01       		.uleb128 0x1
+ 776 000f 10       		.uleb128 0x10
+ 777 0010 17       		.uleb128 0x17
+ 778 0011 00       		.byte	0
+ 779 0012 00       		.byte	0
+ 780 0013 02       		.uleb128 0x2
+ 781 0014 24       		.uleb128 0x24
+ 782 0015 00       		.byte	0
+ 783 0016 0B       		.uleb128 0xb
+ 784 0017 0B       		.uleb128 0xb
+ 785 0018 3E       		.uleb128 0x3e
+ 786 0019 0B       		.uleb128 0xb
+ 787 001a 03       		.uleb128 0x3
+ 788 001b 0E       		.uleb128 0xe
+ 789 001c 00       		.byte	0
+ 790 001d 00       		.byte	0
+ 791 001e 03       		.uleb128 0x3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 18
+
+
+ 792 001f 24       		.uleb128 0x24
+ 793 0020 00       		.byte	0
+ 794 0021 0B       		.uleb128 0xb
+ 795 0022 0B       		.uleb128 0xb
+ 796 0023 3E       		.uleb128 0x3e
+ 797 0024 0B       		.uleb128 0xb
+ 798 0025 03       		.uleb128 0x3
+ 799 0026 08       		.uleb128 0x8
+ 800 0027 00       		.byte	0
+ 801 0028 00       		.byte	0
+ 802 0029 04       		.uleb128 0x4
+ 803 002a 16       		.uleb128 0x16
+ 804 002b 00       		.byte	0
+ 805 002c 03       		.uleb128 0x3
+ 806 002d 0E       		.uleb128 0xe
+ 807 002e 3A       		.uleb128 0x3a
+ 808 002f 0B       		.uleb128 0xb
+ 809 0030 3B       		.uleb128 0x3b
+ 810 0031 05       		.uleb128 0x5
+ 811 0032 49       		.uleb128 0x49
+ 812 0033 13       		.uleb128 0x13
+ 813 0034 00       		.byte	0
+ 814 0035 00       		.byte	0
+ 815 0036 05       		.uleb128 0x5
+ 816 0037 2E       		.uleb128 0x2e
+ 817 0038 01       		.byte	0x1
+ 818 0039 3F       		.uleb128 0x3f
+ 819 003a 19       		.uleb128 0x19
+ 820 003b 03       		.uleb128 0x3
+ 821 003c 0E       		.uleb128 0xe
+ 822 003d 3A       		.uleb128 0x3a
+ 823 003e 0B       		.uleb128 0xb
+ 824 003f 3B       		.uleb128 0x3b
+ 825 0040 0B       		.uleb128 0xb
+ 826 0041 27       		.uleb128 0x27
+ 827 0042 19       		.uleb128 0x19
+ 828 0043 11       		.uleb128 0x11
+ 829 0044 01       		.uleb128 0x1
+ 830 0045 12       		.uleb128 0x12
+ 831 0046 06       		.uleb128 0x6
+ 832 0047 40       		.uleb128 0x40
+ 833 0048 18       		.uleb128 0x18
+ 834 0049 9642     		.uleb128 0x2116
+ 835 004b 19       		.uleb128 0x19
+ 836 004c 01       		.uleb128 0x1
+ 837 004d 13       		.uleb128 0x13
+ 838 004e 00       		.byte	0
+ 839 004f 00       		.byte	0
+ 840 0050 06       		.uleb128 0x6
+ 841 0051 05       		.uleb128 0x5
+ 842 0052 00       		.byte	0
+ 843 0053 03       		.uleb128 0x3
+ 844 0054 0E       		.uleb128 0xe
+ 845 0055 3A       		.uleb128 0x3a
+ 846 0056 0B       		.uleb128 0xb
+ 847 0057 3B       		.uleb128 0x3b
+ 848 0058 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 19
+
+
+ 849 0059 49       		.uleb128 0x49
+ 850 005a 13       		.uleb128 0x13
+ 851 005b 02       		.uleb128 0x2
+ 852 005c 18       		.uleb128 0x18
+ 853 005d 00       		.byte	0
+ 854 005e 00       		.byte	0
+ 855 005f 07       		.uleb128 0x7
+ 856 0060 34       		.uleb128 0x34
+ 857 0061 00       		.byte	0
+ 858 0062 03       		.uleb128 0x3
+ 859 0063 0E       		.uleb128 0xe
+ 860 0064 3A       		.uleb128 0x3a
+ 861 0065 0B       		.uleb128 0xb
+ 862 0066 3B       		.uleb128 0x3b
+ 863 0067 0B       		.uleb128 0xb
+ 864 0068 49       		.uleb128 0x49
+ 865 0069 13       		.uleb128 0x13
+ 866 006a 3F       		.uleb128 0x3f
+ 867 006b 19       		.uleb128 0x19
+ 868 006c 3C       		.uleb128 0x3c
+ 869 006d 19       		.uleb128 0x19
+ 870 006e 00       		.byte	0
+ 871 006f 00       		.byte	0
+ 872 0070 00       		.byte	0
+ 873              		.section	.debug_aranges,"",%progbits
+ 874 0000 1C000000 		.4byte	0x1c
+ 875 0004 0200     		.2byte	0x2
+ 876 0006 00000000 		.4byte	.Ldebug_info0
+ 877 000a 04       		.byte	0x4
+ 878 000b 00       		.byte	0
+ 879 000c 0000     		.2byte	0
+ 880 000e 0000     		.2byte	0
+ 881 0010 00000000 		.4byte	.LFB0
+ 882 0014 9C030000 		.4byte	.LFE0-.LFB0
+ 883 0018 00000000 		.4byte	0
+ 884 001c 00000000 		.4byte	0
+ 885              		.section	.debug_ranges,"",%progbits
+ 886              	.Ldebug_ranges0:
+ 887 0000 00000000 		.4byte	.LFB0
+ 888 0004 9C030000 		.4byte	.LFE0
+ 889 0008 00000000 		.4byte	0
+ 890 000c 00000000 		.4byte	0
+ 891              		.section	.debug_line,"",%progbits
+ 892              	.Ldebug_line0:
+ 893 0000 D1000000 		.section	.debug_str,"MS",%progbits,1
+ 893      02005E00 
+ 893      00000201 
+ 893      FB0E0D00 
+ 893      01010101 
+ 894              	.LASF17:
+ 895 0000 70686173 		.ascii	"phase1\000"
+ 895      653100
+ 896              	.LASF14:
+ 897 0007 63757272 		.ascii	"currentStepA\000"
+ 897      656E7453 
+ 897      74657041 
+ 897      00
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 20
+
+
+ 898              	.LASF15:
+ 899 0014 63757272 		.ascii	"currentStepB\000"
+ 899      656E7453 
+ 899      74657042 
+ 899      00
+ 900              	.LASF24:
+ 901 0021 73746570 		.ascii	"step\000"
+ 901      00
+ 902              	.LASF16:
+ 903 0026 64697252 		.ascii	"dirReg\000"
+ 903      656700
+ 904              	.LASF3:
+ 905 002d 73686F72 		.ascii	"short unsigned int\000"
+ 905      7420756E 
+ 905      7369676E 
+ 905      65642069 
+ 905      6E7400
+ 906              	.LASF20:
+ 907 0040 64697252 		.ascii	"dirReg1\000"
+ 907      65673100 
+ 908              	.LASF19:
+ 909 0048 63757272 		.ascii	"currentStepB1\000"
+ 909      656E7453 
+ 909      74657042 
+ 909      3100
+ 910              	.LASF27:
+ 911 0056 46756C6C 		.ascii	"FullScale1\000"
+ 911      5363616C 
+ 911      653100
+ 912              	.LASF9:
+ 913 0061 666C6F61 		.ascii	"float\000"
+ 913      7400
+ 914              	.LASF1:
+ 915 0067 756E7369 		.ascii	"unsigned char\000"
+ 915      676E6564 
+ 915      20636861 
+ 915      7200
+ 916              	.LASF33:
+ 917 0075 4D6F7665 		.ascii	"Move\000"
+ 917      00
+ 918              	.LASF5:
+ 919 007a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 919      20756E73 
+ 919      69676E65 
+ 919      6420696E 
+ 919      7400
+ 920              	.LASF32:
+ 921 008c 75696E74 		.ascii	"uint8\000"
+ 921      3800
+ 922              	.LASF21:
+ 923 0092 64697669 		.ascii	"divider\000"
+ 923      64657200 
+ 924              	.LASF13:
+ 925 009a 70686173 		.ascii	"phase\000"
+ 925      6500
+ 926              	.LASF10:
+ 927 00a0 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 21
+
+
+ 927      6C6500
+ 928              	.LASF30:
+ 929 00a7 2E5C4D6F 		.ascii	".\\Move.c\000"
+ 929      76652E63 
+ 929      00
+ 930              	.LASF29:
+ 931 00b0 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 931      4320342E 
+ 931      392E3320 
+ 931      32303135 
+ 931      30333033 
+ 932 00e3 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 932      20726576 
+ 932      6973696F 
+ 932      6E203232 
+ 932      31323230 
+ 933 0116 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 933      66756E63 
+ 933      74696F6E 
+ 933      2D736563 
+ 933      74696F6E 
+ 934              	.LASF23:
+ 935 013e 46756C6C 		.ascii	"FullScale\000"
+ 935      5363616C 
+ 935      6500
+ 936              	.LASF8:
+ 937 0148 756E7369 		.ascii	"unsigned int\000"
+ 937      676E6564 
+ 937      20696E74 
+ 937      00
+ 938              	.LASF26:
+ 939 0155 70726576 		.ascii	"previousDivider1\000"
+ 939      696F7573 
+ 939      44697669 
+ 939      64657231 
+ 939      00
+ 940              	.LASF31:
+ 941 0166 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 941      73657273 
+ 941      5C546563 
+ 941      6820436F 
+ 941      6E73756C 
+ 942 0195 5C537465 		.ascii	"\\StepMotor_PSoC4200\\StepMotor_PSoC4200_Dual.cydsn"
+ 942      704D6F74 
+ 942      6F725F50 
+ 942      536F4334 
+ 942      3230305C 
+ 943 01c6 00       		.ascii	"\000"
+ 944              	.LASF7:
+ 945 01c7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 945      206C6F6E 
+ 945      6720756E 
+ 945      7369676E 
+ 945      65642069 
+ 946              	.LASF34:
+ 947 01de 6D6F746F 		.ascii	"motor\000"
+ 947      7200
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc8t5fGV.s 			page 22
+
+
+ 948              	.LASF18:
+ 949 01e4 63757272 		.ascii	"currentStepA1\000"
+ 949      656E7453 
+ 949      74657041 
+ 949      3100
+ 950              	.LASF12:
+ 951 01f2 73697A65 		.ascii	"sizetype\000"
+ 951      74797065 
+ 951      00
+ 952              	.LASF6:
+ 953 01fb 6C6F6E67 		.ascii	"long long int\000"
+ 953      206C6F6E 
+ 953      6720696E 
+ 953      7400
+ 954              	.LASF11:
+ 955 0209 63686172 		.ascii	"char\000"
+ 955      00
+ 956              	.LASF2:
+ 957 020e 73686F72 		.ascii	"short int\000"
+ 957      7420696E 
+ 957      7400
+ 958              	.LASF25:
+ 959 0218 64697669 		.ascii	"divider1\000"
+ 959      64657231 
+ 959      00
+ 960              	.LASF22:
+ 961 0221 70726576 		.ascii	"previousDivider\000"
+ 961      696F7573 
+ 961      44697669 
+ 961      64657200 
+ 962              	.LASF4:
+ 963 0231 6C6F6E67 		.ascii	"long int\000"
+ 963      20696E74 
+ 963      00
+ 964              	.LASF0:
+ 965 023a 7369676E 		.ascii	"signed char\000"
+ 965      65642063 
+ 965      68617200 
+ 966              	.LASF28:
+ 967 0246 73746570 		.ascii	"step1\000"
+ 967      3100
+ 968              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

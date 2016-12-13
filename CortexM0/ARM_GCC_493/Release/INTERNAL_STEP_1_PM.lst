@@ -1,0 +1,1156 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"INTERNAL_STEP_1_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.INTERNAL_STEP_1_SaveConfig,"ax",%progbits
+  18              		.align	1
+  19              		.global	INTERNAL_STEP_1_SaveConfig
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	INTERNAL_STEP_1_SaveConfig, %function
+  23              	INTERNAL_STEP_1_SaveConfig:
+  24              	.LFB0:
+  25              		.file 1 "Generated_Source\\PSoC4\\INTERNAL_STEP_1_PM.c"
+   1:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * File Name: INTERNAL_STEP_1_PM.c
+   3:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Version 3.30
+   4:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+   5:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Description:
+   6:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  This file provides the power management source code to API for the
+   7:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  PWM.
+   8:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+   9:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Note:
+  10:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  11:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  18:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** #include "INTERNAL_STEP_1.h"
+  19:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  20:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** static INTERNAL_STEP_1_backupStruct INTERNAL_STEP_1_backup;
+  21:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  22:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  23:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** /*******************************************************************************
+  24:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Function Name: INTERNAL_STEP_1_SaveConfig
+  25:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** ********************************************************************************
+  26:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  27:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Summary:
+  28:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  Saves the current user configuration of the component.
+  29:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  30:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Parameters:
+  31:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+  32:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 2
+
+
+  33:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Return:
+  34:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+  35:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  36:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Global variables:
+  37:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  INTERNAL_STEP_1_backup:  Variables of this global structure are modified to
+  38:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  store the values of non retention configuration registers when Sleep() API is
+  39:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  called.
+  40:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  41:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *******************************************************************************/
+  42:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** void INTERNAL_STEP_1_SaveConfig(void) 
+  43:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** {
+  26              		.loc 1 43 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+  44:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  45:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     #if(!INTERNAL_STEP_1_UsingFixedFunction)
+  46:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #if(!INTERNAL_STEP_1_PWMModeIsCenterAligned)
+  47:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_backup.PWMPeriod = INTERNAL_STEP_1_ReadPeriod();
+  32              		.loc 1 47 0
+  33 0002 FFF7FEFF 		bl	INTERNAL_STEP_1_ReadPeriod
+  34              	.LVL0:
+  35 0006 044C     		ldr	r4, .L2
+  48:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif /* (!INTERNAL_STEP_1_PWMModeIsCenterAligned) */
+  49:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         INTERNAL_STEP_1_backup.PWMUdb = INTERNAL_STEP_1_ReadCounter();
+  50:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #if (INTERNAL_STEP_1_UseStatus)
+  51:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_backup.InterruptMaskValue = INTERNAL_STEP_1_STATUS_MASK;
+  52:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif /* (INTERNAL_STEP_1_UseStatus) */
+  53:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  54:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #if(INTERNAL_STEP_1_DeadBandMode == INTERNAL_STEP_1__B_PWM__DBM_256_CLOCKS || \
+  55:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_DeadBandMode == INTERNAL_STEP_1__B_PWM__DBM_2_4_CLOCKS)
+  56:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_backup.PWMdeadBandValue = INTERNAL_STEP_1_ReadDeadTime();
+  57:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif /*  deadband count is either 2-4 clocks or 256 clocks */
+  58:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  59:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #if(INTERNAL_STEP_1_KillModeMinTime)
+  60:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****              INTERNAL_STEP_1_backup.PWMKillCounterPeriod = INTERNAL_STEP_1_ReadKillTime();
+  61:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif /* (INTERNAL_STEP_1_KillModeMinTime) */
+  62:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  63:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #if(INTERNAL_STEP_1_UseControl)
+  64:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_backup.PWMControlRegister = INTERNAL_STEP_1_ReadControlRegister();
+  65:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif /* (INTERNAL_STEP_1_UseControl) */
+  66:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     #endif  /* (!INTERNAL_STEP_1_UsingFixedFunction) */
+  67:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** }
+  36              		.loc 1 67 0
+  37              		@ sp needed
+  47:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif /* (!INTERNAL_STEP_1_PWMModeIsCenterAligned) */
+  38              		.loc 1 47 0
+  39 0008 A080     		strh	r0, [r4, #4]
+  49:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #if (INTERNAL_STEP_1_UseStatus)
+  40              		.loc 1 49 0
+  41 000a FFF7FEFF 		bl	INTERNAL_STEP_1_ReadCounter
+  42              	.LVL1:
+  43 000e 6080     		strh	r0, [r4, #2]
+  64:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif /* (INTERNAL_STEP_1_UseControl) */
+  44              		.loc 1 64 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 3
+
+
+  45 0010 FFF7FEFF 		bl	INTERNAL_STEP_1_ReadControlRegister
+  46              	.LVL2:
+  47 0014 A071     		strb	r0, [r4, #6]
+  48              		.loc 1 67 0
+  49 0016 10BD     		pop	{r4, pc}
+  50              	.L3:
+  51              		.align	2
+  52              	.L2:
+  53 0018 00000000 		.word	.LANCHOR0
+  54              		.cfi_endproc
+  55              	.LFE0:
+  56              		.size	INTERNAL_STEP_1_SaveConfig, .-INTERNAL_STEP_1_SaveConfig
+  57              		.section	.text.INTERNAL_STEP_1_RestoreConfig,"ax",%progbits
+  58              		.align	1
+  59              		.global	INTERNAL_STEP_1_RestoreConfig
+  60              		.code	16
+  61              		.thumb_func
+  62              		.type	INTERNAL_STEP_1_RestoreConfig, %function
+  63              	INTERNAL_STEP_1_RestoreConfig:
+  64              	.LFB1:
+  68:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  69:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  70:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** /*******************************************************************************
+  71:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Function Name: INTERNAL_STEP_1_RestoreConfig
+  72:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** ********************************************************************************
+  73:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  74:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Summary:
+  75:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  Restores the current user configuration of the component.
+  76:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  77:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Parameters:
+  78:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+  79:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  80:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Return:
+  81:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+  82:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  83:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Global variables:
+  84:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  INTERNAL_STEP_1_backup:  Variables of this global structure are used to
+  85:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
+  86:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+  87:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *******************************************************************************/
+  88:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** void INTERNAL_STEP_1_RestoreConfig(void) 
+  89:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** {
+  65              		.loc 1 89 0
+  66              		.cfi_startproc
+  67 0000 10B5     		push	{r4, lr}
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 4, -8
+  70              		.cfi_offset 14, -4
+  90:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #if(!INTERNAL_STEP_1_UsingFixedFunction)
+  91:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #if(!INTERNAL_STEP_1_PWMModeIsCenterAligned)
+  92:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****                 INTERNAL_STEP_1_WritePeriod(INTERNAL_STEP_1_backup.PWMPeriod);
+  71              		.loc 1 92 0
+  72 0002 054C     		ldr	r4, .L5
+  93:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #endif /* (!INTERNAL_STEP_1_PWMModeIsCenterAligned) */
+  94:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  95:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_WriteCounter(INTERNAL_STEP_1_backup.PWMUdb);
+  96:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 4
+
+
+  97:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #if (INTERNAL_STEP_1_UseStatus)
+  98:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****                 INTERNAL_STEP_1_STATUS_MASK = INTERNAL_STEP_1_backup.InterruptMaskValue;
+  99:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #endif /* (INTERNAL_STEP_1_UseStatus) */
+ 100:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 101:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #if(INTERNAL_STEP_1_DeadBandMode == INTERNAL_STEP_1__B_PWM__DBM_256_CLOCKS || \
+ 102:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****                 INTERNAL_STEP_1_DeadBandMode == INTERNAL_STEP_1__B_PWM__DBM_2_4_CLOCKS)
+ 103:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****                 INTERNAL_STEP_1_WriteDeadTime(INTERNAL_STEP_1_backup.PWMdeadBandValue);
+ 104:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #endif /* deadband count is either 2-4 clocks or 256 clocks */
+ 105:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 106:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #if(INTERNAL_STEP_1_KillModeMinTime)
+ 107:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****                 INTERNAL_STEP_1_WriteKillTime(INTERNAL_STEP_1_backup.PWMKillCounterPeriod);
+ 108:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #endif /* (INTERNAL_STEP_1_KillModeMinTime) */
+ 109:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 110:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #if(INTERNAL_STEP_1_UseControl)
+ 111:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****                 INTERNAL_STEP_1_WriteControlRegister(INTERNAL_STEP_1_backup.PWMControlRegister);
+ 112:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #endif /* (INTERNAL_STEP_1_UseControl) */
+ 113:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         #endif  /* (!INTERNAL_STEP_1_UsingFixedFunction) */
+ 114:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     }
+  73              		.loc 1 114 0
+  74              		@ sp needed
+  92:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #endif /* (!INTERNAL_STEP_1_PWMModeIsCenterAligned) */
+  75              		.loc 1 92 0
+  76 0004 A088     		ldrh	r0, [r4, #4]
+  77 0006 FFF7FEFF 		bl	INTERNAL_STEP_1_WritePeriod
+  78              	.LVL3:
+  95:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+  79              		.loc 1 95 0
+  80 000a 6088     		ldrh	r0, [r4, #2]
+  81 000c FFF7FEFF 		bl	INTERNAL_STEP_1_WriteCounter
+  82              	.LVL4:
+ 111:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             #endif /* (INTERNAL_STEP_1_UseControl) */
+  83              		.loc 1 111 0
+  84 0010 A079     		ldrb	r0, [r4, #6]
+  85 0012 FFF7FEFF 		bl	INTERNAL_STEP_1_WriteControlRegister
+  86              	.LVL5:
+  87              		.loc 1 114 0
+  88 0016 10BD     		pop	{r4, pc}
+  89              	.L6:
+  90              		.align	2
+  91              	.L5:
+  92 0018 00000000 		.word	.LANCHOR0
+  93              		.cfi_endproc
+  94              	.LFE1:
+  95              		.size	INTERNAL_STEP_1_RestoreConfig, .-INTERNAL_STEP_1_RestoreConfig
+  96              		.section	.text.INTERNAL_STEP_1_Sleep,"ax",%progbits
+  97              		.align	1
+  98              		.global	INTERNAL_STEP_1_Sleep
+  99              		.code	16
+ 100              		.thumb_func
+ 101              		.type	INTERNAL_STEP_1_Sleep, %function
+ 102              	INTERNAL_STEP_1_Sleep:
+ 103              	.LFB2:
+ 115:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 116:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 117:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** /*******************************************************************************
+ 118:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Function Name: INTERNAL_STEP_1_Sleep
+ 119:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** ********************************************************************************
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 5
+
+
+ 120:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 121:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Summary:
+ 122:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  Disables block's operation and saves the user configuration. Should be called
+ 123:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  just prior to entering sleep.
+ 124:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 125:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Parameters:
+ 126:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+ 127:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 128:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Return:
+ 129:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+ 130:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 131:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Global variables:
+ 132:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  INTERNAL_STEP_1_backup.PWMEnableState:  Is modified depending on the enable
+ 133:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  state of the block before entering sleep mode.
+ 134:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 135:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *******************************************************************************/
+ 136:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** void INTERNAL_STEP_1_Sleep(void) 
+ 137:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** {
+ 104              		.loc 1 137 0
+ 105              		.cfi_startproc
+ 106 0000 08B5     		push	{r3, lr}
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 3, -8
+ 109              		.cfi_offset 14, -4
+ 138:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     #if(INTERNAL_STEP_1_UseControl)
+ 139:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         if(INTERNAL_STEP_1_CTRL_ENABLE == (INTERNAL_STEP_1_CONTROL & INTERNAL_STEP_1_CTRL_ENABLE))
+ 110              		.loc 1 139 0
+ 111 0002 074B     		ldr	r3, .L12
+ 112 0004 074A     		ldr	r2, .L12+4
+ 113 0006 1B78     		ldrb	r3, [r3]
+ 114 0008 5BB2     		sxtb	r3, r3
+ 115 000a 002B     		cmp	r3, #0
+ 116 000c 01DA     		bge	.L8
+ 140:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         {
+ 141:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             /*Component is enabled */
+ 142:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_backup.PWMEnableState = 1u;
+ 117              		.loc 1 142 0
+ 118 000e 0123     		mov	r3, #1
+ 119 0010 00E0     		b	.L10
+ 120              	.L8:
+ 143:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         }
+ 144:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         else
+ 145:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         {
+ 146:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             /* Component is disabled */
+ 147:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****             INTERNAL_STEP_1_backup.PWMEnableState = 0u;
+ 121              		.loc 1 147 0
+ 122 0012 0023     		mov	r3, #0
+ 123              	.L10:
+ 124 0014 1370     		strb	r3, [r2]
+ 148:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         }
+ 149:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     #endif /* (INTERNAL_STEP_1_UseControl) */
+ 150:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 151:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     /* Stop component */
+ 152:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     INTERNAL_STEP_1_Stop();
+ 153:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 154:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     /* Save registers configuration */
+ 155:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     INTERNAL_STEP_1_SaveConfig();
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 6
+
+
+ 156:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** }
+ 125              		.loc 1 156 0
+ 126              		@ sp needed
+ 152:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 127              		.loc 1 152 0
+ 128 0016 FFF7FEFF 		bl	INTERNAL_STEP_1_Stop
+ 129              	.LVL6:
+ 155:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** }
+ 130              		.loc 1 155 0
+ 131 001a FFF7FEFF 		bl	INTERNAL_STEP_1_SaveConfig
+ 132              	.LVL7:
+ 133              		.loc 1 156 0
+ 134 001e 08BD     		pop	{r3, pc}
+ 135              	.L13:
+ 136              		.align	2
+ 137              	.L12:
+ 138 0020 71000F40 		.word	1074724977
+ 139 0024 00000000 		.word	.LANCHOR0
+ 140              		.cfi_endproc
+ 141              	.LFE2:
+ 142              		.size	INTERNAL_STEP_1_Sleep, .-INTERNAL_STEP_1_Sleep
+ 143              		.section	.text.INTERNAL_STEP_1_Wakeup,"ax",%progbits
+ 144              		.align	1
+ 145              		.global	INTERNAL_STEP_1_Wakeup
+ 146              		.code	16
+ 147              		.thumb_func
+ 148              		.type	INTERNAL_STEP_1_Wakeup, %function
+ 149              	INTERNAL_STEP_1_Wakeup:
+ 150              	.LFB3:
+ 157:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 158:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 159:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** /*******************************************************************************
+ 160:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Function Name: INTERNAL_STEP_1_Wakeup
+ 161:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** ********************************************************************************
+ 162:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 163:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Summary:
+ 164:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  Restores and enables the user configuration. Should be called just after
+ 165:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  awaking from sleep.
+ 166:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 167:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Parameters:
+ 168:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+ 169:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 170:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Return:
+ 171:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  None
+ 172:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 173:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** * Global variables:
+ 174:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  INTERNAL_STEP_1_backup.pwmEnable:  Is used to restore the enable state of
+ 175:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *  block on wakeup from sleep mode.
+ 176:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *
+ 177:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** *******************************************************************************/
+ 178:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** void INTERNAL_STEP_1_Wakeup(void) 
+ 179:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** {
+ 151              		.loc 1 179 0
+ 152              		.cfi_startproc
+ 153 0000 08B5     		push	{r3, lr}
+ 154              		.cfi_def_cfa_offset 8
+ 155              		.cfi_offset 3, -8
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 7
+
+
+ 156              		.cfi_offset 14, -4
+ 180:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****      /* Restore registers values */
+ 181:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     INTERNAL_STEP_1_RestoreConfig();
+ 157              		.loc 1 181 0
+ 158 0002 FFF7FEFF 		bl	INTERNAL_STEP_1_RestoreConfig
+ 159              	.LVL8:
+ 182:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 183:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     if(INTERNAL_STEP_1_backup.PWMEnableState != 0u)
+ 160              		.loc 1 183 0
+ 161 0006 034B     		ldr	r3, .L19
+ 162 0008 1B78     		ldrb	r3, [r3]
+ 163 000a 002B     		cmp	r3, #0
+ 164 000c 01D0     		beq	.L14
+ 184:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     {
+ 185:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         /* Enable component's operation */
+ 186:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****         INTERNAL_STEP_1_Enable();
+ 165              		.loc 1 186 0
+ 166 000e FFF7FEFF 		bl	INTERNAL_STEP_1_Enable
+ 167              	.LVL9:
+ 168              	.L14:
+ 187:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c ****     } /* Do nothing if component's block was disabled before */
+ 188:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** 
+ 189:Generated_Source\PSoC4/INTERNAL_STEP_1_PM.c **** }
+ 169              		.loc 1 189 0
+ 170              		@ sp needed
+ 171 0012 08BD     		pop	{r3, pc}
+ 172              	.L20:
+ 173              		.align	2
+ 174              	.L19:
+ 175 0014 00000000 		.word	.LANCHOR0
+ 176              		.cfi_endproc
+ 177              	.LFE3:
+ 178              		.size	INTERNAL_STEP_1_Wakeup, .-INTERNAL_STEP_1_Wakeup
+ 179              		.bss
+ 180              		.align	1
+ 181              		.set	.LANCHOR0,. + 0
+ 182              		.type	INTERNAL_STEP_1_backup, %object
+ 183              		.size	INTERNAL_STEP_1_backup, 8
+ 184              	INTERNAL_STEP_1_backup:
+ 185 0000 00000000 		.space	8
+ 185      00000000 
+ 186              		.text
+ 187              	.Letext0:
+ 188              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 189              		.file 3 "Generated_Source\\PSoC4\\INTERNAL_STEP_1.h"
+ 190              		.section	.debug_info,"",%progbits
+ 191              	.Ldebug_info0:
+ 192 0000 16020000 		.4byte	0x216
+ 193 0004 0400     		.2byte	0x4
+ 194 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 195 000a 04       		.byte	0x4
+ 196 000b 01       		.uleb128 0x1
+ 197 000c 42000000 		.4byte	.LASF33
+ 198 0010 01       		.byte	0x1
+ 199 0011 00000000 		.4byte	.LASF34
+ 200 0015 B1020000 		.4byte	.LASF35
+ 201 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 8
+
+
+ 202 001d 00000000 		.4byte	0
+ 203 0021 00000000 		.4byte	.Ldebug_line0
+ 204 0025 02       		.uleb128 0x2
+ 205 0026 01       		.byte	0x1
+ 206 0027 06       		.byte	0x6
+ 207 0028 49030000 		.4byte	.LASF0
+ 208 002c 02       		.uleb128 0x2
+ 209 002d 01       		.byte	0x1
+ 210 002e 08       		.byte	0x8
+ 211 002f 46010000 		.4byte	.LASF1
+ 212 0033 02       		.uleb128 0x2
+ 213 0034 02       		.byte	0x2
+ 214 0035 05       		.byte	0x5
+ 215 0036 A7020000 		.4byte	.LASF2
+ 216 003a 02       		.uleb128 0x2
+ 217 003b 02       		.byte	0x2
+ 218 003c 07       		.byte	0x7
+ 219 003d 12010000 		.4byte	.LASF3
+ 220 0041 02       		.uleb128 0x2
+ 221 0042 04       		.byte	0x4
+ 222 0043 05       		.byte	0x5
+ 223 0044 40030000 		.4byte	.LASF4
+ 224 0048 02       		.uleb128 0x2
+ 225 0049 04       		.byte	0x4
+ 226 004a 07       		.byte	0x7
+ 227 004b 63010000 		.4byte	.LASF5
+ 228 004f 02       		.uleb128 0x2
+ 229 0050 08       		.byte	0x8
+ 230 0051 05       		.byte	0x5
+ 231 0052 94020000 		.4byte	.LASF6
+ 232 0056 02       		.uleb128 0x2
+ 233 0057 08       		.byte	0x8
+ 234 0058 07       		.byte	0x7
+ 235 0059 3A020000 		.4byte	.LASF7
+ 236 005d 03       		.uleb128 0x3
+ 237 005e 04       		.byte	0x4
+ 238 005f 05       		.byte	0x5
+ 239 0060 696E7400 		.ascii	"int\000"
+ 240 0064 02       		.uleb128 0x2
+ 241 0065 04       		.byte	0x4
+ 242 0066 07       		.byte	0x7
+ 243 0067 2D020000 		.4byte	.LASF8
+ 244 006b 04       		.uleb128 0x4
+ 245 006c 75010000 		.4byte	.LASF9
+ 246 0070 02       		.byte	0x2
+ 247 0071 B901     		.2byte	0x1b9
+ 248 0073 2C000000 		.4byte	0x2c
+ 249 0077 04       		.uleb128 0x4
+ 250 0078 26020000 		.4byte	.LASF10
+ 251 007c 02       		.byte	0x2
+ 252 007d BA01     		.2byte	0x1ba
+ 253 007f 3A000000 		.4byte	0x3a
+ 254 0083 02       		.uleb128 0x2
+ 255 0084 04       		.byte	0x4
+ 256 0085 04       		.byte	0x4
+ 257 0086 40010000 		.4byte	.LASF11
+ 258 008a 02       		.uleb128 0x2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 9
+
+
+ 259 008b 08       		.byte	0x8
+ 260 008c 04       		.byte	0x4
+ 261 008d 8E010000 		.4byte	.LASF12
+ 262 0091 02       		.uleb128 0x2
+ 263 0092 01       		.byte	0x1
+ 264 0093 08       		.byte	0x8
+ 265 0094 A2020000 		.4byte	.LASF13
+ 266 0098 04       		.uleb128 0x4
+ 267 0099 33000000 		.4byte	.LASF14
+ 268 009d 02       		.byte	0x2
+ 269 009e 6302     		.2byte	0x263
+ 270 00a0 A4000000 		.4byte	0xa4
+ 271 00a4 05       		.uleb128 0x5
+ 272 00a5 6B000000 		.4byte	0x6b
+ 273 00a9 02       		.uleb128 0x2
+ 274 00aa 04       		.byte	0x4
+ 275 00ab 07       		.byte	0x7
+ 276 00ac 8B020000 		.4byte	.LASF15
+ 277 00b0 06       		.uleb128 0x6
+ 278 00b1 08       		.byte	0x8
+ 279 00b2 03       		.byte	0x3
+ 280 00b3 6B       		.byte	0x6b
+ 281 00b4 E9000000 		.4byte	0xe9
+ 282 00b8 07       		.uleb128 0x7
+ 283 00b9 54010000 		.4byte	.LASF16
+ 284 00bd 03       		.byte	0x3
+ 285 00be 6E       		.byte	0x6e
+ 286 00bf 6B000000 		.4byte	0x6b
+ 287 00c3 00       		.byte	0
+ 288 00c4 07       		.uleb128 0x7
+ 289 00c5 2C000000 		.4byte	.LASF17
+ 290 00c9 03       		.byte	0x3
+ 291 00ca 71       		.byte	0x71
+ 292 00cb 77000000 		.4byte	0x77
+ 293 00cf 02       		.byte	0x2
+ 294 00d0 07       		.uleb128 0x7
+ 295 00d1 38000000 		.4byte	.LASF18
+ 296 00d5 03       		.byte	0x3
+ 297 00d6 73       		.byte	0x73
+ 298 00d7 77000000 		.4byte	0x77
+ 299 00db 04       		.byte	0x4
+ 300 00dc 07       		.uleb128 0x7
+ 301 00dd 7B010000 		.4byte	.LASF19
+ 302 00e1 03       		.byte	0x3
+ 303 00e2 86       		.byte	0x86
+ 304 00e3 6B000000 		.4byte	0x6b
+ 305 00e7 06       		.byte	0x6
+ 306 00e8 00       		.byte	0
+ 307 00e9 08       		.uleb128 0x8
+ 308 00ea 95010000 		.4byte	.LASF20
+ 309 00ee 03       		.byte	0x3
+ 310 00ef 8B       		.byte	0x8b
+ 311 00f0 B0000000 		.4byte	0xb0
+ 312 00f4 09       		.uleb128 0x9
+ 313 00f5 CF010000 		.4byte	.LASF21
+ 314 00f9 01       		.byte	0x1
+ 315 00fa 2A       		.byte	0x2a
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 10
+
+
+ 316 00fb 00000000 		.4byte	.LFB0
+ 317 00ff 1C000000 		.4byte	.LFE0-.LFB0
+ 318 0103 01       		.uleb128 0x1
+ 319 0104 9C       		.byte	0x9c
+ 320 0105 25010000 		.4byte	0x125
+ 321 0109 0A       		.uleb128 0xa
+ 322 010a 06000000 		.4byte	.LVL0
+ 323 010e B7010000 		.4byte	0x1b7
+ 324 0112 0A       		.uleb128 0xa
+ 325 0113 0E000000 		.4byte	.LVL1
+ 326 0117 C2010000 		.4byte	0x1c2
+ 327 011b 0A       		.uleb128 0xa
+ 328 011c 14000000 		.4byte	.LVL2
+ 329 0120 CD010000 		.4byte	0x1cd
+ 330 0124 00       		.byte	0
+ 331 0125 09       		.uleb128 0x9
+ 332 0126 51020000 		.4byte	.LASF22
+ 333 012a 01       		.byte	0x1
+ 334 012b 58       		.byte	0x58
+ 335 012c 00000000 		.4byte	.LFB1
+ 336 0130 1C000000 		.4byte	.LFE1-.LFB1
+ 337 0134 01       		.uleb128 0x1
+ 338 0135 9C       		.byte	0x9c
+ 339 0136 56010000 		.4byte	0x156
+ 340 013a 0A       		.uleb128 0xa
+ 341 013b 0A000000 		.4byte	.LVL3
+ 342 013f D8010000 		.4byte	0x1d8
+ 343 0143 0A       		.uleb128 0xa
+ 344 0144 10000000 		.4byte	.LVL4
+ 345 0148 E9010000 		.4byte	0x1e9
+ 346 014c 0A       		.uleb128 0xa
+ 347 014d 16000000 		.4byte	.LVL5
+ 348 0151 FA010000 		.4byte	0x1fa
+ 349 0155 00       		.byte	0
+ 350 0156 09       		.uleb128 0x9
+ 351 0157 FC000000 		.4byte	.LASF23
+ 352 015b 01       		.byte	0x1
+ 353 015c 88       		.byte	0x88
+ 354 015d 00000000 		.4byte	.LFB2
+ 355 0161 28000000 		.4byte	.LFE2-.LFB2
+ 356 0165 01       		.uleb128 0x1
+ 357 0166 9C       		.byte	0x9c
+ 358 0167 7E010000 		.4byte	0x17e
+ 359 016b 0A       		.uleb128 0xa
+ 360 016c 1A000000 		.4byte	.LVL6
+ 361 0170 0B020000 		.4byte	0x20b
+ 362 0174 0A       		.uleb128 0xa
+ 363 0175 1E000000 		.4byte	.LVL7
+ 364 0179 F4000000 		.4byte	0xf4
+ 365 017d 00       		.byte	0
+ 366 017e 09       		.uleb128 0x9
+ 367 017f E5000000 		.4byte	.LASF24
+ 368 0183 01       		.byte	0x1
+ 369 0184 B2       		.byte	0xb2
+ 370 0185 00000000 		.4byte	.LFB3
+ 371 0189 18000000 		.4byte	.LFE3-.LFB3
+ 372 018d 01       		.uleb128 0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 11
+
+
+ 373 018e 9C       		.byte	0x9c
+ 374 018f A6010000 		.4byte	0x1a6
+ 375 0193 0A       		.uleb128 0xa
+ 376 0194 06000000 		.4byte	.LVL8
+ 377 0198 25010000 		.4byte	0x125
+ 378 019c 0A       		.uleb128 0xa
+ 379 019d 12000000 		.4byte	.LVL9
+ 380 01a1 12020000 		.4byte	0x212
+ 381 01a5 00       		.byte	0
+ 382 01a6 0B       		.uleb128 0xb
+ 383 01a7 29030000 		.4byte	.LASF36
+ 384 01ab 01       		.byte	0x1
+ 385 01ac 14       		.byte	0x14
+ 386 01ad E9000000 		.4byte	0xe9
+ 387 01b1 05       		.uleb128 0x5
+ 388 01b2 03       		.byte	0x3
+ 389 01b3 00000000 		.4byte	INTERNAL_STEP_1_backup
+ 390 01b7 0C       		.uleb128 0xc
+ 391 01b8 25010000 		.4byte	.LASF25
+ 392 01bc 03       		.byte	0x3
+ 393 01bd C0       		.byte	0xc0
+ 394 01be 77000000 		.4byte	0x77
+ 395 01c2 0C       		.uleb128 0xc
+ 396 01c3 6F020000 		.4byte	.LASF26
+ 397 01c7 03       		.byte	0x3
+ 398 01c8 B3       		.byte	0xb3
+ 399 01c9 77000000 		.4byte	0x77
+ 400 01cd 0C       		.uleb128 0xc
+ 401 01ce 55030000 		.4byte	.LASF27
+ 402 01d2 03       		.byte	0x3
+ 403 01d3 9D       		.byte	0x9d
+ 404 01d4 6B000000 		.4byte	0x6b
+ 405 01d8 0D       		.uleb128 0xd
+ 406 01d9 79030000 		.4byte	.LASF28
+ 407 01dd 03       		.byte	0x3
+ 408 01de BE       		.byte	0xbe
+ 409 01df E9010000 		.4byte	0x1e9
+ 410 01e3 0E       		.uleb128 0xe
+ 411 01e4 77000000 		.4byte	0x77
+ 412 01e8 00       		.byte	0
+ 413 01e9 0D       		.uleb128 0xd
+ 414 01ea B2010000 		.4byte	.LASF29
+ 415 01ee 03       		.byte	0x3
+ 416 01ef BA       		.byte	0xba
+ 417 01f0 FA010000 		.4byte	0x1fa
+ 418 01f4 0E       		.uleb128 0xe
+ 419 01f5 77000000 		.4byte	0x77
+ 420 01f9 00       		.byte	0
+ 421 01fa 0D       		.uleb128 0xd
+ 422 01fb EA010000 		.4byte	.LASF30
+ 423 01ff 03       		.byte	0x3
+ 424 0200 9E       		.byte	0x9e
+ 425 0201 0B020000 		.4byte	0x20b
+ 426 0205 0E       		.uleb128 0xe
+ 427 0206 6B000000 		.4byte	0x6b
+ 428 020a 00       		.byte	0
+ 429 020b 0F       		.uleb128 0xf
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 12
+
+
+ 430 020c D0000000 		.4byte	.LASF31
+ 431 0210 03       		.byte	0x3
+ 432 0211 93       		.byte	0x93
+ 433 0212 0F       		.uleb128 0xf
+ 434 0213 0F020000 		.4byte	.LASF32
+ 435 0217 03       		.byte	0x3
+ 436 0218 DB       		.byte	0xdb
+ 437 0219 00       		.byte	0
+ 438              		.section	.debug_abbrev,"",%progbits
+ 439              	.Ldebug_abbrev0:
+ 440 0000 01       		.uleb128 0x1
+ 441 0001 11       		.uleb128 0x11
+ 442 0002 01       		.byte	0x1
+ 443 0003 25       		.uleb128 0x25
+ 444 0004 0E       		.uleb128 0xe
+ 445 0005 13       		.uleb128 0x13
+ 446 0006 0B       		.uleb128 0xb
+ 447 0007 03       		.uleb128 0x3
+ 448 0008 0E       		.uleb128 0xe
+ 449 0009 1B       		.uleb128 0x1b
+ 450 000a 0E       		.uleb128 0xe
+ 451 000b 55       		.uleb128 0x55
+ 452 000c 17       		.uleb128 0x17
+ 453 000d 11       		.uleb128 0x11
+ 454 000e 01       		.uleb128 0x1
+ 455 000f 10       		.uleb128 0x10
+ 456 0010 17       		.uleb128 0x17
+ 457 0011 00       		.byte	0
+ 458 0012 00       		.byte	0
+ 459 0013 02       		.uleb128 0x2
+ 460 0014 24       		.uleb128 0x24
+ 461 0015 00       		.byte	0
+ 462 0016 0B       		.uleb128 0xb
+ 463 0017 0B       		.uleb128 0xb
+ 464 0018 3E       		.uleb128 0x3e
+ 465 0019 0B       		.uleb128 0xb
+ 466 001a 03       		.uleb128 0x3
+ 467 001b 0E       		.uleb128 0xe
+ 468 001c 00       		.byte	0
+ 469 001d 00       		.byte	0
+ 470 001e 03       		.uleb128 0x3
+ 471 001f 24       		.uleb128 0x24
+ 472 0020 00       		.byte	0
+ 473 0021 0B       		.uleb128 0xb
+ 474 0022 0B       		.uleb128 0xb
+ 475 0023 3E       		.uleb128 0x3e
+ 476 0024 0B       		.uleb128 0xb
+ 477 0025 03       		.uleb128 0x3
+ 478 0026 08       		.uleb128 0x8
+ 479 0027 00       		.byte	0
+ 480 0028 00       		.byte	0
+ 481 0029 04       		.uleb128 0x4
+ 482 002a 16       		.uleb128 0x16
+ 483 002b 00       		.byte	0
+ 484 002c 03       		.uleb128 0x3
+ 485 002d 0E       		.uleb128 0xe
+ 486 002e 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 13
+
+
+ 487 002f 0B       		.uleb128 0xb
+ 488 0030 3B       		.uleb128 0x3b
+ 489 0031 05       		.uleb128 0x5
+ 490 0032 49       		.uleb128 0x49
+ 491 0033 13       		.uleb128 0x13
+ 492 0034 00       		.byte	0
+ 493 0035 00       		.byte	0
+ 494 0036 05       		.uleb128 0x5
+ 495 0037 35       		.uleb128 0x35
+ 496 0038 00       		.byte	0
+ 497 0039 49       		.uleb128 0x49
+ 498 003a 13       		.uleb128 0x13
+ 499 003b 00       		.byte	0
+ 500 003c 00       		.byte	0
+ 501 003d 06       		.uleb128 0x6
+ 502 003e 13       		.uleb128 0x13
+ 503 003f 01       		.byte	0x1
+ 504 0040 0B       		.uleb128 0xb
+ 505 0041 0B       		.uleb128 0xb
+ 506 0042 3A       		.uleb128 0x3a
+ 507 0043 0B       		.uleb128 0xb
+ 508 0044 3B       		.uleb128 0x3b
+ 509 0045 0B       		.uleb128 0xb
+ 510 0046 01       		.uleb128 0x1
+ 511 0047 13       		.uleb128 0x13
+ 512 0048 00       		.byte	0
+ 513 0049 00       		.byte	0
+ 514 004a 07       		.uleb128 0x7
+ 515 004b 0D       		.uleb128 0xd
+ 516 004c 00       		.byte	0
+ 517 004d 03       		.uleb128 0x3
+ 518 004e 0E       		.uleb128 0xe
+ 519 004f 3A       		.uleb128 0x3a
+ 520 0050 0B       		.uleb128 0xb
+ 521 0051 3B       		.uleb128 0x3b
+ 522 0052 0B       		.uleb128 0xb
+ 523 0053 49       		.uleb128 0x49
+ 524 0054 13       		.uleb128 0x13
+ 525 0055 38       		.uleb128 0x38
+ 526 0056 0B       		.uleb128 0xb
+ 527 0057 00       		.byte	0
+ 528 0058 00       		.byte	0
+ 529 0059 08       		.uleb128 0x8
+ 530 005a 16       		.uleb128 0x16
+ 531 005b 00       		.byte	0
+ 532 005c 03       		.uleb128 0x3
+ 533 005d 0E       		.uleb128 0xe
+ 534 005e 3A       		.uleb128 0x3a
+ 535 005f 0B       		.uleb128 0xb
+ 536 0060 3B       		.uleb128 0x3b
+ 537 0061 0B       		.uleb128 0xb
+ 538 0062 49       		.uleb128 0x49
+ 539 0063 13       		.uleb128 0x13
+ 540 0064 00       		.byte	0
+ 541 0065 00       		.byte	0
+ 542 0066 09       		.uleb128 0x9
+ 543 0067 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 14
+
+
+ 544 0068 01       		.byte	0x1
+ 545 0069 3F       		.uleb128 0x3f
+ 546 006a 19       		.uleb128 0x19
+ 547 006b 03       		.uleb128 0x3
+ 548 006c 0E       		.uleb128 0xe
+ 549 006d 3A       		.uleb128 0x3a
+ 550 006e 0B       		.uleb128 0xb
+ 551 006f 3B       		.uleb128 0x3b
+ 552 0070 0B       		.uleb128 0xb
+ 553 0071 27       		.uleb128 0x27
+ 554 0072 19       		.uleb128 0x19
+ 555 0073 11       		.uleb128 0x11
+ 556 0074 01       		.uleb128 0x1
+ 557 0075 12       		.uleb128 0x12
+ 558 0076 06       		.uleb128 0x6
+ 559 0077 40       		.uleb128 0x40
+ 560 0078 18       		.uleb128 0x18
+ 561 0079 9742     		.uleb128 0x2117
+ 562 007b 19       		.uleb128 0x19
+ 563 007c 01       		.uleb128 0x1
+ 564 007d 13       		.uleb128 0x13
+ 565 007e 00       		.byte	0
+ 566 007f 00       		.byte	0
+ 567 0080 0A       		.uleb128 0xa
+ 568 0081 898201   		.uleb128 0x4109
+ 569 0084 00       		.byte	0
+ 570 0085 11       		.uleb128 0x11
+ 571 0086 01       		.uleb128 0x1
+ 572 0087 31       		.uleb128 0x31
+ 573 0088 13       		.uleb128 0x13
+ 574 0089 00       		.byte	0
+ 575 008a 00       		.byte	0
+ 576 008b 0B       		.uleb128 0xb
+ 577 008c 34       		.uleb128 0x34
+ 578 008d 00       		.byte	0
+ 579 008e 03       		.uleb128 0x3
+ 580 008f 0E       		.uleb128 0xe
+ 581 0090 3A       		.uleb128 0x3a
+ 582 0091 0B       		.uleb128 0xb
+ 583 0092 3B       		.uleb128 0x3b
+ 584 0093 0B       		.uleb128 0xb
+ 585 0094 49       		.uleb128 0x49
+ 586 0095 13       		.uleb128 0x13
+ 587 0096 02       		.uleb128 0x2
+ 588 0097 18       		.uleb128 0x18
+ 589 0098 00       		.byte	0
+ 590 0099 00       		.byte	0
+ 591 009a 0C       		.uleb128 0xc
+ 592 009b 2E       		.uleb128 0x2e
+ 593 009c 00       		.byte	0
+ 594 009d 3F       		.uleb128 0x3f
+ 595 009e 19       		.uleb128 0x19
+ 596 009f 03       		.uleb128 0x3
+ 597 00a0 0E       		.uleb128 0xe
+ 598 00a1 3A       		.uleb128 0x3a
+ 599 00a2 0B       		.uleb128 0xb
+ 600 00a3 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 15
+
+
+ 601 00a4 0B       		.uleb128 0xb
+ 602 00a5 27       		.uleb128 0x27
+ 603 00a6 19       		.uleb128 0x19
+ 604 00a7 49       		.uleb128 0x49
+ 605 00a8 13       		.uleb128 0x13
+ 606 00a9 3C       		.uleb128 0x3c
+ 607 00aa 19       		.uleb128 0x19
+ 608 00ab 00       		.byte	0
+ 609 00ac 00       		.byte	0
+ 610 00ad 0D       		.uleb128 0xd
+ 611 00ae 2E       		.uleb128 0x2e
+ 612 00af 01       		.byte	0x1
+ 613 00b0 3F       		.uleb128 0x3f
+ 614 00b1 19       		.uleb128 0x19
+ 615 00b2 03       		.uleb128 0x3
+ 616 00b3 0E       		.uleb128 0xe
+ 617 00b4 3A       		.uleb128 0x3a
+ 618 00b5 0B       		.uleb128 0xb
+ 619 00b6 3B       		.uleb128 0x3b
+ 620 00b7 0B       		.uleb128 0xb
+ 621 00b8 27       		.uleb128 0x27
+ 622 00b9 19       		.uleb128 0x19
+ 623 00ba 3C       		.uleb128 0x3c
+ 624 00bb 19       		.uleb128 0x19
+ 625 00bc 01       		.uleb128 0x1
+ 626 00bd 13       		.uleb128 0x13
+ 627 00be 00       		.byte	0
+ 628 00bf 00       		.byte	0
+ 629 00c0 0E       		.uleb128 0xe
+ 630 00c1 05       		.uleb128 0x5
+ 631 00c2 00       		.byte	0
+ 632 00c3 49       		.uleb128 0x49
+ 633 00c4 13       		.uleb128 0x13
+ 634 00c5 00       		.byte	0
+ 635 00c6 00       		.byte	0
+ 636 00c7 0F       		.uleb128 0xf
+ 637 00c8 2E       		.uleb128 0x2e
+ 638 00c9 00       		.byte	0
+ 639 00ca 3F       		.uleb128 0x3f
+ 640 00cb 19       		.uleb128 0x19
+ 641 00cc 03       		.uleb128 0x3
+ 642 00cd 0E       		.uleb128 0xe
+ 643 00ce 3A       		.uleb128 0x3a
+ 644 00cf 0B       		.uleb128 0xb
+ 645 00d0 3B       		.uleb128 0x3b
+ 646 00d1 0B       		.uleb128 0xb
+ 647 00d2 27       		.uleb128 0x27
+ 648 00d3 19       		.uleb128 0x19
+ 649 00d4 3C       		.uleb128 0x3c
+ 650 00d5 19       		.uleb128 0x19
+ 651 00d6 00       		.byte	0
+ 652 00d7 00       		.byte	0
+ 653 00d8 00       		.byte	0
+ 654              		.section	.debug_aranges,"",%progbits
+ 655 0000 34000000 		.4byte	0x34
+ 656 0004 0200     		.2byte	0x2
+ 657 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 16
+
+
+ 658 000a 04       		.byte	0x4
+ 659 000b 00       		.byte	0
+ 660 000c 0000     		.2byte	0
+ 661 000e 0000     		.2byte	0
+ 662 0010 00000000 		.4byte	.LFB0
+ 663 0014 1C000000 		.4byte	.LFE0-.LFB0
+ 664 0018 00000000 		.4byte	.LFB1
+ 665 001c 1C000000 		.4byte	.LFE1-.LFB1
+ 666 0020 00000000 		.4byte	.LFB2
+ 667 0024 28000000 		.4byte	.LFE2-.LFB2
+ 668 0028 00000000 		.4byte	.LFB3
+ 669 002c 18000000 		.4byte	.LFE3-.LFB3
+ 670 0030 00000000 		.4byte	0
+ 671 0034 00000000 		.4byte	0
+ 672              		.section	.debug_ranges,"",%progbits
+ 673              	.Ldebug_ranges0:
+ 674 0000 00000000 		.4byte	.LFB0
+ 675 0004 1C000000 		.4byte	.LFE0
+ 676 0008 00000000 		.4byte	.LFB1
+ 677 000c 1C000000 		.4byte	.LFE1
+ 678 0010 00000000 		.4byte	.LFB2
+ 679 0014 28000000 		.4byte	.LFE2
+ 680 0018 00000000 		.4byte	.LFB3
+ 681 001c 18000000 		.4byte	.LFE3
+ 682 0020 00000000 		.4byte	0
+ 683 0024 00000000 		.4byte	0
+ 684              		.section	.debug_line,"",%progbits
+ 685              	.Ldebug_line0:
+ 686 0000 CE000000 		.section	.debug_str,"MS",%progbits,1
+ 686      02006400 
+ 686      00000201 
+ 686      FB0E0D00 
+ 686      01010101 
+ 687              	.LASF34:
+ 688 0000 47656E65 		.ascii	"Generated_Source\\PSoC4\\INTERNAL_STEP_1_PM.c\000"
+ 688      72617465 
+ 688      645F536F 
+ 688      75726365 
+ 688      5C50536F 
+ 689              	.LASF17:
+ 690 002c 50574D55 		.ascii	"PWMUdb\000"
+ 690      646200
+ 691              	.LASF14:
+ 692 0033 72656738 		.ascii	"reg8\000"
+ 692      00
+ 693              	.LASF18:
+ 694 0038 50574D50 		.ascii	"PWMPeriod\000"
+ 694      6572696F 
+ 694      6400
+ 695              	.LASF33:
+ 696 0042 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 696      4320342E 
+ 696      392E3320 
+ 696      32303135 
+ 696      30333033 
+ 697 0075 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 697      20726576 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 17
+
+
+ 697      6973696F 
+ 697      6E203232 
+ 697      31323230 
+ 698 00a8 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 698      66756E63 
+ 698      74696F6E 
+ 698      2D736563 
+ 698      74696F6E 
+ 699              	.LASF31:
+ 700 00d0 494E5445 		.ascii	"INTERNAL_STEP_1_Stop\000"
+ 700      524E414C 
+ 700      5F535445 
+ 700      505F315F 
+ 700      53746F70 
+ 701              	.LASF24:
+ 702 00e5 494E5445 		.ascii	"INTERNAL_STEP_1_Wakeup\000"
+ 702      524E414C 
+ 702      5F535445 
+ 702      505F315F 
+ 702      57616B65 
+ 703              	.LASF23:
+ 704 00fc 494E5445 		.ascii	"INTERNAL_STEP_1_Sleep\000"
+ 704      524E414C 
+ 704      5F535445 
+ 704      505F315F 
+ 704      536C6565 
+ 705              	.LASF3:
+ 706 0112 73686F72 		.ascii	"short unsigned int\000"
+ 706      7420756E 
+ 706      7369676E 
+ 706      65642069 
+ 706      6E7400
+ 707              	.LASF25:
+ 708 0125 494E5445 		.ascii	"INTERNAL_STEP_1_ReadPeriod\000"
+ 708      524E414C 
+ 708      5F535445 
+ 708      505F315F 
+ 708      52656164 
+ 709              	.LASF11:
+ 710 0140 666C6F61 		.ascii	"float\000"
+ 710      7400
+ 711              	.LASF1:
+ 712 0146 756E7369 		.ascii	"unsigned char\000"
+ 712      676E6564 
+ 712      20636861 
+ 712      7200
+ 713              	.LASF16:
+ 714 0154 50574D45 		.ascii	"PWMEnableState\000"
+ 714      6E61626C 
+ 714      65537461 
+ 714      746500
+ 715              	.LASF5:
+ 716 0163 6C6F6E67 		.ascii	"long unsigned int\000"
+ 716      20756E73 
+ 716      69676E65 
+ 716      6420696E 
+ 716      7400
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 18
+
+
+ 717              	.LASF9:
+ 718 0175 75696E74 		.ascii	"uint8\000"
+ 718      3800
+ 719              	.LASF19:
+ 720 017b 50574D43 		.ascii	"PWMControlRegister\000"
+ 720      6F6E7472 
+ 720      6F6C5265 
+ 720      67697374 
+ 720      657200
+ 721              	.LASF12:
+ 722 018e 646F7562 		.ascii	"double\000"
+ 722      6C6500
+ 723              	.LASF20:
+ 724 0195 494E5445 		.ascii	"INTERNAL_STEP_1_backupStruct\000"
+ 724      524E414C 
+ 724      5F535445 
+ 724      505F315F 
+ 724      6261636B 
+ 725              	.LASF29:
+ 726 01b2 494E5445 		.ascii	"INTERNAL_STEP_1_WriteCounter\000"
+ 726      524E414C 
+ 726      5F535445 
+ 726      505F315F 
+ 726      57726974 
+ 727              	.LASF21:
+ 728 01cf 494E5445 		.ascii	"INTERNAL_STEP_1_SaveConfig\000"
+ 728      524E414C 
+ 728      5F535445 
+ 728      505F315F 
+ 728      53617665 
+ 729              	.LASF30:
+ 730 01ea 494E5445 		.ascii	"INTERNAL_STEP_1_WriteControlRegister\000"
+ 730      524E414C 
+ 730      5F535445 
+ 730      505F315F 
+ 730      57726974 
+ 731              	.LASF32:
+ 732 020f 494E5445 		.ascii	"INTERNAL_STEP_1_Enable\000"
+ 732      524E414C 
+ 732      5F535445 
+ 732      505F315F 
+ 732      456E6162 
+ 733              	.LASF10:
+ 734 0226 75696E74 		.ascii	"uint16\000"
+ 734      313600
+ 735              	.LASF8:
+ 736 022d 756E7369 		.ascii	"unsigned int\000"
+ 736      676E6564 
+ 736      20696E74 
+ 736      00
+ 737              	.LASF7:
+ 738 023a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 738      206C6F6E 
+ 738      6720756E 
+ 738      7369676E 
+ 738      65642069 
+ 739              	.LASF22:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 19
+
+
+ 740 0251 494E5445 		.ascii	"INTERNAL_STEP_1_RestoreConfig\000"
+ 740      524E414C 
+ 740      5F535445 
+ 740      505F315F 
+ 740      52657374 
+ 741              	.LASF26:
+ 742 026f 494E5445 		.ascii	"INTERNAL_STEP_1_ReadCounter\000"
+ 742      524E414C 
+ 742      5F535445 
+ 742      505F315F 
+ 742      52656164 
+ 743              	.LASF15:
+ 744 028b 73697A65 		.ascii	"sizetype\000"
+ 744      74797065 
+ 744      00
+ 745              	.LASF6:
+ 746 0294 6C6F6E67 		.ascii	"long long int\000"
+ 746      206C6F6E 
+ 746      6720696E 
+ 746      7400
+ 747              	.LASF13:
+ 748 02a2 63686172 		.ascii	"char\000"
+ 748      00
+ 749              	.LASF2:
+ 750 02a7 73686F72 		.ascii	"short int\000"
+ 750      7420696E 
+ 750      7400
+ 751              	.LASF35:
+ 752 02b1 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 752      73657273 
+ 752      5C546563 
+ 752      6820436F 
+ 752      6E73756C 
+ 753 02e0 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 753      70706572 
+ 753      2050726F 
+ 753      6A656374 
+ 753      73204765 
+ 754 0311 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 754      34323030 
+ 754      2D476561 
+ 754      72426573 
+ 754      742E6379 
+ 755              	.LASF36:
+ 756 0329 494E5445 		.ascii	"INTERNAL_STEP_1_backup\000"
+ 756      524E414C 
+ 756      5F535445 
+ 756      505F315F 
+ 756      6261636B 
+ 757              	.LASF4:
+ 758 0340 6C6F6E67 		.ascii	"long int\000"
+ 758      20696E74 
+ 758      00
+ 759              	.LASF0:
+ 760 0349 7369676E 		.ascii	"signed char\000"
+ 760      65642063 
+ 760      68617200 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccMh4PIm.s 			page 20
+
+
+ 761              	.LASF27:
+ 762 0355 494E5445 		.ascii	"INTERNAL_STEP_1_ReadControlRegister\000"
+ 762      524E414C 
+ 762      5F535445 
+ 762      505F315F 
+ 762      52656164 
+ 763              	.LASF28:
+ 764 0379 494E5445 		.ascii	"INTERNAL_STEP_1_WritePeriod\000"
+ 764      524E414C 
+ 764      5F535445 
+ 764      505F315F 
+ 764      57726974 
+ 765              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

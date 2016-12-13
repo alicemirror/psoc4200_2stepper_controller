@@ -1,0 +1,910 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PhaseControl.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.phaseControl,"ax",%progbits
+  18              		.align	1
+  19              		.global	phaseControl
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	phaseControl, %function
+  23              	phaseControl:
+  24              	.LFB0:
+  25              		.file 1 "PhaseControl.c"
+   1:PhaseControl.c **** /* ========================================
+   2:PhaseControl.c ****  *
+   3:PhaseControl.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:PhaseControl.c ****  * All Rights Reserved
+   5:PhaseControl.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:PhaseControl.c ****  *
+   7:PhaseControl.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:PhaseControl.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:PhaseControl.c ****  *
+  10:PhaseControl.c ****  * ========================================
+  11:PhaseControl.c **** */
+  12:PhaseControl.c **** 
+  13:PhaseControl.c **** /* [] END OF FILE */
+  14:PhaseControl.c **** #include <phaseControl.h>
+  15:PhaseControl.c **** 
+  16:PhaseControl.c **** void phaseControl (uint8 currentphase, uint8 motor){
+  26              		.loc 1 16 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 08B5     		push	{r3, lr}
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 3, -8
+  32              		.cfi_offset 14, -4
+  17:PhaseControl.c ****     
+  18:PhaseControl.c ****     if(motor == 1)
+  33              		.loc 1 18 0
+  34 0002 0129     		cmp	r1, #1
+  35 0004 02D1     		bne	.L2
+  19:PhaseControl.c ****         DIR_REG_Write (currentphase);
+  36              		.loc 1 19 0
+  37 0006 FFF7FEFF 		bl	DIR_REG_Write
+  38              	.LVL1:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 2
+
+
+  39 000a 01E0     		b	.L1
+  40              	.LVL2:
+  41              	.L2:
+  20:PhaseControl.c ****     else
+  21:PhaseControl.c ****         DIR_REG_1_Write (currentphase);
+  42              		.loc 1 21 0
+  43 000c FFF7FEFF 		bl	DIR_REG_1_Write
+  44              	.LVL3:
+  45              	.L1:
+  22:PhaseControl.c **** }
+  46              		.loc 1 22 0
+  47              		@ sp needed
+  48 0010 08BD     		pop	{r3, pc}
+  49              		.cfi_endproc
+  50              	.LFE0:
+  51              		.size	phaseControl, .-phaseControl
+  52              		.section	.text.phaseMove,"ax",%progbits
+  53              		.align	1
+  54              		.global	phaseMove
+  55              		.code	16
+  56              		.thumb_func
+  57              		.type	phaseMove, %function
+  58              	phaseMove:
+  59              	.LFB1:
+  23:PhaseControl.c **** 
+  24:PhaseControl.c **** void phaseMove(uint8 motor){
+  60              		.loc 1 24 0
+  61              		.cfi_startproc
+  62              	.LVL4:
+  63 0000 00B5     		push	{lr}
+  64              		.cfi_def_cfa_offset 4
+  65              		.cfi_offset 14, -4
+  25:PhaseControl.c ****     
+  26:PhaseControl.c ****     if(motor == 1) {
+  66              		.loc 1 26 0
+  67 0002 0128     		cmp	r0, #1
+  68 0004 0BD1     		bne	.L6
+  27:PhaseControl.c ****         if((currentStepA == 0)||(currentStepB == 0)) {
+  69              		.loc 1 27 0
+  70 0006 174B     		ldr	r3, .L44
+  71 0008 1B78     		ldrb	r3, [r3]
+  72 000a 002B     		cmp	r3, #0
+  73 000c 03D0     		beq	.L7
+  74              		.loc 1 27 0 is_stmt 0 discriminator 1
+  75 000e 164B     		ldr	r3, .L44+4
+  76 0010 1B78     		ldrb	r3, [r3]
+  77 0012 002B     		cmp	r3, #0
+  78 0014 25D1     		bne	.L5
+  79              	.L7:
+  28:PhaseControl.c ****     		if(dirReg == 0) { //Clockwise 
+  80              		.loc 1 28 0 is_stmt 1
+  81 0016 154B     		ldr	r3, .L44+8
+  82 0018 1A78     		ldrb	r2, [r3]
+  83 001a 154B     		ldr	r3, .L44+12
+  84 001c 0AE0     		b	.L43
+  85              	.L6:
+  29:PhaseControl.c ****     			switch(phase) {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 3
+
+
+  30:PhaseControl.c ****     				case 0:
+  31:PhaseControl.c ****     					phase = 2;
+  32:PhaseControl.c ****     				break;
+  33:PhaseControl.c ****     				case 1:
+  34:PhaseControl.c ****     					phase = 0;
+  35:PhaseControl.c ****     				break;
+  36:PhaseControl.c ****     				case 2:
+  37:PhaseControl.c ****     					phase = 3;
+  38:PhaseControl.c ****     				break;
+  39:PhaseControl.c ****     				case 3:
+  40:PhaseControl.c ****     					phase = 1;
+  41:PhaseControl.c ****     				break;
+  42:PhaseControl.c ****     				default:
+  43:PhaseControl.c ****     				break;
+  44:PhaseControl.c ****     			} // Clocwise phase setting
+  45:PhaseControl.c ****     		} // direction register = 0
+  46:PhaseControl.c ****     		else { // Counterclockwise
+  47:PhaseControl.c ****     			switch(phase) {
+  48:PhaseControl.c ****     				case 0:
+  49:PhaseControl.c ****     					phase = 1;
+  50:PhaseControl.c ****     				break;
+  51:PhaseControl.c ****     				case 1:
+  52:PhaseControl.c ****     					phase = 3;
+  53:PhaseControl.c ****     				break;
+  54:PhaseControl.c ****     				case 2:
+  55:PhaseControl.c ****     					phase = 0;
+  56:PhaseControl.c ****     				break;
+  57:PhaseControl.c ****     				case 3:
+  58:PhaseControl.c ****     					phase = 2;
+  59:PhaseControl.c ****     				break;
+  60:PhaseControl.c ****     				default:
+  61:PhaseControl.c ****     				break;
+  62:PhaseControl.c ****     			} // Counterclockwise phase setting
+  63:PhaseControl.c ****     		} // direction register not 0
+  64:PhaseControl.c ****     	} // Current step A or B = 0
+  65:PhaseControl.c ****     } // Motor = 1
+  66:PhaseControl.c ****     else {
+  67:PhaseControl.c ****         if((currentStepA1 == 0)||(currentStepB1 == 0)) {
+  86              		.loc 1 67 0
+  87 001e 154B     		ldr	r3, .L44+16
+  88 0020 1B78     		ldrb	r3, [r3]
+  89 0022 002B     		cmp	r3, #0
+  90 0024 03D0     		beq	.L20
+  91              		.loc 1 67 0 is_stmt 0 discriminator 1
+  92 0026 144B     		ldr	r3, .L44+20
+  93 0028 1B78     		ldrb	r3, [r3]
+  94 002a 002B     		cmp	r3, #0
+  95 002c 19D1     		bne	.L5
+  96              	.L20:
+  68:PhaseControl.c ****     		if(dirReg1 == 0) { //Clockwise 
+  97              		.loc 1 68 0 is_stmt 1
+  98 002e 134B     		ldr	r3, .L44+24
+  99 0030 1A78     		ldrb	r2, [r3]
+ 100 0032 134B     		ldr	r3, .L44+28
+ 101              	.L43:
+  69:PhaseControl.c ****     			switch(phase1) {
+ 102              		.loc 1 69 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 4
+
+
+ 103 0034 1878     		ldrb	r0, [r3]
+ 104              	.LVL5:
+  68:PhaseControl.c ****     		if(dirReg1 == 0) { //Clockwise 
+ 105              		.loc 1 68 0
+ 106 0036 002A     		cmp	r2, #0
+ 107 0038 05D1     		bne	.L21
+ 108              		.loc 1 69 0
+ 109 003a 0328     		cmp	r0, #3
+ 110 003c 11D8     		bhi	.L5
+ 111 003e FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 112              	.L23:
+ 113 0042 0E       		.byte	(.L31-.L23)/2
+ 114 0043 0C       		.byte	(.L30-.L23)/2
+ 115 0044 0A       		.byte	(.L29-.L23)/2
+ 116 0045 08       		.byte	(.L27-.L23)/2
+ 117              		.p2align 1
+ 118              	.L21:
+  70:PhaseControl.c ****     				case 0:
+  71:PhaseControl.c ****     					phase1 = 2;
+  72:PhaseControl.c ****     				break;
+  73:PhaseControl.c ****     				case 1:
+  74:PhaseControl.c ****     					phase1 = 0;
+  75:PhaseControl.c ****     				break;
+  76:PhaseControl.c ****     				case 2:
+  77:PhaseControl.c ****     					phase1 = 3;
+  78:PhaseControl.c ****     				break;
+  79:PhaseControl.c ****     				case 3:
+  80:PhaseControl.c ****     					phase1 = 1;
+  81:PhaseControl.c ****     				break;
+  82:PhaseControl.c ****     				default:
+  83:PhaseControl.c ****     				break;
+  84:PhaseControl.c ****     			} // Clocwise phase setting
+  85:PhaseControl.c ****     		} // direction register = 0
+  86:PhaseControl.c ****     		else { // Counterclockwise
+  87:PhaseControl.c ****     			switch(phase1) {
+ 119              		.loc 1 87 0
+ 120 0046 0328     		cmp	r0, #3
+ 121 0048 0BD8     		bhi	.L5
+ 122 004a FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 123              	.L28:
+ 124 004e 02       		.byte	(.L27-.L28)/2
+ 125 004f 04       		.byte	(.L29-.L28)/2
+ 126 0050 06       		.byte	(.L30-.L28)/2
+ 127 0051 08       		.byte	(.L31-.L28)/2
+ 128              		.p2align 1
+ 129              	.L27:
+  88:PhaseControl.c ****     				case 0:
+  89:PhaseControl.c ****     					phase1 = 1;
+ 130              		.loc 1 89 0
+ 131 0052 0122     		mov	r2, #1
+ 132 0054 04E0     		b	.L38
+ 133              	.L29:
+  90:PhaseControl.c ****     				break;
+  91:PhaseControl.c ****     				case 1:
+  92:PhaseControl.c ****     					phase1 = 3;
+ 134              		.loc 1 92 0
+ 135 0056 0322     		mov	r2, #3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 5
+
+
+ 136 0058 02E0     		b	.L38
+ 137              	.L30:
+  93:PhaseControl.c ****     				break;
+  94:PhaseControl.c ****     				case 2:
+  95:PhaseControl.c ****     					phase1 = 0;
+ 138              		.loc 1 95 0
+ 139 005a 0022     		mov	r2, #0
+ 140 005c 00E0     		b	.L38
+ 141              	.L31:
+  96:PhaseControl.c ****     				break;
+  97:PhaseControl.c ****     				case 3:
+  98:PhaseControl.c ****     					phase1 = 2;
+ 142              		.loc 1 98 0
+ 143 005e 0222     		mov	r2, #2
+ 144              	.L38:
+ 145 0060 1A70     		strb	r2, [r3]
+ 146              	.L5:
+  99:PhaseControl.c ****     				break;
+ 100:PhaseControl.c ****     				default:
+ 101:PhaseControl.c ****     				break;
+ 102:PhaseControl.c ****     			} // Counterclockwise phase setting
+ 103:PhaseControl.c ****     		} // direction register not 0
+ 104:PhaseControl.c ****     	} // Current step A or B = 0
+ 105:PhaseControl.c ****     } // Motor = 2
+ 106:PhaseControl.c **** }...
+ 147              		.loc 1 106 0
+ 148              		@ sp needed
+ 149 0062 00BD     		pop	{pc}
+ 150              	.L45:
+ 151              		.align	2
+ 152              	.L44:
+ 153 0064 00000000 		.word	currentStepA
+ 154 0068 00000000 		.word	currentStepB
+ 155 006c 00000000 		.word	dirReg
+ 156 0070 00000000 		.word	phase
+ 157 0074 00000000 		.word	currentStepA1
+ 158 0078 00000000 		.word	currentStepB1
+ 159 007c 00000000 		.word	dirReg1
+ 160 0080 00000000 		.word	phase1
+ 161              		.cfi_endproc
+ 162              	.LFE1:
+ 163              		.size	phaseMove, .-phaseMove
+ 164              		.text
+ 165              	.Letext0:
+ 166              		.file 2 "./phaseControl.h"
+ 167              		.file 3 "Generated_Source\\PSoC4/cytypes.h"
+ 168              		.file 4 "Generated_Source\\PSoC4/DIR_REG.h"
+ 169              		.file 5 "Generated_Source\\PSoC4/DIR_REG_1.h"
+ 170              		.section	.debug_info,"",%progbits
+ 171              	.Ldebug_info0:
+ 172 0000 6A010000 		.4byte	0x16a
+ 173 0004 0400     		.2byte	0x4
+ 174 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 175 000a 04       		.byte	0x4
+ 176 000b 01       		.uleb128 0x1
+ 177 000c 16000000 		.4byte	.LASF24
+ 178 0010 01       		.byte	0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 6
+
+
+ 179 0011 00000000 		.4byte	.LASF25
+ 180 0015 B4010000 		.4byte	.LASF26
+ 181 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 182 001d 00000000 		.4byte	0
+ 183 0021 00000000 		.4byte	.Ldebug_line0
+ 184 0025 02       		.uleb128 0x2
+ 185 0026 01       		.byte	0x1
+ 186 0027 06       		.byte	0x6
+ 187 0028 3F020000 		.4byte	.LASF0
+ 188 002c 02       		.uleb128 0x2
+ 189 002d 01       		.byte	0x1
+ 190 002e 08       		.byte	0x8
+ 191 002f 01010000 		.4byte	.LASF1
+ 192 0033 02       		.uleb128 0x2
+ 193 0034 02       		.byte	0x2
+ 194 0035 05       		.byte	0x5
+ 195 0036 AA010000 		.4byte	.LASF2
+ 196 003a 02       		.uleb128 0x2
+ 197 003b 02       		.byte	0x2
+ 198 003c 07       		.byte	0x7
+ 199 003d B8000000 		.4byte	.LASF3
+ 200 0041 02       		.uleb128 0x2
+ 201 0042 04       		.byte	0x4
+ 202 0043 05       		.byte	0x5
+ 203 0044 2C020000 		.4byte	.LASF4
+ 204 0048 02       		.uleb128 0x2
+ 205 0049 04       		.byte	0x4
+ 206 004a 07       		.byte	0x7
+ 207 004b 0F010000 		.4byte	.LASF5
+ 208 004f 02       		.uleb128 0x2
+ 209 0050 08       		.byte	0x8
+ 210 0051 05       		.byte	0x5
+ 211 0052 97010000 		.4byte	.LASF6
+ 212 0056 02       		.uleb128 0x2
+ 213 0057 08       		.byte	0x8
+ 214 0058 07       		.byte	0x7
+ 215 0059 6C010000 		.4byte	.LASF7
+ 216 005d 03       		.uleb128 0x3
+ 217 005e 04       		.byte	0x4
+ 218 005f 05       		.byte	0x5
+ 219 0060 696E7400 		.ascii	"int\000"
+ 220 0064 02       		.uleb128 0x2
+ 221 0065 04       		.byte	0x4
+ 222 0066 07       		.byte	0x7
+ 223 0067 D3000000 		.4byte	.LASF8
+ 224 006b 04       		.uleb128 0x4
+ 225 006c 21010000 		.4byte	.LASF27
+ 226 0070 03       		.byte	0x3
+ 227 0071 B901     		.2byte	0x1b9
+ 228 0073 2C000000 		.4byte	0x2c
+ 229 0077 02       		.uleb128 0x2
+ 230 0078 04       		.byte	0x4
+ 231 0079 04       		.byte	0x4
+ 232 007a FB000000 		.4byte	.LASF9
+ 233 007e 02       		.uleb128 0x2
+ 234 007f 08       		.byte	0x8
+ 235 0080 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 7
+
+
+ 236 0081 3B010000 		.4byte	.LASF10
+ 237 0085 02       		.uleb128 0x2
+ 238 0086 01       		.byte	0x1
+ 239 0087 08       		.byte	0x8
+ 240 0088 A5010000 		.4byte	.LASF11
+ 241 008c 05       		.uleb128 0x5
+ 242 008d EE000000 		.4byte	.LASF14
+ 243 0091 01       		.byte	0x1
+ 244 0092 10       		.byte	0x10
+ 245 0093 00000000 		.4byte	.LFB0
+ 246 0097 12000000 		.4byte	.LFE0-.LFB0
+ 247 009b 01       		.uleb128 0x1
+ 248 009c 9C       		.byte	0x9c
+ 249 009d D2000000 		.4byte	0xd2
+ 250 00a1 06       		.uleb128 0x6
+ 251 00a2 A4000000 		.4byte	.LASF12
+ 252 00a6 01       		.byte	0x1
+ 253 00a7 10       		.byte	0x10
+ 254 00a8 6B000000 		.4byte	0x6b
+ 255 00ac 00000000 		.4byte	.LLST0
+ 256 00b0 06       		.uleb128 0x6
+ 257 00b1 83010000 		.4byte	.LASF13
+ 258 00b5 01       		.byte	0x1
+ 259 00b6 10       		.byte	0x10
+ 260 00b7 6B000000 		.4byte	0x6b
+ 261 00bb 3A000000 		.4byte	.LLST1
+ 262 00bf 07       		.uleb128 0x7
+ 263 00c0 0A000000 		.4byte	.LVL1
+ 264 00c4 4F010000 		.4byte	0x14f
+ 265 00c8 07       		.uleb128 0x7
+ 266 00c9 10000000 		.4byte	.LVL3
+ 267 00cd 60010000 		.4byte	0x160
+ 268 00d1 00       		.byte	0
+ 269 00d2 05       		.uleb128 0x5
+ 270 00d3 35020000 		.4byte	.LASF15
+ 271 00d7 01       		.byte	0x1
+ 272 00d8 18       		.byte	0x18
+ 273 00d9 00000000 		.4byte	.LFB1
+ 274 00dd 84000000 		.4byte	.LFE1-.LFB1
+ 275 00e1 01       		.uleb128 0x1
+ 276 00e2 9C       		.byte	0x9c
+ 277 00e3 F7000000 		.4byte	0xf7
+ 278 00e7 06       		.uleb128 0x6
+ 279 00e8 83010000 		.4byte	.LASF13
+ 280 00ec 01       		.byte	0x1
+ 281 00ed 18       		.byte	0x18
+ 282 00ee 6B000000 		.4byte	0x6b
+ 283 00f2 74000000 		.4byte	.LLST2
+ 284 00f6 00       		.byte	0
+ 285 00f7 08       		.uleb128 0x8
+ 286 00f8 35010000 		.4byte	.LASF16
+ 287 00fc 02       		.byte	0x2
+ 288 00fd 13       		.byte	0x13
+ 289 00fe 6B000000 		.4byte	0x6b
+ 290 0102 08       		.uleb128 0x8
+ 291 0103 42010000 		.4byte	.LASF17
+ 292 0107 02       		.byte	0x2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 8
+
+
+ 293 0108 14       		.byte	0x14
+ 294 0109 6B000000 		.4byte	0x6b
+ 295 010d 08       		.uleb128 0x8
+ 296 010e 4F010000 		.4byte	.LASF18
+ 297 0112 02       		.byte	0x2
+ 298 0113 15       		.byte	0x15
+ 299 0114 6B000000 		.4byte	0x6b
+ 300 0118 08       		.uleb128 0x8
+ 301 0119 B1000000 		.4byte	.LASF19
+ 302 011d 02       		.byte	0x2
+ 303 011e 16       		.byte	0x16
+ 304 011f 6B000000 		.4byte	0x6b
+ 305 0123 08       		.uleb128 0x8
+ 306 0124 0F000000 		.4byte	.LASF20
+ 307 0128 02       		.byte	0x2
+ 308 0129 18       		.byte	0x18
+ 309 012a 6B000000 		.4byte	0x6b
+ 310 012e 08       		.uleb128 0x8
+ 311 012f 89010000 		.4byte	.LASF21
+ 312 0133 02       		.byte	0x2
+ 313 0134 19       		.byte	0x19
+ 314 0135 6B000000 		.4byte	0x6b
+ 315 0139 08       		.uleb128 0x8
+ 316 013a E0000000 		.4byte	.LASF22
+ 317 013e 02       		.byte	0x2
+ 318 013f 1A       		.byte	0x1a
+ 319 0140 6B000000 		.4byte	0x6b
+ 320 0144 08       		.uleb128 0x8
+ 321 0145 CB000000 		.4byte	.LASF23
+ 322 0149 02       		.byte	0x2
+ 323 014a 1B       		.byte	0x1b
+ 324 014b 6B000000 		.4byte	0x6b
+ 325 014f 09       		.uleb128 0x9
+ 326 0150 27010000 		.4byte	.LASF28
+ 327 0154 04       		.byte	0x4
+ 328 0155 27       		.byte	0x27
+ 329 0156 60010000 		.4byte	0x160
+ 330 015a 0A       		.uleb128 0xa
+ 331 015b 6B000000 		.4byte	0x6b
+ 332 015f 00       		.byte	0
+ 333 0160 0B       		.uleb128 0xb
+ 334 0161 5C010000 		.4byte	.LASF29
+ 335 0165 05       		.byte	0x5
+ 336 0166 27       		.byte	0x27
+ 337 0167 0A       		.uleb128 0xa
+ 338 0168 6B000000 		.4byte	0x6b
+ 339 016c 00       		.byte	0
+ 340 016d 00       		.byte	0
+ 341              		.section	.debug_abbrev,"",%progbits
+ 342              	.Ldebug_abbrev0:
+ 343 0000 01       		.uleb128 0x1
+ 344 0001 11       		.uleb128 0x11
+ 345 0002 01       		.byte	0x1
+ 346 0003 25       		.uleb128 0x25
+ 347 0004 0E       		.uleb128 0xe
+ 348 0005 13       		.uleb128 0x13
+ 349 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 9
+
+
+ 350 0007 03       		.uleb128 0x3
+ 351 0008 0E       		.uleb128 0xe
+ 352 0009 1B       		.uleb128 0x1b
+ 353 000a 0E       		.uleb128 0xe
+ 354 000b 55       		.uleb128 0x55
+ 355 000c 17       		.uleb128 0x17
+ 356 000d 11       		.uleb128 0x11
+ 357 000e 01       		.uleb128 0x1
+ 358 000f 10       		.uleb128 0x10
+ 359 0010 17       		.uleb128 0x17
+ 360 0011 00       		.byte	0
+ 361 0012 00       		.byte	0
+ 362 0013 02       		.uleb128 0x2
+ 363 0014 24       		.uleb128 0x24
+ 364 0015 00       		.byte	0
+ 365 0016 0B       		.uleb128 0xb
+ 366 0017 0B       		.uleb128 0xb
+ 367 0018 3E       		.uleb128 0x3e
+ 368 0019 0B       		.uleb128 0xb
+ 369 001a 03       		.uleb128 0x3
+ 370 001b 0E       		.uleb128 0xe
+ 371 001c 00       		.byte	0
+ 372 001d 00       		.byte	0
+ 373 001e 03       		.uleb128 0x3
+ 374 001f 24       		.uleb128 0x24
+ 375 0020 00       		.byte	0
+ 376 0021 0B       		.uleb128 0xb
+ 377 0022 0B       		.uleb128 0xb
+ 378 0023 3E       		.uleb128 0x3e
+ 379 0024 0B       		.uleb128 0xb
+ 380 0025 03       		.uleb128 0x3
+ 381 0026 08       		.uleb128 0x8
+ 382 0027 00       		.byte	0
+ 383 0028 00       		.byte	0
+ 384 0029 04       		.uleb128 0x4
+ 385 002a 16       		.uleb128 0x16
+ 386 002b 00       		.byte	0
+ 387 002c 03       		.uleb128 0x3
+ 388 002d 0E       		.uleb128 0xe
+ 389 002e 3A       		.uleb128 0x3a
+ 390 002f 0B       		.uleb128 0xb
+ 391 0030 3B       		.uleb128 0x3b
+ 392 0031 05       		.uleb128 0x5
+ 393 0032 49       		.uleb128 0x49
+ 394 0033 13       		.uleb128 0x13
+ 395 0034 00       		.byte	0
+ 396 0035 00       		.byte	0
+ 397 0036 05       		.uleb128 0x5
+ 398 0037 2E       		.uleb128 0x2e
+ 399 0038 01       		.byte	0x1
+ 400 0039 3F       		.uleb128 0x3f
+ 401 003a 19       		.uleb128 0x19
+ 402 003b 03       		.uleb128 0x3
+ 403 003c 0E       		.uleb128 0xe
+ 404 003d 3A       		.uleb128 0x3a
+ 405 003e 0B       		.uleb128 0xb
+ 406 003f 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 10
+
+
+ 407 0040 0B       		.uleb128 0xb
+ 408 0041 27       		.uleb128 0x27
+ 409 0042 19       		.uleb128 0x19
+ 410 0043 11       		.uleb128 0x11
+ 411 0044 01       		.uleb128 0x1
+ 412 0045 12       		.uleb128 0x12
+ 413 0046 06       		.uleb128 0x6
+ 414 0047 40       		.uleb128 0x40
+ 415 0048 18       		.uleb128 0x18
+ 416 0049 9742     		.uleb128 0x2117
+ 417 004b 19       		.uleb128 0x19
+ 418 004c 01       		.uleb128 0x1
+ 419 004d 13       		.uleb128 0x13
+ 420 004e 00       		.byte	0
+ 421 004f 00       		.byte	0
+ 422 0050 06       		.uleb128 0x6
+ 423 0051 05       		.uleb128 0x5
+ 424 0052 00       		.byte	0
+ 425 0053 03       		.uleb128 0x3
+ 426 0054 0E       		.uleb128 0xe
+ 427 0055 3A       		.uleb128 0x3a
+ 428 0056 0B       		.uleb128 0xb
+ 429 0057 3B       		.uleb128 0x3b
+ 430 0058 0B       		.uleb128 0xb
+ 431 0059 49       		.uleb128 0x49
+ 432 005a 13       		.uleb128 0x13
+ 433 005b 02       		.uleb128 0x2
+ 434 005c 17       		.uleb128 0x17
+ 435 005d 00       		.byte	0
+ 436 005e 00       		.byte	0
+ 437 005f 07       		.uleb128 0x7
+ 438 0060 898201   		.uleb128 0x4109
+ 439 0063 00       		.byte	0
+ 440 0064 11       		.uleb128 0x11
+ 441 0065 01       		.uleb128 0x1
+ 442 0066 31       		.uleb128 0x31
+ 443 0067 13       		.uleb128 0x13
+ 444 0068 00       		.byte	0
+ 445 0069 00       		.byte	0
+ 446 006a 08       		.uleb128 0x8
+ 447 006b 34       		.uleb128 0x34
+ 448 006c 00       		.byte	0
+ 449 006d 03       		.uleb128 0x3
+ 450 006e 0E       		.uleb128 0xe
+ 451 006f 3A       		.uleb128 0x3a
+ 452 0070 0B       		.uleb128 0xb
+ 453 0071 3B       		.uleb128 0x3b
+ 454 0072 0B       		.uleb128 0xb
+ 455 0073 49       		.uleb128 0x49
+ 456 0074 13       		.uleb128 0x13
+ 457 0075 3F       		.uleb128 0x3f
+ 458 0076 19       		.uleb128 0x19
+ 459 0077 3C       		.uleb128 0x3c
+ 460 0078 19       		.uleb128 0x19
+ 461 0079 00       		.byte	0
+ 462 007a 00       		.byte	0
+ 463 007b 09       		.uleb128 0x9
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 11
+
+
+ 464 007c 2E       		.uleb128 0x2e
+ 465 007d 01       		.byte	0x1
+ 466 007e 3F       		.uleb128 0x3f
+ 467 007f 19       		.uleb128 0x19
+ 468 0080 03       		.uleb128 0x3
+ 469 0081 0E       		.uleb128 0xe
+ 470 0082 3A       		.uleb128 0x3a
+ 471 0083 0B       		.uleb128 0xb
+ 472 0084 3B       		.uleb128 0x3b
+ 473 0085 0B       		.uleb128 0xb
+ 474 0086 27       		.uleb128 0x27
+ 475 0087 19       		.uleb128 0x19
+ 476 0088 3C       		.uleb128 0x3c
+ 477 0089 19       		.uleb128 0x19
+ 478 008a 01       		.uleb128 0x1
+ 479 008b 13       		.uleb128 0x13
+ 480 008c 00       		.byte	0
+ 481 008d 00       		.byte	0
+ 482 008e 0A       		.uleb128 0xa
+ 483 008f 05       		.uleb128 0x5
+ 484 0090 00       		.byte	0
+ 485 0091 49       		.uleb128 0x49
+ 486 0092 13       		.uleb128 0x13
+ 487 0093 00       		.byte	0
+ 488 0094 00       		.byte	0
+ 489 0095 0B       		.uleb128 0xb
+ 490 0096 2E       		.uleb128 0x2e
+ 491 0097 01       		.byte	0x1
+ 492 0098 3F       		.uleb128 0x3f
+ 493 0099 19       		.uleb128 0x19
+ 494 009a 03       		.uleb128 0x3
+ 495 009b 0E       		.uleb128 0xe
+ 496 009c 3A       		.uleb128 0x3a
+ 497 009d 0B       		.uleb128 0xb
+ 498 009e 3B       		.uleb128 0x3b
+ 499 009f 0B       		.uleb128 0xb
+ 500 00a0 27       		.uleb128 0x27
+ 501 00a1 19       		.uleb128 0x19
+ 502 00a2 3C       		.uleb128 0x3c
+ 503 00a3 19       		.uleb128 0x19
+ 504 00a4 00       		.byte	0
+ 505 00a5 00       		.byte	0
+ 506 00a6 00       		.byte	0
+ 507              		.section	.debug_loc,"",%progbits
+ 508              	.Ldebug_loc0:
+ 509              	.LLST0:
+ 510 0000 00000000 		.4byte	.LVL0
+ 511 0004 09000000 		.4byte	.LVL1-1
+ 512 0008 0100     		.2byte	0x1
+ 513 000a 50       		.byte	0x50
+ 514 000b 09000000 		.4byte	.LVL1-1
+ 515 000f 0C000000 		.4byte	.LVL2
+ 516 0013 0400     		.2byte	0x4
+ 517 0015 F3       		.byte	0xf3
+ 518 0016 01       		.uleb128 0x1
+ 519 0017 50       		.byte	0x50
+ 520 0018 9F       		.byte	0x9f
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 12
+
+
+ 521 0019 0C000000 		.4byte	.LVL2
+ 522 001d 0F000000 		.4byte	.LVL3-1
+ 523 0021 0100     		.2byte	0x1
+ 524 0023 50       		.byte	0x50
+ 525 0024 0F000000 		.4byte	.LVL3-1
+ 526 0028 12000000 		.4byte	.LFE0
+ 527 002c 0400     		.2byte	0x4
+ 528 002e F3       		.byte	0xf3
+ 529 002f 01       		.uleb128 0x1
+ 530 0030 50       		.byte	0x50
+ 531 0031 9F       		.byte	0x9f
+ 532 0032 00000000 		.4byte	0
+ 533 0036 00000000 		.4byte	0
+ 534              	.LLST1:
+ 535 003a 00000000 		.4byte	.LVL0
+ 536 003e 09000000 		.4byte	.LVL1-1
+ 537 0042 0100     		.2byte	0x1
+ 538 0044 51       		.byte	0x51
+ 539 0045 09000000 		.4byte	.LVL1-1
+ 540 0049 0C000000 		.4byte	.LVL2
+ 541 004d 0400     		.2byte	0x4
+ 542 004f F3       		.byte	0xf3
+ 543 0050 01       		.uleb128 0x1
+ 544 0051 51       		.byte	0x51
+ 545 0052 9F       		.byte	0x9f
+ 546 0053 0C000000 		.4byte	.LVL2
+ 547 0057 0F000000 		.4byte	.LVL3-1
+ 548 005b 0100     		.2byte	0x1
+ 549 005d 51       		.byte	0x51
+ 550 005e 0F000000 		.4byte	.LVL3-1
+ 551 0062 12000000 		.4byte	.LFE0
+ 552 0066 0400     		.2byte	0x4
+ 553 0068 F3       		.byte	0xf3
+ 554 0069 01       		.uleb128 0x1
+ 555 006a 51       		.byte	0x51
+ 556 006b 9F       		.byte	0x9f
+ 557 006c 00000000 		.4byte	0
+ 558 0070 00000000 		.4byte	0
+ 559              	.LLST2:
+ 560 0074 00000000 		.4byte	.LVL4
+ 561 0078 36000000 		.4byte	.LVL5
+ 562 007c 0100     		.2byte	0x1
+ 563 007e 50       		.byte	0x50
+ 564 007f 36000000 		.4byte	.LVL5
+ 565 0083 84000000 		.4byte	.LFE1
+ 566 0087 0400     		.2byte	0x4
+ 567 0089 F3       		.byte	0xf3
+ 568 008a 01       		.uleb128 0x1
+ 569 008b 50       		.byte	0x50
+ 570 008c 9F       		.byte	0x9f
+ 571 008d 00000000 		.4byte	0
+ 572 0091 00000000 		.4byte	0
+ 573              		.section	.debug_aranges,"",%progbits
+ 574 0000 24000000 		.4byte	0x24
+ 575 0004 0200     		.2byte	0x2
+ 576 0006 00000000 		.4byte	.Ldebug_info0
+ 577 000a 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 13
+
+
+ 578 000b 00       		.byte	0
+ 579 000c 0000     		.2byte	0
+ 580 000e 0000     		.2byte	0
+ 581 0010 00000000 		.4byte	.LFB0
+ 582 0014 12000000 		.4byte	.LFE0-.LFB0
+ 583 0018 00000000 		.4byte	.LFB1
+ 584 001c 84000000 		.4byte	.LFE1-.LFB1
+ 585 0020 00000000 		.4byte	0
+ 586 0024 00000000 		.4byte	0
+ 587              		.section	.debug_ranges,"",%progbits
+ 588              	.Ldebug_ranges0:
+ 589 0000 00000000 		.4byte	.LFB0
+ 590 0004 12000000 		.4byte	.LFE0
+ 591 0008 00000000 		.4byte	.LFB1
+ 592 000c 84000000 		.4byte	.LFE1
+ 593 0010 00000000 		.4byte	0
+ 594 0014 00000000 		.4byte	0
+ 595              		.section	.debug_line,"",%progbits
+ 596              	.Ldebug_line0:
+ 597 0000 C0000000 		.section	.debug_str,"MS",%progbits,1
+ 597      02007900 
+ 597      00000201 
+ 597      FB0E0D00 
+ 597      01010101 
+ 598              	.LASF25:
+ 599 0000 50686173 		.ascii	"PhaseControl.c\000"
+ 599      65436F6E 
+ 599      74726F6C 
+ 599      2E6300
+ 600              	.LASF20:
+ 601 000f 70686173 		.ascii	"phase1\000"
+ 601      653100
+ 602              	.LASF24:
+ 603 0016 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 603      4320342E 
+ 603      392E3320 
+ 603      32303135 
+ 603      30333033 
+ 604 0049 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 604      20726576 
+ 604      6973696F 
+ 604      6E203232 
+ 604      31323230 
+ 605 007c 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 605      66756E63 
+ 605      74696F6E 
+ 605      2D736563 
+ 605      74696F6E 
+ 606              	.LASF12:
+ 607 00a4 63757272 		.ascii	"currentphase\000"
+ 607      656E7470 
+ 607      68617365 
+ 607      00
+ 608              	.LASF19:
+ 609 00b1 64697252 		.ascii	"dirReg\000"
+ 609      656700
+ 610              	.LASF3:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 14
+
+
+ 611 00b8 73686F72 		.ascii	"short unsigned int\000"
+ 611      7420756E 
+ 611      7369676E 
+ 611      65642069 
+ 611      6E7400
+ 612              	.LASF23:
+ 613 00cb 64697252 		.ascii	"dirReg1\000"
+ 613      65673100 
+ 614              	.LASF8:
+ 615 00d3 756E7369 		.ascii	"unsigned int\000"
+ 615      676E6564 
+ 615      20696E74 
+ 615      00
+ 616              	.LASF22:
+ 617 00e0 63757272 		.ascii	"currentStepB1\000"
+ 617      656E7453 
+ 617      74657042 
+ 617      3100
+ 618              	.LASF14:
+ 619 00ee 70686173 		.ascii	"phaseControl\000"
+ 619      65436F6E 
+ 619      74726F6C 
+ 619      00
+ 620              	.LASF9:
+ 621 00fb 666C6F61 		.ascii	"float\000"
+ 621      7400
+ 622              	.LASF1:
+ 623 0101 756E7369 		.ascii	"unsigned char\000"
+ 623      676E6564 
+ 623      20636861 
+ 623      7200
+ 624              	.LASF5:
+ 625 010f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 625      20756E73 
+ 625      69676E65 
+ 625      6420696E 
+ 625      7400
+ 626              	.LASF27:
+ 627 0121 75696E74 		.ascii	"uint8\000"
+ 627      3800
+ 628              	.LASF28:
+ 629 0127 4449525F 		.ascii	"DIR_REG_Write\000"
+ 629      5245475F 
+ 629      57726974 
+ 629      6500
+ 630              	.LASF16:
+ 631 0135 70686173 		.ascii	"phase\000"
+ 631      6500
+ 632              	.LASF10:
+ 633 013b 646F7562 		.ascii	"double\000"
+ 633      6C6500
+ 634              	.LASF17:
+ 635 0142 63757272 		.ascii	"currentStepA\000"
+ 635      656E7453 
+ 635      74657041 
+ 635      00
+ 636              	.LASF18:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 15
+
+
+ 637 014f 63757272 		.ascii	"currentStepB\000"
+ 637      656E7453 
+ 637      74657042 
+ 637      00
+ 638              	.LASF29:
+ 639 015c 4449525F 		.ascii	"DIR_REG_1_Write\000"
+ 639      5245475F 
+ 639      315F5772 
+ 639      69746500 
+ 640              	.LASF7:
+ 641 016c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 641      206C6F6E 
+ 641      6720756E 
+ 641      7369676E 
+ 641      65642069 
+ 642              	.LASF13:
+ 643 0183 6D6F746F 		.ascii	"motor\000"
+ 643      7200
+ 644              	.LASF21:
+ 645 0189 63757272 		.ascii	"currentStepA1\000"
+ 645      656E7453 
+ 645      74657041 
+ 645      3100
+ 646              	.LASF6:
+ 647 0197 6C6F6E67 		.ascii	"long long int\000"
+ 647      206C6F6E 
+ 647      6720696E 
+ 647      7400
+ 648              	.LASF11:
+ 649 01a5 63686172 		.ascii	"char\000"
+ 649      00
+ 650              	.LASF2:
+ 651 01aa 73686F72 		.ascii	"short int\000"
+ 651      7420696E 
+ 651      7400
+ 652              	.LASF26:
+ 653 01b4 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 653      73657273 
+ 653      5C546563 
+ 653      6820436F 
+ 653      6E73756C 
+ 654 01e3 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 654      70706572 
+ 654      2050726F 
+ 654      6A656374 
+ 654      73204765 
+ 655 0214 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 655      34323030 
+ 655      2D476561 
+ 655      72426573 
+ 655      742E6379 
+ 656              	.LASF4:
+ 657 022c 6C6F6E67 		.ascii	"long int\000"
+ 657      20696E74 
+ 657      00
+ 658              	.LASF15:
+ 659 0235 70686173 		.ascii	"phaseMove\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccFVgrIC.s 			page 16
+
+
+ 659      654D6F76 
+ 659      6500
+ 660              	.LASF0:
+ 661 023f 7369676E 		.ascii	"signed char\000"
+ 661      65642063 
+ 661      68617200 
+ 662              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

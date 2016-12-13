@@ -1,0 +1,210 @@
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/CortexM0/ARM_GCC_493/Release/Move.o : C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYLIB.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_2.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_3.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_4.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Move.c C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Move.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/genSine.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/phaseControl.h 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYLIB.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLFClk.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_2.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_3.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_4.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cypins.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Move.c : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Move.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/genSine.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/phaseControl.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/CortexM0/ARM_GCC_493/Release/PhaseControl.o : C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/PhaseControl.c C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/phaseControl.h 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/PhaseControl.c : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/CortexM0/ARM_GCC_493/Release/genSine.o : C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYLIB.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/genSine.c C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/genSine.h 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/genSine.c : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/CortexM0/ARM_GCC_493/Release/inputScan.o : C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYlIB.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/inputScan.c C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/inputScan.h 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/inputScan.c : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/inputScan.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/CortexM0/ARM_GCC_493/Release/main.o : C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Bootloadable_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYLIB.H C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYLIB.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYlIB.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Clock_PWM_MAIN.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Clock_PWM_MAIN_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CommCLK.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_BOOT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_EZI2C.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_EZI2C_PVT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_I2C.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_I2C_PVT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_PINS.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_PVT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_SCB_IRQ.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_SPI_UART.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_SPI_UART_PVT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_rx_i2c_scl_spi_mosi.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_rx_i2c_scl_spi_mosi_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_tx_i2c_sda_spi_miso.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_tx_i2c_sda_spi_miso_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyFlash.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_A_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_OUT_B_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_REG_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_OUT_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_I2C.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_I2C_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_SERIAL.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_SERIAL_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/MODE_SWITCH.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/MODE_SWITCH_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_1_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_SOURCE_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/STEP_INPUT_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/SW3.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/SW3_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_2.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_3.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_4.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cm0.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cmFunc.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cmInstr.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyPm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydisabledsheets.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/project.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Move.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/device.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/global.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/inputScan.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/main.c C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/phaseControl.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/systemInit.h 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Bootloadable_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Clock_PWM_MAIN.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Clock_PWM_MAIN_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CommCLK.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_BOOT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_EZI2C.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_EZI2C_PVT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_I2C.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_I2C_PVT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_PINS.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_PVT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_SCB_IRQ.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_SPI_UART.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_SPI_UART_PVT.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_rx_i2c_scl_spi_mosi.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_rx_i2c_scl_spi_mosi_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_tx_i2c_sda_spi_miso.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Comm_uart_tx_i2c_sda_spi_miso_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyFlash.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_I2C.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_I2C_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_SERIAL.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/LED_SERIAL_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/MODE_SWITCH.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/MODE_SWITCH_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_A_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B_1.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B_1_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/PWM_OUT_B_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/SW3.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/SW3_aliases.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cm0.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cmFunc.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/core_cmInstr.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyPm.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydisabledsheets.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/project.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/device.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/global.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/main.c : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/systemInit.h : 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/CortexM0/ARM_GCC_493/Release/systemInit.o : C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CYLIB.H C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Clock_PWM_MAIN.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/Clock_PWM_MAIN_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_SOURCE_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/DIR_INPUT_aliases.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/INTERNAL_STEP_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_1.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_2.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_3.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/TCPWM_4.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/systemInit.c C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/systemInit.h 
+
+C:/Users/Tech\ Consulting/Desktop/PSOC4\ projects/StepMotor_PSoC4200/StepMotor_PSoC4200_Dual.cydsn/systemInit.c : 
+

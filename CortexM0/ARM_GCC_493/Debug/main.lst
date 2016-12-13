@@ -1,0 +1,1783 @@
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	currentStepA,1,1
+  18              		.comm	currentStepB,1,1
+  19              		.comm	currentStepA1,1,1
+  20              		.comm	currentStepB1,1,1
+  21              		.comm	divider,1,1
+  22              		.comm	divider1,1,1
+  23              		.comm	step,1,1
+  24              		.comm	step1,1,1
+  25              		.comm	previousDivider,1,1
+  26              		.comm	previousDivider1,1,1
+  27              		.comm	FullScale,1,1
+  28              		.comm	FullScale1,1,1
+  29              		.comm	phase,1,1
+  30              		.comm	phase1,1,1
+  31              		.comm	stepPulse,1,1
+  32              		.comm	stepPulse1,1,1
+  33              		.comm	previousStepPulse,1,1
+  34              		.comm	previousStepPulse1,1,1
+  35              		.comm	dirReg,1,1
+  36              		.comm	dirReg1,1,1
+  37              		.comm	pwmA,1,1
+  38              		.comm	pwmB,1,1
+  39              		.comm	pwmA1,1,1
+  40              		.comm	pwmB1,1,1
+  41              		.global	sineTable
+  42              		.section	.rodata
+  43              		.align	2
+  44              		.type	sineTable, %object
+  45              		.size	sineTable, 17
+  46              	sineTable:
+  47 0000 64       		.byte	100
+  48 0001 73       		.byte	115
+  49 0002 82       		.byte	-126
+  50 0003 91       		.byte	-111
+  51 0004 9F       		.byte	-97
+  52 0005 AD       		.byte	-83
+  53 0006 BA       		.byte	-70
+  54 0007 C6       		.byte	-58
+  55 0008 D2       		.byte	-46
+  56 0009 DC       		.byte	-36
+  57 000a E5       		.byte	-27
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 2
+
+
+  58 000b ED       		.byte	-19
+  59 000c F3       		.byte	-13
+  60 000d F8       		.byte	-8
+  61 000e FC       		.byte	-4
+  62 000f FE       		.byte	-2
+  63 0010 FF       		.byte	-1
+  64 0011 000000   		.section	.text.main,"ax",%progbits
+  65              		.align	2
+  66              		.global	main
+  67              		.code	16
+  68              		.thumb_func
+  69              		.type	main, %function
+  70              	main:
+  71              	.LFB34:
+  72              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * The following firmware was developed by Cypress Semiconductor
+   4:.\main.c      ****  * This work is licensed under a Creative Commons Attribution 3.0 Unported License.
+   5:.\main.c      ****  * 
+   6:.\main.c      ****  * http://creativecommons.org/licenses/by/3.0/deed.en_US
+   7:.\main.c      ****  * 
+   8:.\main.c      ****  * You are free to:
+   9:.\main.c      ****  * -To Share — to copy, distribute and transmit the work 
+  10:.\main.c      ****  * -To Remix — to adapt the work 
+  11:.\main.c      ****  * -To make commercial use of the work
+  12:.\main.c      ****  *
+  13:.\main.c      **** */
+  14:.\main.c      **** #include <device.h>
+  15:.\main.c      **** #include <global.h>
+  16:.\main.c      **** #include <systemInit.h>
+  17:.\main.c      **** #include <inputScan.h>
+  18:.\main.c      **** #include <Move.h>
+  19:.\main.c      **** #include <INTERNAL_STEP.h>
+  20:.\main.c      **** #include <INTERNAL_STEP_1.h>
+  21:.\main.c      **** #define PH1 3204 //run
+  22:.\main.c      **** #define PH2 4800 //p
+  23:.\main.c      **** #define PH3 8000 //run
+  24:.\main.c      **** #define PH4 9600 //p
+  25:.\main.c      **** #define PH5 16000 //run
+  26:.\main.c      **** #define PH6 17600 //p
+  27:.\main.c      **** #define PH7 24000 //run
+  28:.\main.c      **** #define PH8 27200 //p
+  29:.\main.c      **** #define PH9 28800 //run
+  30:.\main.c      **** #define PH10 32000 //p
+  31:.\main.c      **** #define PH11 33600 //run
+  32:.\main.c      **** #define PH12 36800 //p
+  33:.\main.c      **** 
+  34:.\main.c      **** void main() {
+  73              		.loc 1 34 0
+  74              		.cfi_startproc
+  75 0000 80B5     		push	{r7, lr}
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 7, -8
+  78              		.cfi_offset 14, -4
+  79 0002 82B0     		sub	sp, sp, #8
+  80              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 3
+
+
+  81 0004 00AF     		add	r7, sp, #0
+  82              		.cfi_def_cfa_register 7
+  35:.\main.c      ****     uint16 i[2];
+  36:.\main.c      **** 
+  37:.\main.c      ****     uint8 l_previousStepPulse;
+  38:.\main.c      ****     uint8 l_stepPulse;
+  39:.\main.c      ****     uint8 jm;
+  40:.\main.c      ****     
+  41:.\main.c      ****     i[0] = 0;
+  83              		.loc 1 41 0
+  84 0006 3B1C     		mov	r3, r7
+  85 0008 0022     		mov	r2, #0
+  86 000a 1A80     		strh	r2, [r3]
+  42:.\main.c      ****     i[1] = 0;
+  87              		.loc 1 42 0
+  88 000c 3B1C     		mov	r3, r7
+  89 000e 0022     		mov	r2, #0
+  90 0010 5A80     		strh	r2, [r3, #2]
+  43:.\main.c      ****     
+  44:.\main.c      ****     systemInit();
+  91              		.loc 1 44 0
+  92 0012 FFF7FEFF 		bl	systemInit
+  93              	.L38:
+  45:.\main.c      **** 
+  46:.\main.c      ****     while(1) {
+  47:.\main.c      ****         // Loop on two motors
+  48:.\main.c      ****         for(jm = 1; jm <= 2; jm++) {
+  94              		.loc 1 48 0
+  95 0016 7B1D     		add	r3, r7, #5
+  96 0018 0122     		mov	r2, #1
+  97 001a 1A70     		strb	r2, [r3]
+  98 001c 5EE2     		b	.L2
+  99              	.L37:
+  49:.\main.c      ****             // Assign local variables to for the current motor
+  50:.\main.c      ****             if(jm == 1) {
+ 100              		.loc 1 50 0
+ 101 001e 7B1D     		add	r3, r7, #5
+ 102 0020 1B78     		ldrb	r3, [r3]
+ 103 0022 012B     		cmp	r3, #1
+ 104 0024 08D1     		bne	.L3
+  51:.\main.c      ****                 l_previousStepPulse = previousStepPulse;
+ 105              		.loc 1 51 0
+ 106 0026 FB1D     		add	r3, r7, #7
+ 107 0028 C94A     		ldr	r2, .L39
+ 108 002a 1278     		ldrb	r2, [r2]
+ 109 002c 1A70     		strb	r2, [r3]
+  52:.\main.c      ****                 l_stepPulse = stepPulse;
+ 110              		.loc 1 52 0
+ 111 002e BB1D     		add	r3, r7, #6
+ 112 0030 C84A     		ldr	r2, .L39+4
+ 113 0032 1278     		ldrb	r2, [r2]
+ 114 0034 1A70     		strb	r2, [r3]
+ 115 0036 07E0     		b	.L4
+ 116              	.L3:
+  53:.\main.c      ****             }
+  54:.\main.c      ****             else {
+  55:.\main.c      ****                 l_previousStepPulse = previousStepPulse1;
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 4
+
+
+ 117              		.loc 1 55 0
+ 118 0038 FB1D     		add	r3, r7, #7
+ 119 003a C74A     		ldr	r2, .L39+8
+ 120 003c 1278     		ldrb	r2, [r2]
+ 121 003e 1A70     		strb	r2, [r3]
+  56:.\main.c      ****                 l_stepPulse = stepPulse1;
+ 122              		.loc 1 56 0
+ 123 0040 BB1D     		add	r3, r7, #6
+ 124 0042 C64A     		ldr	r2, .L39+12
+ 125 0044 1278     		ldrb	r2, [r2]
+ 126 0046 1A70     		strb	r2, [r3]
+ 127              	.L4:
+  57:.\main.c      ****             }
+  58:.\main.c      **** 
+  59:.\main.c      ****             // Process stepping
+  60:.\main.c      ****             inputScan(jm);
+ 128              		.loc 1 60 0
+ 129 0048 7B1D     		add	r3, r7, #5
+ 130 004a 1B78     		ldrb	r3, [r3]
+ 131 004c 181C     		mov	r0, r3
+ 132 004e FFF7FEFF 		bl	inputScan
+  61:.\main.c      ****             
+  62:.\main.c      ****             if (l_previousStepPulse == 0 && l_stepPulse == 1){
+ 133              		.loc 1 62 0
+ 134 0052 FB1D     		add	r3, r7, #7
+ 135 0054 1B78     		ldrb	r3, [r3]
+ 136 0056 002B     		cmp	r3, #0
+ 137 0058 00D0     		beq	.LCB61
+ 138 005a 3AE2     		b	.L5	@long jump
+ 139              	.LCB61:
+ 140              		.loc 1 62 0 is_stmt 0 discriminator 1
+ 141 005c BB1D     		add	r3, r7, #6
+ 142 005e 1B78     		ldrb	r3, [r3]
+ 143 0060 012B     		cmp	r3, #1
+ 144 0062 00D0     		beq	.LCB65
+ 145 0064 35E2     		b	.L5	@long jump
+ 146              	.LCB65:
+  63:.\main.c      ****       			if (i[jm - 1] < PH1){
+ 147              		.loc 1 63 0 is_stmt 1
+ 148 0066 7B1D     		add	r3, r7, #5
+ 149 0068 1B78     		ldrb	r3, [r3]
+ 150 006a 5A1E     		sub	r2, r3, #1
+ 151 006c 3B1C     		mov	r3, r7
+ 152 006e 5200     		lsl	r2, r2, #1
+ 153 0070 D35A     		ldrh	r3, [r2, r3]
+ 154 0072 BB4A     		ldr	r2, .L39+16
+ 155 0074 9342     		cmp	r3, r2
+ 156 0076 1BD8     		bhi	.L6
+  64:.\main.c      ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
+ 157              		.loc 1 64 0
+ 158 0078 7B1D     		add	r3, r7, #5
+ 159 007a 1B78     		ldrb	r3, [r3]
+ 160 007c 012B     		cmp	r3, #1
+ 161 007e 03D1     		bne	.L7
+ 162              		.loc 1 64 0 is_stmt 0 discriminator 1
+ 163 0080 B84B     		ldr	r3, .L39+20
+ 164 0082 0022     		mov	r2, #0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 5
+
+
+ 165 0084 1A70     		strb	r2, [r3]
+ 166 0086 02E0     		b	.L8
+ 167              	.L7:
+ 168              		.loc 1 64 0 discriminator 2
+ 169 0088 B74B     		ldr	r3, .L39+24
+ 170 008a 0022     		mov	r2, #0
+ 171 008c 1A70     		strb	r2, [r3]
+ 172              	.L8:
+  65:.\main.c      ****               		Move(jm);
+ 173              		.loc 1 65 0 is_stmt 1
+ 174 008e 7B1D     		add	r3, r7, #5
+ 175 0090 1B78     		ldrb	r3, [r3]
+ 176 0092 181C     		mov	r0, r3
+ 177 0094 FFF7FEFF 		bl	Move
+  66:.\main.c      ****               		i[jm - 1]++;
+ 178              		.loc 1 66 0
+ 179 0098 7B1D     		add	r3, r7, #5
+ 180 009a 1B78     		ldrb	r3, [r3]
+ 181 009c 013B     		sub	r3, r3, #1
+ 182 009e 3A1C     		mov	r2, r7
+ 183 00a0 5900     		lsl	r1, r3, #1
+ 184 00a2 8A5A     		ldrh	r2, [r1, r2]
+ 185 00a4 0132     		add	r2, r2, #1
+ 186 00a6 91B2     		uxth	r1, r2
+ 187 00a8 3A1C     		mov	r2, r7
+ 188 00aa 5B00     		lsl	r3, r3, #1
+ 189 00ac 9952     		strh	r1, [r3, r2]
+ 190 00ae 10E2     		b	.L5
+ 191              	.L6:
+  67:.\main.c      ****       			} // i < PH1
+  68:.\main.c      ****       			else if (PH1 <= i[jm - 1] && i[jm - 1] < PH2){
+ 192              		.loc 1 68 0
+ 193 00b0 7B1D     		add	r3, r7, #5
+ 194 00b2 1B78     		ldrb	r3, [r3]
+ 195 00b4 5A1E     		sub	r2, r3, #1
+ 196 00b6 3B1C     		mov	r3, r7
+ 197 00b8 5200     		lsl	r2, r2, #1
+ 198 00ba D35A     		ldrh	r3, [r2, r3]
+ 199 00bc A84A     		ldr	r2, .L39+16
+ 200 00be 9342     		cmp	r3, r2
+ 201 00c0 14D9     		bls	.L10
+ 202              		.loc 1 68 0 is_stmt 0 discriminator 1
+ 203 00c2 7B1D     		add	r3, r7, #5
+ 204 00c4 1B78     		ldrb	r3, [r3]
+ 205 00c6 5A1E     		sub	r2, r3, #1
+ 206 00c8 3B1C     		mov	r3, r7
+ 207 00ca 5200     		lsl	r2, r2, #1
+ 208 00cc D35A     		ldrh	r3, [r2, r3]
+ 209 00ce A74A     		ldr	r2, .L39+28
+ 210 00d0 9342     		cmp	r3, r2
+ 211 00d2 0BD8     		bhi	.L10
+  69:.\main.c      ****        				i[jm - 1]++;
+ 212              		.loc 1 69 0 is_stmt 1
+ 213 00d4 7B1D     		add	r3, r7, #5
+ 214 00d6 1B78     		ldrb	r3, [r3]
+ 215 00d8 013B     		sub	r3, r3, #1
+ 216 00da 3A1C     		mov	r2, r7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 6
+
+
+ 217 00dc 5900     		lsl	r1, r3, #1
+ 218 00de 8A5A     		ldrh	r2, [r1, r2]
+ 219 00e0 0132     		add	r2, r2, #1
+ 220 00e2 91B2     		uxth	r1, r2
+ 221 00e4 3A1C     		mov	r2, r7
+ 222 00e6 5B00     		lsl	r3, r3, #1
+ 223 00e8 9952     		strh	r1, [r3, r2]
+ 224 00ea F2E1     		b	.L9
+ 225              	.L10:
+  70:.\main.c      ****       			} // PH1 <= i < PH2
+  71:.\main.c      ****       			else if (PH2 <= i[jm - 1] && i[jm - 1] < PH3){
+ 226              		.loc 1 71 0
+ 227 00ec 7B1D     		add	r3, r7, #5
+ 228 00ee 1B78     		ldrb	r3, [r3]
+ 229 00f0 5A1E     		sub	r2, r3, #1
+ 230 00f2 3B1C     		mov	r3, r7
+ 231 00f4 5200     		lsl	r2, r2, #1
+ 232 00f6 D35A     		ldrh	r3, [r2, r3]
+ 233 00f8 9C4A     		ldr	r2, .L39+28
+ 234 00fa 9342     		cmp	r3, r2
+ 235 00fc 24D9     		bls	.L11
+ 236              		.loc 1 71 0 is_stmt 0 discriminator 1
+ 237 00fe 7B1D     		add	r3, r7, #5
+ 238 0100 1B78     		ldrb	r3, [r3]
+ 239 0102 5A1E     		sub	r2, r3, #1
+ 240 0104 3B1C     		mov	r3, r7
+ 241 0106 5200     		lsl	r2, r2, #1
+ 242 0108 D35A     		ldrh	r3, [r2, r3]
+ 243 010a 994A     		ldr	r2, .L39+32
+ 244 010c 9342     		cmp	r3, r2
+ 245 010e 1BD8     		bhi	.L11
+  72:.\main.c      ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 246              		.loc 1 72 0 is_stmt 1
+ 247 0110 7B1D     		add	r3, r7, #5
+ 248 0112 1B78     		ldrb	r3, [r3]
+ 249 0114 012B     		cmp	r3, #1
+ 250 0116 03D1     		bne	.L12
+ 251              		.loc 1 72 0 is_stmt 0 discriminator 1
+ 252 0118 924B     		ldr	r3, .L39+20
+ 253 011a 0122     		mov	r2, #1
+ 254 011c 1A70     		strb	r2, [r3]
+ 255 011e 02E0     		b	.L13
+ 256              	.L12:
+ 257              		.loc 1 72 0 discriminator 2
+ 258 0120 914B     		ldr	r3, .L39+24
+ 259 0122 0122     		mov	r2, #1
+ 260 0124 1A70     		strb	r2, [r3]
+ 261              	.L13:
+  73:.\main.c      ****        				Move(jm);
+ 262              		.loc 1 73 0 is_stmt 1
+ 263 0126 7B1D     		add	r3, r7, #5
+ 264 0128 1B78     		ldrb	r3, [r3]
+ 265 012a 181C     		mov	r0, r3
+ 266 012c FFF7FEFF 		bl	Move
+  74:.\main.c      ****        				i[jm - 1]++;
+ 267              		.loc 1 74 0
+ 268 0130 7B1D     		add	r3, r7, #5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 7
+
+
+ 269 0132 1B78     		ldrb	r3, [r3]
+ 270 0134 013B     		sub	r3, r3, #1
+ 271 0136 3A1C     		mov	r2, r7
+ 272 0138 5900     		lsl	r1, r3, #1
+ 273 013a 8A5A     		ldrh	r2, [r1, r2]
+ 274 013c 0132     		add	r2, r2, #1
+ 275 013e 91B2     		uxth	r1, r2
+ 276 0140 3A1C     		mov	r2, r7
+ 277 0142 5B00     		lsl	r3, r3, #1
+ 278 0144 9952     		strh	r1, [r3, r2]
+ 279 0146 C4E1     		b	.L9
+ 280              	.L11:
+  75:.\main.c      ****       			} // PH2 <= i < PH3
+  76:.\main.c      ****     			else if (PH3 <= i[jm - 1] && i[jm - 1]< PH4){
+ 281              		.loc 1 76 0
+ 282 0148 7B1D     		add	r3, r7, #5
+ 283 014a 1B78     		ldrb	r3, [r3]
+ 284 014c 5A1E     		sub	r2, r3, #1
+ 285 014e 3B1C     		mov	r3, r7
+ 286 0150 5200     		lsl	r2, r2, #1
+ 287 0152 D35A     		ldrh	r3, [r2, r3]
+ 288 0154 864A     		ldr	r2, .L39+32
+ 289 0156 9342     		cmp	r3, r2
+ 290 0158 14D9     		bls	.L14
+ 291              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 292 015a 7B1D     		add	r3, r7, #5
+ 293 015c 1B78     		ldrb	r3, [r3]
+ 294 015e 5A1E     		sub	r2, r3, #1
+ 295 0160 3B1C     		mov	r3, r7
+ 296 0162 5200     		lsl	r2, r2, #1
+ 297 0164 D35A     		ldrh	r3, [r2, r3]
+ 298 0166 834A     		ldr	r2, .L39+36
+ 299 0168 9342     		cmp	r3, r2
+ 300 016a 0BD8     		bhi	.L14
+  77:.\main.c      ****     				i[jm - 1]++;
+ 301              		.loc 1 77 0 is_stmt 1
+ 302 016c 7B1D     		add	r3, r7, #5
+ 303 016e 1B78     		ldrb	r3, [r3]
+ 304 0170 013B     		sub	r3, r3, #1
+ 305 0172 3A1C     		mov	r2, r7
+ 306 0174 5900     		lsl	r1, r3, #1
+ 307 0176 8A5A     		ldrh	r2, [r1, r2]
+ 308 0178 0132     		add	r2, r2, #1
+ 309 017a 91B2     		uxth	r1, r2
+ 310 017c 3A1C     		mov	r2, r7
+ 311 017e 5B00     		lsl	r3, r3, #1
+ 312 0180 9952     		strh	r1, [r3, r2]
+ 313 0182 A6E1     		b	.L9
+ 314              	.L14:
+  78:.\main.c      ****     			} // PH3 <= i < PH4
+  79:.\main.c      ****       			else if (PH4 <= i[jm - 1] && i[jm - 1] < PH5){
+ 315              		.loc 1 79 0
+ 316 0184 7B1D     		add	r3, r7, #5
+ 317 0186 1B78     		ldrb	r3, [r3]
+ 318 0188 5A1E     		sub	r2, r3, #1
+ 319 018a 3B1C     		mov	r3, r7
+ 320 018c 5200     		lsl	r2, r2, #1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 8
+
+
+ 321 018e D35A     		ldrh	r3, [r2, r3]
+ 322 0190 784A     		ldr	r2, .L39+36
+ 323 0192 9342     		cmp	r3, r2
+ 324 0194 47D9     		bls	.L15
+ 325              		.loc 1 79 0 is_stmt 0 discriminator 1
+ 326 0196 7B1D     		add	r3, r7, #5
+ 327 0198 1B78     		ldrb	r3, [r3]
+ 328 019a 5A1E     		sub	r2, r3, #1
+ 329 019c 3B1C     		mov	r3, r7
+ 330 019e 5200     		lsl	r2, r2, #1
+ 331 01a0 D35A     		ldrh	r3, [r2, r3]
+ 332 01a2 754A     		ldr	r2, .L39+40
+ 333 01a4 9342     		cmp	r3, r2
+ 334 01a6 3ED8     		bhi	.L15
+  80:.\main.c      ****     				if (i[jm - 1] == PH4){
+ 335              		.loc 1 80 0 is_stmt 1
+ 336 01a8 7B1D     		add	r3, r7, #5
+ 337 01aa 1B78     		ldrb	r3, [r3]
+ 338 01ac 5A1E     		sub	r2, r3, #1
+ 339 01ae 3B1C     		mov	r3, r7
+ 340 01b0 5200     		lsl	r2, r2, #1
+ 341 01b2 D25A     		ldrh	r2, [r2, r3]
+ 342 01b4 9623     		mov	r3, #150
+ 343 01b6 9B01     		lsl	r3, r3, #6
+ 344 01b8 9A42     		cmp	r2, r3
+ 345 01ba 18D1     		bne	.L16
+  81:.\main.c      ****                         if(jm == 1) {                        
+ 346              		.loc 1 81 0
+ 347 01bc 7B1D     		add	r3, r7, #5
+ 348 01be 1B78     		ldrb	r3, [r3]
+ 349 01c0 012B     		cmp	r3, #1
+ 350 01c2 0AD1     		bne	.L17
+  82:.\main.c      ****             				INTERNAL_STEP_WritePeriod(2000);
+ 351              		.loc 1 82 0
+ 352 01c4 FA23     		mov	r3, #250
+ 353 01c6 DB00     		lsl	r3, r3, #3
+ 354 01c8 181C     		mov	r0, r3
+ 355 01ca FFF7FEFF 		bl	INTERNAL_STEP_WritePeriod
+  83:.\main.c      ****             				INTERNAL_STEP_WriteCompare(1000);
+ 356              		.loc 1 83 0
+ 357 01ce FA23     		mov	r3, #250
+ 358 01d0 9B00     		lsl	r3, r3, #2
+ 359 01d2 181C     		mov	r0, r3
+ 360 01d4 FFF7FEFF 		bl	INTERNAL_STEP_WriteCompare
+ 361 01d8 09E0     		b	.L16
+ 362              	.L17:
+  84:.\main.c      ****                         } // motor 1
+  85:.\main.c      ****                         else {
+  86:.\main.c      ****             				INTERNAL_STEP_1_WritePeriod(2000);
+ 363              		.loc 1 86 0
+ 364 01da FA23     		mov	r3, #250
+ 365 01dc DB00     		lsl	r3, r3, #3
+ 366 01de 181C     		mov	r0, r3
+ 367 01e0 FFF7FEFF 		bl	INTERNAL_STEP_1_WritePeriod
+  87:.\main.c      ****             				INTERNAL_STEP_1_WriteCompare(1000);
+ 368              		.loc 1 87 0
+ 369 01e4 FA23     		mov	r3, #250
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 9
+
+
+ 370 01e6 9B00     		lsl	r3, r3, #2
+ 371 01e8 181C     		mov	r0, r3
+ 372 01ea FFF7FEFF 		bl	INTERNAL_STEP_1_WriteCompare
+ 373              	.L16:
+  88:.\main.c      ****                         } // motor 2
+  89:.\main.c      ****                     } // PH4
+  90:.\main.c      ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
+ 374              		.loc 1 90 0
+ 375 01ee 7B1D     		add	r3, r7, #5
+ 376 01f0 1B78     		ldrb	r3, [r3]
+ 377 01f2 012B     		cmp	r3, #1
+ 378 01f4 03D1     		bne	.L18
+ 379              		.loc 1 90 0 is_stmt 0 discriminator 1
+ 380 01f6 5B4B     		ldr	r3, .L39+20
+ 381 01f8 0022     		mov	r2, #0
+ 382 01fa 1A70     		strb	r2, [r3]
+ 383 01fc 02E0     		b	.L19
+ 384              	.L18:
+ 385              		.loc 1 90 0 discriminator 2
+ 386 01fe 5A4B     		ldr	r3, .L39+24
+ 387 0200 0022     		mov	r2, #0
+ 388 0202 1A70     		strb	r2, [r3]
+ 389              	.L19:
+  91:.\main.c      ****        				Move(jm);
+ 390              		.loc 1 91 0 is_stmt 1
+ 391 0204 7B1D     		add	r3, r7, #5
+ 392 0206 1B78     		ldrb	r3, [r3]
+ 393 0208 181C     		mov	r0, r3
+ 394 020a FFF7FEFF 		bl	Move
+  92:.\main.c      ****        				i[jm - 1]++;
+ 395              		.loc 1 92 0
+ 396 020e 7B1D     		add	r3, r7, #5
+ 397 0210 1B78     		ldrb	r3, [r3]
+ 398 0212 013B     		sub	r3, r3, #1
+ 399 0214 3A1C     		mov	r2, r7
+ 400 0216 5900     		lsl	r1, r3, #1
+ 401 0218 8A5A     		ldrh	r2, [r1, r2]
+ 402 021a 0132     		add	r2, r2, #1
+ 403 021c 91B2     		uxth	r1, r2
+ 404 021e 3A1C     		mov	r2, r7
+ 405 0220 5B00     		lsl	r3, r3, #1
+ 406 0222 9952     		strh	r1, [r3, r2]
+ 407 0224 55E1     		b	.L9
+ 408              	.L15:
+  93:.\main.c      ****       			} // PH4 <= i < PH5
+  94:.\main.c      ****       			else if (PH5 <= i[jm - 1] && i[jm - 1] < PH6){
+ 409              		.loc 1 94 0
+ 410 0226 7B1D     		add	r3, r7, #5
+ 411 0228 1B78     		ldrb	r3, [r3]
+ 412 022a 5A1E     		sub	r2, r3, #1
+ 413 022c 3B1C     		mov	r3, r7
+ 414 022e 5200     		lsl	r2, r2, #1
+ 415 0230 D35A     		ldrh	r3, [r2, r3]
+ 416 0232 514A     		ldr	r2, .L39+40
+ 417 0234 9342     		cmp	r3, r2
+ 418 0236 14D9     		bls	.L20
+ 419              		.loc 1 94 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 10
+
+
+ 420 0238 7B1D     		add	r3, r7, #5
+ 421 023a 1B78     		ldrb	r3, [r3]
+ 422 023c 5A1E     		sub	r2, r3, #1
+ 423 023e 3B1C     		mov	r3, r7
+ 424 0240 5200     		lsl	r2, r2, #1
+ 425 0242 D35A     		ldrh	r3, [r2, r3]
+ 426 0244 4D4A     		ldr	r2, .L39+44
+ 427 0246 9342     		cmp	r3, r2
+ 428 0248 0BD8     		bhi	.L20
+  95:.\main.c      ****        				i[jm - 1]++;
+ 429              		.loc 1 95 0 is_stmt 1
+ 430 024a 7B1D     		add	r3, r7, #5
+ 431 024c 1B78     		ldrb	r3, [r3]
+ 432 024e 013B     		sub	r3, r3, #1
+ 433 0250 3A1C     		mov	r2, r7
+ 434 0252 5900     		lsl	r1, r3, #1
+ 435 0254 8A5A     		ldrh	r2, [r1, r2]
+ 436 0256 0132     		add	r2, r2, #1
+ 437 0258 91B2     		uxth	r1, r2
+ 438 025a 3A1C     		mov	r2, r7
+ 439 025c 5B00     		lsl	r3, r3, #1
+ 440 025e 9952     		strh	r1, [r3, r2]
+ 441 0260 37E1     		b	.L9
+ 442              	.L20:
+  96:.\main.c      ****       			} // PH5 <= i < PH6
+  97:.\main.c      ****       			else if (PH6 <= i[jm - 1] && i[jm - 1] < PH7){
+ 443              		.loc 1 97 0
+ 444 0262 7B1D     		add	r3, r7, #5
+ 445 0264 1B78     		ldrb	r3, [r3]
+ 446 0266 5A1E     		sub	r2, r3, #1
+ 447 0268 3B1C     		mov	r3, r7
+ 448 026a 5200     		lsl	r2, r2, #1
+ 449 026c D35A     		ldrh	r3, [r2, r3]
+ 450 026e 434A     		ldr	r2, .L39+44
+ 451 0270 9342     		cmp	r3, r2
+ 452 0272 24D9     		bls	.L21
+ 453              		.loc 1 97 0 is_stmt 0 discriminator 1
+ 454 0274 7B1D     		add	r3, r7, #5
+ 455 0276 1B78     		ldrb	r3, [r3]
+ 456 0278 5A1E     		sub	r2, r3, #1
+ 457 027a 3B1C     		mov	r3, r7
+ 458 027c 5200     		lsl	r2, r2, #1
+ 459 027e D35A     		ldrh	r3, [r2, r3]
+ 460 0280 3F4A     		ldr	r2, .L39+48
+ 461 0282 9342     		cmp	r3, r2
+ 462 0284 1BD8     		bhi	.L21
+  98:.\main.c      ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 463              		.loc 1 98 0 is_stmt 1
+ 464 0286 7B1D     		add	r3, r7, #5
+ 465 0288 1B78     		ldrb	r3, [r3]
+ 466 028a 012B     		cmp	r3, #1
+ 467 028c 03D1     		bne	.L22
+ 468              		.loc 1 98 0 is_stmt 0 discriminator 1
+ 469 028e 354B     		ldr	r3, .L39+20
+ 470 0290 0122     		mov	r2, #1
+ 471 0292 1A70     		strb	r2, [r3]
+ 472 0294 02E0     		b	.L23
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 11
+
+
+ 473              	.L22:
+ 474              		.loc 1 98 0 discriminator 2
+ 475 0296 344B     		ldr	r3, .L39+24
+ 476 0298 0122     		mov	r2, #1
+ 477 029a 1A70     		strb	r2, [r3]
+ 478              	.L23:
+  99:.\main.c      ****        				Move(jm);		
+ 479              		.loc 1 99 0 is_stmt 1
+ 480 029c 7B1D     		add	r3, r7, #5
+ 481 029e 1B78     		ldrb	r3, [r3]
+ 482 02a0 181C     		mov	r0, r3
+ 483 02a2 FFF7FEFF 		bl	Move
+ 100:.\main.c      ****        				i[jm - 1]++;
+ 484              		.loc 1 100 0
+ 485 02a6 7B1D     		add	r3, r7, #5
+ 486 02a8 1B78     		ldrb	r3, [r3]
+ 487 02aa 013B     		sub	r3, r3, #1
+ 488 02ac 3A1C     		mov	r2, r7
+ 489 02ae 5900     		lsl	r1, r3, #1
+ 490 02b0 8A5A     		ldrh	r2, [r1, r2]
+ 491 02b2 0132     		add	r2, r2, #1
+ 492 02b4 91B2     		uxth	r1, r2
+ 493 02b6 3A1C     		mov	r2, r7
+ 494 02b8 5B00     		lsl	r3, r3, #1
+ 495 02ba 9952     		strh	r1, [r3, r2]
+ 496 02bc 09E1     		b	.L9
+ 497              	.L21:
+ 101:.\main.c      ****       			} // PH6 <= i < PH7
+ 102:.\main.c      ****       			else if (PH7 <= i[jm - 1] && i[jm - 1] < PH8){
+ 498              		.loc 1 102 0
+ 499 02be 7B1D     		add	r3, r7, #5
+ 500 02c0 1B78     		ldrb	r3, [r3]
+ 501 02c2 5A1E     		sub	r2, r3, #1
+ 502 02c4 3B1C     		mov	r3, r7
+ 503 02c6 5200     		lsl	r2, r2, #1
+ 504 02c8 D35A     		ldrh	r3, [r2, r3]
+ 505 02ca 2D4A     		ldr	r2, .L39+48
+ 506 02cc 9342     		cmp	r3, r2
+ 507 02ce 14D9     		bls	.L24
+ 508              		.loc 1 102 0 is_stmt 0 discriminator 1
+ 509 02d0 7B1D     		add	r3, r7, #5
+ 510 02d2 1B78     		ldrb	r3, [r3]
+ 511 02d4 5A1E     		sub	r2, r3, #1
+ 512 02d6 3B1C     		mov	r3, r7
+ 513 02d8 5200     		lsl	r2, r2, #1
+ 514 02da D35A     		ldrh	r3, [r2, r3]
+ 515 02dc 294A     		ldr	r2, .L39+52
+ 516 02de 9342     		cmp	r3, r2
+ 517 02e0 0BD8     		bhi	.L24
+ 103:.\main.c      ****        				i[jm - 1]++;
+ 518              		.loc 1 103 0 is_stmt 1
+ 519 02e2 7B1D     		add	r3, r7, #5
+ 520 02e4 1B78     		ldrb	r3, [r3]
+ 521 02e6 013B     		sub	r3, r3, #1
+ 522 02e8 3A1C     		mov	r2, r7
+ 523 02ea 5900     		lsl	r1, r3, #1
+ 524 02ec 8A5A     		ldrh	r2, [r1, r2]
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 12
+
+
+ 525 02ee 0132     		add	r2, r2, #1
+ 526 02f0 91B2     		uxth	r1, r2
+ 527 02f2 3A1C     		mov	r2, r7
+ 528 02f4 5B00     		lsl	r3, r3, #1
+ 529 02f6 9952     		strh	r1, [r3, r2]
+ 530 02f8 EBE0     		b	.L9
+ 531              	.L24:
+ 104:.\main.c      ****       			} // PH7 <= i < PH8
+ 105:.\main.c      ****       			else if (PH8 <= i[jm - 1] && i[jm - 1] < PH9){
+ 532              		.loc 1 105 0
+ 533 02fa 7B1D     		add	r3, r7, #5
+ 534 02fc 1B78     		ldrb	r3, [r3]
+ 535 02fe 5A1E     		sub	r2, r3, #1
+ 536 0300 3B1C     		mov	r3, r7
+ 537 0302 5200     		lsl	r2, r2, #1
+ 538 0304 D35A     		ldrh	r3, [r2, r3]
+ 539 0306 1F4A     		ldr	r2, .L39+52
+ 540 0308 9342     		cmp	r3, r2
+ 541 030a 67D9     		bls	.L25
+ 542              		.loc 1 105 0 is_stmt 0 discriminator 1
+ 543 030c 7B1D     		add	r3, r7, #5
+ 544 030e 1B78     		ldrb	r3, [r3]
+ 545 0310 5A1E     		sub	r2, r3, #1
+ 546 0312 3B1C     		mov	r3, r7
+ 547 0314 5200     		lsl	r2, r2, #1
+ 548 0316 D35A     		ldrh	r3, [r2, r3]
+ 549 0318 1B4A     		ldr	r2, .L39+56
+ 550 031a 9342     		cmp	r3, r2
+ 551 031c 5ED8     		bhi	.L25
+ 106:.\main.c      ****     				if (i[jm - 1] == PH8){
+ 552              		.loc 1 106 0 is_stmt 1
+ 553 031e 7B1D     		add	r3, r7, #5
+ 554 0320 1B78     		ldrb	r3, [r3]
+ 555 0322 5A1E     		sub	r2, r3, #1
+ 556 0324 3B1C     		mov	r3, r7
+ 557 0326 5200     		lsl	r2, r2, #1
+ 558 0328 D35A     		ldrh	r3, [r2, r3]
+ 559 032a 184A     		ldr	r2, .L39+60
+ 560 032c 9342     		cmp	r3, r2
+ 561 032e 39D1     		bne	.L26
+ 107:.\main.c      ****                         if(jm == 1) {                        
+ 562              		.loc 1 107 0
+ 563 0330 7B1D     		add	r3, r7, #5
+ 564 0332 1B78     		ldrb	r3, [r3]
+ 565 0334 012B     		cmp	r3, #1
+ 566 0336 2BD1     		bne	.L27
+ 108:.\main.c      ****             				INTERNAL_STEP_WritePeriod(4000);
+ 567              		.loc 1 108 0
+ 568 0338 FA23     		mov	r3, #250
+ 569 033a 1B01     		lsl	r3, r3, #4
+ 570 033c 181C     		mov	r0, r3
+ 571 033e FFF7FEFF 		bl	INTERNAL_STEP_WritePeriod
+ 109:.\main.c      ****             				INTERNAL_STEP_WriteCompare(2000);
+ 572              		.loc 1 109 0
+ 573 0342 FA23     		mov	r3, #250
+ 574 0344 DB00     		lsl	r3, r3, #3
+ 575 0346 181C     		mov	r0, r3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 13
+
+
+ 576 0348 FFF7FEFF 		bl	INTERNAL_STEP_WriteCompare
+ 577 034c 2AE0     		b	.L26
+ 578              	.L40:
+ 579 034e C046     		.align	2
+ 580              	.L39:
+ 581 0350 00000000 		.word	previousStepPulse
+ 582 0354 00000000 		.word	stepPulse
+ 583 0358 00000000 		.word	previousStepPulse1
+ 584 035c 00000000 		.word	stepPulse1
+ 585 0360 830C0000 		.word	3203
+ 586 0364 00000000 		.word	dirReg
+ 587 0368 00000000 		.word	dirReg1
+ 588 036c BF120000 		.word	4799
+ 589 0370 3F1F0000 		.word	7999
+ 590 0374 7F250000 		.word	9599
+ 591 0378 7F3E0000 		.word	15999
+ 592 037c BF440000 		.word	17599
+ 593 0380 BF5D0000 		.word	23999
+ 594 0384 3F6A0000 		.word	27199
+ 595 0388 7F700000 		.word	28799
+ 596 038c 406A0000 		.word	27200
+ 597              	.L27:
+ 110:.\main.c      ****                         } // motor 1
+ 111:.\main.c      ****                         else {
+ 112:.\main.c      ****             				INTERNAL_STEP_1_WritePeriod(4000);
+ 598              		.loc 1 112 0
+ 599 0390 FA23     		mov	r3, #250
+ 600 0392 1B01     		lsl	r3, r3, #4
+ 601 0394 181C     		mov	r0, r3
+ 602 0396 FFF7FEFF 		bl	INTERNAL_STEP_1_WritePeriod
+ 113:.\main.c      ****             				INTERNAL_STEP_1_WriteCompare(2000);
+ 603              		.loc 1 113 0
+ 604 039a FA23     		mov	r3, #250
+ 605 039c DB00     		lsl	r3, r3, #3
+ 606 039e 181C     		mov	r0, r3
+ 607 03a0 FFF7FEFF 		bl	INTERNAL_STEP_1_WriteCompare
+ 608              	.L26:
+ 114:.\main.c      ****                         } // motor 2 
+ 115:.\main.c      ****                     } // PH8
+ 116:.\main.c      ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
+ 609              		.loc 1 116 0
+ 610 03a4 7B1D     		add	r3, r7, #5
+ 611 03a6 1B78     		ldrb	r3, [r3]
+ 612 03a8 012B     		cmp	r3, #1
+ 613 03aa 03D1     		bne	.L28
+ 614              		.loc 1 116 0 is_stmt 0 discriminator 1
+ 615 03ac 4E4B     		ldr	r3, .L41
+ 616 03ae 0022     		mov	r2, #0
+ 617 03b0 1A70     		strb	r2, [r3]
+ 618 03b2 02E0     		b	.L29
+ 619              	.L28:
+ 620              		.loc 1 116 0 discriminator 2
+ 621 03b4 4D4B     		ldr	r3, .L41+4
+ 622 03b6 0022     		mov	r2, #0
+ 623 03b8 1A70     		strb	r2, [r3]
+ 624              	.L29:
+ 117:.\main.c      ****        				Move(jm);
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 14
+
+
+ 625              		.loc 1 117 0 is_stmt 1
+ 626 03ba 7B1D     		add	r3, r7, #5
+ 627 03bc 1B78     		ldrb	r3, [r3]
+ 628 03be 181C     		mov	r0, r3
+ 629 03c0 FFF7FEFF 		bl	Move
+ 118:.\main.c      ****        				i[jm - 1]++;
+ 630              		.loc 1 118 0
+ 631 03c4 7B1D     		add	r3, r7, #5
+ 632 03c6 1B78     		ldrb	r3, [r3]
+ 633 03c8 013B     		sub	r3, r3, #1
+ 634 03ca 3A1C     		mov	r2, r7
+ 635 03cc 5900     		lsl	r1, r3, #1
+ 636 03ce 8A5A     		ldrh	r2, [r1, r2]
+ 637 03d0 0132     		add	r2, r2, #1
+ 638 03d2 91B2     		uxth	r1, r2
+ 639 03d4 3A1C     		mov	r2, r7
+ 640 03d6 5B00     		lsl	r3, r3, #1
+ 641 03d8 9952     		strh	r1, [r3, r2]
+ 642 03da 7AE0     		b	.L9
+ 643              	.L25:
+ 119:.\main.c      ****       			} // PH8 <= i < PH9
+ 120:.\main.c      ****       			else if (PH9 <= i[jm - 1] && i[jm - 1] < PH10){
+ 644              		.loc 1 120 0
+ 645 03dc 7B1D     		add	r3, r7, #5
+ 646 03de 1B78     		ldrb	r3, [r3]
+ 647 03e0 5A1E     		sub	r2, r3, #1
+ 648 03e2 3B1C     		mov	r3, r7
+ 649 03e4 5200     		lsl	r2, r2, #1
+ 650 03e6 D35A     		ldrh	r3, [r2, r3]
+ 651 03e8 414A     		ldr	r2, .L41+8
+ 652 03ea 9342     		cmp	r3, r2
+ 653 03ec 14D9     		bls	.L30
+ 654              		.loc 1 120 0 is_stmt 0 discriminator 1
+ 655 03ee 7B1D     		add	r3, r7, #5
+ 656 03f0 1B78     		ldrb	r3, [r3]
+ 657 03f2 5A1E     		sub	r2, r3, #1
+ 658 03f4 3B1C     		mov	r3, r7
+ 659 03f6 5200     		lsl	r2, r2, #1
+ 660 03f8 D35A     		ldrh	r3, [r2, r3]
+ 661 03fa 3E4A     		ldr	r2, .L41+12
+ 662 03fc 9342     		cmp	r3, r2
+ 663 03fe 0BD8     		bhi	.L30
+ 121:.\main.c      ****        				i[jm - 1]++;
+ 664              		.loc 1 121 0 is_stmt 1
+ 665 0400 7B1D     		add	r3, r7, #5
+ 666 0402 1B78     		ldrb	r3, [r3]
+ 667 0404 013B     		sub	r3, r3, #1
+ 668 0406 3A1C     		mov	r2, r7
+ 669 0408 5900     		lsl	r1, r3, #1
+ 670 040a 8A5A     		ldrh	r2, [r1, r2]
+ 671 040c 0132     		add	r2, r2, #1
+ 672 040e 91B2     		uxth	r1, r2
+ 673 0410 3A1C     		mov	r2, r7
+ 674 0412 5B00     		lsl	r3, r3, #1
+ 675 0414 9952     		strh	r1, [r3, r2]
+ 676 0416 5CE0     		b	.L9
+ 677              	.L30:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 15
+
+
+ 122:.\main.c      ****       			} // PH9 <= i < PH10
+ 123:.\main.c      ****       			else if (PH10 <= i[jm - 1] && i[jm - 1] < PH11){
+ 678              		.loc 1 123 0
+ 679 0418 7B1D     		add	r3, r7, #5
+ 680 041a 1B78     		ldrb	r3, [r3]
+ 681 041c 5A1E     		sub	r2, r3, #1
+ 682 041e 3B1C     		mov	r3, r7
+ 683 0420 5200     		lsl	r2, r2, #1
+ 684 0422 D35A     		ldrh	r3, [r2, r3]
+ 685 0424 334A     		ldr	r2, .L41+12
+ 686 0426 9342     		cmp	r3, r2
+ 687 0428 24D9     		bls	.L31
+ 688              		.loc 1 123 0 is_stmt 0 discriminator 1
+ 689 042a 7B1D     		add	r3, r7, #5
+ 690 042c 1B78     		ldrb	r3, [r3]
+ 691 042e 5A1E     		sub	r2, r3, #1
+ 692 0430 3B1C     		mov	r3, r7
+ 693 0432 5200     		lsl	r2, r2, #1
+ 694 0434 D35A     		ldrh	r3, [r2, r3]
+ 695 0436 304A     		ldr	r2, .L41+16
+ 696 0438 9342     		cmp	r3, r2
+ 697 043a 1BD8     		bhi	.L31
+ 124:.\main.c      ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 698              		.loc 1 124 0 is_stmt 1
+ 699 043c 7B1D     		add	r3, r7, #5
+ 700 043e 1B78     		ldrb	r3, [r3]
+ 701 0440 012B     		cmp	r3, #1
+ 702 0442 03D1     		bne	.L32
+ 703              		.loc 1 124 0 is_stmt 0 discriminator 1
+ 704 0444 284B     		ldr	r3, .L41
+ 705 0446 0122     		mov	r2, #1
+ 706 0448 1A70     		strb	r2, [r3]
+ 707 044a 02E0     		b	.L33
+ 708              	.L32:
+ 709              		.loc 1 124 0 discriminator 2
+ 710 044c 274B     		ldr	r3, .L41+4
+ 711 044e 0122     		mov	r2, #1
+ 712 0450 1A70     		strb	r2, [r3]
+ 713              	.L33:
+ 125:.\main.c      ****     				Move(jm);
+ 714              		.loc 1 125 0 is_stmt 1
+ 715 0452 7B1D     		add	r3, r7, #5
+ 716 0454 1B78     		ldrb	r3, [r3]
+ 717 0456 181C     		mov	r0, r3
+ 718 0458 FFF7FEFF 		bl	Move
+ 126:.\main.c      ****     				i[jm - 1]++;
+ 719              		.loc 1 126 0
+ 720 045c 7B1D     		add	r3, r7, #5
+ 721 045e 1B78     		ldrb	r3, [r3]
+ 722 0460 013B     		sub	r3, r3, #1
+ 723 0462 3A1C     		mov	r2, r7
+ 724 0464 5900     		lsl	r1, r3, #1
+ 725 0466 8A5A     		ldrh	r2, [r1, r2]
+ 726 0468 0132     		add	r2, r2, #1
+ 727 046a 91B2     		uxth	r1, r2
+ 728 046c 3A1C     		mov	r2, r7
+ 729 046e 5B00     		lsl	r3, r3, #1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 16
+
+
+ 730 0470 9952     		strh	r1, [r3, r2]
+ 731 0472 2EE0     		b	.L9
+ 732              	.L31:
+ 127:.\main.c      ****       			} // PH10 <= i < PH11
+ 128:.\main.c      ****       			else if (PH11 <= i[jm - 1] && i[jm - 1] < PH12){
+ 733              		.loc 1 128 0
+ 734 0474 7B1D     		add	r3, r7, #5
+ 735 0476 1B78     		ldrb	r3, [r3]
+ 736 0478 5A1E     		sub	r2, r3, #1
+ 737 047a 3B1C     		mov	r3, r7
+ 738 047c 5200     		lsl	r2, r2, #1
+ 739 047e D35A     		ldrh	r3, [r2, r3]
+ 740 0480 1D4A     		ldr	r2, .L41+16
+ 741 0482 9342     		cmp	r3, r2
+ 742 0484 14D9     		bls	.L34
+ 743              		.loc 1 128 0 is_stmt 0 discriminator 1
+ 744 0486 7B1D     		add	r3, r7, #5
+ 745 0488 1B78     		ldrb	r3, [r3]
+ 746 048a 5A1E     		sub	r2, r3, #1
+ 747 048c 3B1C     		mov	r3, r7
+ 748 048e 5200     		lsl	r2, r2, #1
+ 749 0490 D35A     		ldrh	r3, [r2, r3]
+ 750 0492 1A4A     		ldr	r2, .L41+20
+ 751 0494 9342     		cmp	r3, r2
+ 752 0496 0BD8     		bhi	.L34
+ 129:.\main.c      ****        				i[jm - 1]++;
+ 753              		.loc 1 129 0 is_stmt 1
+ 754 0498 7B1D     		add	r3, r7, #5
+ 755 049a 1B78     		ldrb	r3, [r3]
+ 756 049c 013B     		sub	r3, r3, #1
+ 757 049e 3A1C     		mov	r2, r7
+ 758 04a0 5900     		lsl	r1, r3, #1
+ 759 04a2 8A5A     		ldrh	r2, [r1, r2]
+ 760 04a4 0132     		add	r2, r2, #1
+ 761 04a6 91B2     		uxth	r1, r2
+ 762 04a8 3A1C     		mov	r2, r7
+ 763 04aa 5B00     		lsl	r3, r3, #1
+ 764 04ac 9952     		strh	r1, [r3, r2]
+ 765 04ae 10E0     		b	.L9
+ 766              	.L34:
+ 130:.\main.c      ****       			} // PH11 <= i < PH12
+ 131:.\main.c      ****       			else {
+ 132:.\main.c      ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 767              		.loc 1 132 0
+ 768 04b0 7B1D     		add	r3, r7, #5
+ 769 04b2 1B78     		ldrb	r3, [r3]
+ 770 04b4 012B     		cmp	r3, #1
+ 771 04b6 03D1     		bne	.L35
+ 772              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 773 04b8 0B4B     		ldr	r3, .L41
+ 774 04ba 0122     		mov	r2, #1
+ 775 04bc 1A70     		strb	r2, [r3]
+ 776 04be 02E0     		b	.L36
+ 777              	.L35:
+ 778              		.loc 1 132 0 discriminator 2
+ 779 04c0 0A4B     		ldr	r3, .L41+4
+ 780 04c2 0122     		mov	r2, #1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 17
+
+
+ 781 04c4 1A70     		strb	r2, [r3]
+ 782              	.L36:
+ 133:.\main.c      ****        				Move(jm);
+ 783              		.loc 1 133 0 is_stmt 1
+ 784 04c6 7B1D     		add	r3, r7, #5
+ 785 04c8 1B78     		ldrb	r3, [r3]
+ 786 04ca 181C     		mov	r0, r3
+ 787 04cc FFF7FEFF 		bl	Move
+ 788 04d0 FFE7     		b	.L5
+ 789              	.L9:
+ 790              	.L5:
+  48:.\main.c      ****             // Assign local variables to for the current motor
+ 791              		.loc 1 48 0 discriminator 2
+ 792 04d2 7B1D     		add	r3, r7, #5
+ 793 04d4 1A78     		ldrb	r2, [r3]
+ 794 04d6 7B1D     		add	r3, r7, #5
+ 795 04d8 0132     		add	r2, r2, #1
+ 796 04da 1A70     		strb	r2, [r3]
+ 797              	.L2:
+  48:.\main.c      ****             // Assign local variables to for the current motor
+ 798              		.loc 1 48 0 is_stmt 0 discriminator 1
+ 799 04dc 7B1D     		add	r3, r7, #5
+ 800 04de 1B78     		ldrb	r3, [r3]
+ 801 04e0 022B     		cmp	r3, #2
+ 802 04e2 00D8     		bhi	.LCB701
+ 803 04e4 9BE5     		b	.L37	@long jump
+ 804              	.LCB701:
+ 134:.\main.c      **** //                    i[jm - 1] = 0;
+ 135:.\main.c      ****       			} // None of the previous cases
+ 136:.\main.c      ****     		} // l_previousStepPulse == 0 && l_stepPulse == 1
+ 137:.\main.c      ****     		else{
+ 138:.\main.c      ****     		}
+ 139:.\main.c      ****     	} // Loop on two motors
+ 140:.\main.c      ****     } // Forever loop
+ 805              		.loc 1 140 0 is_stmt 1
+ 806 04e6 96E5     		b	.L38
+ 807              	.L42:
+ 808              		.align	2
+ 809              	.L41:
+ 810 04e8 00000000 		.word	dirReg
+ 811 04ec 00000000 		.word	dirReg1
+ 812 04f0 7F700000 		.word	28799
+ 813 04f4 FF7C0000 		.word	31999
+ 814 04f8 3F830000 		.word	33599
+ 815 04fc BF8F0000 		.word	36799
+ 816              		.cfi_endproc
+ 817              	.LFE34:
+ 818              		.size	main, .-main
+ 819              		.text
+ 820              	.Letext0:
+ 821              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 822              		.file 3 "./Move.h"
+ 823              		.file 4 "./inputScan.h"
+ 824              		.file 5 "./systemInit.h"
+ 825              		.file 6 "./global.h"
+ 826              		.section	.debug_info,"",%progbits
+ 827              	.Ldebug_info0:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 18
+
+
+ 828 0000 B5020000 		.4byte	0x2b5
+ 829 0004 0400     		.2byte	0x4
+ 830 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 831 000a 04       		.byte	0x4
+ 832 000b 01       		.uleb128 0x1
+ 833 000c E5000000 		.4byte	.LASF42
+ 834 0010 01       		.byte	0x1
+ 835 0011 CA000000 		.4byte	.LASF43
+ 836 0015 AC010000 		.4byte	.LASF44
+ 837 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 838 001d 00000000 		.4byte	0
+ 839 0021 00000000 		.4byte	.Ldebug_line0
+ 840 0025 02       		.uleb128 0x2
+ 841 0026 01       		.byte	0x1
+ 842 0027 06       		.byte	0x6
+ 843 0028 90000000 		.4byte	.LASF0
+ 844 002c 02       		.uleb128 0x2
+ 845 002d 01       		.byte	0x1
+ 846 002e 08       		.byte	0x8
+ 847 002f 9C000000 		.4byte	.LASF1
+ 848 0033 02       		.uleb128 0x2
+ 849 0034 02       		.byte	0x2
+ 850 0035 05       		.byte	0x5
+ 851 0036 66020000 		.4byte	.LASF2
+ 852 003a 02       		.uleb128 0x2
+ 853 003b 02       		.byte	0x2
+ 854 003c 07       		.byte	0x7
+ 855 003d 3B020000 		.4byte	.LASF3
+ 856 0041 02       		.uleb128 0x2
+ 857 0042 04       		.byte	0x4
+ 858 0043 05       		.byte	0x5
+ 859 0044 86020000 		.4byte	.LASF4
+ 860 0048 02       		.uleb128 0x2
+ 861 0049 04       		.byte	0x4
+ 862 004a 07       		.byte	0x7
+ 863 004b AA000000 		.4byte	.LASF5
+ 864 004f 02       		.uleb128 0x2
+ 865 0050 08       		.byte	0x8
+ 866 0051 05       		.byte	0x5
+ 867 0052 4E020000 		.4byte	.LASF6
+ 868 0056 02       		.uleb128 0x2
+ 869 0057 08       		.byte	0x8
+ 870 0058 07       		.byte	0x7
+ 871 0059 0D020000 		.4byte	.LASF7
+ 872 005d 03       		.uleb128 0x3
+ 873 005e 04       		.byte	0x4
+ 874 005f 05       		.byte	0x5
+ 875 0060 696E7400 		.ascii	"int\000"
+ 876 0064 02       		.uleb128 0x2
+ 877 0065 04       		.byte	0x4
+ 878 0066 07       		.byte	0x7
+ 879 0067 8E010000 		.4byte	.LASF8
+ 880 006b 04       		.uleb128 0x4
+ 881 006c 70020000 		.4byte	.LASF9
+ 882 0070 02       		.byte	0x2
+ 883 0071 3801     		.2byte	0x138
+ 884 0073 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 19
+
+
+ 885 0077 04       		.uleb128 0x4
+ 886 0078 73010000 		.4byte	.LASF10
+ 887 007c 02       		.byte	0x2
+ 888 007d 3901     		.2byte	0x139
+ 889 007f 3A000000 		.4byte	0x3a
+ 890 0083 02       		.uleb128 0x2
+ 891 0084 04       		.byte	0x4
+ 892 0085 04       		.byte	0x4
+ 893 0086 8A000000 		.4byte	.LASF11
+ 894 008a 02       		.uleb128 0x2
+ 895 008b 08       		.byte	0x8
+ 896 008c 04       		.byte	0x4
+ 897 008d D3000000 		.4byte	.LASF12
+ 898 0091 02       		.uleb128 0x2
+ 899 0092 01       		.byte	0x1
+ 900 0093 08       		.byte	0x8
+ 901 0094 61020000 		.4byte	.LASF13
+ 902 0098 02       		.uleb128 0x2
+ 903 0099 04       		.byte	0x4
+ 904 009a 07       		.byte	0x7
+ 905 009b 32020000 		.4byte	.LASF14
+ 906 009f 05       		.uleb128 0x5
+ 907 00a0 E0000000 		.4byte	.LASF45
+ 908 00a4 01       		.byte	0x1
+ 909 00a5 22       		.byte	0x22
+ 910 00a6 00000000 		.4byte	.LFB34
+ 911 00aa 00050000 		.4byte	.LFE34-.LFB34
+ 912 00ae 01       		.uleb128 0x1
+ 913 00af 9C       		.byte	0x9c
+ 914 00b0 EA000000 		.4byte	0xea
+ 915 00b4 06       		.uleb128 0x6
+ 916 00b5 6900     		.ascii	"i\000"
+ 917 00b7 01       		.byte	0x1
+ 918 00b8 23       		.byte	0x23
+ 919 00b9 EA000000 		.4byte	0xea
+ 920 00bd 02       		.uleb128 0x2
+ 921 00be 91       		.byte	0x91
+ 922 00bf 70       		.sleb128 -16
+ 923 00c0 07       		.uleb128 0x7
+ 924 00c1 33000000 		.4byte	.LASF15
+ 925 00c5 01       		.byte	0x1
+ 926 00c6 25       		.byte	0x25
+ 927 00c7 6B000000 		.4byte	0x6b
+ 928 00cb 02       		.uleb128 0x2
+ 929 00cc 91       		.byte	0x91
+ 930 00cd 77       		.sleb128 -9
+ 931 00ce 07       		.uleb128 0x7
+ 932 00cf 65000000 		.4byte	.LASF16
+ 933 00d3 01       		.byte	0x1
+ 934 00d4 26       		.byte	0x26
+ 935 00d5 6B000000 		.4byte	0x6b
+ 936 00d9 02       		.uleb128 0x2
+ 937 00da 91       		.byte	0x91
+ 938 00db 76       		.sleb128 -10
+ 939 00dc 06       		.uleb128 0x6
+ 940 00dd 6A6D00   		.ascii	"jm\000"
+ 941 00e0 01       		.byte	0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 20
+
+
+ 942 00e1 27       		.byte	0x27
+ 943 00e2 6B000000 		.4byte	0x6b
+ 944 00e6 02       		.uleb128 0x2
+ 945 00e7 91       		.byte	0x91
+ 946 00e8 75       		.sleb128 -11
+ 947 00e9 00       		.byte	0
+ 948 00ea 08       		.uleb128 0x8
+ 949 00eb 77000000 		.4byte	0x77
+ 950 00ef FA000000 		.4byte	0xfa
+ 951 00f3 09       		.uleb128 0x9
+ 952 00f4 98000000 		.4byte	0x98
+ 953 00f8 01       		.byte	0x1
+ 954 00f9 00       		.byte	0
+ 955 00fa 0A       		.uleb128 0xa
+ 956 00fb 19000000 		.4byte	.LASF17
+ 957 00ff 03       		.byte	0x3
+ 958 0100 10       		.byte	0x10
+ 959 0101 6B000000 		.4byte	0x6b
+ 960 0105 05       		.uleb128 0x5
+ 961 0106 03       		.byte	0x3
+ 962 0107 00000000 		.4byte	currentStepA
+ 963 010b 0A       		.uleb128 0xa
+ 964 010c 26000000 		.4byte	.LASF18
+ 965 0110 03       		.byte	0x3
+ 966 0111 11       		.byte	0x11
+ 967 0112 6B000000 		.4byte	0x6b
+ 968 0116 05       		.uleb128 0x5
+ 969 0117 03       		.byte	0x3
+ 970 0118 00000000 		.4byte	currentStepB
+ 971 011c 0A       		.uleb128 0xa
+ 972 011d 24020000 		.4byte	.LASF19
+ 973 0121 03       		.byte	0x3
+ 974 0122 19       		.byte	0x19
+ 975 0123 6B000000 		.4byte	0x6b
+ 976 0127 05       		.uleb128 0x5
+ 977 0128 03       		.byte	0x3
+ 978 0129 00000000 		.4byte	currentStepA1
+ 979 012d 0A       		.uleb128 0xa
+ 980 012e 71000000 		.4byte	.LASF20
+ 981 0132 03       		.byte	0x3
+ 982 0133 1A       		.byte	0x1a
+ 983 0134 6B000000 		.4byte	0x6b
+ 984 0138 05       		.uleb128 0x5
+ 985 0139 03       		.byte	0x3
+ 986 013a 00000000 		.4byte	currentStepB1
+ 987 013e 0A       		.uleb128 0xa
+ 988 013f BC000000 		.4byte	.LASF21
+ 989 0143 03       		.byte	0x3
+ 990 0144 12       		.byte	0x12
+ 991 0145 6B000000 		.4byte	0x6b
+ 992 0149 05       		.uleb128 0x5
+ 993 014a 03       		.byte	0x3
+ 994 014b 00000000 		.4byte	divider
+ 995 014f 0A       		.uleb128 0xa
+ 996 0150 7A010000 		.4byte	.LASF22
+ 997 0154 03       		.byte	0x3
+ 998 0155 1B       		.byte	0x1b
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 21
+
+
+ 999 0156 6B000000 		.4byte	0x6b
+ 1000 015a 05       		.uleb128 0x5
+ 1001 015b 03       		.byte	0x3
+ 1002 015c 00000000 		.4byte	divider1
+ 1003 0160 0A       		.uleb128 0xa
+ 1004 0161 47000000 		.4byte	.LASF23
+ 1005 0165 03       		.byte	0x3
+ 1006 0166 16       		.byte	0x16
+ 1007 0167 6B000000 		.4byte	0x6b
+ 1008 016b 05       		.uleb128 0x5
+ 1009 016c 03       		.byte	0x3
+ 1010 016d 00000000 		.4byte	step
+ 1011 0171 0A       		.uleb128 0xa
+ 1012 0172 B1020000 		.4byte	.LASF24
+ 1013 0176 03       		.byte	0x3
+ 1014 0177 1F       		.byte	0x1f
+ 1015 0178 6B000000 		.4byte	0x6b
+ 1016 017c 05       		.uleb128 0x5
+ 1017 017d 03       		.byte	0x3
+ 1018 017e 00000000 		.4byte	step1
+ 1019 0182 0A       		.uleb128 0xa
+ 1020 0183 76020000 		.4byte	.LASF25
+ 1021 0187 03       		.byte	0x3
+ 1022 0188 13       		.byte	0x13
+ 1023 0189 6B000000 		.4byte	0x6b
+ 1024 018d 05       		.uleb128 0x5
+ 1025 018e 03       		.byte	0x3
+ 1026 018f 00000000 		.4byte	previousDivider
+ 1027 0193 0A       		.uleb128 0xa
+ 1028 0194 9B010000 		.4byte	.LASF26
+ 1029 0198 03       		.byte	0x3
+ 1030 0199 1C       		.byte	0x1c
+ 1031 019a 6B000000 		.4byte	0x6b
+ 1032 019e 05       		.uleb128 0x5
+ 1033 019f 03       		.byte	0x3
+ 1034 01a0 00000000 		.4byte	previousDivider1
+ 1035 01a4 0A       		.uleb128 0xa
+ 1036 01a5 53000000 		.4byte	.LASF27
+ 1037 01a9 03       		.byte	0x3
+ 1038 01aa 14       		.byte	0x14
+ 1039 01ab 6B000000 		.4byte	0x6b
+ 1040 01af 05       		.uleb128 0x5
+ 1041 01b0 03       		.byte	0x3
+ 1042 01b1 00000000 		.4byte	FullScale
+ 1043 01b5 0A       		.uleb128 0xa
+ 1044 01b6 7F000000 		.4byte	.LASF28
+ 1045 01ba 03       		.byte	0x3
+ 1046 01bb 1D       		.byte	0x1d
+ 1047 01bc 6B000000 		.4byte	0x6b
+ 1048 01c0 05       		.uleb128 0x5
+ 1049 01c1 03       		.byte	0x3
+ 1050 01c2 00000000 		.4byte	FullScale1
+ 1051 01c6 0A       		.uleb128 0xa
+ 1052 01c7 C4000000 		.4byte	.LASF29
+ 1053 01cb 03       		.byte	0x3
+ 1054 01cc 15       		.byte	0x15
+ 1055 01cd 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 22
+
+
+ 1056 01d1 05       		.uleb128 0x5
+ 1057 01d2 03       		.byte	0x3
+ 1058 01d3 00000000 		.4byte	phase
+ 1059 01d7 0A       		.uleb128 0xa
+ 1060 01d8 12000000 		.4byte	.LASF30
+ 1061 01dc 03       		.byte	0x3
+ 1062 01dd 1E       		.byte	0x1e
+ 1063 01de 6B000000 		.4byte	0x6b
+ 1064 01e2 05       		.uleb128 0x5
+ 1065 01e3 03       		.byte	0x3
+ 1066 01e4 00000000 		.4byte	phase1
+ 1067 01e8 0A       		.uleb128 0xa
+ 1068 01e9 A2020000 		.4byte	.LASF31
+ 1069 01ed 04       		.byte	0x4
+ 1070 01ee 19       		.byte	0x19
+ 1071 01ef 6B000000 		.4byte	0x6b
+ 1072 01f3 05       		.uleb128 0x5
+ 1073 01f4 03       		.byte	0x3
+ 1074 01f5 00000000 		.4byte	stepPulse
+ 1075 01f9 0A       		.uleb128 0xa
+ 1076 01fa 83010000 		.4byte	.LASF32
+ 1077 01fe 04       		.byte	0x4
+ 1078 01ff 1D       		.byte	0x1d
+ 1079 0200 6B000000 		.4byte	0x6b
+ 1080 0204 05       		.uleb128 0x5
+ 1081 0205 03       		.byte	0x3
+ 1082 0206 00000000 		.4byte	stepPulse1
+ 1083 020a 0A       		.uleb128 0xa
+ 1084 020b 00000000 		.4byte	.LASF33
+ 1085 020f 04       		.byte	0x4
+ 1086 0210 1A       		.byte	0x1a
+ 1087 0211 6B000000 		.4byte	0x6b
+ 1088 0215 05       		.uleb128 0x5
+ 1089 0216 03       		.byte	0x3
+ 1090 0217 00000000 		.4byte	previousStepPulse
+ 1091 021b 0A       		.uleb128 0xa
+ 1092 021c 8F020000 		.4byte	.LASF34
+ 1093 0220 04       		.byte	0x4
+ 1094 0221 1E       		.byte	0x1e
+ 1095 0222 6B000000 		.4byte	0x6b
+ 1096 0226 05       		.uleb128 0x5
+ 1097 0227 03       		.byte	0x3
+ 1098 0228 00000000 		.4byte	previousStepPulse1
+ 1099 022c 0A       		.uleb128 0xa
+ 1100 022d 4C000000 		.4byte	.LASF35
+ 1101 0231 03       		.byte	0x3
+ 1102 0232 17       		.byte	0x17
+ 1103 0233 6B000000 		.4byte	0x6b
+ 1104 0237 05       		.uleb128 0x5
+ 1105 0238 03       		.byte	0x3
+ 1106 0239 00000000 		.4byte	dirReg
+ 1107 023d 0A       		.uleb128 0xa
+ 1108 023e 5D000000 		.4byte	.LASF36
+ 1109 0242 03       		.byte	0x3
+ 1110 0243 20       		.byte	0x20
+ 1111 0244 6B000000 		.4byte	0x6b
+ 1112 0248 05       		.uleb128 0x5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 23
+
+
+ 1113 0249 03       		.byte	0x3
+ 1114 024a 00000000 		.4byte	dirReg1
+ 1115 024e 0A       		.uleb128 0xa
+ 1116 024f AC020000 		.4byte	.LASF37
+ 1117 0253 05       		.byte	0x5
+ 1118 0254 1F       		.byte	0x1f
+ 1119 0255 6B000000 		.4byte	0x6b
+ 1120 0259 05       		.uleb128 0x5
+ 1121 025a 03       		.byte	0x3
+ 1122 025b 00000000 		.4byte	pwmA
+ 1123 025f 0A       		.uleb128 0xa
+ 1124 0260 5C020000 		.4byte	.LASF38
+ 1125 0264 05       		.byte	0x5
+ 1126 0265 20       		.byte	0x20
+ 1127 0266 6B000000 		.4byte	0x6b
+ 1128 026a 05       		.uleb128 0x5
+ 1129 026b 03       		.byte	0x3
+ 1130 026c 00000000 		.4byte	pwmB
+ 1131 0270 0A       		.uleb128 0xa
+ 1132 0271 B7020000 		.4byte	.LASF39
+ 1133 0275 05       		.byte	0x5
+ 1134 0276 21       		.byte	0x21
+ 1135 0277 6B000000 		.4byte	0x6b
+ 1136 027b 05       		.uleb128 0x5
+ 1137 027c 03       		.byte	0x3
+ 1138 027d 00000000 		.4byte	pwmA1
+ 1139 0281 0A       		.uleb128 0xa
+ 1140 0282 DA000000 		.4byte	.LASF40
+ 1141 0286 05       		.byte	0x5
+ 1142 0287 22       		.byte	0x22
+ 1143 0288 6B000000 		.4byte	0x6b
+ 1144 028c 05       		.uleb128 0x5
+ 1145 028d 03       		.byte	0x3
+ 1146 028e 00000000 		.4byte	pwmB1
+ 1147 0292 08       		.uleb128 0x8
+ 1148 0293 6B000000 		.4byte	0x6b
+ 1149 0297 A2020000 		.4byte	0x2a2
+ 1150 029b 09       		.uleb128 0x9
+ 1151 029c 98000000 		.4byte	0x98
+ 1152 02a0 10       		.byte	0x10
+ 1153 02a1 00       		.byte	0
+ 1154 02a2 0A       		.uleb128 0xa
+ 1155 02a3 BD020000 		.4byte	.LASF41
+ 1156 02a7 06       		.byte	0x6
+ 1157 02a8 2C       		.byte	0x2c
+ 1158 02a9 B3020000 		.4byte	0x2b3
+ 1159 02ad 05       		.uleb128 0x5
+ 1160 02ae 03       		.byte	0x3
+ 1161 02af 00000000 		.4byte	sineTable
+ 1162 02b3 0B       		.uleb128 0xb
+ 1163 02b4 92020000 		.4byte	0x292
+ 1164 02b8 00       		.byte	0
+ 1165              		.section	.debug_abbrev,"",%progbits
+ 1166              	.Ldebug_abbrev0:
+ 1167 0000 01       		.uleb128 0x1
+ 1168 0001 11       		.uleb128 0x11
+ 1169 0002 01       		.byte	0x1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 24
+
+
+ 1170 0003 25       		.uleb128 0x25
+ 1171 0004 0E       		.uleb128 0xe
+ 1172 0005 13       		.uleb128 0x13
+ 1173 0006 0B       		.uleb128 0xb
+ 1174 0007 03       		.uleb128 0x3
+ 1175 0008 0E       		.uleb128 0xe
+ 1176 0009 1B       		.uleb128 0x1b
+ 1177 000a 0E       		.uleb128 0xe
+ 1178 000b 55       		.uleb128 0x55
+ 1179 000c 17       		.uleb128 0x17
+ 1180 000d 11       		.uleb128 0x11
+ 1181 000e 01       		.uleb128 0x1
+ 1182 000f 10       		.uleb128 0x10
+ 1183 0010 17       		.uleb128 0x17
+ 1184 0011 00       		.byte	0
+ 1185 0012 00       		.byte	0
+ 1186 0013 02       		.uleb128 0x2
+ 1187 0014 24       		.uleb128 0x24
+ 1188 0015 00       		.byte	0
+ 1189 0016 0B       		.uleb128 0xb
+ 1190 0017 0B       		.uleb128 0xb
+ 1191 0018 3E       		.uleb128 0x3e
+ 1192 0019 0B       		.uleb128 0xb
+ 1193 001a 03       		.uleb128 0x3
+ 1194 001b 0E       		.uleb128 0xe
+ 1195 001c 00       		.byte	0
+ 1196 001d 00       		.byte	0
+ 1197 001e 03       		.uleb128 0x3
+ 1198 001f 24       		.uleb128 0x24
+ 1199 0020 00       		.byte	0
+ 1200 0021 0B       		.uleb128 0xb
+ 1201 0022 0B       		.uleb128 0xb
+ 1202 0023 3E       		.uleb128 0x3e
+ 1203 0024 0B       		.uleb128 0xb
+ 1204 0025 03       		.uleb128 0x3
+ 1205 0026 08       		.uleb128 0x8
+ 1206 0027 00       		.byte	0
+ 1207 0028 00       		.byte	0
+ 1208 0029 04       		.uleb128 0x4
+ 1209 002a 16       		.uleb128 0x16
+ 1210 002b 00       		.byte	0
+ 1211 002c 03       		.uleb128 0x3
+ 1212 002d 0E       		.uleb128 0xe
+ 1213 002e 3A       		.uleb128 0x3a
+ 1214 002f 0B       		.uleb128 0xb
+ 1215 0030 3B       		.uleb128 0x3b
+ 1216 0031 05       		.uleb128 0x5
+ 1217 0032 49       		.uleb128 0x49
+ 1218 0033 13       		.uleb128 0x13
+ 1219 0034 00       		.byte	0
+ 1220 0035 00       		.byte	0
+ 1221 0036 05       		.uleb128 0x5
+ 1222 0037 2E       		.uleb128 0x2e
+ 1223 0038 01       		.byte	0x1
+ 1224 0039 3F       		.uleb128 0x3f
+ 1225 003a 19       		.uleb128 0x19
+ 1226 003b 03       		.uleb128 0x3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 25
+
+
+ 1227 003c 0E       		.uleb128 0xe
+ 1228 003d 3A       		.uleb128 0x3a
+ 1229 003e 0B       		.uleb128 0xb
+ 1230 003f 3B       		.uleb128 0x3b
+ 1231 0040 0B       		.uleb128 0xb
+ 1232 0041 11       		.uleb128 0x11
+ 1233 0042 01       		.uleb128 0x1
+ 1234 0043 12       		.uleb128 0x12
+ 1235 0044 06       		.uleb128 0x6
+ 1236 0045 40       		.uleb128 0x40
+ 1237 0046 18       		.uleb128 0x18
+ 1238 0047 9642     		.uleb128 0x2116
+ 1239 0049 19       		.uleb128 0x19
+ 1240 004a 01       		.uleb128 0x1
+ 1241 004b 13       		.uleb128 0x13
+ 1242 004c 00       		.byte	0
+ 1243 004d 00       		.byte	0
+ 1244 004e 06       		.uleb128 0x6
+ 1245 004f 34       		.uleb128 0x34
+ 1246 0050 00       		.byte	0
+ 1247 0051 03       		.uleb128 0x3
+ 1248 0052 08       		.uleb128 0x8
+ 1249 0053 3A       		.uleb128 0x3a
+ 1250 0054 0B       		.uleb128 0xb
+ 1251 0055 3B       		.uleb128 0x3b
+ 1252 0056 0B       		.uleb128 0xb
+ 1253 0057 49       		.uleb128 0x49
+ 1254 0058 13       		.uleb128 0x13
+ 1255 0059 02       		.uleb128 0x2
+ 1256 005a 18       		.uleb128 0x18
+ 1257 005b 00       		.byte	0
+ 1258 005c 00       		.byte	0
+ 1259 005d 07       		.uleb128 0x7
+ 1260 005e 34       		.uleb128 0x34
+ 1261 005f 00       		.byte	0
+ 1262 0060 03       		.uleb128 0x3
+ 1263 0061 0E       		.uleb128 0xe
+ 1264 0062 3A       		.uleb128 0x3a
+ 1265 0063 0B       		.uleb128 0xb
+ 1266 0064 3B       		.uleb128 0x3b
+ 1267 0065 0B       		.uleb128 0xb
+ 1268 0066 49       		.uleb128 0x49
+ 1269 0067 13       		.uleb128 0x13
+ 1270 0068 02       		.uleb128 0x2
+ 1271 0069 18       		.uleb128 0x18
+ 1272 006a 00       		.byte	0
+ 1273 006b 00       		.byte	0
+ 1274 006c 08       		.uleb128 0x8
+ 1275 006d 01       		.uleb128 0x1
+ 1276 006e 01       		.byte	0x1
+ 1277 006f 49       		.uleb128 0x49
+ 1278 0070 13       		.uleb128 0x13
+ 1279 0071 01       		.uleb128 0x1
+ 1280 0072 13       		.uleb128 0x13
+ 1281 0073 00       		.byte	0
+ 1282 0074 00       		.byte	0
+ 1283 0075 09       		.uleb128 0x9
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 26
+
+
+ 1284 0076 21       		.uleb128 0x21
+ 1285 0077 00       		.byte	0
+ 1286 0078 49       		.uleb128 0x49
+ 1287 0079 13       		.uleb128 0x13
+ 1288 007a 2F       		.uleb128 0x2f
+ 1289 007b 0B       		.uleb128 0xb
+ 1290 007c 00       		.byte	0
+ 1291 007d 00       		.byte	0
+ 1292 007e 0A       		.uleb128 0xa
+ 1293 007f 34       		.uleb128 0x34
+ 1294 0080 00       		.byte	0
+ 1295 0081 03       		.uleb128 0x3
+ 1296 0082 0E       		.uleb128 0xe
+ 1297 0083 3A       		.uleb128 0x3a
+ 1298 0084 0B       		.uleb128 0xb
+ 1299 0085 3B       		.uleb128 0x3b
+ 1300 0086 0B       		.uleb128 0xb
+ 1301 0087 49       		.uleb128 0x49
+ 1302 0088 13       		.uleb128 0x13
+ 1303 0089 3F       		.uleb128 0x3f
+ 1304 008a 19       		.uleb128 0x19
+ 1305 008b 02       		.uleb128 0x2
+ 1306 008c 18       		.uleb128 0x18
+ 1307 008d 00       		.byte	0
+ 1308 008e 00       		.byte	0
+ 1309 008f 0B       		.uleb128 0xb
+ 1310 0090 26       		.uleb128 0x26
+ 1311 0091 00       		.byte	0
+ 1312 0092 49       		.uleb128 0x49
+ 1313 0093 13       		.uleb128 0x13
+ 1314 0094 00       		.byte	0
+ 1315 0095 00       		.byte	0
+ 1316 0096 00       		.byte	0
+ 1317              		.section	.debug_aranges,"",%progbits
+ 1318 0000 1C000000 		.4byte	0x1c
+ 1319 0004 0200     		.2byte	0x2
+ 1320 0006 00000000 		.4byte	.Ldebug_info0
+ 1321 000a 04       		.byte	0x4
+ 1322 000b 00       		.byte	0
+ 1323 000c 0000     		.2byte	0
+ 1324 000e 0000     		.2byte	0
+ 1325 0010 00000000 		.4byte	.LFB34
+ 1326 0014 00050000 		.4byte	.LFE34-.LFB34
+ 1327 0018 00000000 		.4byte	0
+ 1328 001c 00000000 		.4byte	0
+ 1329              		.section	.debug_ranges,"",%progbits
+ 1330              	.Ldebug_ranges0:
+ 1331 0000 00000000 		.4byte	.LFB34
+ 1332 0004 00050000 		.4byte	.LFE34
+ 1333 0008 00000000 		.4byte	0
+ 1334 000c 00000000 		.4byte	0
+ 1335              		.section	.debug_line,"",%progbits
+ 1336              	.Ldebug_line0:
+ 1337 0000 8F010000 		.section	.debug_str,"MS",%progbits,1
+ 1337      02008000 
+ 1337      00000201 
+ 1337      FB0E0D00 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 27
+
+
+ 1337      01010101 
+ 1338              	.LASF33:
+ 1339 0000 70726576 		.ascii	"previousStepPulse\000"
+ 1339      696F7573 
+ 1339      53746570 
+ 1339      50756C73 
+ 1339      6500
+ 1340              	.LASF30:
+ 1341 0012 70686173 		.ascii	"phase1\000"
+ 1341      653100
+ 1342              	.LASF17:
+ 1343 0019 63757272 		.ascii	"currentStepA\000"
+ 1343      656E7453 
+ 1343      74657041 
+ 1343      00
+ 1344              	.LASF18:
+ 1345 0026 63757272 		.ascii	"currentStepB\000"
+ 1345      656E7453 
+ 1345      74657042 
+ 1345      00
+ 1346              	.LASF15:
+ 1347 0033 6C5F7072 		.ascii	"l_previousStepPulse\000"
+ 1347      6576696F 
+ 1347      75735374 
+ 1347      65705075 
+ 1347      6C736500 
+ 1348              	.LASF23:
+ 1349 0047 73746570 		.ascii	"step\000"
+ 1349      00
+ 1350              	.LASF35:
+ 1351 004c 64697252 		.ascii	"dirReg\000"
+ 1351      656700
+ 1352              	.LASF27:
+ 1353 0053 46756C6C 		.ascii	"FullScale\000"
+ 1353      5363616C 
+ 1353      6500
+ 1354              	.LASF36:
+ 1355 005d 64697252 		.ascii	"dirReg1\000"
+ 1355      65673100 
+ 1356              	.LASF16:
+ 1357 0065 6C5F7374 		.ascii	"l_stepPulse\000"
+ 1357      65705075 
+ 1357      6C736500 
+ 1358              	.LASF20:
+ 1359 0071 63757272 		.ascii	"currentStepB1\000"
+ 1359      656E7453 
+ 1359      74657042 
+ 1359      3100
+ 1360              	.LASF28:
+ 1361 007f 46756C6C 		.ascii	"FullScale1\000"
+ 1361      5363616C 
+ 1361      653100
+ 1362              	.LASF11:
+ 1363 008a 666C6F61 		.ascii	"float\000"
+ 1363      7400
+ 1364              	.LASF0:
+ 1365 0090 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 28
+
+
+ 1365      65642063 
+ 1365      68617200 
+ 1366              	.LASF1:
+ 1367 009c 756E7369 		.ascii	"unsigned char\000"
+ 1367      676E6564 
+ 1367      20636861 
+ 1367      7200
+ 1368              	.LASF5:
+ 1369 00aa 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1369      20756E73 
+ 1369      69676E65 
+ 1369      6420696E 
+ 1369      7400
+ 1370              	.LASF21:
+ 1371 00bc 64697669 		.ascii	"divider\000"
+ 1371      64657200 
+ 1372              	.LASF29:
+ 1373 00c4 70686173 		.ascii	"phase\000"
+ 1373      6500
+ 1374              	.LASF43:
+ 1375 00ca 2E5C6D61 		.ascii	".\\main.c\000"
+ 1375      696E2E63 
+ 1375      00
+ 1376              	.LASF12:
+ 1377 00d3 646F7562 		.ascii	"double\000"
+ 1377      6C6500
+ 1378              	.LASF40:
+ 1379 00da 70776D42 		.ascii	"pwmB1\000"
+ 1379      3100
+ 1380              	.LASF45:
+ 1381 00e0 6D61696E 		.ascii	"main\000"
+ 1381      00
+ 1382              	.LASF42:
+ 1383 00e5 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1383      4320342E 
+ 1383      392E3320 
+ 1383      32303135 
+ 1383      30333033 
+ 1384 0118 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1384      20726576 
+ 1384      6973696F 
+ 1384      6E203232 
+ 1384      31323230 
+ 1385 014b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1385      66756E63 
+ 1385      74696F6E 
+ 1385      2D736563 
+ 1385      74696F6E 
+ 1386              	.LASF10:
+ 1387 0173 75696E74 		.ascii	"uint16\000"
+ 1387      313600
+ 1388              	.LASF22:
+ 1389 017a 64697669 		.ascii	"divider1\000"
+ 1389      64657231 
+ 1389      00
+ 1390              	.LASF32:
+ 1391 0183 73746570 		.ascii	"stepPulse1\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 29
+
+
+ 1391      50756C73 
+ 1391      653100
+ 1392              	.LASF8:
+ 1393 018e 756E7369 		.ascii	"unsigned int\000"
+ 1393      676E6564 
+ 1393      20696E74 
+ 1393      00
+ 1394              	.LASF26:
+ 1395 019b 70726576 		.ascii	"previousDivider1\000"
+ 1395      696F7573 
+ 1395      44697669 
+ 1395      64657231 
+ 1395      00
+ 1396              	.LASF44:
+ 1397 01ac 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 1397      73657273 
+ 1397      5C546563 
+ 1397      6820436F 
+ 1397      6E73756C 
+ 1398 01db 5C537465 		.ascii	"\\StepMotor_PSoC4200\\StepMotor_PSoC4200_Dual.cydsn"
+ 1398      704D6F74 
+ 1398      6F725F50 
+ 1398      536F4334 
+ 1398      3230305C 
+ 1399 020c 00       		.ascii	"\000"
+ 1400              	.LASF7:
+ 1401 020d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1401      206C6F6E 
+ 1401      6720756E 
+ 1401      7369676E 
+ 1401      65642069 
+ 1402              	.LASF19:
+ 1403 0224 63757272 		.ascii	"currentStepA1\000"
+ 1403      656E7453 
+ 1403      74657041 
+ 1403      3100
+ 1404              	.LASF14:
+ 1405 0232 73697A65 		.ascii	"sizetype\000"
+ 1405      74797065 
+ 1405      00
+ 1406              	.LASF3:
+ 1407 023b 73686F72 		.ascii	"short unsigned int\000"
+ 1407      7420756E 
+ 1407      7369676E 
+ 1407      65642069 
+ 1407      6E7400
+ 1408              	.LASF6:
+ 1409 024e 6C6F6E67 		.ascii	"long long int\000"
+ 1409      206C6F6E 
+ 1409      6720696E 
+ 1409      7400
+ 1410              	.LASF38:
+ 1411 025c 70776D42 		.ascii	"pwmB\000"
+ 1411      00
+ 1412              	.LASF13:
+ 1413 0261 63686172 		.ascii	"char\000"
+ 1413      00
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccBlrRwT.s 			page 30
+
+
+ 1414              	.LASF2:
+ 1415 0266 73686F72 		.ascii	"short int\000"
+ 1415      7420696E 
+ 1415      7400
+ 1416              	.LASF9:
+ 1417 0270 75696E74 		.ascii	"uint8\000"
+ 1417      3800
+ 1418              	.LASF25:
+ 1419 0276 70726576 		.ascii	"previousDivider\000"
+ 1419      696F7573 
+ 1419      44697669 
+ 1419      64657200 
+ 1420              	.LASF4:
+ 1421 0286 6C6F6E67 		.ascii	"long int\000"
+ 1421      20696E74 
+ 1421      00
+ 1422              	.LASF34:
+ 1423 028f 70726576 		.ascii	"previousStepPulse1\000"
+ 1423      696F7573 
+ 1423      53746570 
+ 1423      50756C73 
+ 1423      653100
+ 1424              	.LASF31:
+ 1425 02a2 73746570 		.ascii	"stepPulse\000"
+ 1425      50756C73 
+ 1425      6500
+ 1426              	.LASF37:
+ 1427 02ac 70776D41 		.ascii	"pwmA\000"
+ 1427      00
+ 1428              	.LASF24:
+ 1429 02b1 73746570 		.ascii	"step1\000"
+ 1429      3100
+ 1430              	.LASF39:
+ 1431 02b7 70776D41 		.ascii	"pwmA1\000"
+ 1431      3100
+ 1432              	.LASF41:
+ 1433 02bd 73696E65 		.ascii	"sineTable\000"
+ 1433      5461626C 
+ 1433      6500
+ 1434              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
