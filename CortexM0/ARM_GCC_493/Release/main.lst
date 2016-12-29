@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
   30:main.c        **** #define PH11 33600 //run
   31:main.c        **** #define PH12 36800 //p
   32:main.c        **** 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 2
 
 
   33:main.c        **** // End-stop interrupt constants
@@ -69,222 +69,224 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
   38:main.c        **** // Led states
   39:main.c        **** #define LIGHT_OFF           (0u) ///< End-stop LED status 
   40:main.c        **** #define LIGHT_ON            (1u) ///< End-stop LED status 
-  41:main.c        **** 
-  42:main.c        **** /* Interrupt prototypes */
-  43:main.c        **** CY_ISR_PROTO(GPIOIsrHandler);
-  44:main.c        **** CY_ISR_PROTO(NestedIsrHandler);
-  45:main.c        **** 
-  46:main.c        **** int main() {
-  47:main.c        ****     uint16 i[2];
-  48:main.c        ****     uint8 l_previousStepPulse;
-  49:main.c        ****     uint8 l_stepPulse;
-  50:main.c        ****     uint8 jm;
-  51:main.c        ****     
-  52:main.c        ****     i[0] = 0;
-  53:main.c        ****     i[1] = 0;
-  54:main.c        **** 
-  55:main.c        ****     /* Set initial state (off) for LED */
-  56:main.c        ****     STATUS_LED_1_Write(LIGHT_OFF);
-  57:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
+  41:main.c        **** // EndStop switches IDs
+  42:main.c        **** #define END_STOP_MOTOR1 1   ///< EndStop switch ID for motor 1
+  43:main.c        **** #define END_STOP_MOTOR2 2   ///< EndStop switch ID for motor 2
+  44:main.c        **** 
+  45:main.c        **** /* Interrupt prototypes */
+  46:main.c        **** CY_ISR_PROTO(GPIOIsrHandler);
+  47:main.c        **** CY_ISR_PROTO(NestedIsrHandler);
+  48:main.c        **** 
+  49:main.c        **** //! Main application. Initialization and infinite loop
+  50:main.c        **** int main() {
+  51:main.c        ****     uint16 i[2];
+  52:main.c        ****     uint8 l_previousStepPulse;
+  53:main.c        ****     uint8 l_stepPulse;
+  54:main.c        ****     uint8 jm;
+  55:main.c        ****     
+  56:main.c        ****     i[0] = 0;
+  57:main.c        ****     i[1] = 0;
   58:main.c        **** 
-  59:main.c        ****     /* Sets up the GPIO interrupt and enables it */
-  60:main.c        ****     isr_GPIO_StartEx(GPIOIsrHandler);
-  61:main.c        **** 
-  62:main.c        ****     /* Changes initial priority for the GPIO interrupt */
-  63:main.c        ****     isr_GPIO_SetPriority(DEFAULT_PRIORITY);
-  64:main.c        **** 
-  65:main.c        ****     /* Sets up the nested interrupt, sets priority and enables it */
-  66:main.c        **** //    CyIntSetVector(NESTED_ISR,NestedIsrHandler);
-  67:main.c        **** //    CyIntSetPriority(NESTED_ISR,HIGHER_PRIORITY);
-  68:main.c        **** //    CyIntEnable(NESTED_ISR);
-  69:main.c        **** 
-  70:main.c        ****     /* Enable global interrupts */
-  71:main.c        ****     CyGlobalIntEnable;
-  72:main.c        **** 
-  73:main.c        ****     systemInit();
-  74:main.c        **** 
-  75:main.c        ****     // Intinite loop
-  76:main.c        ****     while(1) {
-  77:main.c        **** 
-  78:main.c        ****         // Loop on two motors
-  79:main.c        ****         for(jm = 1; jm <= 2; jm++) {
-  80:main.c        ****             // Assign local variables to for the current motor
-  81:main.c        ****             if(jm == 1) {
-  82:main.c        ****                 l_previousStepPulse = previousStepPulse;
-  83:main.c        ****                 l_stepPulse = stepPulse;
-  84:main.c        ****             }
-  85:main.c        ****             else {
-  86:main.c        ****                 l_previousStepPulse = previousStepPulse1;
-  87:main.c        ****                 l_stepPulse = stepPulse1;
+  59:main.c        ****     /* Set initial state (off) for LED */
+  60:main.c        ****     STATUS_LED_1_Write(LIGHT_OFF);
+  61:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
+  62:main.c        **** 
+  63:main.c        ****     /* Sets up the GPIO interrupt and enables it */
+  64:main.c        ****     isr_GPIO_StartEx(GPIOIsrHandler);
+  65:main.c        **** 
+  66:main.c        ****     /* Changes initial priority for the GPIO interrupt */
+  67:main.c        ****     isr_GPIO_SetPriority(DEFAULT_PRIORITY);
+  68:main.c        **** 
+  69:main.c        ****     /* Sets up the nested interrupt, sets priority and enables it */
+  70:main.c        **** //    CyIntSetVector(NESTED_ISR,NestedIsrHandler);
+  71:main.c        **** //    CyIntSetPriority(NESTED_ISR,HIGHER_PRIORITY);
+  72:main.c        **** //    CyIntEnable(NESTED_ISR);
+  73:main.c        **** 
+  74:main.c        ****     /* Enable global interrupts */
+  75:main.c        ****     CyGlobalIntEnable;
+  76:main.c        **** 
+  77:main.c        ****     systemInit();
+  78:main.c        **** 
+  79:main.c        ****     // Intinite loop
+  80:main.c        ****     while(1) {
+  81:main.c        **** 
+  82:main.c        ****         // Loop on two motors
+  83:main.c        ****         for(jm = 1; jm <= 2; jm++) {
+  84:main.c        ****             // Assign local variables to for the current motor
+  85:main.c        ****             if(jm == 1) {
+  86:main.c        ****                 l_previousStepPulse = previousStepPulse;
+  87:main.c        ****                 l_stepPulse = stepPulse;
   88:main.c        ****             }
-  89:main.c        **** 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 3
+  89:main.c        ****             else {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 3
 
 
-  90:main.c        ****             // Process stepping
-  91:main.c        ****             inputScan(jm);
-  92:main.c        ****             
-  93:main.c        ****             if (l_previousStepPulse == 0 && l_stepPulse == 1){
-  94:main.c        ****       			if (i[jm - 1] < PH1){
-  95:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
-  96:main.c        ****               		Move(jm);
-  97:main.c        ****               		i[jm - 1]++;
-  98:main.c        ****       			} // i < PH1
-  99:main.c        ****       			else if (PH1 <= i[jm - 1] && i[jm - 1] < PH2){
- 100:main.c        ****        				i[jm - 1]++;
- 101:main.c        ****       			} // PH1 <= i < PH2
- 102:main.c        ****       			else if (PH2 <= i[jm - 1] && i[jm - 1] < PH3){
- 103:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
- 104:main.c        ****        				Move(jm);
- 105:main.c        ****        				i[jm - 1]++;
- 106:main.c        ****       			} // PH2 <= i < PH3
- 107:main.c        ****     			else if (PH3 <= i[jm - 1] && i[jm - 1]< PH4){
- 108:main.c        ****     				i[jm - 1]++;
- 109:main.c        ****     			} // PH3 <= i < PH4
- 110:main.c        ****       			else if (PH4 <= i[jm - 1] && i[jm - 1] < PH5){
- 111:main.c        ****     				if (i[jm - 1] == PH4){
- 112:main.c        ****                         if(jm == 1) {                        
- 113:main.c        ****             				INTERNAL_STEP_WritePeriod(2000);
- 114:main.c        ****             				INTERNAL_STEP_WriteCompare(1000);
- 115:main.c        ****                         } // motor 1
- 116:main.c        ****                         else {
- 117:main.c        ****             				INTERNAL_STEP_1_WritePeriod(2000);
- 118:main.c        ****             				INTERNAL_STEP_1_WriteCompare(1000);
- 119:main.c        ****                         } // motor 2
- 120:main.c        ****                     } // PH4
- 121:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
- 122:main.c        ****        				Move(jm);
- 123:main.c        ****        				i[jm - 1]++;
- 124:main.c        ****       			} // PH4 <= i < PH5
- 125:main.c        ****       			else if (PH5 <= i[jm - 1] && i[jm - 1] < PH6){
- 126:main.c        ****        				i[jm - 1]++;
- 127:main.c        ****       			} // PH5 <= i < PH6
- 128:main.c        ****       			else if (PH6 <= i[jm - 1] && i[jm - 1] < PH7){
- 129:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
- 130:main.c        ****        				Move(jm);		
- 131:main.c        ****        				i[jm - 1]++;
- 132:main.c        ****       			} // PH6 <= i < PH7
- 133:main.c        ****       			else if (PH7 <= i[jm - 1] && i[jm - 1] < PH8){
- 134:main.c        ****        				i[jm - 1]++;
- 135:main.c        ****       			} // PH7 <= i < PH8
- 136:main.c        ****       			else if (PH8 <= i[jm - 1] && i[jm - 1] < PH9){
- 137:main.c        ****     				if (i[jm - 1] == PH8){
- 138:main.c        ****                         if(jm == 1) {                        
- 139:main.c        ****             				INTERNAL_STEP_WritePeriod(4000);
- 140:main.c        ****             				INTERNAL_STEP_WriteCompare(2000);
- 141:main.c        ****                         } // motor 1
- 142:main.c        ****                         else {
- 143:main.c        ****             				INTERNAL_STEP_1_WritePeriod(4000);
- 144:main.c        ****             				INTERNAL_STEP_1_WriteCompare(2000);
- 145:main.c        ****                         } // motor 2 
- 146:main.c        ****                     } // PH8
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 4
+  90:main.c        ****                 l_previousStepPulse = previousStepPulse1;
+  91:main.c        ****                 l_stepPulse = stepPulse1;
+  92:main.c        ****             }
+  93:main.c        **** 
+  94:main.c        ****             // Process stepping
+  95:main.c        ****             inputScan(jm);
+  96:main.c        ****             
+  97:main.c        ****             if (l_previousStepPulse == 0 && l_stepPulse == 1){
+  98:main.c        ****       			if (i[jm - 1] < PH1){
+  99:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
+ 100:main.c        ****               		Move(jm);
+ 101:main.c        ****               		i[jm - 1]++;
+ 102:main.c        ****       			} // i < PH1
+ 103:main.c        ****       			else if (PH1 <= i[jm - 1] && i[jm - 1] < PH2){
+ 104:main.c        ****        				i[jm - 1]++;
+ 105:main.c        ****       			} // PH1 <= i < PH2
+ 106:main.c        ****       			else if (PH2 <= i[jm - 1] && i[jm - 1] < PH3){
+ 107:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 108:main.c        ****        				Move(jm);
+ 109:main.c        ****        				i[jm - 1]++;
+ 110:main.c        ****       			} // PH2 <= i < PH3
+ 111:main.c        ****     			else if (PH3 <= i[jm - 1] && i[jm - 1]< PH4){
+ 112:main.c        ****     				i[jm - 1]++;
+ 113:main.c        ****     			} // PH3 <= i < PH4
+ 114:main.c        ****       			else if (PH4 <= i[jm - 1] && i[jm - 1] < PH5){
+ 115:main.c        ****     				if (i[jm - 1] == PH4){
+ 116:main.c        ****                         if(jm == 1) {                        
+ 117:main.c        ****             				INTERNAL_STEP_WritePeriod(2000);
+ 118:main.c        ****             				INTERNAL_STEP_WriteCompare(1000);
+ 119:main.c        ****                         } // motor 1
+ 120:main.c        ****                         else {
+ 121:main.c        ****             				INTERNAL_STEP_1_WritePeriod(2000);
+ 122:main.c        ****             				INTERNAL_STEP_1_WriteCompare(1000);
+ 123:main.c        ****                         } // motor 2
+ 124:main.c        ****                     } // PH4
+ 125:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
+ 126:main.c        ****        				Move(jm);
+ 127:main.c        ****        				i[jm - 1]++;
+ 128:main.c        ****       			} // PH4 <= i < PH5
+ 129:main.c        ****       			else if (PH5 <= i[jm - 1] && i[jm - 1] < PH6){
+ 130:main.c        ****        				i[jm - 1]++;
+ 131:main.c        ****       			} // PH5 <= i < PH6
+ 132:main.c        ****       			else if (PH6 <= i[jm - 1] && i[jm - 1] < PH7){
+ 133:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 134:main.c        ****        				Move(jm);		
+ 135:main.c        ****        				i[jm - 1]++;
+ 136:main.c        ****       			} // PH6 <= i < PH7
+ 137:main.c        ****       			else if (PH7 <= i[jm - 1] && i[jm - 1] < PH8){
+ 138:main.c        ****        				i[jm - 1]++;
+ 139:main.c        ****       			} // PH7 <= i < PH8
+ 140:main.c        ****       			else if (PH8 <= i[jm - 1] && i[jm - 1] < PH9){
+ 141:main.c        ****     				if (i[jm - 1] == PH8){
+ 142:main.c        ****                         if(jm == 1) {                        
+ 143:main.c        ****             				INTERNAL_STEP_WritePeriod(4000);
+ 144:main.c        ****             				INTERNAL_STEP_WriteCompare(2000);
+ 145:main.c        ****                         } // motor 1
+ 146:main.c        ****                         else {
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 4
 
 
- 147:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
- 148:main.c        ****        				Move(jm);
- 149:main.c        ****        				i[jm - 1]++;
- 150:main.c        ****       			} // PH8 <= i < PH9
- 151:main.c        ****       			else if (PH9 <= i[jm - 1] && i[jm - 1] < PH10){
- 152:main.c        ****        				i[jm - 1]++;
- 153:main.c        ****       			} // PH9 <= i < PH10
- 154:main.c        ****       			else if (PH10 <= i[jm - 1] && i[jm - 1] < PH11){
- 155:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
- 156:main.c        ****     				Move(jm);
- 157:main.c        ****     				i[jm - 1]++;
- 158:main.c        ****       			} // PH10 <= i < PH11
- 159:main.c        ****       			else if (PH11 <= i[jm - 1] && i[jm - 1] < PH12){
- 160:main.c        ****        				i[jm - 1]++;
- 161:main.c        ****       			} // PH11 <= i < PH12
- 162:main.c        ****       			else {
- 163:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
- 164:main.c        ****        				Move(jm);
- 165:main.c        **** //                    i[jm - 1] = 0;
- 166:main.c        ****       			} // None of the previous cases
- 167:main.c        ****     		} // l_previousStepPulse == 0 && l_stepPulse == 1
- 168:main.c        ****     		else{
- 169:main.c        ****     		}
- 170:main.c        ****     	} // Loop on two motors
- 171:main.c        ****     } // Forever loop
- 172:main.c        **** }
- 173:main.c        **** 
- 174:main.c        **** 
- 175:main.c        **** /**
- 176:main.c        **** * The interrupt service routine for the GPIO 
- 177:main.c        **** *  Clears a pending Interrupt.
- 178:main.c        **** *  Clears a pin Interrupt.
- 179:main.c        **** *  Blinks the LED with the LED_Isr pin.
- 180:main.c        **** *  Calls nested interrupt.
- 181:main.c        **** */
- 182:main.c        **** CY_ISR(GPIOIsrHandler)
- 183:main.c        **** {
-  26              		.loc 1 183 0
+ 147:main.c        ****             				INTERNAL_STEP_1_WritePeriod(4000);
+ 148:main.c        ****             				INTERNAL_STEP_1_WriteCompare(2000);
+ 149:main.c        ****                         } // motor 2 
+ 150:main.c        ****                     } // PH8
+ 151:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
+ 152:main.c        ****        				Move(jm);
+ 153:main.c        ****        				i[jm - 1]++;
+ 154:main.c        ****       			} // PH8 <= i < PH9
+ 155:main.c        ****       			else if (PH9 <= i[jm - 1] && i[jm - 1] < PH10){
+ 156:main.c        ****        				i[jm - 1]++;
+ 157:main.c        ****       			} // PH9 <= i < PH10
+ 158:main.c        ****       			else if (PH10 <= i[jm - 1] && i[jm - 1] < PH11){
+ 159:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 160:main.c        ****     				Move(jm);
+ 161:main.c        ****     				i[jm - 1]++;
+ 162:main.c        ****       			} // PH10 <= i < PH11
+ 163:main.c        ****       			else if (PH11 <= i[jm - 1] && i[jm - 1] < PH12){
+ 164:main.c        ****        				i[jm - 1]++;
+ 165:main.c        ****       			} // PH11 <= i < PH12
+ 166:main.c        ****       			else {
+ 167:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 168:main.c        ****        				Move(jm);
+ 169:main.c        **** //                    i[jm - 1] = 0;
+ 170:main.c        ****       			} // None of the previous cases
+ 171:main.c        ****     		} // l_previousStepPulse == 0 && l_stepPulse == 1
+ 172:main.c        ****     		else{
+ 173:main.c        ****     		}
+ 174:main.c        ****     	} // Loop on two motors
+ 175:main.c        ****     } // Forever loop
+ 176:main.c        **** }
+ 177:main.c        **** 
+ 178:main.c        **** /**
+ 179:main.c        **** * The interrupt service routine for the GPIO 
+ 180:main.c        **** *  Clears a pending Interrupt.
+ 181:main.c        **** *  Clears a pin Interrupt.
+ 182:main.c        **** *  Blinks the LED with the LED_Isr pin.
+ 183:main.c        **** *  Calls nested interrupt.
+ 184:main.c        **** */
+ 185:main.c        **** CY_ISR(GPIOIsrHandler)
+ 186:main.c        **** {
+  26              		.loc 1 186 0
   27              		.cfi_startproc
   28 0000 08B5     		push	{r3, lr}
   29              		.cfi_def_cfa_offset 8
   30              		.cfi_offset 3, -8
   31              		.cfi_offset 14, -4
- 184:main.c        ****     /* Clear pending Interrupt */
- 185:main.c        ****     isr_GPIO_ClearPending();
-  32              		.loc 1 185 0
+ 187:main.c        ****     /* Clear pending Interrupt */
+ 188:main.c        ****     isr_GPIO_ClearPending();
+  32              		.loc 1 188 0
   33 0002 FFF7FEFF 		bl	isr_GPIO_ClearPending
   34              	.LVL0:
- 186:main.c        ****     
- 187:main.c        ****     /* Clear pin Interrupt */
- 188:main.c        ****     Pin_Sw_ClearInterrupt();
-  35              		.loc 1 188 0
+ 189:main.c        ****     
+ 190:main.c        ****     /* Clear pin Interrupt */
+ 191:main.c        ****     Pin_Sw_ClearInterrupt();
+  35              		.loc 1 191 0
   36 0006 FFF7FEFF 		bl	Pin_Sw_ClearInterrupt
   37              	.LVL1:
- 189:main.c        ****     
- 190:main.c        ****     /* Turn On the LED corresponding to the end-stop */
- 191:main.c        ****     if(Pin_Sw_Read()==1)
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 5
 
 
-  38              		.loc 1 191 0
+ 192:main.c        ****     
+ 193:main.c        ****     /* Turn On the LED corresponding to the end-stop */
+ 194:main.c        ****     if(Pin_Sw_Read() == END_STOP_MOTOR1)
+  38              		.loc 1 194 0
   39 000a FFF7FEFF 		bl	Pin_Sw_Read
   40              	.LVL2:
   41 000e 0128     		cmp	r0, #1
   42 0010 01D1     		bne	.L2
- 192:main.c        ****         STATUS_LED_1_Write(LIGHT_ON);
-  43              		.loc 1 192 0
+ 195:main.c        ****         STATUS_LED_1_Write(LIGHT_ON);
+  43              		.loc 1 195 0
   44 0012 FFF7FEFF 		bl	STATUS_LED_1_Write
   45              	.LVL3:
   46              	.L2:
- 193:main.c        ****     if(Pin_Sw_Read()==2)
-  47              		.loc 1 193 0
+ 196:main.c        ****     if(Pin_Sw_Read() == END_STOP_MOTOR2)
+  47              		.loc 1 196 0
   48 0016 FFF7FEFF 		bl	Pin_Sw_Read
   49              	.LVL4:
   50 001a 0228     		cmp	r0, #2
   51 001c 02D1     		bne	.L3
- 194:main.c        ****         STATUS_LED_2_Write(LIGHT_ON);
-  52              		.loc 1 194 0
+ 197:main.c        ****         STATUS_LED_2_Write(LIGHT_ON);
+  52              		.loc 1 197 0
   53 001e 0138     		sub	r0, r0, #1
   54 0020 FFF7FEFF 		bl	STATUS_LED_2_Write
   55              	.LVL5:
   56              	.L3:
- 195:main.c        **** 
- 196:main.c        **** 
- 197:main.c        ****     /* Cause nested software interrupt after 1000 ms */
- 198:main.c        ****     CyDelay(250);
-  57              		.loc 1 198 0
+ 198:main.c        **** 
+ 199:main.c        ****     // Testing only - will be replaced by the motor stop procedure
+ 200:main.c        ****     CyDelay(250);
+  57              		.loc 1 200 0
   58 0024 FA20     		mov	r0, #250
   59 0026 FFF7FEFF 		bl	CyDelay
   60              	.LVL6:
- 199:main.c        **** 
- 200:main.c        ****     /* Turn Off the LEDs */
- 201:main.c        ****     STATUS_LED_1_Write(LIGHT_OFF);
-  61              		.loc 1 201 0
+ 201:main.c        **** 
+ 202:main.c        ****     /* Turn Off the LEDs */
+ 203:main.c        ****     STATUS_LED_1_Write(LIGHT_OFF);
+  61              		.loc 1 203 0
   62 002a 0020     		mov	r0, #0
   63 002c FFF7FEFF 		bl	STATUS_LED_1_Write
   64              	.LVL7:
- 202:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
-  65              		.loc 1 202 0
+ 204:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
+  65              		.loc 1 204 0
   66 0030 0020     		mov	r0, #0
   67 0032 FFF7FEFF 		bl	STATUS_LED_2_Write
   68              	.LVL8:
- 203:main.c        **** }
-  69              		.loc 1 203 0
+ 205:main.c        **** }
+  69              		.loc 1 205 0
   70              		@ sp needed
   71 0036 08BD     		pop	{r3, pc}
   72              		.cfi_endproc
@@ -296,13 +298,13 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
   78              		.code	16
   79              		.thumb_func
   80              		.type	main, %function
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 6
+
+
   81              	main:
   82              	.LFB34:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 6
-
-
-  46:main.c        ****     uint16 i[2];
-  83              		.loc 1 46 0
+  50:main.c        ****     uint16 i[2];
+  83              		.loc 1 50 0
   84              		.cfi_startproc
   85 0000 F0B5     		push	{r4, r5, r6, r7, lr}
   86              		.cfi_def_cfa_offset 20
@@ -311,224 +313,224 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
   89              		.cfi_offset 6, -12
   90              		.cfi_offset 7, -8
   91              		.cfi_offset 14, -4
-  52:main.c        ****     i[1] = 0;
-  92              		.loc 1 52 0
+  56:main.c        ****     i[1] = 0;
+  92              		.loc 1 56 0
   93 0002 0024     		mov	r4, #0
-  46:main.c        ****     uint16 i[2];
-  94              		.loc 1 46 0
+  50:main.c        ****     uint16 i[2];
+  94              		.loc 1 50 0
   95 0004 85B0     		sub	sp, sp, #20
   96              		.cfi_def_cfa_offset 40
-  52:main.c        ****     i[1] = 0;
-  97              		.loc 1 52 0
+  56:main.c        ****     i[1] = 0;
+  97              		.loc 1 56 0
   98 0006 02AB     		add	r3, sp, #8
-  56:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
-  99              		.loc 1 56 0
+  60:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
+  99              		.loc 1 60 0
  100 0008 201C     		mov	r0, r4
-  52:main.c        ****     i[1] = 0;
- 101              		.loc 1 52 0
+  56:main.c        ****     i[1] = 0;
+ 101              		.loc 1 56 0
  102 000a 9C80     		strh	r4, [r3, #4]
-  53:main.c        **** 
- 103              		.loc 1 53 0
+  57:main.c        **** 
+ 103              		.loc 1 57 0
  104 000c DC80     		strh	r4, [r3, #6]
-  56:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
- 105              		.loc 1 56 0
+  60:main.c        ****     STATUS_LED_2_Write(LIGHT_OFF);
+ 105              		.loc 1 60 0
  106 000e FFF7FEFF 		bl	STATUS_LED_1_Write
  107              	.LVL9:
-  57:main.c        **** 
- 108              		.loc 1 57 0
+  61:main.c        **** 
+ 108              		.loc 1 61 0
  109 0012 201C     		mov	r0, r4
  110 0014 FFF7FEFF 		bl	STATUS_LED_2_Write
  111              	.LVL10:
-  60:main.c        **** 
- 112              		.loc 1 60 0
+  64:main.c        **** 
+ 112              		.loc 1 64 0
  113 0018 5E48     		ldr	r0, .L56
  114 001a FFF7FEFF 		bl	isr_GPIO_StartEx
  115              	.LVL11:
-  63:main.c        **** 
- 116              		.loc 1 63 0
+  67:main.c        **** 
+ 116              		.loc 1 67 0
  117 001e 0320     		mov	r0, #3
  118 0020 FFF7FEFF 		bl	isr_GPIO_SetPriority
  119              	.LVL12:
-  71:main.c        **** 
- 120              		.loc 1 71 0
- 121              	@ 71 "main.c" 1
+  75:main.c        **** 
+ 120              		.loc 1 75 0
+ 121              	@ 75 "main.c" 1
  122 0024 62B6     		CPSIE   i
  123              	@ 0 "" 2
-  73:main.c        **** 
- 124              		.loc 1 73 0
+  77:main.c        **** 
+ 124              		.loc 1 77 0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 7
+
+
  125              		.code	16
  126 0026 FFF7FEFF 		bl	systemInit
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 7
-
-
  127              	.LVL13:
  128              	.L42:
-  79:main.c        ****             // Assign local variables to for the current motor
- 129              		.loc 1 79 0
+  83:main.c        ****             // Assign local variables to for the current motor
+ 129              		.loc 1 83 0
  130 002a 0125     		mov	r5, #1
-  82:main.c        ****                 l_stepPulse = stepPulse;
- 131              		.loc 1 82 0
+  86:main.c        ****                 l_stepPulse = stepPulse;
+ 131              		.loc 1 86 0
  132 002c 5A4B     		ldr	r3, .L56+4
  133 002e 03AF     		add	r7, sp, #12
  134 0030 1E78     		ldrb	r6, [r3]
  135              	.LVL14:
-  83:main.c        ****             }
- 136              		.loc 1 83 0
+  87:main.c        ****             }
+ 136              		.loc 1 87 0
  137 0032 5A4B     		ldr	r3, .L56+8
  138              	.LVL15:
  139              	.L44:
-  87:main.c        ****             }
- 140              		.loc 1 87 0
+  91:main.c        ****             }
+ 140              		.loc 1 91 0
  141 0034 1B78     		ldrb	r3, [r3]
-  91:main.c        ****             
- 142              		.loc 1 91 0
+  95:main.c        ****             
+ 142              		.loc 1 95 0
  143 0036 281C     		mov	r0, r5
-  87:main.c        ****             }
- 144              		.loc 1 87 0
+  91:main.c        ****             }
+ 144              		.loc 1 91 0
  145 0038 0193     		str	r3, [sp, #4]
  146              	.LVL16:
-  91:main.c        ****             
- 147              		.loc 1 91 0
+  95:main.c        ****             
+ 147              		.loc 1 95 0
  148 003a FFF7FEFF 		bl	inputScan
  149              	.LVL17:
-  93:main.c        ****       			if (i[jm - 1] < PH1){
- 150              		.loc 1 93 0
+  97:main.c        ****       			if (i[jm - 1] < PH1){
+ 150              		.loc 1 97 0
  151 003e 002E     		cmp	r6, #0
  152 0040 00D0     		beq	.LCB99
  153 0042 9EE0     		b	.L8	@long jump
  154              	.LCB99:
-  93:main.c        ****       			if (i[jm - 1] < PH1){
- 155              		.loc 1 93 0 is_stmt 0 discriminator 1
+  97:main.c        ****       			if (i[jm - 1] < PH1){
+ 155              		.loc 1 97 0 is_stmt 0 discriminator 1
  156 0044 019B     		ldr	r3, [sp, #4]
  157 0046 012B     		cmp	r3, #1
  158 0048 00D0     		beq	.LCB103
  159 004a 9AE0     		b	.L8	@long jump
  160              	.LCB103:
-  94:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
- 161              		.loc 1 94 0 is_stmt 1
+  98:main.c        ****                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
+ 161              		.loc 1 98 0 is_stmt 1
  162 004c 3C88     		ldrh	r4, [r7]
  163 004e 544B     		ldr	r3, .L56+12
  164 0050 9C42     		cmp	r4, r3
  165 0052 05D8     		bhi	.L9
-  95:main.c        ****               		Move(jm);
- 166              		.loc 1 95 0
+  99:main.c        ****               		Move(jm);
+ 166              		.loc 1 99 0
  167 0054 534B     		ldr	r3, .L56+16
  168 0056 012D     		cmp	r5, #1
  169 0058 00D0     		beq	.L45
-  95:main.c        ****               		Move(jm);
- 170              		.loc 1 95 0 is_stmt 0 discriminator 2
+  99:main.c        ****               		Move(jm);
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 8
+
+
+ 170              		.loc 1 99 0 is_stmt 0 discriminator 2
  171 005a 534B     		ldr	r3, .L56+20
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 8
-
-
  172              	.L45:
  173 005c 1E70     		strb	r6, [r3]
  174              	.LVL18:
  175 005e 79E0     		b	.L37
  176              	.LVL19:
  177              	.L9:
-  99:main.c        ****        				i[jm - 1]++;
- 178              		.loc 1 99 0 is_stmt 1
+ 103:main.c        ****        				i[jm - 1]++;
+ 178              		.loc 1 103 0 is_stmt 1
  179 0060 524B     		ldr	r3, .L56+24
  180 0062 534A     		ldr	r2, .L56+28
  181 0064 E318     		add	r3, r4, r3
  182 0066 9BB2     		uxth	r3, r3
  183 0068 9342     		cmp	r3, r2
  184 006a 76D9     		bls	.L49
- 102:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
- 185              		.loc 1 102 0
+ 106:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 185              		.loc 1 106 0
  186 006c 514B     		ldr	r3, .L56+32
  187 006e 524A     		ldr	r2, .L56+36
  188 0070 E318     		add	r3, r4, r3
  189 0072 9BB2     		uxth	r3, r3
  190 0074 9342     		cmp	r3, r2
  191 0076 05D8     		bhi	.L13
- 103:main.c        ****        				Move(jm);
- 192              		.loc 1 103 0
+ 107:main.c        ****        				Move(jm);
+ 192              		.loc 1 107 0
  193 0078 012D     		cmp	r5, #1
  194 007a 66D0     		beq	.L51
- 103:main.c        ****        				Move(jm);
- 195              		.loc 1 103 0 is_stmt 0 discriminator 2
+ 107:main.c        ****        				Move(jm);
+ 195              		.loc 1 107 0 is_stmt 0 discriminator 2
  196 007c 6A46     		mov	r2, sp
  197 007e 4A4B     		ldr	r3, .L56+20
  198 0080 1279     		ldrb	r2, [r2, #4]
  199 0082 66E0     		b	.L50
  200              	.L13:
- 107:main.c        ****     				i[jm - 1]++;
- 201              		.loc 1 107 0 is_stmt 1
+ 111:main.c        ****     				i[jm - 1]++;
+ 201              		.loc 1 111 0 is_stmt 1
  202 0084 4D4B     		ldr	r3, .L56+40
  203 0086 4E49     		ldr	r1, .L56+44
  204 0088 E318     		add	r3, r4, r3
  205 008a 9BB2     		uxth	r3, r3
  206 008c 8B42     		cmp	r3, r1
  207 008e 64D9     		bls	.L49
- 110:main.c        ****     				if (i[jm - 1] == PH4){
- 208              		.loc 1 110 0
+ 114:main.c        ****     				if (i[jm - 1] == PH4){
+ 208              		.loc 1 114 0
  209 0090 4C4B     		ldr	r3, .L56+48
  210 0092 4D48     		ldr	r0, .L56+52
  211 0094 E318     		add	r3, r4, r3
  212 0096 9BB2     		uxth	r3, r3
  213 0098 8342     		cmp	r3, r0
  214 009a 11D8     		bhi	.L17
- 111:main.c        ****                         if(jm == 1) {                        
- 215              		.loc 1 111 0
+ 115:main.c        ****                         if(jm == 1) {                        
+ 215              		.loc 1 115 0
  216 009c 9623     		mov	r3, #150
  217 009e 9B01     		lsl	r3, r3, #6
  218 00a0 9C42     		cmp	r4, r3
  219 00a2 3DD1     		bne	.L29
- 113:main.c        ****             				INTERNAL_STEP_WriteCompare(1000);
- 220              		.loc 1 113 0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 9
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 9
 
 
+ 117:main.c        ****             				INTERNAL_STEP_WriteCompare(1000);
+ 220              		.loc 1 117 0
  221 00a4 FA20     		mov	r0, #250
  222 00a6 C000     		lsl	r0, r0, #3
- 112:main.c        ****             				INTERNAL_STEP_WritePeriod(2000);
- 223              		.loc 1 112 0
+ 116:main.c        ****             				INTERNAL_STEP_WritePeriod(2000);
+ 223              		.loc 1 116 0
  224 00a8 012D     		cmp	r5, #1
  225 00aa 04D1     		bne	.L19
- 113:main.c        ****             				INTERNAL_STEP_WriteCompare(1000);
- 226              		.loc 1 113 0
+ 117:main.c        ****             				INTERNAL_STEP_WriteCompare(1000);
+ 226              		.loc 1 117 0
  227 00ac FFF7FEFF 		bl	INTERNAL_STEP_WritePeriod
  228              	.LVL20:
- 114:main.c        ****                         } // motor 1
- 229              		.loc 1 114 0
+ 118:main.c        ****                         } // motor 1
+ 229              		.loc 1 118 0
  230 00b0 FA20     		mov	r0, #250
  231 00b2 8000     		lsl	r0, r0, #2
  232 00b4 2AE0     		b	.L53
  233              	.L19:
- 117:main.c        ****             				INTERNAL_STEP_1_WriteCompare(1000);
- 234              		.loc 1 117 0
+ 121:main.c        ****             				INTERNAL_STEP_1_WriteCompare(1000);
+ 234              		.loc 1 121 0
  235 00b6 FFF7FEFF 		bl	INTERNAL_STEP_1_WritePeriod
  236              	.LVL21:
- 118:main.c        ****                         } // motor 2
- 237              		.loc 1 118 0
+ 122:main.c        ****                         } // motor 2
+ 237              		.loc 1 122 0
  238 00ba FA20     		mov	r0, #250
  239 00bc 8000     		lsl	r0, r0, #2
  240 00be 2CE0     		b	.L55
  241              	.L17:
- 125:main.c        ****        				i[jm - 1]++;
- 242              		.loc 1 125 0
+ 129:main.c        ****        				i[jm - 1]++;
+ 242              		.loc 1 129 0
  243 00c0 424B     		ldr	r3, .L56+56
  244 00c2 E318     		add	r3, r4, r3
  245 00c4 9BB2     		uxth	r3, r3
  246 00c6 8B42     		cmp	r3, r1
  247 00c8 47D9     		bls	.L49
- 128:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
- 248              		.loc 1 128 0
+ 132:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 248              		.loc 1 132 0
  249 00ca 414B     		ldr	r3, .L56+60
  250 00cc E318     		add	r3, r4, r3
  251 00ce 9BB2     		uxth	r3, r3
  252 00d0 8342     		cmp	r3, r0
  253 00d2 06D8     		bhi	.L24
  254 00d4 019B     		ldr	r3, [sp, #4]
- 129:main.c        ****        				Move(jm);		
- 255              		.loc 1 129 0
+ 133:main.c        ****        				Move(jm);		
+ 255              		.loc 1 133 0
  256 00d6 334A     		ldr	r2, .L56+16
  257 00d8 012D     		cmp	r5, #1
  258 00da 00D0     		beq	.L47
- 129:main.c        ****        				Move(jm);		
- 259              		.loc 1 129 0 is_stmt 0 discriminator 2
+ 133:main.c        ****        				Move(jm);		
+ 259              		.loc 1 133 0 is_stmt 0 discriminator 2
  260 00dc 324A     		ldr	r2, .L56+20
  261              	.L47:
  262 00de 1370     		strb	r3, [r2]
@@ -536,42 +538,42 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  264 00e0 38E0     		b	.L37
  265              	.LVL23:
  266              	.L24:
- 133:main.c        ****        				i[jm - 1]++;
- 267              		.loc 1 133 0 is_stmt 1
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 10
 
 
+ 137:main.c        ****        				i[jm - 1]++;
+ 267              		.loc 1 137 0 is_stmt 1
  268 00e2 3C4B     		ldr	r3, .L56+64
  269 00e4 E318     		add	r3, r4, r3
  270 00e6 9BB2     		uxth	r3, r3
  271 00e8 9342     		cmp	r3, r2
  272 00ea 36D9     		bls	.L49
- 136:main.c        ****     				if (i[jm - 1] == PH8){
- 273              		.loc 1 136 0
+ 140:main.c        ****     				if (i[jm - 1] == PH8){
+ 273              		.loc 1 140 0
  274 00ec 3A4B     		ldr	r3, .L56+68
  275 00ee E318     		add	r3, r4, r3
  276 00f0 9BB2     		uxth	r3, r3
  277 00f2 8B42     		cmp	r3, r1
  278 00f4 1BD8     		bhi	.L28
- 137:main.c        ****                         if(jm == 1) {                        
- 279              		.loc 1 137 0
+ 141:main.c        ****                         if(jm == 1) {                        
+ 279              		.loc 1 141 0
  280 00f6 394B     		ldr	r3, .L56+72
  281 00f8 9C42     		cmp	r4, r3
  282 00fa 11D1     		bne	.L29
- 139:main.c        ****             				INTERNAL_STEP_WriteCompare(2000);
- 283              		.loc 1 139 0
+ 143:main.c        ****             				INTERNAL_STEP_WriteCompare(2000);
+ 283              		.loc 1 143 0
  284 00fc FA20     		mov	r0, #250
  285 00fe 0001     		lsl	r0, r0, #4
- 138:main.c        ****             				INTERNAL_STEP_WritePeriod(4000);
- 286              		.loc 1 138 0
+ 142:main.c        ****             				INTERNAL_STEP_WritePeriod(4000);
+ 286              		.loc 1 142 0
  287 0100 012D     		cmp	r5, #1
  288 0102 06D1     		bne	.L30
- 139:main.c        ****             				INTERNAL_STEP_WriteCompare(2000);
- 289              		.loc 1 139 0
+ 143:main.c        ****             				INTERNAL_STEP_WriteCompare(2000);
+ 289              		.loc 1 143 0
  290 0104 FFF7FEFF 		bl	INTERNAL_STEP_WritePeriod
  291              	.LVL24:
- 140:main.c        ****                         } // motor 1
- 292              		.loc 1 140 0
+ 144:main.c        ****                         } // motor 1
+ 292              		.loc 1 144 0
  293 0108 FA20     		mov	r0, #250
  294 010a C000     		lsl	r0, r0, #3
  295              	.L53:
@@ -579,12 +581,12 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  297              	.LVL25:
  298 0110 08E0     		b	.L31
  299              	.L30:
- 143:main.c        ****             				INTERNAL_STEP_1_WriteCompare(2000);
- 300              		.loc 1 143 0
+ 147:main.c        ****             				INTERNAL_STEP_1_WriteCompare(2000);
+ 300              		.loc 1 147 0
  301 0112 FFF7FEFF 		bl	INTERNAL_STEP_1_WritePeriod
  302              	.LVL26:
- 144:main.c        ****                         } // motor 2 
- 303              		.loc 1 144 0
+ 148:main.c        ****                         } // motor 2 
+ 303              		.loc 1 148 0
  304 0116 FA20     		mov	r0, #250
  305 0118 C000     		lsl	r0, r0, #3
  306              	.L55:
@@ -592,121 +594,121 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  308              	.LVL27:
  309 011e 04E0     		b	.L32
  310              	.L29:
- 147:main.c        ****        				Move(jm);
- 311              		.loc 1 147 0
+ 151:main.c        ****        				Move(jm);
+ 311              		.loc 1 151 0
  312 0120 012D     		cmp	r5, #1
  313 0122 02D1     		bne	.L32
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 11
+
+
  314              	.L31:
- 147:main.c        ****        				Move(jm);
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 11
-
-
- 315              		.loc 1 147 0 is_stmt 0 discriminator 1
+ 151:main.c        ****        				Move(jm);
+ 315              		.loc 1 151 0 is_stmt 0 discriminator 1
  316 0124 0022     		mov	r2, #0
  317 0126 1F4B     		ldr	r3, .L56+16
  318 0128 13E0     		b	.L50
  319              	.L32:
- 147:main.c        ****        				Move(jm);
- 320              		.loc 1 147 0 discriminator 2
+ 151:main.c        ****        				Move(jm);
+ 320              		.loc 1 151 0 discriminator 2
  321 012a 0022     		mov	r2, #0
  322 012c 10E0     		b	.L52
  323              	.L28:
- 151:main.c        ****        				i[jm - 1]++;
- 324              		.loc 1 151 0 is_stmt 1
+ 155:main.c        ****        				i[jm - 1]++;
+ 324              		.loc 1 155 0 is_stmt 1
  325 012e 2C4B     		ldr	r3, .L56+76
  326 0130 E318     		add	r3, r4, r3
  327 0132 9BB2     		uxth	r3, r3
  328 0134 9342     		cmp	r3, r2
  329 0136 10D9     		bls	.L49
- 154:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
- 330              		.loc 1 154 0
+ 158:main.c        ****                     if(jm == 1) dirReg = 1; else dirReg1 = 1;
+ 330              		.loc 1 158 0
  331 0138 2A4B     		ldr	r3, .L56+80
  332 013a 214A     		ldr	r2, .L56+44
  333 013c E318     		add	r3, r4, r3
  334 013e 9BB2     		uxth	r3, r3
  335 0140 9342     		cmp	r3, r2
  336 0142 0DD8     		bhi	.L35
- 155:main.c        ****     				Move(jm);
- 337              		.loc 1 155 0
+ 159:main.c        ****     				Move(jm);
+ 337              		.loc 1 159 0
  338 0144 0122     		mov	r2, #1
  339 0146 012D     		cmp	r5, #1
  340 0148 02D1     		bne	.L52
  341              	.L51:
- 155:main.c        ****     				Move(jm);
- 342              		.loc 1 155 0 is_stmt 0 discriminator 1
+ 159:main.c        ****     				Move(jm);
+ 342              		.loc 1 159 0 is_stmt 0 discriminator 1
  343 014a 164B     		ldr	r3, .L56+16
  344 014c 1D70     		strb	r5, [r3]
  345 014e 01E0     		b	.L37
  346              	.L52:
- 155:main.c        ****     				Move(jm);
- 347              		.loc 1 155 0 discriminator 2
+ 159:main.c        ****     				Move(jm);
+ 347              		.loc 1 159 0 discriminator 2
  348 0150 154B     		ldr	r3, .L56+20
  349              	.L50:
  350 0152 1A70     		strb	r2, [r3]
  351              	.LVL28:
  352              	.L37:
- 156:main.c        ****     				i[jm - 1]++;
- 353              		.loc 1 156 0 is_stmt 1
+ 160:main.c        ****     				i[jm - 1]++;
+ 353              		.loc 1 160 0 is_stmt 1
  354 0154 281C     		mov	r0, r5
  355 0156 FFF7FEFF 		bl	Move
  356              	.LVL29:
  357              	.L49:
- 157:main.c        ****       			} // PH10 <= i < PH11
- 358              		.loc 1 157 0
+ 161:main.c        ****       			} // PH10 <= i < PH11
+ 358              		.loc 1 161 0
  359 015a 0134     		add	r4, r4, #1
  360 015c 3C80     		strh	r4, [r7]
  361 015e 10E0     		b	.L8
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 12
+
+
  362              	.LVL30:
  363              	.L35:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 12
-
-
- 159:main.c        ****        				i[jm - 1]++;
- 364              		.loc 1 159 0
+ 163:main.c        ****        				i[jm - 1]++;
+ 364              		.loc 1 163 0
  365 0160 214B     		ldr	r3, .L56+84
  366 0162 154A     		ldr	r2, .L56+36
  367 0164 E318     		add	r3, r4, r3
  368 0166 9BB2     		uxth	r3, r3
  369 0168 9342     		cmp	r3, r2
  370 016a F6D9     		bls	.L49
- 163:main.c        ****        				Move(jm);
- 371              		.loc 1 163 0
+ 167:main.c        ****        				Move(jm);
+ 371              		.loc 1 167 0
  372 016c 012D     		cmp	r5, #1
  373 016e 02D1     		bne	.L39
- 163:main.c        ****        				Move(jm);
- 374              		.loc 1 163 0 is_stmt 0 discriminator 1
+ 167:main.c        ****        				Move(jm);
+ 374              		.loc 1 167 0 is_stmt 0 discriminator 1
  375 0170 0C4B     		ldr	r3, .L56+16
  376 0172 1D70     		strb	r5, [r3]
  377 0174 02E0     		b	.L40
  378              	.L39:
- 163:main.c        ****        				Move(jm);
- 379              		.loc 1 163 0 discriminator 2
+ 167:main.c        ****        				Move(jm);
+ 379              		.loc 1 167 0 discriminator 2
  380 0176 0122     		mov	r2, #1
  381 0178 0B4B     		ldr	r3, .L56+20
  382 017a 1A70     		strb	r2, [r3]
  383              	.L40:
- 164:main.c        **** //                    i[jm - 1] = 0;
- 384              		.loc 1 164 0 is_stmt 1
+ 168:main.c        **** //                    i[jm - 1] = 0;
+ 384              		.loc 1 168 0 is_stmt 1
  385 017c 281C     		mov	r0, r5
  386 017e FFF7FEFF 		bl	Move
  387              	.LVL31:
  388              	.L8:
  389 0182 0237     		add	r7, r7, #2
-  79:main.c        ****             // Assign local variables to for the current motor
- 390              		.loc 1 79 0 discriminator 2
+  83:main.c        ****             // Assign local variables to for the current motor
+ 390              		.loc 1 83 0 discriminator 2
  391 0184 022D     		cmp	r5, #2
  392 0186 00D1     		bne	.LCB326
  393 0188 4FE7     		b	.L42	@long jump
  394              	.LCB326:
-  86:main.c        ****                 l_stepPulse = stepPulse1;
- 395              		.loc 1 86 0
+  90:main.c        ****                 l_stepPulse = stepPulse1;
+ 395              		.loc 1 90 0
  396 018a 184B     		ldr	r3, .L56+88
  397 018c 0225     		mov	r5, #2
  398              	.LVL32:
  399 018e 1E78     		ldrb	r6, [r3]
  400              	.LVL33:
-  87:main.c        ****             }
- 401              		.loc 1 87 0
+  91:main.c        ****             }
+ 401              		.loc 1 91 0
  402 0190 174B     		ldr	r3, .L56+92
  403 0192 4FE7     		b	.L44
  404              	.L57:
@@ -716,11 +718,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  408 0198 00000000 		.word	previousStepPulse
  409 019c 00000000 		.word	stepPulse
  410 01a0 830C0000 		.word	3203
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 13
+
+
  411 01a4 00000000 		.word	dirReg
  412 01a8 00000000 		.word	dirReg1
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 13
-
-
  413 01ac 7CF3FFFF 		.word	-3204
  414 01b0 3B060000 		.word	1595
  415 01b4 40EDFFFF 		.word	-4800
@@ -776,11 +778,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  465 0002 82       		.byte	-126
  466 0003 91       		.byte	-111
  467 0004 9F       		.byte	-97
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 14
+
+
  468 0005 AD       		.byte	-83
  469 0006 BA       		.byte	-70
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 14
-
-
  470 0007 C6       		.byte	-58
  471 0008 D2       		.byte	-46
  472 0009 DC       		.byte	-36
@@ -836,11 +838,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  522 003c 07       		.byte	0x7
  523 003d E5020000 		.4byte	.LASF3
  524 0041 02       		.uleb128 0x2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 15
+
+
  525 0042 04       		.byte	0x4
  526 0043 05       		.byte	0x5
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 15
-
-
  527 0044 C6010000 		.4byte	.LASF4
  528 0048 02       		.uleb128 0x2
  529 0049 04       		.byte	0x4
@@ -896,11 +898,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  579 00ac B0000000 		.4byte	0xb0
  580 00b0 05       		.uleb128 0x5
  581 00b1 04       		.byte	0x4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 16
+
+
  582 00b2 B6000000 		.4byte	0xb6
  583 00b6 06       		.uleb128 0x6
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 16
-
-
  584 00b7 02       		.uleb128 0x2
  585 00b8 04       		.byte	0x4
  586 00b9 07       		.byte	0x7
@@ -908,7 +910,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  588 00be 07       		.uleb128 0x7
  589 00bf E4010000 		.4byte	.LASF17
  590 00c3 01       		.byte	0x1
- 591 00c4 B6       		.byte	0xb6
+ 591 00c4 B9       		.byte	0xb9
  592 00c5 00000000 		.4byte	.LFB35
  593 00c9 38000000 		.4byte	.LFE35-.LFB35
  594 00cd 01       		.uleb128 0x1
@@ -956,11 +958,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  636 0130 0B       		.uleb128 0xb
  637 0131 36000000 		.4byte	.LVL8
  638 0135 6D040000 		.4byte	0x46d
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 17
+
+
  639 0139 0A       		.uleb128 0xa
  640 013a 01       		.uleb128 0x1
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 17
-
-
  641 013b 50       		.byte	0x50
  642 013c 01       		.uleb128 0x1
  643 013d 30       		.byte	0x30
@@ -969,7 +971,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  646 0140 0C       		.uleb128 0xc
  647 0141 FD020000 		.4byte	.LASF18
  648 0145 01       		.byte	0x1
- 649 0146 2E       		.byte	0x2e
+ 649 0146 32       		.byte	0x32
  650 0147 5D000000 		.4byte	0x5d
  651 014b 00000000 		.4byte	.LFB34
  652 014f F4010000 		.4byte	.LFE34-.LFB34
@@ -979,7 +981,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  656 0159 0D       		.uleb128 0xd
  657 015a 6900     		.ascii	"i\000"
  658 015c 01       		.byte	0x1
- 659 015d 2F       		.byte	0x2f
+ 659 015d 33       		.byte	0x33
  660 015e 71020000 		.4byte	0x271
  661 0162 02       		.uleb128 0x2
  662 0163 91       		.byte	0x91
@@ -987,20 +989,20 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  664 0165 0E       		.uleb128 0xe
  665 0166 81010000 		.4byte	.LASF19
  666 016a 01       		.byte	0x1
- 667 016b 30       		.byte	0x30
+ 667 016b 34       		.byte	0x34
  668 016c 6B000000 		.4byte	0x6b
  669 0170 01       		.uleb128 0x1
  670 0171 56       		.byte	0x56
  671 0172 0F       		.uleb128 0xf
  672 0173 D8010000 		.4byte	.LASF20
  673 0177 01       		.byte	0x1
- 674 0178 31       		.byte	0x31
+ 674 0178 35       		.byte	0x35
  675 0179 6B000000 		.4byte	0x6b
  676 017d 00000000 		.4byte	.LLST0
  677 0181 10       		.uleb128 0x10
  678 0182 6A6D00   		.ascii	"jm\000"
  679 0185 01       		.byte	0x1
- 680 0186 32       		.byte	0x32
+ 680 0186 36       		.byte	0x36
  681 0187 6B000000 		.4byte	0x6b
  682 018b 38000000 		.4byte	.LLST1
  683 018f 09       		.uleb128 0x9
@@ -1016,11 +1018,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  693 01a2 00       		.byte	0
  694 01a3 09       		.uleb128 0x9
  695 01a4 18000000 		.4byte	.LVL10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 18
+
+
  696 01a8 6D040000 		.4byte	0x46d
  697 01ac B7010000 		.4byte	0x1b7
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 18
-
-
  698 01b0 0A       		.uleb128 0xa
  699 01b1 01       		.uleb128 0x1
  700 01b2 50       		.byte	0x50
@@ -1076,11 +1078,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  750 0212 00       		.byte	0
  751 0213 08       		.uleb128 0x8
  752 0214 BA000000 		.4byte	.LVL21
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 19
+
+
  753 0218 E0040000 		.4byte	0x4e0
  754 021c 09       		.uleb128 0x9
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 19
-
-
  755 021d 08010000 		.4byte	.LVL24
  756 0221 CF040000 		.4byte	0x4cf
  757 0225 31020000 		.4byte	0x231
@@ -1136,11 +1138,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  807 0288 6B000000 		.4byte	0x6b
  808 028c 05       		.uleb128 0x5
  809 028d 03       		.byte	0x3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 20
+
+
  810 028e 00000000 		.4byte	currentStepA
  811 0292 13       		.uleb128 0x13
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 20
-
-
  812 0293 06040000 		.4byte	.LASF22
  813 0297 03       		.byte	0x3
  814 0298 11       		.byte	0x11
@@ -1196,11 +1198,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  864 0303 05       		.uleb128 0x5
  865 0304 03       		.byte	0x3
  866 0305 00000000 		.4byte	step1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 21
+
+
  867 0309 13       		.uleb128 0x13
  868 030a 4E010000 		.4byte	.LASF29
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 21
-
-
  869 030e 03       		.byte	0x3
  870 030f 13       		.byte	0x13
  871 0310 6B000000 		.4byte	0x6b
@@ -1256,11 +1258,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  921 037b 03       		.byte	0x3
  922 037c 00000000 		.4byte	stepPulse
  923 0380 13       		.uleb128 0x13
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 22
+
+
  924 0381 7A030000 		.4byte	.LASF36
  925 0385 04       		.byte	0x4
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 22
-
-
  926 0386 1D       		.byte	0x1d
  927 0387 6B000000 		.4byte	0x6b
  928 038b 05       		.uleb128 0x5
@@ -1316,11 +1318,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  978 03f3 00000000 		.4byte	pwmB
  979 03f7 13       		.uleb128 0x13
  980 03f8 37000000 		.4byte	.LASF43
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 23
+
+
  981 03fc 05       		.byte	0x5
  982 03fd 21       		.byte	0x21
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 23
-
-
  983 03fe 6B000000 		.4byte	0x6b
  984 0402 05       		.uleb128 0x5
  985 0403 03       		.byte	0x3
@@ -1376,11 +1378,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1035 046e 60030000 		.4byte	.LASF49
  1036 0472 09       		.byte	0x9
  1037 0473 33       		.byte	0x33
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 24
+
+
  1038 0474 7E040000 		.4byte	0x47e
  1039 0478 18       		.uleb128 0x18
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 24
-
-
  1040 0479 6B000000 		.4byte	0x6b
  1041 047d 00       		.byte	0
  1042 047e 17       		.uleb128 0x17
@@ -1436,11 +1438,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1092 04e6 BE       		.byte	0xbe
  1093 04e7 F1040000 		.4byte	0x4f1
  1094 04eb 18       		.uleb128 0x18
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 25
+
+
  1095 04ec 77000000 		.4byte	0x77
  1096 04f0 00       		.byte	0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 25
-
-
  1097 04f1 17       		.uleb128 0x17
  1098 04f2 CC030000 		.4byte	.LASF56
  1099 04f6 0C       		.byte	0xc
@@ -1496,11 +1498,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1149 001a 03       		.uleb128 0x3
  1150 001b 0E       		.uleb128 0xe
  1151 001c 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 26
+
+
  1152 001d 00       		.byte	0
  1153 001e 03       		.uleb128 0x3
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 26
-
-
  1154 001f 24       		.uleb128 0x24
  1155 0020 00       		.byte	0
  1156 0021 0B       		.uleb128 0xb
@@ -1556,11 +1558,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1206 0053 11       		.uleb128 0x11
  1207 0054 01       		.uleb128 0x1
  1208 0055 12       		.uleb128 0x12
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 27
+
+
  1209 0056 06       		.uleb128 0x6
  1210 0057 40       		.uleb128 0x40
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 27
-
-
  1211 0058 18       		.uleb128 0x18
  1212 0059 9742     		.uleb128 0x2117
  1213 005b 19       		.uleb128 0x19
@@ -1616,11 +1618,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1263 0096 3A       		.uleb128 0x3a
  1264 0097 0B       		.uleb128 0xb
  1265 0098 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 28
+
+
  1266 0099 0B       		.uleb128 0xb
  1267 009a 49       		.uleb128 0x49
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 28
-
-
  1268 009b 13       		.uleb128 0x13
  1269 009c 11       		.uleb128 0x11
  1270 009d 01       		.uleb128 0x1
@@ -1676,11 +1678,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1320 00d0 49       		.uleb128 0x49
  1321 00d1 13       		.uleb128 0x13
  1322 00d2 02       		.uleb128 0x2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 29
+
+
  1323 00d3 17       		.uleb128 0x17
  1324 00d4 00       		.byte	0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 29
-
-
  1325 00d5 00       		.byte	0
  1326 00d6 10       		.uleb128 0x10
  1327 00d7 34       		.uleb128 0x34
@@ -1736,11 +1738,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1377 0109 26       		.uleb128 0x26
  1378 010a 00       		.byte	0
  1379 010b 49       		.uleb128 0x49
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 30
+
+
  1380 010c 13       		.uleb128 0x13
  1381 010d 00       		.byte	0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 30
-
-
  1382 010e 00       		.byte	0
  1383 010f 15       		.uleb128 0x15
  1384 0110 2E       		.uleb128 0x2e
@@ -1796,11 +1798,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1434 0142 01       		.uleb128 0x1
  1435 0143 13       		.uleb128 0x13
  1436 0144 00       		.byte	0
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 31
+
+
  1437 0145 00       		.byte	0
  1438 0146 18       		.uleb128 0x18
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 31
-
-
  1439 0147 05       		.uleb128 0x5
  1440 0148 00       		.byte	0
  1441 0149 49       		.uleb128 0x49
@@ -1856,11 +1858,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1491 000a 91       		.byte	0x91
  1492 000b 5C       		.sleb128 -36
  1493 000c 60000000 		.4byte	.LVL19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 32
+
+
  1494 0010 E0000000 		.4byte	.LVL22
  1495 0014 0200     		.2byte	0x2
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 32
-
-
  1496 0016 91       		.byte	0x91
  1497 0017 5C       		.sleb128 -36
  1498 0018 E2000000 		.4byte	.LVL23
@@ -1916,11 +1918,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1548 0000 A1010000 		.section	.debug_str,"MS",%progbits,1
  1548      0200EF00 
  1548      00000201 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 33
+
+
  1548      FB0E0D00 
  1548      01010101 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 33
-
-
  1549              	.LASF34:
  1550 0000 70686173 		.ascii	"phase1\000"
  1550      653100
@@ -1976,11 +1978,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1571              	.LASF6:
  1572 00ee 6C6F6E67 		.ascii	"long long int\000"
  1572      206C6F6E 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 34
+
+
  1572      6720696E 
  1572      7400
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 34
-
-
  1573              	.LASF52:
  1574 00fc 6973725F 		.ascii	"isr_GPIO_SetPriority\000"
  1574      4750494F 
@@ -2036,11 +2038,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1596 0195 666C6F61 		.ascii	"float\000"
  1596      7400
  1597              	.LASF51:
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 35
+
+
  1598 019b 6973725F 		.ascii	"isr_GPIO_StartEx\000"
  1598      4750494F 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 35
-
-
  1598      5F537461 
  1598      72744578 
  1598      00
@@ -2096,11 +2098,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1620      00
  1621              	.LASF0:
  1622 023d 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 36
+
+
  1622      65642063 
  1622      68617200 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 36
-
-
  1623              	.LASF7:
  1624 0249 6C6F6E67 		.ascii	"long long unsigned int\000"
  1624      206C6F6E 
@@ -2156,11 +2158,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1645              	.LASF5:
  1646 031f 6C6F6E67 		.ascii	"long unsigned int\000"
  1646      20756E73 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 37
+
+
  1646      69676E65 
  1646      6420696E 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 37
-
-
  1646      7400
  1647              	.LASF46:
  1648 0331 50696E5F 		.ascii	"Pin_Sw_ClearInterrupt\000"
@@ -2216,11 +2218,11 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 1
  1671              	.LASF56:
  1672 03cc 494E5445 		.ascii	"INTERNAL_STEP_WriteCompare\000"
  1672      524E414C 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc794HWh.s 			page 38
+
+
  1672      5F535445 
  1672      505F5772 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc5PHWUf.s 			page 38
-
-
  1672      69746543 
  1673              	.LASF31:
  1674 03e7 46756C6C 		.ascii	"FullScale\000"
