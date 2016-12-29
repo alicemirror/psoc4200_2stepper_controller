@@ -1,15 +1,12 @@
-/* ========================================
- *
- * The following firmware was developed by Cypress Semiconductor
- * This work is licensed under a Creative Commons Attribution 3.0 Unported License.
- * 
- * http://creativecommons.org/licenses/by/3.0/deed.en_US
- * 
- * You are free to:
- * -To Share — to copy, distribute and transmit the work 
- * -To Remix — to adapt the work 
- * -To make commercial use of the work
- *
+/**
+@file main.c
+@brief main loop and initialization functions
+
+Based on the dual stepper controller developer by Cypress Semiconductor
+
+@author Enrico Miglino <balearicdynamics@gmail.com>
+@date Dec 2016
+@license Creative Commons Attribution 3.0 
 */
 #include <device.h>
 #include <global.h>
@@ -18,6 +15,8 @@
 #include <Move.h>
 #include <INTERNAL_STEP.h>
 #include <INTERNAL_STEP_1.h>
+
+// Stepper constants
 #define PH1 3204 //run
 #define PH2 4800 //p
 #define PH3 8000 //run
@@ -31,18 +30,49 @@
 #define PH11 33600 //run
 #define PH12 36800 //p
 
+// End-stop interrupt constants
+#define NESTED_ISR          (1u) ///< Nested Interrupt Service Routine
+#define DEFAULT_PRIORITY    (3u) ///< Default interrupt priority
+#define HIGHER_PRIORITY     (2u) ///< Higher interrupt priority
+
+// Led states
+#define LIGHT_OFF           (0u) ///< End-stop LED status 
+#define LIGHT_ON            (1u) ///< End-stop LED status 
+
+/* Interrupt prototypes */
+CY_ISR_PROTO(GPIOIsrHandler);
+CY_ISR_PROTO(NestedIsrHandler);
+
 int main() {
     uint16 i[2];
-
     uint8 l_previousStepPulse;
     uint8 l_stepPulse;
     uint8 jm;
     
     i[0] = 0;
     i[1] = 0;
-    
+
+    /* Set initial state (off) for LED */
+    STATUS_LED_1_Write(LIGHT_OFF);
+    STATUS_LED_2_Write(LIGHT_OFF);
+
+    /* Sets up the GPIO interrupt and enables it */
+    isr_GPIO_StartEx(GPIOIsrHandler);
+
+    /* Changes initial priority for the GPIO interrupt */
+    isr_GPIO_SetPriority(DEFAULT_PRIORITY);
+
+    /* Sets up the nested interrupt, sets priority and enables it */
+//    CyIntSetVector(NESTED_ISR,NestedIsrHandler);
+//    CyIntSetPriority(NESTED_ISR,HIGHER_PRIORITY);
+//    CyIntEnable(NESTED_ISR);
+
+    /* Enable global interrupts */
+    CyGlobalIntEnable;
+
     systemInit();
 
+    // Intinite loop
     while(1) {
 
 //        if(END_STOP_1_Read()) 
@@ -54,7 +84,6 @@ int main() {
 //            STATUS_LED_2_Write(0x00);
 //        else
 //            STATUS_LED_2_Write(0x01);
-        
         
         // Loop on two motors
         for(jm = 1; jm <= 2; jm++) {
@@ -150,4 +179,41 @@ int main() {
     		}
     	} // Loop on two motors
     } // Forever loop
+}
+
+
+/*******************************************************************************
+* Function Name: GPIOIsrHandler
+********************************************************************************
+* Summary:
+*  The interrupt handler for GPIO interrupts.
+*  Clears a pending Interrupt.
+*  Clears a pin Interrupt.
+*  Blinks the LED with the LED_Isr pin.
+*  Calls nested interrupt.
+
+*
+* Parameters:
+*  None
+*
+* Return:
+*  None
+*
+*******************************************************************************/
+CY_ISR(GPIOIsrHandler)
+{
+    /* Clear pending Interrupt */
+    isr_GPIO_ClearPending();
+    
+    /* Clear pin Interrupt */
+    Pin_Sw_ClearInterrupt();
+    
+    /* Turn On the LED */
+    STATUS_LED_1_Write(LIGHT_ON);
+
+    /* Cause nested software interrupt after 1000 ms */
+    CyDelay(1000u);
+
+    /* Turn Off the LED */
+    STATUS_LED_1_Write(LIGHT_OFF);
 }
