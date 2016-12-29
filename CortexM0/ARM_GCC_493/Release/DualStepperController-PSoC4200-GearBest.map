@@ -49,7 +49,7 @@ Archive member included because of file (symbol)
 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
                               .\CortexM0\ARM_GCC_493\Release\main.o (STATUS_LED_1_Write)
 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
-                              .\CortexM0\ARM_GCC_493\Release\main.o (Pin_Sw_ClearInterrupt)
+                              .\CortexM0\ARM_GCC_493\Release\main.o (Pin_Sw_Read)
 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
                               .\CortexM0\ARM_GCC_493\Release\main.o (isr_GPIO_SetPriority)
 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
@@ -750,8 +750,6 @@ Discarded input sections
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
  .text.Pin_Sw_Write
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
- .text.Pin_Sw_Read
-                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
  .text.Pin_Sw_ReadDataReg
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
  .text.Pin_Sw_SetInterruptMode
@@ -878,7 +876,7 @@ END GROUP
                 0x00000000                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
                 0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
 
-.text           0x00001100     0x113c
+.text           0x00001100     0x1164
  CREATE_OBJECT_SYMBOLS
                 0x00001100                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -898,211 +896,214 @@ END GROUP
  *(.text .text.* .gnu.linkonce.t.*)
  .text          0x00001348       0x60 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
  .text.GPIOIsrHandler
-                0x000013a8       0x20 .\CortexM0\ARM_GCC_493\Release\main.o
+                0x000013a8       0x38 .\CortexM0\ARM_GCC_493\Release\main.o
                 0x000013a8                GPIOIsrHandler
  .text.startup.main
-                0x000013c8      0x1f4 .\CortexM0\ARM_GCC_493\Release\main.o
-                0x000013c8                main
- .text.genSine  0x000015bc       0x28 .\CortexM0\ARM_GCC_493\Release\genSine.o
-                0x000015bc                genSine
+                0x000013e0      0x1f4 .\CortexM0\ARM_GCC_493\Release\main.o
+                0x000013e0                main
+ .text.genSine  0x000015d4       0x28 .\CortexM0\ARM_GCC_493\Release\genSine.o
+                0x000015d4                genSine
  .text.inputScan
-                0x000015e4       0x80 .\CortexM0\ARM_GCC_493\Release\inputScan.o
-                0x000015e4                inputScan
- .text.Move     0x00001664      0x1a4 .\CortexM0\ARM_GCC_493\Release\Move.o
-                0x00001664                Move
+                0x000015fc       0x80 .\CortexM0\ARM_GCC_493\Release\inputScan.o
+                0x000015fc                inputScan
+ .text.Move     0x0000167c      0x1a4 .\CortexM0\ARM_GCC_493\Release\Move.o
+                0x0000167c                Move
  .text.phaseControl
-                0x00001808       0x12 .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
-                0x00001808                phaseControl
- *fill*         0x0000181a        0x2 
+                0x00001820       0x12 .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
+                0x00001820                phaseControl
+ *fill*         0x00001832        0x2 
  .text.phaseMove
-                0x0000181c       0x84 .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
-                0x0000181c                phaseMove
+                0x00001834       0x84 .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
+                0x00001834                phaseMove
  .text.systemInit
-                0x000018a0      0x120 .\CortexM0\ARM_GCC_493\Release\systemInit.o
-                0x000018a0                systemInit
+                0x000018b8      0x120 .\CortexM0\ARM_GCC_493\Release\systemInit.o
+                0x000018b8                systemInit
  .text.IntDefaultHandler
-                0x000019c0       0x10 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
-                0x000019c0                IntDefaultHandler
- .text.Start_c  0x000019d0       0x4c .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
-                0x000019d0                Start_c
+                0x000019d8       0x10 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
+                0x000019d8                IntDefaultHandler
+ .text.Start_c  0x000019e8       0x4c .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
+                0x000019e8                Start_c
  .text.startup.initialize_psoc
-                0x00001a1c       0x50 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
-                0x00001a1c                initialize_psoc
+                0x00001a34       0x50 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
+                0x00001a34                initialize_psoc
  .text.INTERNAL_STEP_OUT_Read
-                0x00001a6c       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
-                0x00001a6c                INTERNAL_STEP_OUT_Read
+                0x00001a84       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
+                0x00001a84                INTERNAL_STEP_OUT_Read
  .text.STEP_INPUT_Read
-                0x00001a7c       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
-                0x00001a7c                STEP_INPUT_Read
+                0x00001a94       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
+                0x00001a94                STEP_INPUT_Read
  .text.DIR_INPUT_Read
-                0x00001a8c       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
-                0x00001a8c                DIR_INPUT_Read
+                0x00001aa4       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
+                0x00001aa4                DIR_INPUT_Read
  .text.STEP_INPUT_SOURCE_Read
-                0x00001a9c       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
-                0x00001a9c                STEP_INPUT_SOURCE_Read
+                0x00001ab4       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
+                0x00001ab4                STEP_INPUT_SOURCE_Read
  .text.DIR_INPUT_SOURCE_Read
-                0x00001aac       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
-                0x00001aac                DIR_INPUT_SOURCE_Read
+                0x00001ac4       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
+                0x00001ac4                DIR_INPUT_SOURCE_Read
  .text.DIR_REG_Write
-                0x00001abc        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
-                0x00001abc                DIR_REG_Write
- .text.CyDelay  0x00001ac8       0x2c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
-                0x00001ac8                CyDelay
+                0x00001ad4        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
+                0x00001ad4                DIR_REG_Write
+ .text.CyDelay  0x00001ae0       0x2c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
+                0x00001ae0                CyDelay
  .text.CyDelayUs
-                0x00001af4       0x14 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
-                0x00001af4                CyDelayUs
+                0x00001b0c       0x14 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
+                0x00001b0c                CyDelayUs
  .text.CySysClkWriteImoFreq
-                0x00001b08      0x124 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
-                0x00001b08                CySysClkWriteImoFreq
+                0x00001b20      0x124 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
+                0x00001b20                CySysClkWriteImoFreq
  .text.Clock_PWM_MAIN_Start
-                0x00001c2c       0x14 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
-                0x00001c2c                Clock_PWM_MAIN_Start
+                0x00001c44       0x14 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
+                0x00001c44                Clock_PWM_MAIN_Start
  .text.INTERNAL_STEP_Enable
-                0x00001c40       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
-                0x00001c40                INTERNAL_STEP_Enable
+                0x00001c58       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+                0x00001c58                INTERNAL_STEP_Enable
  .text.INTERNAL_STEP_ClearFIFO
-                0x00001c50       0x18 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
-                0x00001c50                INTERNAL_STEP_ClearFIFO
+                0x00001c68       0x18 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+                0x00001c68                INTERNAL_STEP_ClearFIFO
  .text.INTERNAL_STEP_Init
-                0x00001c68       0x70 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
-                0x00001c68                INTERNAL_STEP_Init
+                0x00001c80       0x70 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+                0x00001c80                INTERNAL_STEP_Init
  .text.INTERNAL_STEP_Start
-                0x00001cd8       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
-                0x00001cd8                INTERNAL_STEP_Start
+                0x00001cf0       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+                0x00001cf0                INTERNAL_STEP_Start
  .text.INTERNAL_STEP_WritePeriod
-                0x00001cf4        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
-                0x00001cf4                INTERNAL_STEP_WritePeriod
+                0x00001d0c        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+                0x00001d0c                INTERNAL_STEP_WritePeriod
  .text.INTERNAL_STEP_WriteCompare
-                0x00001d00        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
-                0x00001d00                INTERNAL_STEP_WriteCompare
+                0x00001d18        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+                0x00001d18                INTERNAL_STEP_WriteCompare
  .text.TCPWM_2_Init
-                0x00001d0c       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
-                0x00001d0c                TCPWM_2_Init
+                0x00001d24       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+                0x00001d24                TCPWM_2_Init
  .text.TCPWM_2_WriteCompare
-                0x00001d60        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
-                0x00001d60                TCPWM_2_WriteCompare
+                0x00001d78        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+                0x00001d78                TCPWM_2_WriteCompare
  .text.TCPWM_2_TriggerCommand
-                0x00001d6c       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
-                0x00001d6c                TCPWM_2_TriggerCommand
+                0x00001d84       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+                0x00001d84                TCPWM_2_TriggerCommand
  .text.TCPWM_2_Enable
-                0x00001d88       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
-                0x00001d88                TCPWM_2_Enable
+                0x00001da0       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+                0x00001da0                TCPWM_2_Enable
  .text.TCPWM_2_Start
-                0x00001dac       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
-                0x00001dac                TCPWM_2_Start
+                0x00001dc4       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+                0x00001dc4                TCPWM_2_Start
  .text.TCPWM_1_Init
-                0x00001dc8       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
-                0x00001dc8                TCPWM_1_Init
+                0x00001de0       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+                0x00001de0                TCPWM_1_Init
  .text.TCPWM_1_WriteCompare
-                0x00001e1c        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
-                0x00001e1c                TCPWM_1_WriteCompare
+                0x00001e34        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+                0x00001e34                TCPWM_1_WriteCompare
  .text.TCPWM_1_TriggerCommand
-                0x00001e28       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
-                0x00001e28                TCPWM_1_TriggerCommand
+                0x00001e40       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+                0x00001e40                TCPWM_1_TriggerCommand
  .text.TCPWM_1_Enable
-                0x00001e44       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
-                0x00001e44                TCPWM_1_Enable
+                0x00001e5c       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+                0x00001e5c                TCPWM_1_Enable
  .text.TCPWM_1_Start
-                0x00001e68       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
-                0x00001e68                TCPWM_1_Start
+                0x00001e80       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+                0x00001e80                TCPWM_1_Start
  .text.TCPWM_4_Init
-                0x00001e84       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
-                0x00001e84                TCPWM_4_Init
+                0x00001e9c       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+                0x00001e9c                TCPWM_4_Init
  .text.TCPWM_4_WriteCompare
-                0x00001ed8        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
-                0x00001ed8                TCPWM_4_WriteCompare
+                0x00001ef0        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+                0x00001ef0                TCPWM_4_WriteCompare
  .text.TCPWM_4_TriggerCommand
-                0x00001ee4       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
-                0x00001ee4                TCPWM_4_TriggerCommand
+                0x00001efc       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+                0x00001efc                TCPWM_4_TriggerCommand
  .text.TCPWM_4_Enable
-                0x00001f00       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
-                0x00001f00                TCPWM_4_Enable
+                0x00001f18       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+                0x00001f18                TCPWM_4_Enable
  .text.TCPWM_4_Start
-                0x00001f24       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
-                0x00001f24                TCPWM_4_Start
+                0x00001f3c       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+                0x00001f3c                TCPWM_4_Start
  .text.TCPWM_3_Init
-                0x00001f40       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
-                0x00001f40                TCPWM_3_Init
+                0x00001f58       0x54 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+                0x00001f58                TCPWM_3_Init
  .text.TCPWM_3_WriteCompare
-                0x00001f94        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
-                0x00001f94                TCPWM_3_WriteCompare
+                0x00001fac        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+                0x00001fac                TCPWM_3_WriteCompare
  .text.TCPWM_3_TriggerCommand
-                0x00001fa0       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
-                0x00001fa0                TCPWM_3_TriggerCommand
+                0x00001fb8       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+                0x00001fb8                TCPWM_3_TriggerCommand
  .text.TCPWM_3_Enable
-                0x00001fbc       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
-                0x00001fbc                TCPWM_3_Enable
+                0x00001fd4       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+                0x00001fd4                TCPWM_3_Enable
  .text.TCPWM_3_Start
-                0x00001fe0       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
-                0x00001fe0                TCPWM_3_Start
+                0x00001ff8       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+                0x00001ff8                TCPWM_3_Start
  .text.INTERNAL_STEP_OUT_1_Read
-                0x00001ffc       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
-                0x00001ffc                INTERNAL_STEP_OUT_1_Read
+                0x00002014       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
+                0x00002014                INTERNAL_STEP_OUT_1_Read
  .text.INTERNAL_STEP_1_Init
-                0x0000200c       0x50 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
-                0x0000200c                INTERNAL_STEP_1_Init
+                0x00002024       0x50 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+                0x00002024                INTERNAL_STEP_1_Init
  .text.INTERNAL_STEP_1_Enable
-                0x0000205c       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
-                0x0000205c                INTERNAL_STEP_1_Enable
+                0x00002074       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+                0x00002074                INTERNAL_STEP_1_Enable
  .text.INTERNAL_STEP_1_Start
-                0x0000206c       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
-                0x0000206c                INTERNAL_STEP_1_Start
+                0x00002084       0x1c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+                0x00002084                INTERNAL_STEP_1_Start
  .text.INTERNAL_STEP_1_WritePeriod
-                0x00002088        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
-                0x00002088                INTERNAL_STEP_1_WritePeriod
+                0x000020a0        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+                0x000020a0                INTERNAL_STEP_1_WritePeriod
  .text.INTERNAL_STEP_1_WriteCompare
-                0x00002094        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
-                0x00002094                INTERNAL_STEP_1_WriteCompare
+                0x000020ac        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+                0x000020ac                INTERNAL_STEP_1_WriteCompare
  .text.Clock_PWM_MAIN_1_Start
-                0x000020a0       0x14 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
-                0x000020a0                Clock_PWM_MAIN_1_Start
+                0x000020b8       0x14 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
+                0x000020b8                Clock_PWM_MAIN_1_Start
  .text.DIR_REG_1_Write
-                0x000020b4        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
-                0x000020b4                DIR_REG_1_Write
+                0x000020cc        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
+                0x000020cc                DIR_REG_1_Write
  .text.STEP_INPUT_1_Read
-                0x000020c0       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
-                0x000020c0                STEP_INPUT_1_Read
+                0x000020d8       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
+                0x000020d8                STEP_INPUT_1_Read
  .text.DIR_INPUT_1_Read
-                0x000020d0       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
-                0x000020d0                DIR_INPUT_1_Read
+                0x000020e8       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
+                0x000020e8                DIR_INPUT_1_Read
  .text.STEP_INPUT_SOURCE_1_Read
-                0x000020e0       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
-                0x000020e0                STEP_INPUT_SOURCE_1_Read
+                0x000020f8       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
+                0x000020f8                STEP_INPUT_SOURCE_1_Read
  .text.DIR_INPUT_SOURCE_1_Read
-                0x000020f0       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
-                0x000020f0                DIR_INPUT_SOURCE_1_Read
+                0x00002108       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
+                0x00002108                DIR_INPUT_SOURCE_1_Read
  .text.STATUS_LED_2_Write
-                0x00002100       0x18 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
-                0x00002100                STATUS_LED_2_Write
+                0x00002118       0x18 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
+                0x00002118                STATUS_LED_2_Write
  .text.STATUS_LED_1_Write
-                0x00002118       0x18 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
-                0x00002118                STATUS_LED_1_Write
+                0x00002130       0x18 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
+                0x00002130                STATUS_LED_1_Write
+ .text.Pin_Sw_Read
+                0x00002148       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
+                0x00002148                Pin_Sw_Read
  .text.Pin_Sw_ClearInterrupt
-                0x00002130       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
-                0x00002130                Pin_Sw_ClearInterrupt
+                0x00002158       0x10 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
+                0x00002158                Pin_Sw_ClearInterrupt
  .text.isr_GPIO_SetPriority
-                0x00002140       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
-                0x00002140                isr_GPIO_SetPriority
+                0x00002168       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
+                0x00002168                isr_GPIO_SetPriority
  .text.isr_GPIO_StartEx
-                0x00002164       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
-                0x00002164                isr_GPIO_StartEx
+                0x0000218c       0x24 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
+                0x0000218c                isr_GPIO_StartEx
  .text.isr_GPIO_ClearPending
-                0x00002188        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
-                0x00002188                isr_GPIO_ClearPending
- *fill*         0x00002194        0x4 
- .text          0x00002198       0x28 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
-                0x00002198                CyDelayCycles
-                0x000021ac                CyEnterCriticalSection
-                0x000021b4                CyExitCriticalSection
- .text          0x000021c0       0x14 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_thumb1_case_uqi.o)
-                0x000021c0                __gnu_thumb1_case_uqi
- .text.__errno  0x000021d4        0xc c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
-                0x000021d4                __errno
+                0x000021b0        0xc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
+                0x000021b0                isr_GPIO_ClearPending
+ *fill*         0x000021bc        0x4 
+ .text          0x000021c0       0x28 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
+                0x000021c0                CyDelayCycles
+                0x000021d4                CyEnterCriticalSection
+                0x000021dc                CyExitCriticalSection
+ .text          0x000021e8       0x14 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+                0x000021e8                __gnu_thumb1_case_uqi
+ .text.__errno  0x000021fc        0xc c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                0x000021fc                __errno
  .text.__libc_init_array
-                0x000021e0       0x4c c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
-                0x000021e0                __libc_init_array
- .text.memset   0x0000222c       0x10 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
-                0x0000222c                memset
+                0x00002208       0x4c c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00002208                __libc_init_array
+ .text.memset   0x00002254       0x10 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x00002254                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -1115,82 +1116,82 @@ END GROUP
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x0000223c        0x0
+.v4_bx          0x00002264        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0000223c        0x0
+.iplt           0x00002264        0x0
  .iplt          0x00000000        0x0 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x0000223c        0x4
+.eh_frame       0x00002264        0x4
  *(.eh_frame)
- .eh_frame      0x0000223c        0x0 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .eh_frame      0x0000223c        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
-                0x00002240                PROVIDE (__exidx_start, .)
+ .eh_frame      0x00002264        0x0 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .eh_frame      0x00002264        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+                0x00002268                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00002240                __exidx_end = .
+                0x00002268                __exidx_end = .
 
-.rodata         0x00002240      0x248
+.rodata         0x00002268      0x248
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00002240       0x11 .\CortexM0\ARM_GCC_493\Release\main.o
-                0x00002240                sineTable
- *fill*         0x00002251        0x3 
- .rodata        0x00002254      0x1cc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
- .rodata        0x00002420       0x2e .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
-                0x00002420                cyImoFreqMhz2Reg
+ .rodata        0x00002268       0x11 .\CortexM0\ARM_GCC_493\Release\main.o
+                0x00002268                sineTable
+ *fill*         0x00002279        0x3 
+ .rodata        0x0000227c      0x1cc .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
+ .rodata        0x00002448       0x2e .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
+                0x00002448                cyImoFreqMhz2Reg
  .rodata.str1.1
-                0x0000244e        0x2 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
-                0x00002450                . = ALIGN (0x4)
+                0x00002476        0x2 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x00002478                . = ALIGN (0x4)
  *(.init)
- .init          0x00002450        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
-                0x00002450                _init
- .init          0x00002454        0x8 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
-                0x0000245c                . = ALIGN (0x4)
-                0x0000245c                __preinit_array_start = .
+ .init          0x00002478        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x00002478                _init
+ .init          0x0000247c        0x8 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x00002484                . = ALIGN (0x4)
+                0x00002484                __preinit_array_start = .
  *(.preinit_array)
-                0x0000245c                __preinit_array_end = .
-                0x0000245c                . = ALIGN (0x4)
-                0x0000245c                __init_array_start = .
+                0x00002484                __preinit_array_end = .
+                0x00002484                . = ALIGN (0x4)
+                0x00002484                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x0000245c        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .init_array    0x00002460        0x4 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
-                0x00002464                __init_array_end = .
-                0x00002464                . = ALIGN (0x4)
+ .init_array    0x00002484        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .init_array    0x00002488        0x4 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
+                0x0000248c                __init_array_end = .
+                0x0000248c                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00002464        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
-                0x00002464                _fini
- .fini          0x00002468        0x8 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
-                0x00002470                . = ALIGN (0x4)
-                0x00002470                __fini_array_start = .
+ .fini          0x0000248c        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x0000248c                _fini
+ .fini          0x00002490        0x8 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x00002498                . = ALIGN (0x4)
+                0x00002498                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00002470        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .fini_array    0x00002498        0x4 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00002474                __fini_array_end = .
-                0x00002474                . = ALIGN (0x4)
+                0x0000249c                __fini_array_end = .
+                0x0000249c                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00002474                . = ALIGN (0x4)
+                0x0000249c                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00002474                . = ALIGN (0x4)
-                0x00002474                __cy_regions = .
-                0x00002474        0x4 LONG 0x2488 __cy_region_init_ram
-                0x00002478        0x4 LONG 0x200000d0 __cy_region_start_data
-                0x0000247c        0x4 LONG 0x80 __cy_region_init_size_ram
-                0x00002480        0x4 LONG 0x40 __cy_region_zero_size_ram
-                0x00002484                __cy_regions_end = .
-                0x00002488                . = ALIGN (0x8)
- *fill*         0x00002484        0x4 
-                0x00002488                _etext = .
+                0x0000249c                . = ALIGN (0x4)
+                0x0000249c                __cy_regions = .
+                0x0000249c        0x4 LONG 0x24b0 __cy_region_init_ram
+                0x000024a0        0x4 LONG 0x200000d0 __cy_region_start_data
+                0x000024a4        0x4 LONG 0x80 __cy_region_init_size_ram
+                0x000024a8        0x4 LONG 0x40 __cy_region_zero_size_ram
+                0x000024ac                __cy_regions_end = .
+                0x000024b0                . = ALIGN (0x8)
+ *fill*         0x000024ac        0x4 
+                0x000024b0                _etext = .
 
 .ramvectors     0x20000000       0xc0
                 0x20000000                __cy_region_start_ram = .
@@ -1208,7 +1209,7 @@ END GROUP
  *(.noinit)
  .noinit        0x200000c8        0x4 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
 
-.data           0x200000d0       0x80 load address 0x00002488
+.data           0x200000d0       0x80 load address 0x000024b0
                 0x200000d0                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x200000d0        0x0 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
@@ -1233,10 +1234,10 @@ END GROUP
  *(.ram)
                 0x20000150                _edata = .
 
-.igot.plt       0x20000150        0x0 load address 0x00002508
+.igot.plt       0x20000150        0x0 load address 0x00002530
  .igot.plt      0x00000000        0x0 c:/program files/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
 
-.bss            0x20000150       0x40 load address 0x00002508
+.bss            0x20000150       0x40 load address 0x00002530
                 0x20000150                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1286,11 +1287,11 @@ END GROUP
                 0x20000190                __end = .
                 0x20000190                PROVIDE (end, .)
                 0x20000190                PROVIDE (__bss_end__, .)
-                0x00002488                __cy_region_init_ram = LOADADDR (.data)
+                0x000024b0                __cy_region_init_ram = LOADADDR (.data)
                 0x00000080                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000040                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x20000190      0x100 load address 0x00002508
+.heap           0x20000190      0x100 load address 0x00002530
                 0x20000190                . = _end
                 0x20000290                . = (. + 0x100)
  *fill*         0x20000190      0x100 
@@ -1439,44 +1440,44 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x6d23
+.debug_info     0x00000000     0x6d51
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x4f3 .\CortexM0\ARM_GCC_493\Release\main.o
- .debug_info    0x000004f3      0x10a .\CortexM0\ARM_GCC_493\Release\genSine.o
- .debug_info    0x000005fd      0x1cf .\CortexM0\ARM_GCC_493\Release\inputScan.o
- .debug_info    0x000007cc      0x2a6 .\CortexM0\ARM_GCC_493\Release\Move.o
- .debug_info    0x00000a72      0x16e .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
- .debug_info    0x00000be0      0x36f .\CortexM0\ARM_GCC_493\Release\systemInit.o
- .debug_info    0x00000f4f      0x3ab .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
- .debug_info    0x000012fa      0x14e .\CortexM0\ARM_GCC_493\Release\cybootloader.o
- .debug_info    0x00001448       0xb2 .\CortexM0\ARM_GCC_493\Release\cymetadata.o
- .debug_info    0x000014fa      0x3ae .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
- .debug_info    0x000018a8      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
- .debug_info    0x00001a43      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
- .debug_info    0x00001bde      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
- .debug_info    0x00001d79      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
- .debug_info    0x00001f14      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
- .debug_info    0x000020af       0xd6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
- .debug_info    0x00002185      0xb23 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
- .debug_info    0x00002ca8      0x150 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
- .debug_info    0x00002df8      0x3c2 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
- .debug_info    0x000031ba      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
- .debug_info    0x00003b19      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
- .debug_info    0x00004478      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
- .debug_info    0x00004dd7      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
- .debug_info    0x00005736      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
- .debug_info    0x000058d1      0x2d4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
- .debug_info    0x00005ba5      0x150 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
- .debug_info    0x00005cf5       0xd6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
- .debug_info    0x00005dcb      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
- .debug_info    0x00005f66      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
- .debug_info    0x00006101      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
- .debug_info    0x0000629c      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
- .debug_info    0x00006437      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
- .debug_info    0x000065d2      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
- .debug_info    0x0000676d      0x1a0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
- .debug_info    0x0000690d      0x350 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
- .debug_info    0x00006c5d       0xc6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
+ .debug_info    0x00000000      0x521 .\CortexM0\ARM_GCC_493\Release\main.o
+ .debug_info    0x00000521      0x10a .\CortexM0\ARM_GCC_493\Release\genSine.o
+ .debug_info    0x0000062b      0x1cf .\CortexM0\ARM_GCC_493\Release\inputScan.o
+ .debug_info    0x000007fa      0x2a6 .\CortexM0\ARM_GCC_493\Release\Move.o
+ .debug_info    0x00000aa0      0x16e .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
+ .debug_info    0x00000c0e      0x36f .\CortexM0\ARM_GCC_493\Release\systemInit.o
+ .debug_info    0x00000f7d      0x3ab .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
+ .debug_info    0x00001328      0x14e .\CortexM0\ARM_GCC_493\Release\cybootloader.o
+ .debug_info    0x00001476       0xb2 .\CortexM0\ARM_GCC_493\Release\cymetadata.o
+ .debug_info    0x00001528      0x3ae .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
+ .debug_info    0x000018d6      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
+ .debug_info    0x00001a71      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
+ .debug_info    0x00001c0c      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
+ .debug_info    0x00001da7      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
+ .debug_info    0x00001f42      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
+ .debug_info    0x000020dd       0xd6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
+ .debug_info    0x000021b3      0xb23 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
+ .debug_info    0x00002cd6      0x150 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
+ .debug_info    0x00002e26      0x3c2 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+ .debug_info    0x000031e8      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+ .debug_info    0x00003b47      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+ .debug_info    0x000044a6      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+ .debug_info    0x00004e05      0x95f .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+ .debug_info    0x00005764      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
+ .debug_info    0x000058ff      0x2d4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+ .debug_info    0x00005bd3      0x150 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
+ .debug_info    0x00005d23       0xd6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
+ .debug_info    0x00005df9      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
+ .debug_info    0x00005f94      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
+ .debug_info    0x0000612f      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
+ .debug_info    0x000062ca      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
+ .debug_info    0x00006465      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
+ .debug_info    0x00006600      0x19b .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
+ .debug_info    0x0000679b      0x1a0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
+ .debug_info    0x0000693b      0x350 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
+ .debug_info    0x00006c8b       0xc6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
 
 .debug_abbrev   0x00000000     0x25eb
  *(.debug_abbrev)
@@ -1517,44 +1518,44 @@ END GROUP
  .debug_abbrev  0x00002379      0x25e .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
  .debug_abbrev  0x000025d7       0x14 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
 
-.debug_line     0x00000000     0x31df
+.debug_line     0x00000000     0x31e1
  *(.debug_line)
- .debug_line    0x00000000      0x1a3 .\CortexM0\ARM_GCC_493\Release\main.o
- .debug_line    0x000001a3       0x74 .\CortexM0\ARM_GCC_493\Release\genSine.o
- .debug_line    0x00000217      0x153 .\CortexM0\ARM_GCC_493\Release\inputScan.o
- .debug_line    0x0000036a      0x100 .\CortexM0\ARM_GCC_493\Release\Move.o
- .debug_line    0x0000046a       0xc4 .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
- .debug_line    0x0000052e      0x137 .\CortexM0\ARM_GCC_493\Release\systemInit.o
- .debug_line    0x00000665      0x230 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
- .debug_line    0x00000895       0x53 .\CortexM0\ARM_GCC_493\Release\cybootloader.o
- .debug_line    0x000008e8       0x51 .\CortexM0\ARM_GCC_493\Release\cymetadata.o
- .debug_line    0x00000939      0x16e .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
- .debug_line    0x00000aa7       0xd5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
- .debug_line    0x00000b7c       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
- .debug_line    0x00000c4c       0xcd .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
- .debug_line    0x00000d19       0xd5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
- .debug_line    0x00000dee       0xd4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
- .debug_line    0x00000ec2       0x74 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
- .debug_line    0x00000f36      0x4ca .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
- .debug_line    0x00001400       0xbe .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
- .debug_line    0x000014be      0x1eb .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
- .debug_line    0x000016a9      0x3f8 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
- .debug_line    0x00001aa1      0x3f6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
- .debug_line    0x00001e97      0x3f8 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
- .debug_line    0x0000228f      0x3f6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
- .debug_line    0x00002685       0xd7 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
- .debug_line    0x0000275c      0x17e .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
- .debug_line    0x000028da       0xc0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
- .debug_line    0x0000299a       0x76 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
- .debug_line    0x00002a10       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
- .debug_line    0x00002ae0       0xcf .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
- .debug_line    0x00002baf       0xd7 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
- .debug_line    0x00002c86       0xd6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
- .debug_line    0x00002d5c       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
- .debug_line    0x00002e2c       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
- .debug_line    0x00002efc       0xca .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
- .debug_line    0x00002fc6      0x1b0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
- .debug_line    0x00003176       0x69 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
+ .debug_line    0x00000000      0x1a5 .\CortexM0\ARM_GCC_493\Release\main.o
+ .debug_line    0x000001a5       0x74 .\CortexM0\ARM_GCC_493\Release\genSine.o
+ .debug_line    0x00000219      0x153 .\CortexM0\ARM_GCC_493\Release\inputScan.o
+ .debug_line    0x0000036c      0x100 .\CortexM0\ARM_GCC_493\Release\Move.o
+ .debug_line    0x0000046c       0xc4 .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
+ .debug_line    0x00000530      0x137 .\CortexM0\ARM_GCC_493\Release\systemInit.o
+ .debug_line    0x00000667      0x230 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
+ .debug_line    0x00000897       0x53 .\CortexM0\ARM_GCC_493\Release\cybootloader.o
+ .debug_line    0x000008ea       0x51 .\CortexM0\ARM_GCC_493\Release\cymetadata.o
+ .debug_line    0x0000093b      0x16e .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
+ .debug_line    0x00000aa9       0xd5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
+ .debug_line    0x00000b7e       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
+ .debug_line    0x00000c4e       0xcd .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
+ .debug_line    0x00000d1b       0xd5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
+ .debug_line    0x00000df0       0xd4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
+ .debug_line    0x00000ec4       0x74 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
+ .debug_line    0x00000f38      0x4ca .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
+ .debug_line    0x00001402       0xbe .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
+ .debug_line    0x000014c0      0x1eb .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+ .debug_line    0x000016ab      0x3f8 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+ .debug_line    0x00001aa3      0x3f6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+ .debug_line    0x00001e99      0x3f8 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+ .debug_line    0x00002291      0x3f6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+ .debug_line    0x00002687       0xd7 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
+ .debug_line    0x0000275e      0x17e .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+ .debug_line    0x000028dc       0xc0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
+ .debug_line    0x0000299c       0x76 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
+ .debug_line    0x00002a12       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
+ .debug_line    0x00002ae2       0xcf .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
+ .debug_line    0x00002bb1       0xd7 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
+ .debug_line    0x00002c88       0xd6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
+ .debug_line    0x00002d5e       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
+ .debug_line    0x00002e2e       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
+ .debug_line    0x00002efe       0xca .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
+ .debug_line    0x00002fc8      0x1b0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
+ .debug_line    0x00003178       0x69 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyBootAsmGnu.o)
 
 .debug_frame    0x00000000     0x1e98
  *(.debug_frame)
@@ -1599,73 +1600,73 @@ END GROUP
 
 .debug_str      0x00000000     0x2aff
  *(.debug_str)
- .debug_str     0x00000000      0x3a7 .\CortexM0\ARM_GCC_493\Release\main.o
-                                0x407 (size before relaxing)
- .debug_str     0x000003a7       0x27 .\CortexM0\ARM_GCC_493\Release\genSine.o
+ .debug_str     0x00000000      0x3b3 .\CortexM0\ARM_GCC_493\Release\main.o
+                                0x413 (size before relaxing)
+ .debug_str     0x000003b3       0x27 .\CortexM0\ARM_GCC_493\Release\genSine.o
                                 0x1f1 (size before relaxing)
- .debug_str     0x000003ce       0xdc .\CortexM0\ARM_GCC_493\Release\inputScan.o
+ .debug_str     0x000003da       0xdc .\CortexM0\ARM_GCC_493\Release\inputScan.o
                                 0x2e0 (size before relaxing)
- .debug_str     0x000004aa       0x72 .\CortexM0\ARM_GCC_493\Release\Move.o
+ .debug_str     0x000004b6       0x72 .\CortexM0\ARM_GCC_493\Release\Move.o
                                 0x2db (size before relaxing)
- .debug_str     0x0000051c       0x3a .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
+ .debug_str     0x00000528       0x3a .\CortexM0\ARM_GCC_493\Release\PhaseControl.o
                                 0x24b (size before relaxing)
- .debug_str     0x00000556       0xf7 .\CortexM0\ARM_GCC_493\Release\systemInit.o
+ .debug_str     0x00000562       0xf7 .\CortexM0\ARM_GCC_493\Release\systemInit.o
                                 0x3cc (size before relaxing)
- .debug_str     0x0000064d      0x163 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
+ .debug_str     0x00000659      0x163 .\CortexM0\ARM_GCC_493\Release\Cm0Start.o
                                 0x33a (size before relaxing)
- .debug_str     0x000007b0       0x78 .\CortexM0\ARM_GCC_493\Release\cybootloader.o
+ .debug_str     0x000007bc       0x78 .\CortexM0\ARM_GCC_493\Release\cybootloader.o
                                 0x223 (size before relaxing)
- .debug_str     0x00000828       0x35 .\CortexM0\ARM_GCC_493\Release\cymetadata.o
+ .debug_str     0x00000834       0x35 .\CortexM0\ARM_GCC_493\Release\cymetadata.o
                                 0x1e0 (size before relaxing)
- .debug_str     0x0000085d       0xef .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
+ .debug_str     0x00000869       0xef .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(cyfitter_cfg.o)
                                 0x2eb (size before relaxing)
- .debug_str     0x0000094c       0xe4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
+ .debug_str     0x00000958       0xe4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT.o)
                                 0x2c0 (size before relaxing)
- .debug_str     0x00000a30       0x9a .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
+ .debug_str     0x00000a3c       0x9a .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT.o)
                                 0x28f (size before relaxing)
- .debug_str     0x00000aca       0x94 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
+ .debug_str     0x00000ad6       0x94 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT.o)
                                 0x288 (size before relaxing)
- .debug_str     0x00000b5e       0xc4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
+ .debug_str     0x00000b6a       0xc4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE.o)
                                 0x2c0 (size before relaxing)
- .debug_str     0x00000c22       0xbe .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
+ .debug_str     0x00000c2e       0xbe .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE.o)
                                 0x2b9 (size before relaxing)
- .debug_str     0x00000ce0       0x36 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
+ .debug_str     0x00000cec       0x36 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG.o)
                                 0x1eb (size before relaxing)
- .debug_str     0x00000d16      0x4d4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
+ .debug_str     0x00000d22      0x4d4 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(CyLib.o)
                                 0x6ee (size before relaxing)
- .debug_str     0x000011ea       0xde .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
+ .debug_str     0x000011f6       0xde .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN.o)
                                 0x2a9 (size before relaxing)
- .debug_str     0x000012c8      0x1e5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
+ .debug_str     0x000012d4      0x1e5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP.o)
                                 0x420 (size before relaxing)
- .debug_str     0x000014ad      0x3f1 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
+ .debug_str     0x000014b9      0x3f1 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_2.o)
                                 0x62f (size before relaxing)
- .debug_str     0x0000189e      0x341 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
+ .debug_str     0x000018aa      0x341 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_1.o)
                                 0x62f (size before relaxing)
- .debug_str     0x00001bdf      0x341 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
+ .debug_str     0x00001beb      0x341 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_4.o)
                                 0x62f (size before relaxing)
- .debug_str     0x00001f20      0x341 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
+ .debug_str     0x00001f2c      0x341 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(TCPWM_3.o)
                                 0x62f (size before relaxing)
- .debug_str     0x00002261       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
+ .debug_str     0x0000226d       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_OUT_1.o)
                                 0x2ce (size before relaxing)
- .debug_str     0x00002331      0x157 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
+ .debug_str     0x0000233d      0x157 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(INTERNAL_STEP_1.o)
                                 0x38e (size before relaxing)
- .debug_str     0x00002488       0xc0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
+ .debug_str     0x00002494       0xc0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Clock_PWM_MAIN_1.o)
                                 0x2b5 (size before relaxing)
- .debug_str     0x00002548       0x32 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
+ .debug_str     0x00002554       0x32 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_REG_1.o)
                                 0x1f1 (size before relaxing)
- .debug_str     0x0000257a       0xa6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
+ .debug_str     0x00002586       0xa6 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_1.o)
                                 0x29d (size before relaxing)
- .debug_str     0x00002620       0xa0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
+ .debug_str     0x0000262c       0xa0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_1.o)
                                 0x296 (size before relaxing)
- .debug_str     0x000026c0       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
+ .debug_str     0x000026cc       0xd0 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STEP_INPUT_SOURCE_1.o)
                                 0x2ce (size before relaxing)
- .debug_str     0x00002790       0xca .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
+ .debug_str     0x0000279c       0xca .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(DIR_INPUT_SOURCE_1.o)
                                 0x2c7 (size before relaxing)
- .debug_str     0x0000285a       0xa5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
+ .debug_str     0x00002866       0xa5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_2.o)
                                 0x29d (size before relaxing)
- .debug_str     0x000028ff       0xa5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
+ .debug_str     0x0000290b       0xa5 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(STATUS_LED_1.o)
                                 0x29d (size before relaxing)
- .debug_str     0x000029a4       0x78 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
+ .debug_str     0x000029b0       0x6c .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(Pin_Sw.o)
                                 0x273 (size before relaxing)
  .debug_str     0x00002a1c       0xe3 .\CortexM0\ARM_GCC_493\Release\DualStepperController-PSoC4200-GearBest.a(isr_GPIO.o)
                                 0x33e (size before relaxing)

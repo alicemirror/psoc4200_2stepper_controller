@@ -38,11 +38,15 @@ Based on the dual stepper controller developer by Cypress Semiconductor
 // Led states
 #define LIGHT_OFF           (0u) ///< End-stop LED status 
 #define LIGHT_ON            (1u) ///< End-stop LED status 
+// EndStop switches IDs
+#define END_STOP_MOTOR1 1   ///< EndStop switch ID for motor 1
+#define END_STOP_MOTOR2 2   ///< EndStop switch ID for motor 2
 
 /* Interrupt prototypes */
 CY_ISR_PROTO(GPIOIsrHandler);
 CY_ISR_PROTO(NestedIsrHandler);
 
+//! Main application. Initialization and infinite loop
 int main() {
     uint16 i[2];
     uint8 l_previousStepPulse;
@@ -75,16 +79,6 @@ int main() {
     // Intinite loop
     while(1) {
 
-//        if(END_STOP_1_Read()) 
-//            STATUS_LED_1_Write(0x00);
-//        else
-//            STATUS_LED_1_Write(0x01);
-//
-//        if(END_STOP_2_Read()) 
-//            STATUS_LED_2_Write(0x00);
-//        else
-//            STATUS_LED_2_Write(0x01);
-        
         // Loop on two motors
         for(jm = 1; jm <= 2; jm++) {
             // Assign local variables to for the current motor
@@ -181,25 +175,13 @@ int main() {
     } // Forever loop
 }
 
-
-/*******************************************************************************
-* Function Name: GPIOIsrHandler
-********************************************************************************
-* Summary:
-*  The interrupt handler for GPIO interrupts.
+/**
+* The interrupt service routine for the GPIO 
 *  Clears a pending Interrupt.
 *  Clears a pin Interrupt.
 *  Blinks the LED with the LED_Isr pin.
 *  Calls nested interrupt.
-
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
-*
-*******************************************************************************/
+*/
 CY_ISR(GPIOIsrHandler)
 {
     /* Clear pending Interrupt */
@@ -208,12 +190,16 @@ CY_ISR(GPIOIsrHandler)
     /* Clear pin Interrupt */
     Pin_Sw_ClearInterrupt();
     
-    /* Turn On the LED */
-    STATUS_LED_1_Write(LIGHT_ON);
+    /* Turn On the LED corresponding to the end-stop */
+    if(Pin_Sw_Read() == END_STOP_MOTOR1)
+        STATUS_LED_1_Write(LIGHT_ON);
+    if(Pin_Sw_Read() == END_STOP_MOTOR2)
+        STATUS_LED_2_Write(LIGHT_ON);
 
-    /* Cause nested software interrupt after 1000 ms */
-    CyDelay(1000u);
+    // Testing only - will be replaced by the motor stop procedure
+    CyDelay(250);
 
-    /* Turn Off the LED */
+    /* Turn Off the LEDs */
     STATUS_LED_1_Write(LIGHT_OFF);
+    STATUS_LED_2_Write(LIGHT_OFF);
 }
