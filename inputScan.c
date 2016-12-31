@@ -16,16 +16,16 @@ void inputScan(uint8 motor) {
     
     if(motor == 1) {
         // Motor 1
-        if (STEP_INPUT_SOURCE_Read() == 0){
+        if (STEP_INPUT_SOURCE_1_Read() == 0){
             previousStepPulse  = stepPulse;
-            stepPulse = STEP_INPUT_Read(); // rising edge, reserved for potential glith
+            stepPulse = STEP_INPUT_1_Read(); // rising edge, reserved for potential glith
         }
         else{
             previousStepPulse = stepPulse;
-            stepPulse = INTERNAL_STEP_OUT_Read();
+            stepPulse = INTERNAL_STEP_OUT_1_Read();
         }
-        if (DIR_INPUT_SOURCE_Read()== 0){
-            dirReg = DIR_INPUT_Read();
+        if (DIR_INPUT_SOURCE_1_Read()== 0){
+            dirReg = DIR_INPUT_1_Read();
             
         }
         else{
@@ -34,16 +34,16 @@ void inputScan(uint8 motor) {
     } // Motor 1
     else {
         // Motor 2
-        if (STEP_INPUT_SOURCE_1_Read() == 0){
+        if (STEP_INPUT_SOURCE_2_Read() == 0){
             previousStepPulse1 = stepPulse1;
-            stepPulse1 = STEP_INPUT_1_Read(); // rising edge, reserved for potential glith
+            stepPulse1 = STEP_INPUT_2_Read(); // rising edge, reserved for potential glith
         }
         else{
             previousStepPulse1 = stepPulse1;
-            stepPulse1 = INTERNAL_STEP_OUT_1_Read();
+            stepPulse1 = INTERNAL_STEP_OUT_2_Read();
         }
-        if (DIR_INPUT_SOURCE_1_Read()== 0){
-            dirReg1 = DIR_INPUT_1_Read();
+        if (DIR_INPUT_SOURCE_2_Read()== 0){
+            dirReg1 = DIR_INPUT_2_Read();
             
         }
         else{

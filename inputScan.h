@@ -11,16 +11,16 @@
 */
 //[] END OF FILE
 #include <CYlIB.h>
-#include <DIR_INPUT.h>
 #include <DIR_INPUT_1.h>
-#include <DIR_INPUT_SOURCE.h>
+#include <DIR_INPUT_2.h>
 #include <DIR_INPUT_SOURCE_1.h>
-#include <INTERNAL_STEP_OUT.h>
+#include <DIR_INPUT_SOURCE_2.h>
 #include <INTERNAL_STEP_OUT_1.h>
-#include <STEP_INPUT_SOURCE.h>
+#include <INTERNAL_STEP_OUT_2.h>
 #include <STEP_INPUT_SOURCE_1.h>
-#include <STEP_INPUT.h>
+#include <STEP_INPUT_SOURCE_2.h>
 #include <STEP_INPUT_1.h>
+#include <STEP_INPUT_2.h>
 
 extern uint8 stepPulse;
 extern uint8 previousStepPulse;

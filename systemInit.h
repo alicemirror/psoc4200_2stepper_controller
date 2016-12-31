@@ -11,8 +11,8 @@
 */
 //[] END OF FILE
 #include <CYLIB.H>
-#include <Clock_PWM_MAIN.h>
 #include <Clock_PWM_MAIN_1.h>
+#include <Clock_PWM_MAIN_2.h>
 
 extern uint8 currentStepA; // current step level of channel A
 extern uint8 currentStepB; // current step level of channel B

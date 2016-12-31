@@ -10,12 +10,12 @@
  * ========================================
 */
 //[] END OF FILE
-#include <DIR_OUT_A.h>
-#include <DIR_OUT_B.h>
-#include <DIR_REG.h>
-#include <DIR_OUT_A_1.h>
-#include <DIR_OUT_B_1.h>
+//#include <DIR_OUT_A_1.h>
+//#include <DIR_OUT_B_1.h>
 #include <DIR_REG_1.h>
+//#include <DIR_OUT_A_2.h>
+//#include <DIR_OUT_B_2.h>
+#include <DIR_REG_2.h>
 extern uint8 phase;
 extern uint8 currentStepA;
 extern uint8 currentStepB;

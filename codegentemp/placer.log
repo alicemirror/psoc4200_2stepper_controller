@@ -6,7 +6,7 @@
 
 #Build Date:         Apr 29 2016 09:00:55
 
-#File Generated:     Dec 29 2016 21:59:43
+#File Generated:     Dec 31 2016 12:12:21
 
 #Purpose:            
 
@@ -58,7 +58,7 @@ Device Utilization Summary after Packing
     IOs                         :	24/36
 
 
-D2088: Phase 3, elapsed time : 0.1 (sec)
+D2088: Phase 3, elapsed time : 0.0 (sec)
 
 Phase 4
 D2088: Phase 4, elapsed time : 0.0 (sec)
@@ -77,10 +77,10 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 12
-Clock: Clock_PWM_MAIN       | Frequency:  41.7 MHz | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN(FFB)  | Frequency: N/A       | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN_1     | Frequency:  42.7 MHz | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.0 MHz
 Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
 Clock: CommCLK              | Frequency: N/A       | Target:  24.0 MHz
 Clock: CommCLK(FFB)         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
@@ -94,17 +94,17 @@ Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
                      End of Clock Summary
 ######################################################################
 
-D2088: Phase 6, elapsed time : 0.1 (sec)
+D2088: Phase 6, elapsed time : 0.0 (sec)
 
 Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
 Number of clocks: 12
-Clock: Clock_PWM_MAIN       | Frequency:  41.7 MHz | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN(FFB)  | Frequency: N/A       | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN_1     | Frequency:  42.7 MHz | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.0 MHz
 Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
 Clock: CommCLK              | Frequency: N/A       | Target:  24.0 MHz
 Clock: CommCLK(FFB)         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
@@ -148,10 +148,10 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 12
-Clock: Clock_PWM_MAIN       | Frequency:  41.7 MHz | Target:   8.8 MHz
-Clock: Clock_PWM_MAIN(FFB)  | Frequency: N/A       | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN_1     | Frequency:  42.7 MHz | Target:   8.8 MHz
+Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.8 MHz
 Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.8 MHz
+Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
 Clock: CommCLK              | Frequency: N/A       | Target:  24.0 MHz
 Clock: CommCLK(FFB)         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
@@ -170,5 +170,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.5 sec.
+I2076: Total run-time: 1.0 sec.
 

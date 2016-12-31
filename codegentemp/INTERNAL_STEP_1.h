@@ -39,7 +39,7 @@ extern uint8 INTERNAL_STEP_1_initVar;
 #define INTERNAL_STEP_1_DeadBand2_4                    (0u)
 
 #if !defined(INTERNAL_STEP_1_PWMUDB_genblk8_stsreg__REMOVED)
-    #define INTERNAL_STEP_1_UseStatus                  (0u)
+    #define INTERNAL_STEP_1_UseStatus                  (1u)
 #else
     #define INTERNAL_STEP_1_UseStatus                  (0u)
 #endif /* !defined(INTERNAL_STEP_1_PWMUDB_genblk8_stsreg__REMOVED) */

@@ -61,45 +61,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cyfittergnu.inc</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cyfitterrv.inc</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cyfitter.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_REG.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_REG.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_REG_PM.c</File>
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">Generated_Source\PSoC4\cm0gcc.ld</File>
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">Generated_Source\PSoC4\Cm0RealView.scat</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Cm0Start.c</File>
@@ -123,11 +84,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cmsis_armcc.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cmsis_gcc.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\project.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Clock_PWM_MAIN.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Clock_PWM_MAIN.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\TCPWM_2.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\TCPWM_2.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\TCPWM_2_PM.c</File>
@@ -250,6 +206,50 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Pin_Sw_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\isr_GPIO.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\isr_GPIO.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_B_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_OUT_A_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_OUT_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\INTERNAL_STEP_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Clock_PWM_MAIN_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\Clock_PWM_MAIN_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_B_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_OUT_A_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\STEP_INPUT_SOURCE_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_INPUT_SOURCE_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_REG_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_REG_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\DIR_REG_2_PM.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\Export\ARM_GCC_Generic">

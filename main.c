@@ -114,12 +114,12 @@ int main() {
       			else if (PH4 <= i[jm - 1] && i[jm - 1] < PH5){
     				if (i[jm - 1] == PH4){
                         if(jm == 1) {                        
-            				INTERNAL_STEP_WritePeriod(2000);
-            				INTERNAL_STEP_WriteCompare(1000);
-                        } // motor 1
-                        else {
             				INTERNAL_STEP_1_WritePeriod(2000);
             				INTERNAL_STEP_1_WriteCompare(1000);
+                        } // motor 1
+                        else {
+            				INTERNAL_STEP_2_WritePeriod(2000);
+            				INTERNAL_STEP_2_WriteCompare(1000);
                         } // motor 2
                     } // PH4
                     if(jm == 1) dirReg = 0; else dirReg1 = 0;
@@ -140,12 +140,12 @@ int main() {
       			else if (PH8 <= i[jm - 1] && i[jm - 1] < PH9){
     				if (i[jm - 1] == PH8){
                         if(jm == 1) {                        
-            				INTERNAL_STEP_WritePeriod(4000);
-            				INTERNAL_STEP_WriteCompare(2000);
-                        } // motor 1
-                        else {
             				INTERNAL_STEP_1_WritePeriod(4000);
             				INTERNAL_STEP_1_WriteCompare(2000);
+                        } // motor 1
+                        else {
+            				INTERNAL_STEP_2_WritePeriod(4000);
+            				INTERNAL_STEP_2_WriteCompare(2000);
                         } // motor 2 
                     } // PH8
                     if(jm == 1) dirReg = 0; else dirReg1 = 0;

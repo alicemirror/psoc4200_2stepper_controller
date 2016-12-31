@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -45,8 +45,8 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
   17:systemInit.c  **** #include <TCPWM_2.h>
   18:systemInit.c  **** #include <TCPWM_3.h>
   19:systemInit.c  **** #include <TCPWM_4.h>
-  20:systemInit.c  **** #include <INTERNAL_STEP.h>
-  21:systemInit.c  **** #include <INTERNAL_STEP_1.h>
+  20:systemInit.c  **** #include <INTERNAL_STEP_1.h>
+  21:systemInit.c  **** #include <INTERNAL_STEP_2.h>
   22:systemInit.c  **** 
   23:systemInit.c  **** void systemInit (){
   26              		.loc 1 23 0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
   30              		.loc 1 23 0
   31 0002 F8B5     		push	{r3, r4, r5, r6, r7, lr}
   32              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 2
 
 
   33              		.cfi_offset 3, -24
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
   69              		.loc 1 30 0
   70 0024 3048     		ldr	r0, .L9+28
   35:systemInit.c  ****     step1 = 1;
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 3
 
 
   36:systemInit.c  ****     
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
   44:systemInit.c  ****     }
  107              		.loc 1 44 0
  108 0056 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 4
 
 
  109              		.loc 1 47 0
@@ -189,9 +189,9 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  113 005c 3878     		ldrb	r0, [r7]
  114 005e FFF7FEFF 		bl	TCPWM_2_WriteCompare
  115              	.LVL1:
-  49:systemInit.c  ****     Clock_PWM_MAIN_Start(); 
+  49:systemInit.c  ****     Clock_PWM_MAIN_1_Start(); 
  116              		.loc 1 49 0
- 117 0062 FFF7FEFF 		bl	Clock_PWM_MAIN_Start
+ 117 0062 FFF7FEFF 		bl	Clock_PWM_MAIN_1_Start
  118              	.LVL2:
   50:systemInit.c  **** 
   51:systemInit.c  ****     TCPWM_1_Start();
@@ -215,9 +215,9 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  133 007a FFF7FEFF 		bl	TCPWM_2_TriggerCommand
  134              	.LVL6:
   55:systemInit.c  **** 	
-  56:systemInit.c  ****     INTERNAL_STEP_Start();
+  56:systemInit.c  ****     INTERNAL_STEP_1_Start();
  135              		.loc 1 56 0
- 136 007e FFF7FEFF 		bl	INTERNAL_STEP_Start
+ 136 007e FFF7FEFF 		bl	INTERNAL_STEP_1_Start
  137              	.LVL7:
   57:systemInit.c  **** 
   58:systemInit.c  ****     // Motor + 1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  148              		.loc 1 61 0
  149 008e 224A     		ldr	r2, .L9+76
  150 0090 1C1C     		mov	r4, r3
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 5
 
 
  151 0092 1278     		ldrb	r2, [r2]
@@ -268,9 +268,9 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  166 00a4 2078     		ldrb	r0, [r4]
  167 00a6 FFF7FEFF 		bl	TCPWM_4_WriteCompare
  168              	.LVL9:
-  70:systemInit.c  ****     Clock_PWM_MAIN_1_Start(); 
+  70:systemInit.c  ****     Clock_PWM_MAIN_2_Start(); 
  169              		.loc 1 70 0
- 170 00aa FFF7FEFF 		bl	Clock_PWM_MAIN_1_Start
+ 170 00aa FFF7FEFF 		bl	Clock_PWM_MAIN_2_Start
  171              	.LVL10:
   71:systemInit.c  **** 
   72:systemInit.c  ****     TCPWM_3_Start();
@@ -294,16 +294,16 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  186 00c2 FFF7FEFF 		bl	TCPWM_4_TriggerCommand
  187              	.LVL14:
   76:systemInit.c  **** 	
-  77:systemInit.c  ****     INTERNAL_STEP_1_Start();
+  77:systemInit.c  ****     INTERNAL_STEP_2_Start();
   78:systemInit.c  **** }...
  188              		.loc 1 78 0
  189              		@ sp needed
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 6
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 6
 
 
-  77:systemInit.c  ****     INTERNAL_STEP_1_Start();
+  77:systemInit.c  ****     INTERNAL_STEP_2_Start();
  190              		.loc 1 77 0
- 191 00c6 FFF7FEFF 		bl	INTERNAL_STEP_1_Start
+ 191 00c6 FFF7FEFF 		bl	INTERNAL_STEP_2_Start
  192              	.LVL15:
  193              		.loc 1 78 0
  194 00ca F8BD     		pop	{r3, r4, r5, r6, r7, pc}
@@ -340,12 +340,12 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  225              		.file 3 "./systemInit.h"
  226              		.file 4 "Generated_Source\\PSoC4/TCPWM_1.h"
  227              		.file 5 "Generated_Source\\PSoC4/TCPWM_2.h"
- 228              		.file 6 "Generated_Source\\PSoC4/Clock_PWM_MAIN.h"
- 229              		.file 7 "Generated_Source\\PSoC4/INTERNAL_STEP.h"
+ 228              		.file 6 "Generated_Source\\PSoC4/Clock_PWM_MAIN_1.h"
+ 229              		.file 7 "Generated_Source\\PSoC4/INTERNAL_STEP_1.h"
  230              		.file 8 "Generated_Source\\PSoC4/TCPWM_3.h"
  231              		.file 9 "Generated_Source\\PSoC4/TCPWM_4.h"
- 232              		.file 10 "Generated_Source\\PSoC4/Clock_PWM_MAIN_1.h"
- 233              		.file 11 "Generated_Source\\PSoC4/INTERNAL_STEP_1.h"
+ 232              		.file 10 "Generated_Source\\PSoC4/Clock_PWM_MAIN_2.h"
+ 233              		.file 11 "Generated_Source\\PSoC4/INTERNAL_STEP_2.h"
  234              		.section	.debug_info,"",%progbits
  235              	.Ldebug_info0:
  236 0000 6B030000 		.4byte	0x36b
@@ -355,10 +355,10 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  240 000b 01       		.uleb128 0x1
  241 000c 07000000 		.4byte	.LASF52
  242 0010 01       		.byte	0x1
- 243 0011 7D030000 		.4byte	.LASF53
- 244 0015 78020000 		.4byte	.LASF54
+ 243 0011 81030000 		.4byte	.LASF53
+ 244 0015 81020000 		.4byte	.LASF54
  245 0019 00000000 		.4byte	.Ldebug_ranges0+0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 7
 
 
  246 001d 00000000 		.4byte	0
@@ -366,35 +366,35 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  248 0025 02       		.uleb128 0x2
  249 0026 01       		.byte	0x1
  250 0027 06       		.byte	0x6
- 251 0028 93030000 		.4byte	.LASF0
+ 251 0028 97030000 		.4byte	.LASF0
  252 002c 02       		.uleb128 0x2
  253 002d 01       		.byte	0x1
  254 002e 08       		.byte	0x8
- 255 002f 86010000 		.4byte	.LASF1
+ 255 002f 77010000 		.4byte	.LASF1
  256 0033 02       		.uleb128 0x2
  257 0034 02       		.byte	0x2
  258 0035 05       		.byte	0x5
- 259 0036 4C030000 		.4byte	.LASF2
+ 259 0036 50030000 		.4byte	.LASF2
  260 003a 02       		.uleb128 0x2
  261 003b 02       		.byte	0x2
  262 003c 07       		.byte	0x7
- 263 003d 16010000 		.4byte	.LASF3
+ 263 003d 07010000 		.4byte	.LASF3
  264 0041 02       		.uleb128 0x2
  265 0042 04       		.byte	0x4
  266 0043 05       		.byte	0x5
- 267 0044 8A030000 		.4byte	.LASF4
+ 267 0044 8E030000 		.4byte	.LASF4
  268 0048 02       		.uleb128 0x2
  269 0049 04       		.byte	0x4
  270 004a 07       		.byte	0x7
- 271 004b AA010000 		.4byte	.LASF5
+ 271 004b 9B010000 		.4byte	.LASF5
  272 004f 02       		.uleb128 0x2
  273 0050 08       		.byte	0x8
  274 0051 05       		.byte	0x5
- 275 0052 39030000 		.4byte	.LASF6
+ 275 0052 3D030000 		.4byte	.LASF6
  276 0056 02       		.uleb128 0x2
  277 0057 08       		.byte	0x8
  278 0058 07       		.byte	0x7
- 279 0059 F0020000 		.4byte	.LASF7
+ 279 0059 F9020000 		.4byte	.LASF7
  280 005d 03       		.uleb128 0x3
  281 005e 04       		.byte	0x4
  282 005f 05       		.byte	0x5
@@ -402,38 +402,38 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  284 0064 02       		.uleb128 0x2
  285 0065 04       		.byte	0x4
  286 0066 07       		.byte	0x7
- 287 0067 5D020000 		.4byte	.LASF8
+ 287 0067 66020000 		.4byte	.LASF8
  288 006b 04       		.uleb128 0x4
- 289 006c BC010000 		.4byte	.LASF9
+ 289 006c AD010000 		.4byte	.LASF9
  290 0070 02       		.byte	0x2
  291 0071 B901     		.2byte	0x1b9
  292 0073 2C000000 		.4byte	0x2c
  293 0077 04       		.uleb128 0x4
- 294 0078 37020000 		.4byte	.LASF10
+ 294 0078 55020000 		.4byte	.LASF10
  295 007c 02       		.byte	0x2
  296 007d BB01     		.2byte	0x1bb
  297 007f 48000000 		.4byte	0x48
  298 0083 02       		.uleb128 0x2
  299 0084 04       		.byte	0x4
  300 0085 04       		.byte	0x4
- 301 0086 72010000 		.4byte	.LASF11
+ 301 0086 63010000 		.4byte	.LASF11
  302 008a 02       		.uleb128 0x2
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 8
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 8
 
 
  303 008b 08       		.byte	0x8
  304 008c 04       		.byte	0x4
- 305 008d 12020000 		.4byte	.LASF12
+ 305 008d 19020000 		.4byte	.LASF12
  306 0091 02       		.uleb128 0x2
  307 0092 01       		.byte	0x1
  308 0093 08       		.byte	0x8
- 309 0094 47030000 		.4byte	.LASF13
+ 309 0094 4B030000 		.4byte	.LASF13
  310 0098 02       		.uleb128 0x2
  311 0099 04       		.byte	0x4
  312 009a 07       		.byte	0x7
- 313 009b 30030000 		.4byte	.LASF14
+ 313 009b 34030000 		.4byte	.LASF14
  314 009f 05       		.uleb128 0x5
- 315 00a0 67010000 		.4byte	.LASF55
+ 315 00a0 58010000 		.4byte	.LASF55
  316 00a4 01       		.byte	0x1
  317 00a5 17       		.byte	0x17
  318 00a6 00000000 		.4byte	.LFB0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  357 0100 50       		.byte	0x50
  358 0101 01       		.uleb128 0x1
  359 0102 38       		.byte	0x38
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 9
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 9
 
 
  360 0103 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  414 0172 01       		.uleb128 0x1
  415 0173 31       		.byte	0x31
  416 0174 00       		.byte	0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 10
 
 
  417 0175 06       		.uleb128 0x6
@@ -561,7 +561,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  434 0192 67030000 		.4byte	0x367
  435 0196 00       		.byte	0
  436 0197 09       		.uleb128 0x9
- 437 0198 0C030000 		.4byte	.LASF15
+ 437 0198 10030000 		.4byte	.LASF15
  438 019c 03       		.byte	0x3
  439 019d 11       		.byte	0x11
  440 019e 6B000000 		.4byte	0x6b
@@ -571,17 +571,17 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  444 01a8 12       		.byte	0x12
  445 01a9 6B000000 		.4byte	0x6b
  446 01ad 09       		.uleb128 0x9
- 447 01ae D8010000 		.4byte	.LASF17
+ 447 01ae C9010000 		.4byte	.LASF17
  448 01b2 03       		.byte	0x3
  449 01b3 13       		.byte	0x13
  450 01b4 6B000000 		.4byte	0x6b
  451 01b8 09       		.uleb128 0x9
- 452 01b9 31010000 		.4byte	.LASF18
+ 452 01b9 22010000 		.4byte	.LASF18
  453 01bd 03       		.byte	0x3
  454 01be 14       		.byte	0x14
  455 01bf 6B000000 		.4byte	0x6b
  456 01c3 09       		.uleb128 0x9
- 457 01c4 C2010000 		.4byte	.LASF19
+ 457 01c4 B3010000 		.4byte	.LASF19
  458 01c8 03       		.byte	0x3
  459 01c9 15       		.byte	0x15
  460 01ca 6B000000 		.4byte	0x6b
@@ -591,40 +591,40 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  464 01d4 16       		.byte	0x16
  465 01d5 6B000000 		.4byte	0x6b
  466 01d9 09       		.uleb128 0x9
- 467 01da 6D030000 		.4byte	.LASF21
+ 467 01da 71030000 		.4byte	.LASF21
  468 01de 03       		.byte	0x3
  469 01df 17       		.byte	0x17
  470 01e0 6B000000 		.4byte	0x6b
  471 01e4 09       		.uleb128 0x9
- 472 01e5 05010000 		.4byte	.LASF22
+ 472 01e5 F6000000 		.4byte	.LASF22
  473 01e9 03       		.byte	0x3
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 11
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 11
 
 
  474 01ea 18       		.byte	0x18
  475 01eb 6B000000 		.4byte	0x6b
  476 01ef 09       		.uleb128 0x9
- 477 01f0 3E020000 		.4byte	.LASF23
+ 477 01f0 5C020000 		.4byte	.LASF23
  478 01f4 03       		.byte	0x3
  479 01f5 19       		.byte	0x19
  480 01f6 6B000000 		.4byte	0x6b
  481 01fa 09       		.uleb128 0x9
- 482 01fb 5C010000 		.4byte	.LASF24
+ 482 01fb 4D010000 		.4byte	.LASF24
  483 01ff 03       		.byte	0x3
  484 0200 1A       		.byte	0x1a
  485 0201 6B000000 		.4byte	0x6b
  486 0205 09       		.uleb128 0x9
- 487 0206 07030000 		.4byte	.LASF25
+ 487 0206 EA000000 		.4byte	.LASF25
  488 020a 03       		.byte	0x3
  489 020b 1B       		.byte	0x1b
  490 020c 6B000000 		.4byte	0x6b
  491 0210 09       		.uleb128 0x9
- 492 0211 B6030000 		.4byte	.LASF26
+ 492 0211 BA030000 		.4byte	.LASF26
  493 0215 03       		.byte	0x3
  494 0216 1C       		.byte	0x1c
  495 0217 6B000000 		.4byte	0x6b
  496 021b 09       		.uleb128 0x9
- 497 021c 56010000 		.4byte	.LASF27
+ 497 021c 47010000 		.4byte	.LASF27
  498 0220 03       		.byte	0x3
  499 0221 1D       		.byte	0x1d
  500 0222 6B000000 		.4byte	0x6b
@@ -634,35 +634,35 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  504 022c 1E       		.byte	0x1e
  505 022d 6B000000 		.4byte	0x6b
  506 0231 09       		.uleb128 0x9
- 507 0232 2D020000 		.4byte	.LASF29
+ 507 0232 34020000 		.4byte	.LASF29
  508 0236 03       		.byte	0x3
  509 0237 1F       		.byte	0x1f
  510 0238 6B000000 		.4byte	0x6b
  511 023c 09       		.uleb128 0x9
- 512 023d 32020000 		.4byte	.LASF30
+ 512 023d 39020000 		.4byte	.LASF30
  513 0241 03       		.byte	0x3
  514 0242 20       		.byte	0x20
  515 0243 6B000000 		.4byte	0x6b
  516 0247 09       		.uleb128 0x9
- 517 0248 BC030000 		.4byte	.LASF31
+ 517 0248 C0030000 		.4byte	.LASF31
  518 024c 03       		.byte	0x3
  519 024d 21       		.byte	0x21
  520 024e 6B000000 		.4byte	0x6b
  521 0252 09       		.uleb128 0x9
- 522 0253 19020000 		.4byte	.LASF32
+ 522 0253 20020000 		.4byte	.LASF32
  523 0257 03       		.byte	0x3
  524 0258 22       		.byte	0x22
  525 0259 6B000000 		.4byte	0x6b
  526 025d 09       		.uleb128 0x9
- 527 025e FE000000 		.4byte	.LASF33
+ 527 025e EF000000 		.4byte	.LASF33
  528 0262 03       		.byte	0x3
  529 0263 23       		.byte	0x23
  530 0264 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 12
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 12
 
 
  531 0268 09       		.uleb128 0x9
- 532 0269 29010000 		.4byte	.LASF34
+ 532 0269 1A010000 		.4byte	.LASF34
  533 026d 03       		.byte	0x3
  534 026e 24       		.byte	0x24
  535 026f 6B000000 		.4byte	0x6b
@@ -672,14 +672,14 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  539 027c 0B       		.uleb128 0xb
  540 027d 00       		.byte	0
  541 027e 09       		.uleb128 0x9
- 542 027f C2030000 		.4byte	.LASF35
+ 542 027f C6030000 		.4byte	.LASF35
  543 0283 03       		.byte	0x3
  544 0284 25       		.byte	0x25
  545 0285 89020000 		.4byte	0x289
  546 0289 0C       		.uleb128 0xc
  547 028a 73020000 		.4byte	0x273
  548 028e 0D       		.uleb128 0xd
- 549 028f E6010000 		.4byte	.LASF36
+ 549 028f D7010000 		.4byte	.LASF36
  550 0293 04       		.byte	0x4
  551 0294 5501     		.2byte	0x155
  552 0296 A0020000 		.4byte	0x2a0
@@ -695,19 +695,19 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  562 02ad 77000000 		.4byte	0x77
  563 02b1 00       		.byte	0
  564 02b2 0F       		.uleb128 0xf
- 565 02b3 48020000 		.4byte	.LASF38
+ 565 02b3 EC010000 		.4byte	.LASF38
  566 02b7 06       		.byte	0x6
  567 02b8 23       		.byte	0x23
  568 02b9 10       		.uleb128 0x10
- 569 02ba 78010000 		.4byte	.LASF39
+ 569 02ba 69010000 		.4byte	.LASF39
  570 02be 04       		.byte	0x4
  571 02bf 3201     		.2byte	0x132
  572 02c1 10       		.uleb128 0x10
- 573 02c2 CA010000 		.4byte	.LASF40
+ 573 02c2 BB010000 		.4byte	.LASF40
  574 02c6 05       		.byte	0x5
  575 02c7 3201     		.2byte	0x132
  576 02c9 0D       		.uleb128 0xd
- 577 02ca 56030000 		.4byte	.LASF41
+ 577 02ca 5A030000 		.4byte	.LASF41
  578 02ce 04       		.byte	0x4
  579 02cf 3B01     		.2byte	0x13b
  580 02d1 E0020000 		.4byte	0x2e0
@@ -717,8 +717,8 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  584 02db 77000000 		.4byte	0x77
  585 02df 00       		.byte	0
  586 02e0 0D       		.uleb128 0xd
- 587 02e1 3F010000 		.4byte	.LASF42
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 13
+ 587 02e1 30010000 		.4byte	.LASF42
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 13
 
 
  588 02e5 05       		.byte	0x5
@@ -730,7 +730,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  594 02f2 77000000 		.4byte	0x77
  595 02f6 00       		.byte	0
  596 02f7 0F       		.uleb128 0xf
- 597 02f8 EA000000 		.4byte	.LASF43
+ 597 02f8 85010000 		.4byte	.LASF43
  598 02fc 07       		.byte	0x7
  599 02fd 92       		.byte	0x92
  600 02fe 0D       		.uleb128 0xd
@@ -750,19 +750,19 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  614 031d 77000000 		.4byte	0x77
  615 0321 00       		.byte	0
  616 0322 0F       		.uleb128 0xf
- 617 0323 FB010000 		.4byte	.LASF46
+ 617 0323 3E020000 		.4byte	.LASF46
  618 0327 0A       		.byte	0xa
  619 0328 23       		.byte	0x23
  620 0329 10       		.uleb128 0x10
- 621 032a 1F020000 		.4byte	.LASF47
+ 621 032a 26020000 		.4byte	.LASF47
  622 032e 08       		.byte	0x8
  623 032f 3201     		.2byte	0x132
  624 0331 10       		.uleb128 0x10
- 625 0332 6A020000 		.4byte	.LASF48
+ 625 0332 73020000 		.4byte	.LASF48
  626 0336 09       		.byte	0x9
  627 0337 3201     		.2byte	0x132
  628 0339 0D       		.uleb128 0xd
- 629 033a 9F030000 		.4byte	.LASF49
+ 629 033a A3030000 		.4byte	.LASF49
  630 033e 08       		.byte	0x8
  631 033f 3B01     		.2byte	0x13b
  632 0341 50030000 		.4byte	0x350
@@ -772,20 +772,20 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  636 034b 77000000 		.4byte	0x77
  637 034f 00       		.byte	0
  638 0350 0D       		.uleb128 0xd
- 639 0351 19030000 		.4byte	.LASF50
+ 639 0351 1D030000 		.4byte	.LASF50
  640 0355 09       		.byte	0x9
  641 0356 3B01     		.2byte	0x13b
  642 0358 67030000 		.4byte	0x367
  643 035c 0E       		.uleb128 0xe
  644 035d 77000000 		.4byte	0x77
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 14
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 14
 
 
  645 0361 0E       		.uleb128 0xe
  646 0362 77000000 		.4byte	0x77
  647 0366 00       		.byte	0
  648 0367 0F       		.uleb128 0xf
- 649 0368 94010000 		.4byte	.LASF51
+ 649 0368 03020000 		.4byte	.LASF51
  650 036c 0B       		.byte	0xb
  651 036d 92       		.byte	0x92
  652 036e 00       		.byte	0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  699 002c 03       		.uleb128 0x3
  700 002d 0E       		.uleb128 0xe
  701 002e 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 15
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 15
 
 
  702 002f 0B       		.uleb128 0xb
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  756 006d 01       		.uleb128 0x1
  757 006e 31       		.uleb128 0x31
  758 006f 13       		.uleb128 0x13
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 16
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 16
 
 
  759 0070 00       		.byte	0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  813 00a6 19       		.uleb128 0x19
  814 00a7 01       		.uleb128 0x1
  815 00a8 13       		.uleb128 0x13
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 17
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 17
 
 
  816 00a9 00       		.byte	0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  870 0018 00000000 		.4byte	0
  871 001c 00000000 		.4byte	0
  872              		.section	.debug_ranges,"",%progbits
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 18
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 18
 
 
  873              	.Ldebug_ranges0:
@@ -1028,8 +1028,8 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  877 000c 00000000 		.4byte	0
  878              		.section	.debug_line,"",%progbits
  879              	.Ldebug_line0:
- 880 0000 33010000 		.section	.debug_str,"MS",%progbits,1
- 880      0200DF00 
+ 880 0000 37010000 		.section	.debug_str,"MS",%progbits,1
+ 880      0200E300 
  880      00000201 
  880      FB0E0D00 
  880      01010101 
@@ -1078,251 +1078,251 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 1
  896      4D5F335F 
  896      57726974 
  896      65436F6D 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 19
 
 
  896      70617265 
- 897              	.LASF43:
- 898 00ea 494E5445 		.ascii	"INTERNAL_STEP_Start\000"
- 898      524E414C 
- 898      5F535445 
- 898      505F5374 
- 898      61727400 
+ 897              	.LASF25:
+ 898 00ea 73746570 		.ascii	"step\000"
+ 898      00
  899              	.LASF33:
- 900 00fe 64697252 		.ascii	"dirReg\000"
+ 900 00ef 64697252 		.ascii	"dirReg\000"
  900      656700
  901              	.LASF22:
- 902 0105 70726576 		.ascii	"previousDivider1\000"
+ 902 00f6 70726576 		.ascii	"previousDivider1\000"
  902      696F7573 
  902      44697669 
  902      64657231 
  902      00
  903              	.LASF3:
- 904 0116 73686F72 		.ascii	"short unsigned int\000"
+ 904 0107 73686F72 		.ascii	"short unsigned int\000"
  904      7420756E 
  904      7369676E 
  904      65642069 
  904      6E7400
  905              	.LASF34:
- 906 0129 64697252 		.ascii	"dirReg1\000"
+ 906 011a 64697252 		.ascii	"dirReg1\000"
  906      65673100 
  907              	.LASF18:
- 908 0131 63757272 		.ascii	"currentStepB1\000"
+ 908 0122 63757272 		.ascii	"currentStepB1\000"
  908      656E7453 
  908      74657042 
  908      3100
  909              	.LASF42:
- 910 013f 54435057 		.ascii	"TCPWM_2_TriggerCommand\000"
+ 910 0130 54435057 		.ascii	"TCPWM_2_TriggerCommand\000"
  910      4D5F325F 
  910      54726967 
  910      67657243 
  910      6F6D6D61 
  911              	.LASF27:
- 912 0156 70686173 		.ascii	"phase\000"
+ 912 0147 70686173 		.ascii	"phase\000"
  912      6500
  913              	.LASF24:
- 914 015c 46756C6C 		.ascii	"FullScale1\000"
+ 914 014d 46756C6C 		.ascii	"FullScale1\000"
  914      5363616C 
  914      653100
  915              	.LASF55:
- 916 0167 73797374 		.ascii	"systemInit\000"
+ 916 0158 73797374 		.ascii	"systemInit\000"
  916      656D496E 
  916      697400
  917              	.LASF11:
- 918 0172 666C6F61 		.ascii	"float\000"
+ 918 0163 666C6F61 		.ascii	"float\000"
  918      7400
  919              	.LASF39:
- 920 0178 54435057 		.ascii	"TCPWM_1_Start\000"
+ 920 0169 54435057 		.ascii	"TCPWM_1_Start\000"
  920      4D5F315F 
  920      53746172 
  920      7400
  921              	.LASF1:
- 922 0186 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 20
-
-
+ 922 0177 756E7369 		.ascii	"unsigned char\000"
  922      676E6564 
  922      20636861 
  922      7200
- 923              	.LASF51:
- 924 0194 494E5445 		.ascii	"INTERNAL_STEP_1_Start\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 20
+
+
+ 923              	.LASF43:
+ 924 0185 494E5445 		.ascii	"INTERNAL_STEP_1_Start\000"
  924      524E414C 
  924      5F535445 
  924      505F315F 
  924      53746172 
  925              	.LASF5:
- 926 01aa 6C6F6E67 		.ascii	"long unsigned int\000"
+ 926 019b 6C6F6E67 		.ascii	"long unsigned int\000"
  926      20756E73 
  926      69676E65 
  926      6420696E 
  926      7400
  927              	.LASF9:
- 928 01bc 75696E74 		.ascii	"uint8\000"
+ 928 01ad 75696E74 		.ascii	"uint8\000"
  928      3800
  929              	.LASF19:
- 930 01c2 64697669 		.ascii	"divider\000"
+ 930 01b3 64697669 		.ascii	"divider\000"
  930      64657200 
  931              	.LASF40:
- 932 01ca 54435057 		.ascii	"TCPWM_2_Start\000"
+ 932 01bb 54435057 		.ascii	"TCPWM_2_Start\000"
  932      4D5F325F 
  932      53746172 
  932      7400
  933              	.LASF17:
- 934 01d8 63757272 		.ascii	"currentStepA1\000"
+ 934 01c9 63757272 		.ascii	"currentStepA1\000"
  934      656E7453 
  934      74657041 
  934      3100
  935              	.LASF36:
- 936 01e6 54435057 		.ascii	"TCPWM_1_WriteCompare\000"
+ 936 01d7 54435057 		.ascii	"TCPWM_1_WriteCompare\000"
  936      4D5F315F 
  936      57726974 
  936      65436F6D 
  936      70617265 
- 937              	.LASF46:
- 938 01fb 436C6F63 		.ascii	"Clock_PWM_MAIN_1_Start\000"
+ 937              	.LASF38:
+ 938 01ec 436C6F63 		.ascii	"Clock_PWM_MAIN_1_Start\000"
  938      6B5F5057 
  938      4D5F4D41 
  938      494E5F31 
  938      5F537461 
- 939              	.LASF12:
- 940 0212 646F7562 		.ascii	"double\000"
- 940      6C6500
- 941              	.LASF32:
- 942 0219 70776D42 		.ascii	"pwmB1\000"
- 942      3100
- 943              	.LASF47:
- 944 021f 54435057 		.ascii	"TCPWM_3_Start\000"
- 944      4D5F335F 
- 944      53746172 
- 944      7400
- 945              	.LASF29:
- 946 022d 70776D41 		.ascii	"pwmA\000"
- 946      00
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 21
+ 939              	.LASF51:
+ 940 0203 494E5445 		.ascii	"INTERNAL_STEP_2_Start\000"
+ 940      524E414C 
+ 940      5F535445 
+ 940      505F325F 
+ 940      53746172 
+ 941              	.LASF12:
+ 942 0219 646F7562 		.ascii	"double\000"
+ 942      6C6500
+ 943              	.LASF32:
+ 944 0220 70776D42 		.ascii	"pwmB1\000"
+ 944      3100
+ 945              	.LASF47:
+ 946 0226 54435057 		.ascii	"TCPWM_3_Start\000"
+ 946      4D5F335F 
+ 946      53746172 
+ 946      7400
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 21
 
 
- 947              	.LASF30:
- 948 0232 70776D42 		.ascii	"pwmB\000"
+ 947              	.LASF29:
+ 948 0234 70776D41 		.ascii	"pwmA\000"
  948      00
- 949              	.LASF10:
- 950 0237 75696E74 		.ascii	"uint32\000"
- 950      333200
- 951              	.LASF23:
- 952 023e 46756C6C 		.ascii	"FullScale\000"
- 952      5363616C 
- 952      6500
- 953              	.LASF38:
- 954 0248 436C6F63 		.ascii	"Clock_PWM_MAIN_Start\000"
- 954      6B5F5057 
- 954      4D5F4D41 
- 954      494E5F53 
- 954      74617274 
- 955              	.LASF8:
- 956 025d 756E7369 		.ascii	"unsigned int\000"
- 956      676E6564 
- 956      20696E74 
- 956      00
- 957              	.LASF48:
- 958 026a 54435057 		.ascii	"TCPWM_4_Start\000"
- 958      4D5F345F 
- 958      53746172 
- 958      7400
- 959              	.LASF54:
- 960 0278 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
- 960      73657273 
- 960      5C546563 
- 960      6820436F 
- 960      6E73756C 
- 961 02a7 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
- 961      70706572 
- 961      2050726F 
- 961      6A656374 
- 961      73204765 
- 962 02d8 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
- 962      34323030 
- 962      2D476561 
- 962      72426573 
- 962      742E6379 
- 963              	.LASF7:
- 964 02f0 6C6F6E67 		.ascii	"long long unsigned int\000"
- 964      206C6F6E 
- 964      6720756E 
- 964      7369676E 
- 964      65642069 
- 965              	.LASF25:
- 966 0307 73746570 		.ascii	"step\000"
- 966      00
+ 949              	.LASF30:
+ 950 0239 70776D42 		.ascii	"pwmB\000"
+ 950      00
+ 951              	.LASF46:
+ 952 023e 436C6F63 		.ascii	"Clock_PWM_MAIN_2_Start\000"
+ 952      6B5F5057 
+ 952      4D5F4D41 
+ 952      494E5F32 
+ 952      5F537461 
+ 953              	.LASF10:
+ 954 0255 75696E74 		.ascii	"uint32\000"
+ 954      333200
+ 955              	.LASF23:
+ 956 025c 46756C6C 		.ascii	"FullScale\000"
+ 956      5363616C 
+ 956      6500
+ 957              	.LASF8:
+ 958 0266 756E7369 		.ascii	"unsigned int\000"
+ 958      676E6564 
+ 958      20696E74 
+ 958      00
+ 959              	.LASF48:
+ 960 0273 54435057 		.ascii	"TCPWM_4_Start\000"
+ 960      4D5F345F 
+ 960      53746172 
+ 960      7400
+ 961              	.LASF54:
+ 962 0281 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 962      73657273 
+ 962      5C546563 
+ 962      6820436F 
+ 962      6E73756C 
+ 963 02b0 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 963      70706572 
+ 963      2050726F 
+ 963      6A656374 
+ 963      73204765 
+ 964 02e1 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 964      34323030 
+ 964      2D476561 
+ 964      72426573 
+ 964      742E6379 
+ 965              	.LASF7:
+ 966 02f9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 966      206C6F6E 
+ 966      6720756E 
+ 966      7369676E 
+ 966      65642069 
  967              	.LASF15:
- 968 030c 63757272 		.ascii	"currentStepA\000"
+ 968 0310 63757272 		.ascii	"currentStepA\000"
  968      656E7453 
  968      74657041 
  968      00
  969              	.LASF50:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 22
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 22
 
 
- 970 0319 54435057 		.ascii	"TCPWM_4_TriggerCommand\000"
+ 970 031d 54435057 		.ascii	"TCPWM_4_TriggerCommand\000"
  970      4D5F345F 
  970      54726967 
  970      67657243 
  970      6F6D6D61 
  971              	.LASF14:
- 972 0330 73697A65 		.ascii	"sizetype\000"
+ 972 0334 73697A65 		.ascii	"sizetype\000"
  972      74797065 
  972      00
  973              	.LASF6:
- 974 0339 6C6F6E67 		.ascii	"long long int\000"
+ 974 033d 6C6F6E67 		.ascii	"long long int\000"
  974      206C6F6E 
  974      6720696E 
  974      7400
  975              	.LASF13:
- 976 0347 63686172 		.ascii	"char\000"
+ 976 034b 63686172 		.ascii	"char\000"
  976      00
  977              	.LASF2:
- 978 034c 73686F72 		.ascii	"short int\000"
+ 978 0350 73686F72 		.ascii	"short int\000"
  978      7420696E 
  978      7400
  979              	.LASF41:
- 980 0356 54435057 		.ascii	"TCPWM_1_TriggerCommand\000"
+ 980 035a 54435057 		.ascii	"TCPWM_1_TriggerCommand\000"
  980      4D5F315F 
  980      54726967 
  980      67657243 
  980      6F6D6D61 
  981              	.LASF21:
- 982 036d 70726576 		.ascii	"previousDivider\000"
+ 982 0371 70726576 		.ascii	"previousDivider\000"
  982      696F7573 
  982      44697669 
  982      64657200 
  983              	.LASF53:
- 984 037d 73797374 		.ascii	"systemInit.c\000"
+ 984 0381 73797374 		.ascii	"systemInit.c\000"
  984      656D496E 
  984      69742E63 
  984      00
  985              	.LASF4:
- 986 038a 6C6F6E67 		.ascii	"long int\000"
+ 986 038e 6C6F6E67 		.ascii	"long int\000"
  986      20696E74 
  986      00
  987              	.LASF0:
- 988 0393 7369676E 		.ascii	"signed char\000"
+ 988 0397 7369676E 		.ascii	"signed char\000"
  988      65642063 
  988      68617200 
  989              	.LASF49:
- 990 039f 54435057 		.ascii	"TCPWM_3_TriggerCommand\000"
+ 990 03a3 54435057 		.ascii	"TCPWM_3_TriggerCommand\000"
  990      4D5F335F 
  990      54726967 
  990      67657243 
  990      6F6D6D61 
  991              	.LASF26:
- 992 03b6 73746570 		.ascii	"step1\000"
+ 992 03ba 73746570 		.ascii	"step1\000"
  992      3100
  993              	.LASF31:
- 994 03bc 70776D41 		.ascii	"pwmA1\000"
+ 994 03c0 70776D41 		.ascii	"pwmA1\000"
  994      3100
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccW0wNad.s 			page 23
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc9kEINA.s 			page 23
 
 
  995              	.LASF35:
- 996 03c2 73696E65 		.ascii	"sineTable\000"
+ 996 03c6 73696E65 		.ascii	"sineTable\000"
  996      5461626C 
  996      6500
  997              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

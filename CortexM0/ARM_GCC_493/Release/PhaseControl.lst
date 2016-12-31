@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -54,20 +54,20 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
   33              		.loc 1 18 0
   34 0002 0129     		cmp	r1, #1
   35 0004 02D1     		bne	.L2
-  19:PhaseControl.c ****         DIR_REG_Write (currentphase);
+  19:PhaseControl.c ****         DIR_REG_1_Write (currentphase);
   36              		.loc 1 19 0
-  37 0006 FFF7FEFF 		bl	DIR_REG_Write
+  37 0006 FFF7FEFF 		bl	DIR_REG_1_Write
   38              	.LVL1:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 2
 
 
   39 000a 01E0     		b	.L1
   40              	.LVL2:
   41              	.L2:
   20:PhaseControl.c ****     else
-  21:PhaseControl.c ****         DIR_REG_1_Write (currentphase);
+  21:PhaseControl.c ****         DIR_REG_2_Write (currentphase);
   42              		.loc 1 21 0
-  43 000c FFF7FEFF 		bl	DIR_REG_1_Write
+  43 000c FFF7FEFF 		bl	DIR_REG_2_Write
   44              	.LVL3:
   45              	.L1:
   22:PhaseControl.c **** }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
   84 001c 0AE0     		b	.L43
   85              	.L6:
   29:PhaseControl.c ****     			switch(phase) {
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 3
 
 
   30:PhaseControl.c ****     				case 0:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  101              	.L43:
   69:PhaseControl.c ****     			switch(phase1) {
  102              		.loc 1 69 0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 4
 
 
  103 0034 1878     		ldrb	r0, [r3]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
   92:PhaseControl.c ****     					phase1 = 3;
  134              		.loc 1 92 0
  135 0056 0322     		mov	r2, #3
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 5
 
 
  136 0058 02E0     		b	.L38
@@ -287,8 +287,8 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  165              	.Letext0:
  166              		.file 2 "./phaseControl.h"
  167              		.file 3 "Generated_Source\\PSoC4/cytypes.h"
- 168              		.file 4 "Generated_Source\\PSoC4/DIR_REG.h"
- 169              		.file 5 "Generated_Source\\PSoC4/DIR_REG_1.h"
+ 168              		.file 4 "Generated_Source\\PSoC4/DIR_REG_1.h"
+ 169              		.file 5 "Generated_Source\\PSoC4/DIR_REG_2.h"
  170              		.section	.debug_info,"",%progbits
  171              	.Ldebug_info0:
  172 0000 6A010000 		.4byte	0x16a
@@ -296,48 +296,48 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  174 0006 00000000 		.4byte	.Ldebug_abbrev0
  175 000a 04       		.byte	0x4
  176 000b 01       		.uleb128 0x1
- 177 000c 16000000 		.4byte	.LASF24
+ 177 000c 07000000 		.4byte	.LASF24
  178 0010 01       		.byte	0x1
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 6
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 6
 
 
- 179 0011 00000000 		.4byte	.LASF25
- 180 0015 B4010000 		.4byte	.LASF26
+ 179 0011 B1000000 		.4byte	.LASF25
+ 180 0015 B0010000 		.4byte	.LASF26
  181 0019 00000000 		.4byte	.Ldebug_ranges0+0
  182 001d 00000000 		.4byte	0
  183 0021 00000000 		.4byte	.Ldebug_line0
  184 0025 02       		.uleb128 0x2
  185 0026 01       		.byte	0x1
  186 0027 06       		.byte	0x6
- 187 0028 3F020000 		.4byte	.LASF0
+ 187 0028 41020000 		.4byte	.LASF0
  188 002c 02       		.uleb128 0x2
  189 002d 01       		.byte	0x1
  190 002e 08       		.byte	0x8
- 191 002f 01010000 		.4byte	.LASF1
+ 191 002f E0000000 		.4byte	.LASF1
  192 0033 02       		.uleb128 0x2
  193 0034 02       		.byte	0x2
  194 0035 05       		.byte	0x5
- 195 0036 AA010000 		.4byte	.LASF2
+ 195 0036 A6010000 		.4byte	.LASF2
  196 003a 02       		.uleb128 0x2
  197 003b 02       		.byte	0x2
  198 003c 07       		.byte	0x7
- 199 003d B8000000 		.4byte	.LASF3
+ 199 003d 00010000 		.4byte	.LASF3
  200 0041 02       		.uleb128 0x2
  201 0042 04       		.byte	0x4
  202 0043 05       		.byte	0x5
- 203 0044 2C020000 		.4byte	.LASF4
+ 203 0044 2E020000 		.4byte	.LASF4
  204 0048 02       		.uleb128 0x2
  205 0049 04       		.byte	0x4
  206 004a 07       		.byte	0x7
- 207 004b 0F010000 		.4byte	.LASF5
+ 207 004b EE000000 		.4byte	.LASF5
  208 004f 02       		.uleb128 0x2
  209 0050 08       		.byte	0x8
  210 0051 05       		.byte	0x5
- 211 0052 97010000 		.4byte	.LASF6
+ 211 0052 93010000 		.4byte	.LASF6
  212 0056 02       		.uleb128 0x2
  213 0057 08       		.byte	0x8
  214 0058 07       		.byte	0x7
- 215 0059 6C010000 		.4byte	.LASF7
+ 215 0059 58010000 		.4byte	.LASF7
  216 005d 03       		.uleb128 0x3
  217 005e 04       		.byte	0x4
  218 005f 05       		.byte	0x5
@@ -345,29 +345,29 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  220 0064 02       		.uleb128 0x2
  221 0065 04       		.byte	0x4
  222 0066 07       		.byte	0x7
- 223 0067 D3000000 		.4byte	.LASF8
+ 223 0067 4B010000 		.4byte	.LASF8
  224 006b 04       		.uleb128 0x4
- 225 006c 21010000 		.4byte	.LASF27
+ 225 006c 28020000 		.4byte	.LASF27
  226 0070 03       		.byte	0x3
  227 0071 B901     		.2byte	0x1b9
  228 0073 2C000000 		.4byte	0x2c
  229 0077 02       		.uleb128 0x2
  230 0078 04       		.byte	0x4
  231 0079 04       		.byte	0x4
- 232 007a FB000000 		.4byte	.LASF9
+ 232 007a DA000000 		.4byte	.LASF9
  233 007e 02       		.uleb128 0x2
  234 007f 08       		.byte	0x8
  235 0080 04       		.byte	0x4
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 7
 
 
- 236 0081 3B010000 		.4byte	.LASF10
+ 236 0081 26010000 		.4byte	.LASF10
  237 0085 02       		.uleb128 0x2
  238 0086 01       		.byte	0x1
  239 0087 08       		.byte	0x8
- 240 0088 A5010000 		.4byte	.LASF11
+ 240 0088 A1010000 		.4byte	.LASF11
  241 008c 05       		.uleb128 0x5
- 242 008d EE000000 		.4byte	.LASF14
+ 242 008d CD000000 		.4byte	.LASF14
  243 0091 01       		.byte	0x1
  244 0092 10       		.byte	0x10
  245 0093 00000000 		.4byte	.LFB0
@@ -376,13 +376,13 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  248 009c 9C       		.byte	0x9c
  249 009d D2000000 		.4byte	0xd2
  250 00a1 06       		.uleb128 0x6
- 251 00a2 A4000000 		.4byte	.LASF12
+ 251 00a2 95000000 		.4byte	.LASF12
  252 00a6 01       		.byte	0x1
  253 00a7 10       		.byte	0x10
  254 00a8 6B000000 		.4byte	0x6b
  255 00ac 00000000 		.4byte	.LLST0
  256 00b0 06       		.uleb128 0x6
- 257 00b1 83010000 		.4byte	.LASF13
+ 257 00b1 7F010000 		.4byte	.LASF13
  258 00b5 01       		.byte	0x1
  259 00b6 10       		.byte	0x10
  260 00b7 6B000000 		.4byte	0x6b
@@ -395,7 +395,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  267 00cd 60010000 		.4byte	0x160
  268 00d1 00       		.byte	0
  269 00d2 05       		.uleb128 0x5
- 270 00d3 35020000 		.4byte	.LASF15
+ 270 00d3 37020000 		.4byte	.LASF15
  271 00d7 01       		.byte	0x1
  272 00d8 18       		.byte	0x18
  273 00d9 00000000 		.4byte	.LFB1
@@ -404,57 +404,57 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  276 00e2 9C       		.byte	0x9c
  277 00e3 F7000000 		.4byte	0xf7
  278 00e7 06       		.uleb128 0x6
- 279 00e8 83010000 		.4byte	.LASF13
+ 279 00e8 7F010000 		.4byte	.LASF13
  280 00ec 01       		.byte	0x1
  281 00ed 18       		.byte	0x18
  282 00ee 6B000000 		.4byte	0x6b
  283 00f2 74000000 		.4byte	.LLST2
  284 00f6 00       		.byte	0
  285 00f7 08       		.uleb128 0x8
- 286 00f8 35010000 		.4byte	.LASF16
+ 286 00f8 20010000 		.4byte	.LASF16
  287 00fc 02       		.byte	0x2
  288 00fd 13       		.byte	0x13
  289 00fe 6B000000 		.4byte	0x6b
  290 0102 08       		.uleb128 0x8
- 291 0103 42010000 		.4byte	.LASF17
+ 291 0103 C0000000 		.4byte	.LASF17
  292 0107 02       		.byte	0x2
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 8
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 8
 
 
  293 0108 14       		.byte	0x14
  294 0109 6B000000 		.4byte	0x6b
  295 010d 08       		.uleb128 0x8
- 296 010e 4F010000 		.4byte	.LASF18
+ 296 010e 13010000 		.4byte	.LASF18
  297 0112 02       		.byte	0x2
  298 0113 15       		.byte	0x15
  299 0114 6B000000 		.4byte	0x6b
  300 0118 08       		.uleb128 0x8
- 301 0119 B1000000 		.4byte	.LASF19
+ 301 0119 A2000000 		.4byte	.LASF19
  302 011d 02       		.byte	0x2
  303 011e 16       		.byte	0x16
  304 011f 6B000000 		.4byte	0x6b
  305 0123 08       		.uleb128 0x8
- 306 0124 0F000000 		.4byte	.LASF20
+ 306 0124 00000000 		.4byte	.LASF20
  307 0128 02       		.byte	0x2
  308 0129 18       		.byte	0x18
  309 012a 6B000000 		.4byte	0x6b
  310 012e 08       		.uleb128 0x8
- 311 012f 89010000 		.4byte	.LASF21
+ 311 012f 85010000 		.4byte	.LASF21
  312 0133 02       		.byte	0x2
  313 0134 19       		.byte	0x19
  314 0135 6B000000 		.4byte	0x6b
  315 0139 08       		.uleb128 0x8
- 316 013a E0000000 		.4byte	.LASF22
+ 316 013a 2D010000 		.4byte	.LASF22
  317 013e 02       		.byte	0x2
  318 013f 1A       		.byte	0x1a
  319 0140 6B000000 		.4byte	0x6b
  320 0144 08       		.uleb128 0x8
- 321 0145 CB000000 		.4byte	.LASF23
+ 321 0145 A9000000 		.4byte	.LASF23
  322 0149 02       		.byte	0x2
  323 014a 1B       		.byte	0x1b
  324 014b 6B000000 		.4byte	0x6b
  325 014f 09       		.uleb128 0x9
- 326 0150 27010000 		.4byte	.LASF28
+ 326 0150 3B010000 		.4byte	.LASF28
  327 0154 04       		.byte	0x4
  328 0155 27       		.byte	0x27
  329 0156 60010000 		.4byte	0x160
@@ -462,7 +462,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  331 015b 6B000000 		.4byte	0x6b
  332 015f 00       		.byte	0
  333 0160 0B       		.uleb128 0xb
- 334 0161 5C010000 		.4byte	.LASF29
+ 334 0161 6F010000 		.4byte	.LASF29
  335 0165 05       		.byte	0x5
  336 0166 27       		.byte	0x27
  337 0167 0A       		.uleb128 0xa
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  347 0004 0E       		.uleb128 0xe
  348 0005 13       		.uleb128 0x13
  349 0006 0B       		.uleb128 0xb
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 9
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 9
 
 
  350 0007 03       		.uleb128 0x3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  404 003d 3A       		.uleb128 0x3a
  405 003e 0B       		.uleb128 0xb
  406 003f 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 10
 
 
  407 0040 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  461 0079 00       		.byte	0
  462 007a 00       		.byte	0
  463 007b 09       		.uleb128 0x9
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 11
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 11
 
 
  464 007c 2E       		.uleb128 0x2e
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  518 0016 01       		.uleb128 0x1
  519 0017 50       		.byte	0x50
  520 0018 9F       		.byte	0x9f
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 12
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 12
 
 
  521 0019 0C000000 		.4byte	.LVL2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  575 0004 0200     		.2byte	0x2
  576 0006 00000000 		.4byte	.Ldebug_info0
  577 000a 04       		.byte	0x4
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 13
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 13
 
 
  578 000b 00       		.byte	0
@@ -740,171 +740,171 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 1
  594 0014 00000000 		.4byte	0
  595              		.section	.debug_line,"",%progbits
  596              	.Ldebug_line0:
- 597 0000 C0000000 		.section	.debug_str,"MS",%progbits,1
- 597      02007900 
+ 597 0000 C2000000 		.section	.debug_str,"MS",%progbits,1
+ 597      02007B00 
  597      00000201 
  597      FB0E0D00 
  597      01010101 
- 598              	.LASF25:
- 599 0000 50686173 		.ascii	"PhaseControl.c\000"
- 599      65436F6E 
- 599      74726F6C 
- 599      2E6300
- 600              	.LASF20:
- 601 000f 70686173 		.ascii	"phase1\000"
- 601      653100
- 602              	.LASF24:
- 603 0016 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 603      4320342E 
- 603      392E3320 
- 603      32303135 
- 603      30333033 
- 604 0049 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 604      20726576 
- 604      6973696F 
- 604      6E203232 
- 604      31323230 
- 605 007c 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
- 605      66756E63 
- 605      74696F6E 
- 605      2D736563 
- 605      74696F6E 
- 606              	.LASF12:
- 607 00a4 63757272 		.ascii	"currentphase\000"
- 607      656E7470 
- 607      68617365 
- 607      00
- 608              	.LASF19:
- 609 00b1 64697252 		.ascii	"dirReg\000"
- 609      656700
- 610              	.LASF3:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 14
+ 598              	.LASF20:
+ 599 0000 70686173 		.ascii	"phase1\000"
+ 599      653100
+ 600              	.LASF24:
+ 601 0007 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 601      4320342E 
+ 601      392E3320 
+ 601      32303135 
+ 601      30333033 
+ 602 003a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 602      20726576 
+ 602      6973696F 
+ 602      6E203232 
+ 602      31323230 
+ 603 006d 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 603      66756E63 
+ 603      74696F6E 
+ 603      2D736563 
+ 603      74696F6E 
+ 604              	.LASF12:
+ 605 0095 63757272 		.ascii	"currentphase\000"
+ 605      656E7470 
+ 605      68617365 
+ 605      00
+ 606              	.LASF19:
+ 607 00a2 64697252 		.ascii	"dirReg\000"
+ 607      656700
+ 608              	.LASF23:
+ 609 00a9 64697252 		.ascii	"dirReg1\000"
+ 609      65673100 
+ 610              	.LASF25:
+ 611 00b1 50686173 		.ascii	"PhaseControl.c\000"
+ 611      65436F6E 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 14
 
 
- 611 00b8 73686F72 		.ascii	"short unsigned int\000"
- 611      7420756E 
- 611      7369676E 
- 611      65642069 
- 611      6E7400
- 612              	.LASF23:
- 613 00cb 64697252 		.ascii	"dirReg1\000"
- 613      65673100 
- 614              	.LASF8:
- 615 00d3 756E7369 		.ascii	"unsigned int\000"
- 615      676E6564 
- 615      20696E74 
+ 611      74726F6C 
+ 611      2E6300
+ 612              	.LASF17:
+ 613 00c0 63757272 		.ascii	"currentStepA\000"
+ 613      656E7453 
+ 613      74657041 
+ 613      00
+ 614              	.LASF14:
+ 615 00cd 70686173 		.ascii	"phaseControl\000"
+ 615      65436F6E 
+ 615      74726F6C 
  615      00
- 616              	.LASF22:
- 617 00e0 63757272 		.ascii	"currentStepB1\000"
- 617      656E7453 
- 617      74657042 
- 617      3100
- 618              	.LASF14:
- 619 00ee 70686173 		.ascii	"phaseControl\000"
- 619      65436F6E 
- 619      74726F6C 
- 619      00
- 620              	.LASF9:
- 621 00fb 666C6F61 		.ascii	"float\000"
+ 616              	.LASF9:
+ 617 00da 666C6F61 		.ascii	"float\000"
+ 617      7400
+ 618              	.LASF1:
+ 619 00e0 756E7369 		.ascii	"unsigned char\000"
+ 619      676E6564 
+ 619      20636861 
+ 619      7200
+ 620              	.LASF5:
+ 621 00ee 6C6F6E67 		.ascii	"long unsigned int\000"
+ 621      20756E73 
+ 621      69676E65 
+ 621      6420696E 
  621      7400
- 622              	.LASF1:
- 623 0101 756E7369 		.ascii	"unsigned char\000"
- 623      676E6564 
- 623      20636861 
- 623      7200
- 624              	.LASF5:
- 625 010f 6C6F6E67 		.ascii	"long unsigned int\000"
- 625      20756E73 
- 625      69676E65 
- 625      6420696E 
- 625      7400
- 626              	.LASF27:
- 627 0121 75696E74 		.ascii	"uint8\000"
- 627      3800
- 628              	.LASF28:
- 629 0127 4449525F 		.ascii	"DIR_REG_Write\000"
- 629      5245475F 
- 629      57726974 
- 629      6500
- 630              	.LASF16:
- 631 0135 70686173 		.ascii	"phase\000"
- 631      6500
- 632              	.LASF10:
- 633 013b 646F7562 		.ascii	"double\000"
- 633      6C6500
- 634              	.LASF17:
- 635 0142 63757272 		.ascii	"currentStepA\000"
- 635      656E7453 
- 635      74657041 
+ 622              	.LASF3:
+ 623 0100 73686F72 		.ascii	"short unsigned int\000"
+ 623      7420756E 
+ 623      7369676E 
+ 623      65642069 
+ 623      6E7400
+ 624              	.LASF18:
+ 625 0113 63757272 		.ascii	"currentStepB\000"
+ 625      656E7453 
+ 625      74657042 
+ 625      00
+ 626              	.LASF16:
+ 627 0120 70686173 		.ascii	"phase\000"
+ 627      6500
+ 628              	.LASF10:
+ 629 0126 646F7562 		.ascii	"double\000"
+ 629      6C6500
+ 630              	.LASF22:
+ 631 012d 63757272 		.ascii	"currentStepB1\000"
+ 631      656E7453 
+ 631      74657042 
+ 631      3100
+ 632              	.LASF28:
+ 633 013b 4449525F 		.ascii	"DIR_REG_1_Write\000"
+ 633      5245475F 
+ 633      315F5772 
+ 633      69746500 
+ 634              	.LASF8:
+ 635 014b 756E7369 		.ascii	"unsigned int\000"
+ 635      676E6564 
+ 635      20696E74 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 15
+
+
  635      00
- 636              	.LASF18:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 15
-
-
- 637 014f 63757272 		.ascii	"currentStepB\000"
- 637      656E7453 
- 637      74657042 
- 637      00
+ 636              	.LASF7:
+ 637 0158 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 637      206C6F6E 
+ 637      6720756E 
+ 637      7369676E 
+ 637      65642069 
  638              	.LASF29:
- 639 015c 4449525F 		.ascii	"DIR_REG_1_Write\000"
+ 639 016f 4449525F 		.ascii	"DIR_REG_2_Write\000"
  639      5245475F 
- 639      315F5772 
+ 639      325F5772 
  639      69746500 
- 640              	.LASF7:
- 641 016c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 641      206C6F6E 
- 641      6720756E 
- 641      7369676E 
- 641      65642069 
- 642              	.LASF13:
- 643 0183 6D6F746F 		.ascii	"motor\000"
- 643      7200
- 644              	.LASF21:
- 645 0189 63757272 		.ascii	"currentStepA1\000"
- 645      656E7453 
- 645      74657041 
- 645      3100
- 646              	.LASF6:
- 647 0197 6C6F6E67 		.ascii	"long long int\000"
- 647      206C6F6E 
- 647      6720696E 
- 647      7400
- 648              	.LASF11:
- 649 01a5 63686172 		.ascii	"char\000"
- 649      00
- 650              	.LASF2:
- 651 01aa 73686F72 		.ascii	"short int\000"
- 651      7420696E 
- 651      7400
- 652              	.LASF26:
- 653 01b4 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
- 653      73657273 
- 653      5C546563 
- 653      6820436F 
- 653      6E73756C 
- 654 01e3 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
- 654      70706572 
- 654      2050726F 
- 654      6A656374 
- 654      73204765 
- 655 0214 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
- 655      34323030 
- 655      2D476561 
- 655      72426573 
- 655      742E6379 
+ 640              	.LASF13:
+ 641 017f 6D6F746F 		.ascii	"motor\000"
+ 641      7200
+ 642              	.LASF21:
+ 643 0185 63757272 		.ascii	"currentStepA1\000"
+ 643      656E7453 
+ 643      74657041 
+ 643      3100
+ 644              	.LASF6:
+ 645 0193 6C6F6E67 		.ascii	"long long int\000"
+ 645      206C6F6E 
+ 645      6720696E 
+ 645      7400
+ 646              	.LASF11:
+ 647 01a1 63686172 		.ascii	"char\000"
+ 647      00
+ 648              	.LASF2:
+ 649 01a6 73686F72 		.ascii	"short int\000"
+ 649      7420696E 
+ 649      7400
+ 650              	.LASF26:
+ 651 01b0 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 651      73657273 
+ 651      5C546563 
+ 651      6820436F 
+ 651      6E73756C 
+ 652 01df 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 652      70706572 
+ 652      2050726F 
+ 652      6A656374 
+ 652      73204765 
+ 653 0210 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 653      34323030 
+ 653      2D476561 
+ 653      72426573 
+ 653      742E6379 
+ 654              	.LASF27:
+ 655 0228 75696E74 		.ascii	"uint8\000"
+ 655      3800
  656              	.LASF4:
- 657 022c 6C6F6E67 		.ascii	"long int\000"
+ 657 022e 6C6F6E67 		.ascii	"long int\000"
  657      20696E74 
  657      00
  658              	.LASF15:
- 659 0235 70686173 		.ascii	"phaseMove\000"
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccN6Qr6y.s 			page 16
+ 659 0237 70686173 		.ascii	"phaseMove\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\ccNS8hKV.s 			page 16
 
 
  659      654D6F76 
  659      6500
  660              	.LASF0:
- 661 023f 7369676E 		.ascii	"signed char\000"
+ 661 0241 7369676E 		.ascii	"signed char\000"
  661      65642063 
  661      68617200 
  662              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

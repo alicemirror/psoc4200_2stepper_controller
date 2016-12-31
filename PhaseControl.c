@@ -16,9 +16,9 @@
 void phaseControl (uint8 currentphase, uint8 motor){
     
     if(motor == 1)
-        DIR_REG_Write (currentphase);
-    else
         DIR_REG_1_Write (currentphase);
+    else
+        DIR_REG_2_Write (currentphase);
 }
 
 void phaseMove(uint8 motor){
