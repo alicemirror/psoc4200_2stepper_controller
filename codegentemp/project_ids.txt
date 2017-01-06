@@ -1,15 +1,8 @@
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\Prototype_NoPWM.cydsn\Prototype_NoPWM.cyprj|c6019f79-f26a-4c12-aa0f-f690b7adaf7d
 C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2ae5d920-2b5c-42cb-9e35-468fe536f6b5
 C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|c7cdeae5-64f0-4578-a71c-ef3da55fbe4a
 C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|03539d6f-bcc0-430c-a7ff-53d48d8d95ab
 C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|8c1927b5-5808-448b-90c4-f820b8ca04f2
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\Prototype.cydsn\Prototype.cyprj|a82d317f-d126-41c6-9ebb-f9fab068a5ea
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\PSoC4_I2C_Slave.cydsn\PSoC4_I2C_Slave.cyprj|c55fb519-ed54-43fa-94b3-54636016d1bb
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\RGB_LED\RGB_LED.cydsn\RGB_LED.cyprj|7a302390-5e31-4e55-b815-479b94a18b6d
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\SCB Bootloader CY8KIT-049-42xx\SCB_Bootloader\UART_Bootloader.cydsn\UART_Bootloader.cyprj|afbbd516-f79d-4283-881d-6b523e99713a
+C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\DualStepperController-PSoC4200-GearBest.cyprj|a3f48284-6b57-482e-85f7-424909ef57ec
 C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|2b1b251d-480c-4f40-a8c4-fb87b8aaf4fa
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\TimerExample01.cydsn\TimerExample01.cyprj|ae928c2b-9e9a-4924-9058-1c8139ea9089
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\Prototype-2.cydsn\Prototype-2.cyprj|d263efda-6d10-440a-a986-df6b15d6c229
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\Interrupts_Example01.cydsn\Interrupts_Example01.cyprj|0cc17de5-e840-40a0-bfb5-9a0e0c17ea7d
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\SCB_UartComm01.cydsn\SCB_UartComm01.cyprj|ed04d3f0-f7ae-4256-88de-3df65508895f
-C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DualStepperController-PSoC4200-GearBest.cydsn\DualStepperController-PSoC4200-GearBest.cyprj|fd9279c2-e0bc-4f38-8f2b-4bfcd65a1f42
+C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\RPi_P4\RPi_P4_I2C.cydsn\RPi_P4_I2C.cyprj|95c82758-472b-47d4-be98-84f069cb7406
+C:\Users\Tech Consulting\Desktop\PSOC4 projects\Stepper Projects GearBest\DynamicSurface\PSoC4_I2C_Slave.cydsn\PSoC4_I2C_Slave.cyprj|6056a931-f8aa-48d5-ab53-1229bc6530b2

@@ -14,18 +14,18 @@
     <register name="PERIOD" address="0x40050194" bitWidth="32" desc="Period value" hidden="false" />
     <register name="PERIOD_BUF" address="0x40050198" bitWidth="32" desc="Period buffer value" hidden="false" />
   </block>
+  <block name="STEP_INPUT_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_INPUT_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="STEP_INPUT_SOURCE_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_INPUT_SOURCE_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Comm" BASE="0x0" SIZE="0x0" desc="Serial Communication Block" visible="true" hidden="false">
+  <block name="I2C" BASE="0x0" SIZE="0x0" desc="Serial Communication Block" visible="true" hidden="false">
     <block name="Device_VM4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="cts_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="SCB_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="or_sclk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="scl" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="sda" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="miso_m_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="mosi_s_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="sclk_s_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -33,8 +33,7 @@
     <block name="rx_wake_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="rx_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="select_s_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="uart_tx_i2c_sda_spi_miso" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="uart_rx_i2c_scl_spi_mosi" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="SCBCLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="SCB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <register name="_CTRL" address="0x40060000" bitWidth="32" desc="Generic control register" hidden="false">
       <field name="OVS" from="3" to="0" access="RW" resetVal="" desc="Serial interface bit period oversampling factor expressed in lP clock cycles. Used for SPI and UART functionality. OVS + 1 IP clock cycles constitute a single serial interface clock/bit cycle." hidden="false" />
@@ -359,10 +358,9 @@
       <field name="BREAK_DETECT" from="11" to="11" access="RW" resetVal="" desc="Logical and of corresponding request and mask bits" hidden="false" />
     </register>
   </block>
-  <block name="CommCLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="STEP_INPUT_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Resistor_LED_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_SW_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="STATUS_LED_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -372,12 +370,14 @@
   <block name="SW_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Pin_Sw" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="isr_GPIO" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I2C_Addr" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_OUT_A_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_OUT_B_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_REG_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="DIR_REG_2_CONTROL_REG" address="0x400F0072" bitWidth="8" desc="" hidden="false" />
   </block>
+  <block name="Bootloadable_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_PWM_MAIN_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_REG_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="DIR_REG_1_CONTROL_REG" address="0x400F0070" bitWidth="8" desc="" hidden="false" />
@@ -465,8 +465,8 @@
   <block name="DIR_OUT_B_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_OUT_A_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="STEP_INPUT_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_INPUT_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="STEP_INPUT_SOURCE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DIR_INPUT_SOURCE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="TCPWM_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="cy_m0s8_tcpwm_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -584,7 +584,6 @@
     </register>
   </block>
   <block name="Clock_PWM_MAIN_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Bootloadable_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="STEP_INPUT_SOURCE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_lfclk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

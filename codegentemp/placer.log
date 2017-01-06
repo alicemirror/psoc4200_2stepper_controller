@@ -6,7 +6,7 @@
 
 #Build Date:         Apr 29 2016 09:00:55
 
-#File Generated:     Dec 31 2016 12:12:21
+#File Generated:     Jan 1 2017 13:33:17
 
 #Purpose:            
 
@@ -55,7 +55,7 @@ Design Statistics after Packing
 Device Utilization Summary after Packing
     Macrocells                  :	7/32
     UDBS                        :	4/4
-    IOs                         :	24/36
+    IOs                         :	30/36
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -81,14 +81,14 @@ Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.0 MHz
 Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
 Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.0 MHz
 Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
-Clock: CommCLK              | Frequency: N/A       | Target:  24.0 MHz
-Clock: CommCLK(FFB)         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyLFCLK              | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyRouted1            | Frequency: N/A       | Target:  24.0 MHz
 Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK           | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK(FFB)      | Frequency: N/A       | Target:  24.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -97,27 +97,7 @@ Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
 D2088: Phase 6, elapsed time : 0.0 (sec)
 
 Phase 7
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 12
-Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
-Clock: CommCLK              | Frequency: N/A       | Target:  24.0 MHz
-Clock: CommCLK(FFB)         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyLFCLK              | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyRouted1            | Frequency: N/A       | Target:  24.0 MHz
-Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
-D2088: Phase 7, elapsed time : 0.1 (sec)
+D2088: Phase 7, elapsed time : 0.0 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	1
@@ -127,11 +107,11 @@ Final Design Statistics
     Number of Status            	:	1
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
-    Number of IOs       	:	24
+    Number of IOs       	:	30
 
 Device Utilization Summary
     Macrocells                  :	7/32
-    IOs                         :	24/36
+    IOs                         :	30/36
 
 
 
@@ -148,18 +128,120 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 12
-Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.8 MHz
+Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.0 MHz
 Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
-Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.8 MHz
+Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.0 MHz
 Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
-Clock: CommCLK              | Frequency: N/A       | Target:  24.0 MHz
-Clock: CommCLK(FFB)         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyLFCLK              | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyRouted1            | Frequency: N/A       | Target:  24.0 MHz
 Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK           | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK(FFB)      | Frequency: N/A       | Target:  24.0 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+
+Phase 6
+
+######################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+======================================================================
+
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 12
+Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyLFCLK              | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyRouted1            | Frequency: N/A       | Target:  24.0 MHz
+Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK           | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK(FFB)      | Frequency: N/A       | Target:  24.0 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+
+D2088: Phase 6, elapsed time : 0.0 (sec)
+
+Phase 7
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 12
+Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   8.8 MHz
+Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   8.8 MHz
+Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyLFCLK              | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyRouted1            | Frequency: N/A       | Target:  24.0 MHz
+Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK           | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK(FFB)      | Frequency: N/A       | Target:  24.0 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+D2088: Phase 7, elapsed time : 0.1 (sec)
+
+Final Design Statistics
+    Number of Combinational MCs 	:	1
+    Number of Sequential MCs    	:	6
+    Number of DPs               	:	4
+    Number of Controls          	:	4
+    Number of Status            	:	1
+    Number of SyncCells         	:	0
+    Number of count7cells       	:	0
+    Number of IOs       	:	30
+
+Device Utilization Summary
+    Macrocells                  :	7/32
+    IOs                         :	30/36
+
+
+
+######################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+======================================================================
+
+
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 12
+Clock: Clock_PWM_MAIN_1     | Frequency:  41.7 MHz | Target:   9.6 MHz
+Clock: Clock_PWM_MAIN_1(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: Clock_PWM_MAIN_2     | Frequency:  42.7 MHz | Target:   9.6 MHz
+Clock: Clock_PWM_MAIN_2(FFB) | Frequency: N/A       | Target:   8.0 MHz
+Clock: CyHFCLK              | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyLFCLK              | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyRouted1            | Frequency: N/A       | Target:  24.0 MHz
+Clock: CySYSCLK             | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK           | Frequency: N/A       | Target:  24.0 MHz
+Clock: I2C_SCBCLK(FFB)      | Frequency: N/A       | Target:  24.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -170,5 +252,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.0 sec.
+I2076: Total run-time: 0.9 sec.
 

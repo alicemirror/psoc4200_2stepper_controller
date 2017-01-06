@@ -288,6 +288,12 @@ net Net_516_digital
 	switch ":udb@[UDB=(1,1)]:clockreset:clk_pld0_mux.pld0_clk==>:udb@[UDB=(1,1)]:pld0:mc1.clock_0"
 	term   ":udb@[UDB=(1,1)]:pld0:mc1.clock_0"
 end Net_516_digital
+net Net_1080
+	term   ":m0s8scbcell_0.interrupt"
+	switch ":m0s8scbcell_0.interrupt==>:interrupt_idmux_10.in_0"
+	switch ":interrupt_idmux_10.interrupt_idmux_10__out==>:interrupt_10.interrupt"
+	term   ":interrupt_10.interrupt"
+end Net_1080
 net Net_13
 	term   ":logicalport_1.interrupt"
 	switch ":logicalport_1.interrupt==>Stub-:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v17+:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v19"
@@ -442,26 +448,20 @@ net Net_839
 	switch ":ioport0:hsiom_out5.hsiom5_out==>:ioport0:pin5.pin_input"
 	term   ":ioport0:pin5.pin_input"
 end Net_839
-net Net_975
-	term   ":m0s8scbcell_0.interrupt"
-	switch ":m0s8scbcell_0.interrupt==>:interrupt_idmux_10.in_0"
-	switch ":interrupt_idmux_10.interrupt_idmux_10__out==>:interrupt_10.interrupt"
-	term   ":interrupt_10.interrupt"
-end Net_975
-net \Comm:Net_1001\
+net \I2C:scl_wire\
 	term   ":ioport4:pin0.fb"
 	switch ":ioport4:pin0.fb==>:ioport4:hsiom_in0.hsiom0_in"
-	switch ":ioport4:hsiom_in0.fixed_DPSLP_3==>:m0s8scbcell_0__mosi_s__hsiom_permute.ioport4__fixed_out_p0_DPSLP_3"
-	switch ":m0s8scbcell_0__mosi_s__hsiom_permute.m0s8scbcell_0__mosi_s==>:m0s8scbcell_0.mosi_s"
-	term   ":m0s8scbcell_0.mosi_s"
-end \Comm:Net_1001\
-net \Comm:Net_547\
+	switch ":ioport4:hsiom_in0.fixed_DPSLP_2==>:m0s8scbcell_0__scl__hsiom_permute.ioport4__fixed_out_p0_DPSLP_2"
+	switch ":m0s8scbcell_0__scl__hsiom_permute.m0s8scbcell_0__scl==>:m0s8scbcell_0.scl"
+	term   ":m0s8scbcell_0.scl"
+end \I2C:scl_wire\
+net \I2C:sda_wire\
 	term   ":ioport4:pin1.fb"
 	switch ":ioport4:pin1.fb==>:ioport4:hsiom_in1.hsiom1_in"
-	switch ":ioport4:hsiom_in1.fixed_DPSLP_3==>:m0s8scbcell_0__miso_m__hsiom_permute.ioport4__fixed_out_p1_DPSLP_3"
-	switch ":m0s8scbcell_0__miso_m__hsiom_permute.m0s8scbcell_0__miso_m==>:m0s8scbcell_0.miso_m"
-	term   ":m0s8scbcell_0.miso_m"
-end \Comm:Net_547\
+	switch ":ioport4:hsiom_in1.fixed_DPSLP_2==>:m0s8scbcell_0__sda__hsiom_permute.ioport4__fixed_out_p1_DPSLP_2"
+	switch ":m0s8scbcell_0__sda__hsiom_permute.m0s8scbcell_0__sda==>:m0s8scbcell_0.sda"
+	term   ":m0s8scbcell_0.sda"
+end \I2C:sda_wire\
 net \INTERNAL_STEP_2:PWMUDB:sP16:pwmdp:u0.ce0__sig\
 	term   ":udb@[UDB=(0,1)]:dp_wrapper:datapath.ce0"
 	switch ":udb@[UDB=(0,1)]:dp_wrapper:datapath.ce0==>:udb@[UDB=(1,1)]:dp_wrapper:datapath.ce0i"

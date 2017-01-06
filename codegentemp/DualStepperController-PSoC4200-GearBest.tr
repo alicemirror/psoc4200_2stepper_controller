@@ -25,14 +25,14 @@ Clock: Clock_PWM_MAIN_1       | Frequency: 43.63 MHz  | Target: 8.00 MHz   |
 Clock: Clock_PWM_MAIN_1(FFB)  | N/A                   | Target: 8.00 MHz   | 
 Clock: Clock_PWM_MAIN_2       | Frequency: 44.10 MHz  | Target: 8.00 MHz   | 
 Clock: Clock_PWM_MAIN_2(FFB)  | N/A                   | Target: 8.00 MHz   | 
-Clock: CommCLK                | N/A                   | Target: 24.00 MHz  | 
-Clock: CommCLK(FFB)           | N/A                   | Target: 24.00 MHz  | 
 Clock: CyHFCLK                | N/A                   | Target: 24.00 MHz  | 
 Clock: CyILO                  | N/A                   | Target: 0.03 MHz   | 
 Clock: CyIMO                  | N/A                   | Target: 24.00 MHz  | 
 Clock: CyLFCLK                | N/A                   | Target: 0.03 MHz   | 
 Clock: CyRouted1              | N/A                   | Target: 24.00 MHz  | 
 Clock: CySYSCLK               | N/A                   | Target: 24.00 MHz  | 
+Clock: I2C_SCBCLK             | N/A                   | Target: 24.00 MHz  | 
+Clock: I2C_SCBCLK(FFB)        | N/A                   | Target: 24.00 MHz  | 
 
  =====================================================================
                     End of Clock Frequency Summary

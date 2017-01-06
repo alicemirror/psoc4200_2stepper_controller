@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
   30:main.c        **** #define PH11 33600 //run
   31:main.c        **** #define PH12 36800 //p
   32:main.c        **** 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 2
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 2
 
 
   33:main.c        **** // End-stop interrupt constants
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
   87:main.c        ****                 l_stepPulse = stepPulse;
   88:main.c        ****             }
   89:main.c        ****             else {
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 3
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 3
 
 
   90:main.c        ****                 l_previousStepPulse = previousStepPulse1;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  144:main.c        ****             				INTERNAL_STEP_1_WriteCompare(2000);
  145:main.c        ****                         } // motor 1
  146:main.c        ****                         else {
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 4
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 4
 
 
  147:main.c        ****             				INTERNAL_STEP_2_WritePeriod(4000);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
   35              		.loc 1 191 0
   36 0006 FFF7FEFF 		bl	Pin_Sw_ClearInterrupt
   37              	.LVL1:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 5
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 5
 
 
  192:main.c        ****     
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
   78              		.code	16
   79              		.thumb_func
   80              		.type	main, %function
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 6
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 6
 
 
   81              	main:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  123              	@ 0 "" 2
   77:main.c        **** 
  124              		.loc 1 77 0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 7
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 7
 
 
  125              		.code	16
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  168 0056 012D     		cmp	r5, #1
  169 0058 00D0     		beq	.L45
   99:main.c        ****               		Move(jm);
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 8
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 8
 
 
  170              		.loc 1 99 0 is_stmt 0 discriminator 2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  217 009e 9B01     		lsl	r3, r3, #6
  218 00a0 9C42     		cmp	r4, r3
  219 00a2 3DD1     		bne	.L29
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 9
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 9
 
 
  117:main.c        ****             				INTERNAL_STEP_1_WriteCompare(1000);
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  264 00e0 38E0     		b	.L37
  265              	.LVL23:
  266              	.L24:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 10
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 10
 
 
  137:main.c        ****        				i[jm - 1]++;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  311              		.loc 1 151 0
  312 0120 012D     		cmp	r5, #1
  313 0122 02D1     		bne	.L32
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 11
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 11
 
 
  314              	.L31:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  359 015a 0134     		add	r4, r4, #1
  360 015c 3C80     		strh	r4, [r7]
  361 015e 10E0     		b	.L8
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 12
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 12
 
 
  362              	.LVL30:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  408 0198 00000000 		.word	previousStepPulse
  409 019c 00000000 		.word	stepPulse
  410 01a0 830C0000 		.word	3203
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 13
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 13
 
 
  411 01a4 00000000 		.word	dirReg
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  465 0002 82       		.byte	-126
  466 0003 91       		.byte	-111
  467 0004 9F       		.byte	-97
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 14
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 14
 
 
  468 0005 AD       		.byte	-83
@@ -814,48 +814,48 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  498 0006 00000000 		.4byte	.Ldebug_abbrev0
  499 000a 04       		.byte	0x4
  500 000b 01       		.uleb128 0x1
- 501 000c 47000000 		.4byte	.LASF60
+ 501 000c 1C000000 		.4byte	.LASF60
  502 0010 01       		.byte	0x1
- 503 0011 37030000 		.4byte	.LASF61
- 504 0015 70020000 		.4byte	.LASF62
+ 503 0011 E8010000 		.4byte	.LASF61
+ 504 0015 F0020000 		.4byte	.LASF62
  505 0019 00000000 		.4byte	.Ldebug_ranges0+0
  506 001d 00000000 		.4byte	0
  507 0021 00000000 		.4byte	.Ldebug_line0
  508 0025 02       		.uleb128 0x2
  509 0026 01       		.byte	0x1
  510 0027 06       		.byte	0x6
- 511 0028 40020000 		.4byte	.LASF0
+ 511 0028 0E010000 		.4byte	.LASF0
  512 002c 02       		.uleb128 0x2
  513 002d 01       		.byte	0x1
  514 002e 08       		.byte	0x8
- 515 002f 25020000 		.4byte	.LASF1
+ 515 002f 7E020000 		.4byte	.LASF1
  516 0033 02       		.uleb128 0x2
  517 0034 02       		.byte	0x2
  518 0035 05       		.byte	0x5
- 519 0036 3D000000 		.4byte	.LASF2
+ 519 0036 96020000 		.4byte	.LASF2
  520 003a 02       		.uleb128 0x2
  521 003b 02       		.byte	0x2
  522 003c 07       		.byte	0x7
- 523 003d E8020000 		.4byte	.LASF3
+ 523 003d D5010000 		.4byte	.LASF3
  524 0041 02       		.uleb128 0x2
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 15
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 15
 
 
  525 0042 04       		.byte	0x4
  526 0043 05       		.byte	0x5
- 527 0044 C9010000 		.4byte	.LASF4
+ 527 0044 20010000 		.4byte	.LASF4
  528 0048 02       		.uleb128 0x2
  529 0049 04       		.byte	0x4
  530 004a 07       		.byte	0x7
- 531 004b 3E030000 		.4byte	.LASF5
+ 531 004b 94010000 		.4byte	.LASF5
  532 004f 02       		.uleb128 0x2
  533 0050 08       		.byte	0x8
  534 0051 05       		.byte	0x5
- 535 0052 EE000000 		.4byte	.LASF6
+ 535 0052 00010000 		.4byte	.LASF6
  536 0056 02       		.uleb128 0x2
  537 0057 08       		.byte	0x8
  538 0058 07       		.byte	0x7
- 539 0059 4C020000 		.4byte	.LASF7
+ 539 0059 C9000000 		.4byte	.LASF7
  540 005d 03       		.uleb128 0x3
  541 005e 04       		.byte	0x4
  542 005f 05       		.byte	0x5
@@ -863,42 +863,42 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  544 0064 02       		.uleb128 0x2
  545 0065 04       		.byte	0x4
  546 0066 07       		.byte	0x7
- 547 0067 63020000 		.4byte	.LASF8
+ 547 0067 87010000 		.4byte	.LASF8
  548 006b 04       		.uleb128 0x4
- 549 006c 44010000 		.4byte	.LASF9
+ 549 006c 42010000 		.4byte	.LASF9
  550 0070 02       		.byte	0x2
  551 0071 B901     		.2byte	0x1b9
  552 0073 2C000000 		.4byte	0x2c
  553 0077 04       		.uleb128 0x4
- 554 0078 2D010000 		.4byte	.LASF10
+ 554 0078 15000000 		.4byte	.LASF10
  555 007c 02       		.byte	0x2
  556 007d BA01     		.2byte	0x1ba
  557 007f 3A000000 		.4byte	0x3a
  558 0083 04       		.uleb128 0x4
- 559 0084 30030000 		.4byte	.LASF11
+ 559 0084 4F010000 		.4byte	.LASF11
  560 0088 02       		.byte	0x2
  561 0089 BB01     		.2byte	0x1bb
  562 008b 48000000 		.4byte	0x48
  563 008f 02       		.uleb128 0x2
  564 0090 04       		.byte	0x4
  565 0091 04       		.byte	0x4
- 566 0092 98010000 		.4byte	.LASF12
+ 566 0092 66020000 		.4byte	.LASF12
  567 0096 02       		.uleb128 0x2
  568 0097 08       		.byte	0x8
  569 0098 04       		.byte	0x4
- 570 0099 66030000 		.4byte	.LASF13
+ 570 0099 48010000 		.4byte	.LASF13
  571 009d 02       		.uleb128 0x2
  572 009e 01       		.byte	0x1
  573 009f 08       		.byte	0x8
- 574 00a0 17030000 		.4byte	.LASF14
+ 574 00a0 DE020000 		.4byte	.LASF14
  575 00a4 04       		.uleb128 0x4
- 576 00a5 33020000 		.4byte	.LASF15
+ 576 00a5 E3020000 		.4byte	.LASF15
  577 00a9 02       		.byte	0x2
  578 00aa 7502     		.2byte	0x275
  579 00ac B0000000 		.4byte	0xb0
  580 00b0 05       		.uleb128 0x5
  581 00b1 04       		.byte	0x4
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 16
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 16
 
 
  582 00b2 B6000000 		.4byte	0xb6
@@ -906,9 +906,9 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  584 00b7 02       		.uleb128 0x2
  585 00b8 04       		.byte	0x4
  586 00b9 07       		.byte	0x7
- 587 00ba D5000000 		.4byte	.LASF16
+ 587 00ba 16020000 		.4byte	.LASF16
  588 00be 07       		.uleb128 0x7
- 589 00bf E7010000 		.4byte	.LASF17
+ 589 00bf BA000000 		.4byte	.LASF17
  590 00c3 01       		.byte	0x1
  591 00c4 B9       		.byte	0xb9
  592 00c5 00000000 		.4byte	.LFB35
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  636 0130 0B       		.uleb128 0xb
  637 0131 36000000 		.4byte	.LVL8
  638 0135 6D040000 		.4byte	0x46d
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 17
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 17
 
 
  639 0139 0A       		.uleb128 0xa
@@ -969,7 +969,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  644 013e 00       		.byte	0
  645 013f 00       		.byte	0
  646 0140 0C       		.uleb128 0xc
- 647 0141 1C030000 		.4byte	.LASF18
+ 647 0141 06040000 		.4byte	.LASF18
  648 0145 01       		.byte	0x1
  649 0146 32       		.byte	0x32
  650 0147 5D000000 		.4byte	0x5d
@@ -987,14 +987,14 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  662 0163 91       		.byte	0x91
  663 0164 64       		.sleb128 -28
  664 0165 0E       		.uleb128 0xe
- 665 0166 84010000 		.4byte	.LASF19
+ 665 0166 B5030000 		.4byte	.LASF19
  666 016a 01       		.byte	0x1
  667 016b 34       		.byte	0x34
  668 016c 6B000000 		.4byte	0x6b
  669 0170 01       		.uleb128 0x1
  670 0171 56       		.byte	0x56
  671 0172 0F       		.uleb128 0xf
- 672 0173 DB010000 		.4byte	.LASF20
+ 672 0173 EF010000 		.4byte	.LASF20
  673 0177 01       		.byte	0x1
  674 0178 35       		.byte	0x35
  675 0179 6B000000 		.4byte	0x6b
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  693 01a2 00       		.byte	0
  694 01a3 09       		.uleb128 0x9
  695 01a4 18000000 		.4byte	.LVL10
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 18
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 18
 
 
  696 01a8 6D040000 		.4byte	0x46d
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  750 0212 00       		.byte	0
  751 0213 08       		.uleb128 0x8
  752 0214 BA000000 		.4byte	.LVL21
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 19
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 19
 
 
  753 0218 E0040000 		.4byte	0x4e0
@@ -1132,18 +1132,18 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  801 027f 01       		.byte	0x1
  802 0280 00       		.byte	0
  803 0281 13       		.uleb128 0x13
- 804 0282 FD030000 		.4byte	.LASF21
+ 804 0282 EC030000 		.4byte	.LASF21
  805 0286 03       		.byte	0x3
  806 0287 10       		.byte	0x10
  807 0288 6B000000 		.4byte	0x6b
  808 028c 05       		.uleb128 0x5
  809 028d 03       		.byte	0x3
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 20
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 20
 
 
  810 028e 00000000 		.4byte	currentStepA
  811 0292 13       		.uleb128 0x13
- 812 0293 0A040000 		.4byte	.LASF22
+ 812 0293 F9030000 		.4byte	.LASF22
  813 0297 03       		.byte	0x3
  814 0298 11       		.byte	0x11
  815 0299 6B000000 		.4byte	0x6b
@@ -1151,7 +1151,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  817 029e 03       		.byte	0x3
  818 029f 00000000 		.4byte	currentStepB
  819 02a3 13       		.uleb128 0x13
- 820 02a4 1D000000 		.4byte	.LASF23
+ 820 02a4 3B020000 		.4byte	.LASF23
  821 02a8 03       		.byte	0x3
  822 02a9 19       		.byte	0x19
  823 02aa 6B000000 		.4byte	0x6b
@@ -1159,7 +1159,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  825 02af 03       		.byte	0x3
  826 02b0 00000000 		.4byte	currentStepA1
  827 02b4 13       		.uleb128 0x13
- 828 02b5 AF010000 		.4byte	.LASF24
+ 828 02b5 A0020000 		.4byte	.LASF24
  829 02b9 03       		.byte	0x3
  830 02ba 1A       		.byte	0x1a
  831 02bb 6B000000 		.4byte	0x6b
@@ -1167,7 +1167,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  833 02c0 03       		.byte	0x3
  834 02c1 00000000 		.4byte	currentStepB1
  835 02c5 13       		.uleb128 0x13
- 836 02c6 F5030000 		.4byte	.LASF25
+ 836 02c6 E4030000 		.4byte	.LASF25
  837 02ca 03       		.byte	0x3
  838 02cb 12       		.byte	0x12
  839 02cc 6B000000 		.4byte	0x6b
@@ -1175,7 +1175,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  841 02d1 03       		.byte	0x3
  842 02d2 00000000 		.4byte	divider
  843 02d6 13       		.uleb128 0x13
- 844 02d7 D2010000 		.4byte	.LASF26
+ 844 02d7 AE020000 		.4byte	.LASF26
  845 02db 03       		.byte	0x3
  846 02dc 1B       		.byte	0x1b
  847 02dd 6B000000 		.4byte	0x6b
@@ -1183,7 +1183,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  849 02e2 03       		.byte	0x3
  850 02e3 00000000 		.4byte	divider1
  851 02e7 13       		.uleb128 0x13
- 852 02e8 E6030000 		.4byte	.LASF27
+ 852 02e8 91020000 		.4byte	.LASF27
  853 02ec 03       		.byte	0x3
  854 02ed 16       		.byte	0x16
  855 02ee 6B000000 		.4byte	0x6b
@@ -1191,18 +1191,18 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  857 02f3 03       		.byte	0x3
  858 02f4 00000000 		.4byte	step
  859 02f8 13       		.uleb128 0x13
- 860 02f9 BD010000 		.4byte	.LASF28
+ 860 02f9 87030000 		.4byte	.LASF28
  861 02fd 03       		.byte	0x3
  862 02fe 1F       		.byte	0x1f
  863 02ff 6B000000 		.4byte	0x6b
  864 0303 05       		.uleb128 0x5
  865 0304 03       		.byte	0x3
  866 0305 00000000 		.4byte	step1
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 21
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 21
 
 
  867 0309 13       		.uleb128 0x13
- 868 030a 34010000 		.4byte	.LASF29
+ 868 030a AA000000 		.4byte	.LASF29
  869 030e 03       		.byte	0x3
  870 030f 13       		.byte	0x13
  871 0310 6B000000 		.4byte	0x6b
@@ -1210,7 +1210,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  873 0315 03       		.byte	0x3
  874 0316 00000000 		.4byte	previousDivider
  875 031a 13       		.uleb128 0x13
- 876 031b 1C010000 		.4byte	.LASF30
+ 876 031b 6C010000 		.4byte	.LASF30
  877 031f 03       		.byte	0x3
  878 0320 1C       		.byte	0x1c
  879 0321 6B000000 		.4byte	0x6b
@@ -1218,7 +1218,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  881 0326 03       		.byte	0x3
  882 0327 00000000 		.4byte	previousDivider1
  883 032b 13       		.uleb128 0x13
- 884 032c EB030000 		.4byte	.LASF31
+ 884 032c 0C020000 		.4byte	.LASF31
  885 0330 03       		.byte	0x3
  886 0331 14       		.byte	0x14
  887 0332 6B000000 		.4byte	0x6b
@@ -1226,7 +1226,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  889 0337 03       		.byte	0x3
  890 0338 00000000 		.4byte	FullScale
  891 033c 13       		.uleb128 0x13
- 892 033d 11010000 		.4byte	.LASF32
+ 892 033d D3020000 		.4byte	.LASF32
  893 0341 03       		.byte	0x3
  894 0342 1D       		.byte	0x1d
  895 0343 6B000000 		.4byte	0x6b
@@ -1234,7 +1234,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  897 0348 03       		.byte	0x3
  898 0349 00000000 		.4byte	FullScale1
  899 034d 13       		.uleb128 0x13
- 900 034e E8000000 		.4byte	.LASF33
+ 900 034e 1A010000 		.4byte	.LASF33
  901 0352 03       		.byte	0x3
  902 0353 15       		.byte	0x15
  903 0354 6B000000 		.4byte	0x6b
@@ -1242,7 +1242,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  905 0359 03       		.byte	0x3
  906 035a 00000000 		.4byte	phase
  907 035e 13       		.uleb128 0x13
- 908 035f 00000000 		.4byte	.LASF34
+ 908 035f 6C020000 		.4byte	.LASF34
  909 0363 03       		.byte	0x3
  910 0364 1E       		.byte	0x1e
  911 0365 6B000000 		.4byte	0x6b
@@ -1250,7 +1250,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  913 036a 03       		.byte	0x3
  914 036b 00000000 		.4byte	phase1
  915 036f 13       		.uleb128 0x13
- 916 0370 DE000000 		.4byte	.LASF35
+ 916 0370 C9020000 		.4byte	.LASF35
  917 0374 04       		.byte	0x4
  918 0375 19       		.byte	0x19
  919 0376 6B000000 		.4byte	0x6b
@@ -1258,10 +1258,10 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  921 037b 03       		.byte	0x3
  922 037c 00000000 		.4byte	stepPulse
  923 0380 13       		.uleb128 0x13
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 22
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 22
 
 
- 924 0381 99030000 		.4byte	.LASF36
+ 924 0381 73020000 		.4byte	.LASF36
  925 0385 04       		.byte	0x4
  926 0386 1D       		.byte	0x1d
  927 0387 6B000000 		.4byte	0x6b
@@ -1269,7 +1269,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  929 038c 03       		.byte	0x3
  930 038d 00000000 		.4byte	stepPulse1
  931 0391 13       		.uleb128 0x13
- 932 0392 13020000 		.4byte	.LASF37
+ 932 0392 B7020000 		.4byte	.LASF37
  933 0396 04       		.byte	0x4
  934 0397 1A       		.byte	0x1a
  935 0398 6B000000 		.4byte	0x6b
@@ -1277,7 +1277,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  937 039d 03       		.byte	0x3
  938 039e 00000000 		.4byte	previousStepPulse
  939 03a2 13       		.uleb128 0x13
- 940 03a3 C0030000 		.4byte	.LASF38
+ 940 03a3 2F010000 		.4byte	.LASF38
  941 03a7 04       		.byte	0x4
  942 03a8 1E       		.byte	0x1e
  943 03a9 6B000000 		.4byte	0x6b
@@ -1285,7 +1285,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  945 03ae 03       		.byte	0x3
  946 03af 00000000 		.4byte	previousStepPulse1
  947 03b3 13       		.uleb128 0x13
- 948 03b4 92030000 		.4byte	.LASF39
+ 948 03b4 05020000 		.4byte	.LASF39
  949 03b8 03       		.byte	0x3
  950 03b9 17       		.byte	0x17
  951 03ba 6B000000 		.4byte	0x6b
@@ -1293,7 +1293,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  953 03bf 03       		.byte	0x3
  954 03c0 00000000 		.4byte	dirReg
  955 03c4 13       		.uleb128 0x13
- 956 03c5 6D030000 		.4byte	.LASF40
+ 956 03c5 DC030000 		.4byte	.LASF40
  957 03c9 03       		.byte	0x3
  958 03ca 20       		.byte	0x20
  959 03cb 6B000000 		.4byte	0x6b
@@ -1301,7 +1301,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  961 03d0 03       		.byte	0x3
  962 03d1 00000000 		.4byte	dirReg1
  963 03d5 13       		.uleb128 0x13
- 964 03d6 4A010000 		.4byte	.LASF41
+ 964 03d6 E0000000 		.4byte	.LASF41
  965 03da 05       		.byte	0x5
  966 03db 1F       		.byte	0x1f
  967 03dc 6B000000 		.4byte	0x6b
@@ -1309,7 +1309,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  969 03e1 03       		.byte	0x3
  970 03e2 00000000 		.4byte	pwmA
  971 03e6 13       		.uleb128 0x13
- 972 03e7 4F010000 		.4byte	.LASF42
+ 972 03e7 E5000000 		.4byte	.LASF42
  973 03eb 05       		.byte	0x5
  974 03ec 20       		.byte	0x20
  975 03ed 6B000000 		.4byte	0x6b
@@ -1317,8 +1317,8 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  977 03f2 03       		.byte	0x3
  978 03f3 00000000 		.4byte	pwmB
  979 03f7 13       		.uleb128 0x13
- 980 03f8 37000000 		.4byte	.LASF43
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 23
+ 980 03f8 29010000 		.4byte	.LASF43
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 23
 
 
  981 03fc 05       		.byte	0x5
@@ -1328,7 +1328,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  985 0403 03       		.byte	0x3
  986 0404 00000000 		.4byte	pwmA1
  987 0408 13       		.uleb128 0x13
- 988 0409 C3010000 		.4byte	.LASF44
+ 988 0409 79030000 		.4byte	.LASF44
  989 040d 05       		.byte	0x5
  990 040e 22       		.byte	0x22
  991 040f 6B000000 		.4byte	0x6b
@@ -1343,7 +1343,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1000 0427 10       		.byte	0x10
  1001 0428 00       		.byte	0
  1002 0429 13       		.uleb128 0x13
- 1003 042a 75030000 		.4byte	.LASF45
+ 1003 042a FB010000 		.4byte	.LASF45
  1004 042e 06       		.byte	0x6
  1005 042f 2C       		.byte	0x2c
  1006 0430 3A040000 		.4byte	0x43a
@@ -1353,21 +1353,21 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1010 043a 14       		.uleb128 0x14
  1011 043b 19040000 		.4byte	0x419
  1012 043f 15       		.uleb128 0x15
- 1013 0440 07000000 		.4byte	.LASF63
+ 1013 0440 EA000000 		.4byte	.LASF63
  1014 0444 0B       		.byte	0xb
  1015 0445 28       		.byte	0x28
  1016 0446 16       		.uleb128 0x16
- 1017 0447 50030000 		.4byte	.LASF46
+ 1017 0447 56010000 		.4byte	.LASF46
  1018 044b 07       		.byte	0x7
  1019 044c 39       		.byte	0x39
  1020 044d 6B000000 		.4byte	0x6b
  1021 0451 16       		.uleb128 0x16
- 1022 0452 2B000000 		.4byte	.LASF47
+ 1022 0452 0B040000 		.4byte	.LASF47
  1023 0456 07       		.byte	0x7
  1024 0457 32       		.byte	0x32
  1025 0458 6B000000 		.4byte	0x6b
  1026 045c 17       		.uleb128 0x17
- 1027 045d 71010000 		.4byte	.LASF48
+ 1027 045d A6010000 		.4byte	.LASF48
  1028 0461 08       		.byte	0x8
  1029 0462 33       		.byte	0x33
  1030 0463 6D040000 		.4byte	0x46d
@@ -1375,10 +1375,10 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1032 0468 6B000000 		.4byte	0x6b
  1033 046c 00       		.byte	0
  1034 046d 17       		.uleb128 0x17
- 1035 046e 7F030000 		.4byte	.LASF49
+ 1035 046e C9030000 		.4byte	.LASF49
  1036 0472 09       		.byte	0x9
  1037 0473 33       		.byte	0x33
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 24
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 24
 
 
  1038 0474 7E040000 		.4byte	0x47e
@@ -1386,7 +1386,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1040 0479 6B000000 		.4byte	0x6b
  1041 047d 00       		.byte	0
  1042 047e 17       		.uleb128 0x17
- 1043 047f D3030000 		.4byte	.LASF50
+ 1043 047f 7F030000 		.4byte	.LASF50
  1044 0483 0A       		.byte	0xa
  1045 0484 D9       		.byte	0xd9
  1046 0485 8F040000 		.4byte	0x48f
@@ -1394,7 +1394,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1048 048a 83000000 		.4byte	0x83
  1049 048e 00       		.byte	0
  1050 048f 17       		.uleb128 0x17
- 1051 0490 9E010000 		.4byte	.LASF51
+ 1051 0490 68030000 		.4byte	.LASF51
  1052 0494 0B       		.byte	0xb
  1053 0495 18       		.byte	0x18
  1054 0496 A0040000 		.4byte	0x4a0
@@ -1402,7 +1402,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1056 049b A4000000 		.4byte	0xa4
  1057 049f 00       		.byte	0
  1058 04a0 17       		.uleb128 0x17
- 1059 04a1 FC000000 		.4byte	.LASF52
+ 1059 04a1 00000000 		.4byte	.LASF52
  1060 04a5 0B       		.byte	0xb
  1061 04a6 20       		.byte	0x20
  1062 04a7 B1040000 		.4byte	0x4b1
@@ -1410,14 +1410,14 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1064 04ac 6B000000 		.4byte	0x6b
  1065 04b0 00       		.byte	0
  1066 04b1 19       		.uleb128 0x19
- 1067 04b2 DB030000 		.4byte	.LASF58
+ 1067 04b2 AA030000 		.4byte	.LASF58
  1068 04b6 05       		.byte	0x5
  1069 04b7 26       		.byte	0x26
  1070 04b8 BE040000 		.4byte	0x4be
  1071 04bc 1A       		.uleb128 0x1a
  1072 04bd 00       		.byte	0
  1073 04be 17       		.uleb128 0x17
- 1074 04bf 26030000 		.4byte	.LASF53
+ 1074 04bf 7D010000 		.4byte	.LASF53
  1075 04c3 04       		.byte	0x4
  1076 04c4 21       		.byte	0x21
  1077 04c5 CF040000 		.4byte	0x4cf
@@ -1425,7 +1425,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1079 04ca 6B000000 		.4byte	0x6b
  1080 04ce 00       		.byte	0
  1081 04cf 17       		.uleb128 0x17
- 1082 04d0 A4030000 		.4byte	.LASF54
+ 1082 04d0 1F020000 		.4byte	.LASF54
  1083 04d4 0C       		.byte	0xc
  1084 04d5 BE       		.byte	0xbe
  1085 04d6 E0040000 		.4byte	0x4e0
@@ -1433,18 +1433,18 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1087 04db 77000000 		.4byte	0x77
  1088 04df 00       		.byte	0
  1089 04e0 17       		.uleb128 0x17
- 1090 04e1 FB020000 		.4byte	.LASF55
+ 1090 04e1 B9010000 		.4byte	.LASF55
  1091 04e5 0D       		.byte	0xd
  1092 04e6 BE       		.byte	0xbe
  1093 04e7 F1040000 		.4byte	0x4f1
  1094 04eb 18       		.uleb128 0x18
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 25
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 25
 
 
  1095 04ec 77000000 		.4byte	0x77
  1096 04f0 00       		.byte	0
  1097 04f1 17       		.uleb128 0x17
- 1098 04f2 F6010000 		.4byte	.LASF56
+ 1098 04f2 8D030000 		.4byte	.LASF56
  1099 04f6 0C       		.byte	0xc
  1100 04f7 C3       		.byte	0xc3
  1101 04f8 02050000 		.4byte	0x502
@@ -1452,7 +1452,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1103 04fd 77000000 		.4byte	0x77
  1104 0501 00       		.byte	0
  1105 0502 17       		.uleb128 0x17
- 1106 0503 54010000 		.4byte	.LASF57
+ 1106 0503 49020000 		.4byte	.LASF57
  1107 0507 0D       		.byte	0xd
  1108 0508 C3       		.byte	0xc3
  1109 0509 13050000 		.4byte	0x513
@@ -1460,7 +1460,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1111 050e 77000000 		.4byte	0x77
  1112 0512 00       		.byte	0
  1113 0513 1B       		.uleb128 0x1b
- 1114 0514 21030000 		.4byte	.LASF59
+ 1114 0514 8C020000 		.4byte	.LASF59
  1115 0518 03       		.byte	0x3
  1116 0519 22       		.byte	0x22
  1117 051a 18       		.uleb128 0x18
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1149 001a 03       		.uleb128 0x3
  1150 001b 0E       		.uleb128 0xe
  1151 001c 00       		.byte	0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 26
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 26
 
 
  1152 001d 00       		.byte	0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1206 0053 11       		.uleb128 0x11
  1207 0054 01       		.uleb128 0x1
  1208 0055 12       		.uleb128 0x12
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 27
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 27
 
 
  1209 0056 06       		.uleb128 0x6
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1263 0096 3A       		.uleb128 0x3a
  1264 0097 0B       		.uleb128 0xb
  1265 0098 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 28
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 28
 
 
  1266 0099 0B       		.uleb128 0xb
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1320 00d0 49       		.uleb128 0x49
  1321 00d1 13       		.uleb128 0x13
  1322 00d2 02       		.uleb128 0x2
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 29
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 29
 
 
  1323 00d3 17       		.uleb128 0x17
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1377 0109 26       		.uleb128 0x26
  1378 010a 00       		.byte	0
  1379 010b 49       		.uleb128 0x49
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 30
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 30
 
 
  1380 010c 13       		.uleb128 0x13
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1434 0142 01       		.uleb128 0x1
  1435 0143 13       		.uleb128 0x13
  1436 0144 00       		.byte	0
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 31
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 31
 
 
  1437 0145 00       		.byte	0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1491 000a 91       		.byte	0x91
  1492 000b 5C       		.sleb128 -36
  1493 000c 60000000 		.4byte	.LVL19
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 32
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 32
 
 
  1494 0010 E0000000 		.4byte	.LVL22
@@ -1918,327 +1918,327 @@ ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 1
  1548 0000 A3010000 		.section	.debug_str,"MS",%progbits,1
  1548      0200F100 
  1548      00000201 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 33
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 33
 
 
  1548      FB0E0D00 
  1548      01010101 
- 1549              	.LASF34:
- 1550 0000 70686173 		.ascii	"phase1\000"
- 1550      653100
- 1551              	.LASF63:
- 1552 0007 6973725F 		.ascii	"isr_GPIO_ClearPending\000"
- 1552      4750494F 
- 1552      5F436C65 
- 1552      61725065 
- 1552      6E64696E 
- 1553              	.LASF23:
- 1554 001d 63757272 		.ascii	"currentStepA1\000"
- 1554      656E7453 
- 1554      74657041 
- 1554      3100
- 1555              	.LASF47:
- 1556 002b 50696E5F 		.ascii	"Pin_Sw_Read\000"
- 1556      53775F52 
- 1556      65616400 
- 1557              	.LASF43:
- 1558 0037 70776D41 		.ascii	"pwmA1\000"
- 1558      3100
- 1559              	.LASF2:
- 1560 003d 73686F72 		.ascii	"short int\000"
- 1560      7420696E 
- 1560      7400
- 1561              	.LASF60:
- 1562 0047 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1562      4320342E 
- 1562      392E3320 
- 1562      32303135 
- 1562      30333033 
- 1563 007a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 1563      20726576 
- 1563      6973696F 
- 1563      6E203232 
- 1563      31323230 
- 1564 00ad 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
- 1564      66756E63 
- 1564      74696F6E 
- 1564      2D736563 
- 1564      74696F6E 
- 1565              	.LASF16:
- 1566 00d5 73697A65 		.ascii	"sizetype\000"
- 1566      74797065 
+ 1549              	.LASF52:
+ 1550 0000 6973725F 		.ascii	"isr_GPIO_SetPriority\000"
+ 1550      4750494F 
+ 1550      5F536574 
+ 1550      5072696F 
+ 1550      72697479 
+ 1551              	.LASF10:
+ 1552 0015 75696E74 		.ascii	"uint16\000"
+ 1552      313600
+ 1553              	.LASF60:
+ 1554 001c 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1554      4320342E 
+ 1554      392E3320 
+ 1554      32303135 
+ 1554      30333033 
+ 1555 004f 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1555      20726576 
+ 1555      6973696F 
+ 1555      6E203232 
+ 1555      31323230 
+ 1556 0082 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1556      66756E63 
+ 1556      74696F6E 
+ 1556      2D736563 
+ 1556      74696F6E 
+ 1557              	.LASF29:
+ 1558 00aa 70726576 		.ascii	"previousDivider\000"
+ 1558      696F7573 
+ 1558      44697669 
+ 1558      64657200 
+ 1559              	.LASF17:
+ 1560 00ba 4750494F 		.ascii	"GPIOIsrHandler\000"
+ 1560      49737248 
+ 1560      616E646C 
+ 1560      657200
+ 1561              	.LASF7:
+ 1562 00c9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1562      206C6F6E 
+ 1562      6720756E 
+ 1562      7369676E 
+ 1562      65642069 
+ 1563              	.LASF41:
+ 1564 00e0 70776D41 		.ascii	"pwmA\000"
+ 1564      00
+ 1565              	.LASF42:
+ 1566 00e5 70776D42 		.ascii	"pwmB\000"
  1566      00
- 1567              	.LASF35:
- 1568 00de 73746570 		.ascii	"stepPulse\000"
- 1568      50756C73 
- 1568      6500
- 1569              	.LASF33:
- 1570 00e8 70686173 		.ascii	"phase\000"
- 1570      6500
- 1571              	.LASF6:
- 1572 00ee 6C6F6E67 		.ascii	"long long int\000"
- 1572      206C6F6E 
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 34
+ 1567              	.LASF63:
+ 1568 00ea 6973725F 		.ascii	"isr_GPIO_ClearPending\000"
+ 1568      4750494F 
+ 1568      5F436C65 
+ 1568      61725065 
+ 1568      6E64696E 
+ 1569              	.LASF6:
+ 1570 0100 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 34
 
 
- 1572      6720696E 
- 1572      7400
- 1573              	.LASF52:
- 1574 00fc 6973725F 		.ascii	"isr_GPIO_SetPriority\000"
- 1574      4750494F 
- 1574      5F536574 
- 1574      5072696F 
- 1574      72697479 
- 1575              	.LASF32:
- 1576 0111 46756C6C 		.ascii	"FullScale1\000"
- 1576      5363616C 
- 1576      653100
- 1577              	.LASF30:
- 1578 011c 70726576 		.ascii	"previousDivider1\000"
- 1578      696F7573 
- 1578      44697669 
- 1578      64657231 
- 1578      00
- 1579              	.LASF10:
- 1580 012d 75696E74 		.ascii	"uint16\000"
- 1580      313600
- 1581              	.LASF29:
- 1582 0134 70726576 		.ascii	"previousDivider\000"
- 1582      696F7573 
- 1582      44697669 
- 1582      64657200 
- 1583              	.LASF9:
- 1584 0144 75696E74 		.ascii	"uint8\000"
- 1584      3800
- 1585              	.LASF41:
- 1586 014a 70776D41 		.ascii	"pwmA\000"
- 1586      00
- 1587              	.LASF42:
- 1588 014f 70776D42 		.ascii	"pwmB\000"
- 1588      00
- 1589              	.LASF57:
- 1590 0154 494E5445 		.ascii	"INTERNAL_STEP_2_WriteCompare\000"
- 1590      524E414C 
- 1590      5F535445 
- 1590      505F325F 
- 1590      57726974 
- 1591              	.LASF48:
- 1592 0171 53544154 		.ascii	"STATUS_LED_1_Write\000"
- 1592      55535F4C 
- 1592      45445F31 
- 1592      5F577269 
- 1592      746500
- 1593              	.LASF19:
- 1594 0184 6C5F7072 		.ascii	"l_previousStepPulse\000"
- 1594      6576696F 
- 1594      75735374 
- 1594      65705075 
- 1594      6C736500 
- 1595              	.LASF12:
- 1596 0198 666C6F61 		.ascii	"float\000"
+ 1570      206C6F6E 
+ 1570      6720696E 
+ 1570      7400
+ 1571              	.LASF0:
+ 1572 010e 7369676E 		.ascii	"signed char\000"
+ 1572      65642063 
+ 1572      68617200 
+ 1573              	.LASF33:
+ 1574 011a 70686173 		.ascii	"phase\000"
+ 1574      6500
+ 1575              	.LASF4:
+ 1576 0120 6C6F6E67 		.ascii	"long int\000"
+ 1576      20696E74 
+ 1576      00
+ 1577              	.LASF43:
+ 1578 0129 70776D41 		.ascii	"pwmA1\000"
+ 1578      3100
+ 1579              	.LASF38:
+ 1580 012f 70726576 		.ascii	"previousStepPulse1\000"
+ 1580      696F7573 
+ 1580      53746570 
+ 1580      50756C73 
+ 1580      653100
+ 1581              	.LASF9:
+ 1582 0142 75696E74 		.ascii	"uint8\000"
+ 1582      3800
+ 1583              	.LASF13:
+ 1584 0148 646F7562 		.ascii	"double\000"
+ 1584      6C6500
+ 1585              	.LASF11:
+ 1586 014f 75696E74 		.ascii	"uint32\000"
+ 1586      333200
+ 1587              	.LASF46:
+ 1588 0156 50696E5F 		.ascii	"Pin_Sw_ClearInterrupt\000"
+ 1588      53775F43 
+ 1588      6C656172 
+ 1588      496E7465 
+ 1588      72727570 
+ 1589              	.LASF30:
+ 1590 016c 70726576 		.ascii	"previousDivider1\000"
+ 1590      696F7573 
+ 1590      44697669 
+ 1590      64657231 
+ 1590      00
+ 1591              	.LASF53:
+ 1592 017d 696E7075 		.ascii	"inputScan\000"
+ 1592      74536361 
+ 1592      6E00
+ 1593              	.LASF8:
+ 1594 0187 756E7369 		.ascii	"unsigned int\000"
+ 1594      676E6564 
+ 1594      20696E74 
+ 1594      00
+ 1595              	.LASF5:
+ 1596 0194 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1596      20756E73 
+ 1596      69676E65 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 35
+
+
+ 1596      6420696E 
  1596      7400
- 1597              	.LASF51:
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 35
+ 1597              	.LASF48:
+ 1598 01a6 53544154 		.ascii	"STATUS_LED_1_Write\000"
+ 1598      55535F4C 
+ 1598      45445F31 
+ 1598      5F577269 
+ 1598      746500
+ 1599              	.LASF55:
+ 1600 01b9 494E5445 		.ascii	"INTERNAL_STEP_2_WritePeriod\000"
+ 1600      524E414C 
+ 1600      5F535445 
+ 1600      505F325F 
+ 1600      57726974 
+ 1601              	.LASF3:
+ 1602 01d5 73686F72 		.ascii	"short unsigned int\000"
+ 1602      7420756E 
+ 1602      7369676E 
+ 1602      65642069 
+ 1602      6E7400
+ 1603              	.LASF61:
+ 1604 01e8 6D61696E 		.ascii	"main.c\000"
+ 1604      2E6300
+ 1605              	.LASF20:
+ 1606 01ef 6C5F7374 		.ascii	"l_stepPulse\000"
+ 1606      65705075 
+ 1606      6C736500 
+ 1607              	.LASF45:
+ 1608 01fb 73696E65 		.ascii	"sineTable\000"
+ 1608      5461626C 
+ 1608      6500
+ 1609              	.LASF39:
+ 1610 0205 64697252 		.ascii	"dirReg\000"
+ 1610      656700
+ 1611              	.LASF31:
+ 1612 020c 46756C6C 		.ascii	"FullScale\000"
+ 1612      5363616C 
+ 1612      6500
+ 1613              	.LASF16:
+ 1614 0216 73697A65 		.ascii	"sizetype\000"
+ 1614      74797065 
+ 1614      00
+ 1615              	.LASF54:
+ 1616 021f 494E5445 		.ascii	"INTERNAL_STEP_1_WritePeriod\000"
+ 1616      524E414C 
+ 1616      5F535445 
+ 1616      505F315F 
+ 1616      57726974 
+ 1617              	.LASF23:
+ 1618 023b 63757272 		.ascii	"currentStepA1\000"
+ 1618      656E7453 
+ 1618      74657041 
+ 1618      3100
+ 1619              	.LASF57:
+ 1620 0249 494E5445 		.ascii	"INTERNAL_STEP_2_WriteCompare\000"
+ 1620      524E414C 
+ 1620      5F535445 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 36
 
 
- 1598 019e 6973725F 		.ascii	"isr_GPIO_StartEx\000"
- 1598      4750494F 
- 1598      5F537461 
- 1598      72744578 
- 1598      00
- 1599              	.LASF24:
- 1600 01af 63757272 		.ascii	"currentStepB1\000"
- 1600      656E7453 
- 1600      74657042 
- 1600      3100
- 1601              	.LASF28:
- 1602 01bd 73746570 		.ascii	"step1\000"
- 1602      3100
- 1603              	.LASF44:
- 1604 01c3 70776D42 		.ascii	"pwmB1\000"
- 1604      3100
- 1605              	.LASF4:
- 1606 01c9 6C6F6E67 		.ascii	"long int\000"
- 1606      20696E74 
- 1606      00
- 1607              	.LASF26:
- 1608 01d2 64697669 		.ascii	"divider1\000"
- 1608      64657231 
- 1608      00
- 1609              	.LASF20:
- 1610 01db 6C5F7374 		.ascii	"l_stepPulse\000"
- 1610      65705075 
- 1610      6C736500 
- 1611              	.LASF17:
- 1612 01e7 4750494F 		.ascii	"GPIOIsrHandler\000"
- 1612      49737248 
- 1612      616E646C 
- 1612      657200
- 1613              	.LASF56:
- 1614 01f6 494E5445 		.ascii	"INTERNAL_STEP_1_WriteCompare\000"
- 1614      524E414C 
- 1614      5F535445 
- 1614      505F315F 
- 1614      57726974 
- 1615              	.LASF37:
- 1616 0213 70726576 		.ascii	"previousStepPulse\000"
- 1616      696F7573 
- 1616      53746570 
- 1616      50756C73 
- 1616      6500
- 1617              	.LASF1:
- 1618 0225 756E7369 		.ascii	"unsigned char\000"
- 1618      676E6564 
- 1618      20636861 
- 1618      7200
- 1619              	.LASF15:
- 1620 0233 63796973 		.ascii	"cyisraddress\000"
- 1620      72616464 
- 1620      72657373 
- 1620      00
- 1621              	.LASF0:
- 1622 0240 7369676E 		.ascii	"signed char\000"
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 36
-
-
- 1622      65642063 
- 1622      68617200 
- 1623              	.LASF7:
- 1624 024c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1624      206C6F6E 
- 1624      6720756E 
- 1624      7369676E 
- 1624      65642069 
- 1625              	.LASF8:
- 1626 0263 756E7369 		.ascii	"unsigned int\000"
- 1626      676E6564 
- 1626      20696E74 
- 1626      00
- 1627              	.LASF62:
- 1628 0270 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
- 1628      73657273 
- 1628      5C546563 
- 1628      6820436F 
- 1628      6E73756C 
- 1629 029f 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
- 1629      70706572 
- 1629      2050726F 
- 1629      6A656374 
- 1629      73204765 
- 1630 02d0 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
- 1630      34323030 
- 1630      2D476561 
- 1630      72426573 
- 1630      742E6379 
- 1631              	.LASF3:
- 1632 02e8 73686F72 		.ascii	"short unsigned int\000"
- 1632      7420756E 
- 1632      7369676E 
- 1632      65642069 
- 1632      6E7400
- 1633              	.LASF55:
- 1634 02fb 494E5445 		.ascii	"INTERNAL_STEP_2_WritePeriod\000"
- 1634      524E414C 
- 1634      5F535445 
- 1634      505F325F 
- 1634      57726974 
- 1635              	.LASF14:
- 1636 0317 63686172 		.ascii	"char\000"
- 1636      00
- 1637              	.LASF18:
- 1638 031c 6D61696E 		.ascii	"main\000"
+ 1620      505F325F 
+ 1620      57726974 
+ 1621              	.LASF12:
+ 1622 0266 666C6F61 		.ascii	"float\000"
+ 1622      7400
+ 1623              	.LASF34:
+ 1624 026c 70686173 		.ascii	"phase1\000"
+ 1624      653100
+ 1625              	.LASF36:
+ 1626 0273 73746570 		.ascii	"stepPulse1\000"
+ 1626      50756C73 
+ 1626      653100
+ 1627              	.LASF1:
+ 1628 027e 756E7369 		.ascii	"unsigned char\000"
+ 1628      676E6564 
+ 1628      20636861 
+ 1628      7200
+ 1629              	.LASF59:
+ 1630 028c 4D6F7665 		.ascii	"Move\000"
+ 1630      00
+ 1631              	.LASF27:
+ 1632 0291 73746570 		.ascii	"step\000"
+ 1632      00
+ 1633              	.LASF2:
+ 1634 0296 73686F72 		.ascii	"short int\000"
+ 1634      7420696E 
+ 1634      7400
+ 1635              	.LASF24:
+ 1636 02a0 63757272 		.ascii	"currentStepB1\000"
+ 1636      656E7453 
+ 1636      74657042 
+ 1636      3100
+ 1637              	.LASF26:
+ 1638 02ae 64697669 		.ascii	"divider1\000"
+ 1638      64657231 
  1638      00
- 1639              	.LASF59:
- 1640 0321 4D6F7665 		.ascii	"Move\000"
- 1640      00
- 1641              	.LASF53:
- 1642 0326 696E7075 		.ascii	"inputScan\000"
- 1642      74536361 
- 1642      6E00
- 1643              	.LASF11:
- 1644 0330 75696E74 		.ascii	"uint32\000"
- 1644      333200
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 37
+ 1639              	.LASF37:
+ 1640 02b7 70726576 		.ascii	"previousStepPulse\000"
+ 1640      696F7573 
+ 1640      53746570 
+ 1640      50756C73 
+ 1640      6500
+ 1641              	.LASF35:
+ 1642 02c9 73746570 		.ascii	"stepPulse\000"
+ 1642      50756C73 
+ 1642      6500
+ 1643              	.LASF32:
+ 1644 02d3 46756C6C 		.ascii	"FullScale1\000"
+ 1644      5363616C 
+ 1644      653100
+ 1645              	.LASF14:
+ 1646 02de 63686172 		.ascii	"char\000"
+ 1646      00
+ 1647              	.LASF15:
+ 1648 02e3 63796973 		.ascii	"cyisraddress\000"
+ 1648      72616464 
+ 1648      72657373 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 37
 
 
- 1645              	.LASF61:
- 1646 0337 6D61696E 		.ascii	"main.c\000"
- 1646      2E6300
- 1647              	.LASF5:
- 1648 033e 6C6F6E67 		.ascii	"long unsigned int\000"
- 1648      20756E73 
- 1648      69676E65 
- 1648      6420696E 
- 1648      7400
- 1649              	.LASF46:
- 1650 0350 50696E5F 		.ascii	"Pin_Sw_ClearInterrupt\000"
- 1650      53775F43 
- 1650      6C656172 
- 1650      496E7465 
- 1650      72727570 
- 1651              	.LASF13:
- 1652 0366 646F7562 		.ascii	"double\000"
- 1652      6C6500
- 1653              	.LASF40:
- 1654 036d 64697252 		.ascii	"dirReg1\000"
- 1654      65673100 
- 1655              	.LASF45:
- 1656 0375 73696E65 		.ascii	"sineTable\000"
- 1656      5461626C 
- 1656      6500
- 1657              	.LASF49:
- 1658 037f 53544154 		.ascii	"STATUS_LED_2_Write\000"
- 1658      55535F4C 
- 1658      45445F32 
- 1658      5F577269 
- 1658      746500
- 1659              	.LASF39:
- 1660 0392 64697252 		.ascii	"dirReg\000"
- 1660      656700
- 1661              	.LASF36:
- 1662 0399 73746570 		.ascii	"stepPulse1\000"
- 1662      50756C73 
- 1662      653100
- 1663              	.LASF54:
- 1664 03a4 494E5445 		.ascii	"INTERNAL_STEP_1_WritePeriod\000"
- 1664      524E414C 
- 1664      5F535445 
- 1664      505F315F 
- 1664      57726974 
- 1665              	.LASF38:
- 1666 03c0 70726576 		.ascii	"previousStepPulse1\000"
- 1666      696F7573 
- 1666      53746570 
- 1666      50756C73 
- 1666      653100
- 1667              	.LASF50:
- 1668 03d3 43794465 		.ascii	"CyDelay\000"
- 1668      6C617900 
- 1669              	.LASF58:
- 1670 03db 73797374 		.ascii	"systemInit\000"
- 1670      656D496E 
- 1670      697400
-ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cckER5f4.s 			page 38
+ 1648      00
+ 1649              	.LASF62:
+ 1650 02f0 433A5C55 		.ascii	"C:\\Users\\Tech Consulting\\Desktop\\PSOC4 projects"
+ 1650      73657273 
+ 1650      5C546563 
+ 1650      6820436F 
+ 1650      6E73756C 
+ 1651 031f 5C537465 		.ascii	"\\Stepper Projects GearBest\\DualStepperController-"
+ 1651      70706572 
+ 1651      2050726F 
+ 1651      6A656374 
+ 1651      73204765 
+ 1652 0350 50536F43 		.ascii	"PSoC4200-GearBest.cydsn\000"
+ 1652      34323030 
+ 1652      2D476561 
+ 1652      72426573 
+ 1652      742E6379 
+ 1653              	.LASF51:
+ 1654 0368 6973725F 		.ascii	"isr_GPIO_StartEx\000"
+ 1654      4750494F 
+ 1654      5F537461 
+ 1654      72744578 
+ 1654      00
+ 1655              	.LASF44:
+ 1656 0379 70776D42 		.ascii	"pwmB1\000"
+ 1656      3100
+ 1657              	.LASF50:
+ 1658 037f 43794465 		.ascii	"CyDelay\000"
+ 1658      6C617900 
+ 1659              	.LASF28:
+ 1660 0387 73746570 		.ascii	"step1\000"
+ 1660      3100
+ 1661              	.LASF56:
+ 1662 038d 494E5445 		.ascii	"INTERNAL_STEP_1_WriteCompare\000"
+ 1662      524E414C 
+ 1662      5F535445 
+ 1662      505F315F 
+ 1662      57726974 
+ 1663              	.LASF58:
+ 1664 03aa 73797374 		.ascii	"systemInit\000"
+ 1664      656D496E 
+ 1664      697400
+ 1665              	.LASF19:
+ 1666 03b5 6C5F7072 		.ascii	"l_previousStepPulse\000"
+ 1666      6576696F 
+ 1666      75735374 
+ 1666      65705075 
+ 1666      6C736500 
+ 1667              	.LASF49:
+ 1668 03c9 53544154 		.ascii	"STATUS_LED_2_Write\000"
+ 1668      55535F4C 
+ 1668      45445F32 
+ 1668      5F577269 
+ 1668      746500
+ 1669              	.LASF40:
+ 1670 03dc 64697252 		.ascii	"dirReg1\000"
+ 1670      65673100 
+ARM GAS  C:\Users\TECHCO~1\AppData\Local\Temp\cc0PYdWe.s 			page 38
 
 
- 1671              	.LASF27:
- 1672 03e6 73746570 		.ascii	"step\000"
- 1672      00
- 1673              	.LASF31:
- 1674 03eb 46756C6C 		.ascii	"FullScale\000"
- 1674      5363616C 
- 1674      6500
- 1675              	.LASF25:
- 1676 03f5 64697669 		.ascii	"divider\000"
- 1676      64657200 
- 1677              	.LASF21:
- 1678 03fd 63757272 		.ascii	"currentStepA\000"
- 1678      656E7453 
- 1678      74657041 
+ 1671              	.LASF25:
+ 1672 03e4 64697669 		.ascii	"divider\000"
+ 1672      64657200 
+ 1673              	.LASF21:
+ 1674 03ec 63757272 		.ascii	"currentStepA\000"
+ 1674      656E7453 
+ 1674      74657041 
+ 1674      00
+ 1675              	.LASF22:
+ 1676 03f9 63757272 		.ascii	"currentStepB\000"
+ 1676      656E7453 
+ 1676      74657042 
+ 1676      00
+ 1677              	.LASF18:
+ 1678 0406 6D61696E 		.ascii	"main\000"
  1678      00
- 1679              	.LASF22:
- 1680 040a 63757272 		.ascii	"currentStepB\000"
- 1680      656E7453 
- 1680      74657042 
- 1680      00
+ 1679              	.LASF47:
+ 1680 040b 50696E5F 		.ascii	"Pin_Sw_Read\000"
+ 1680      53775F52 
+ 1680      65616400 
  1681              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

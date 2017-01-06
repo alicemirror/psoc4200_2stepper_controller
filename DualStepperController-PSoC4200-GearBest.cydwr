@@ -10,51 +10,54 @@
   <Data key="DataVersionKey" value="1" />
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
-      <Data key="0f11354f-acdc-4f57-9bb6-0cebff6a74e7" value="STEP_INPUT_1" />
+      <Data key="0f11354f-acdc-4f57-9bb6-0cebff6a74e7" value="STEP_INPUT_2" />
       <Data key="1cd1fb99-75c2-4a29-aa9b-29f8029b48c5" value="SW3" />
       <Data key="1ec6effd-8f31-4dd5-a825-0c49238d524e/546f1f28-3a33-4888-bf93-14a95800f230" value="Comm_uart_rx_i2c_scl_spi_mosi" />
       <Data key="1ec6effd-8f31-4dd5-a825-0c49238d524e/e4eef7cc-20a7-45a2-a6af-d619f5982693" value="Comm_uart_tx_i2c_sda_spi_miso" />
       <Data key="1efb4634-55fc-4c10-aead-d840f6ee18ac" value="END_STOP_2" />
-      <Data key="2af0c592-e4e5-4dfc-858b-718dac63389c" value="STEP_INPUT_SOURCE_1" />
+      <Data key="2af0c592-e4e5-4dfc-858b-718dac63389c" value="STEP_INPUT_SOURCE_2" />
       <Data key="2b46b2a9-a2d3-4dfe-8f8f-539be6f90cf1" value="PWM_OUT_B" />
-      <Data key="3d7c9960-2258-4db3-b0e1-b3f02eaab2db" value="DIR_OUT_A" />
+      <Data key="3d7c9960-2258-4db3-b0e1-b3f02eaab2db" value="DIR_OUT_A_1" />
       <Data key="4c15b41e-e284-4978-99e7-5aaee19bd0ce" value="STEP_INPUT" />
       <Data key="4e31b41b-ece8-4f1e-8079-066254c50f2f" value="DIR_INPUT_SOURCE" />
-      <Data key="5a1c7990-cd25-45fc-bc59-d060efc0d54a" value="DIR_OUT_A_1" />
+      <Data key="5a1c7990-cd25-45fc-bc59-d060efc0d54a" value="DIR_OUT_A_2" />
       <Data key="05a9c8de-3ba2-4909-8250-95fdc61c0bf4" value="SensA_pos" />
-      <Data key="5a195fa6-11ab-4aa0-8cb8-063f7121b7b9" value="INTERNAL_STEP_OUT_1" />
-      <Data key="5abd4ca1-e816-4992-b884-cedd78fc4dcc" value="DIR_OUT_B_1" />
+      <Data key="5a195fa6-11ab-4aa0-8cb8-063f7121b7b9" value="INTERNAL_STEP_OUT_2" />
+      <Data key="5abd4ca1-e816-4992-b884-cedd78fc4dcc" value="DIR_OUT_B_2" />
       <Data key="6f4367c0-c8a0-4e05-bfdb-f8e9ae8460e2" value="STATUS_LED_2" />
       <Data key="7a8953ed-d2c1-4852-8905-2b951674ec92" value="PWM_OUT_B" />
       <Data key="8c8734ef-3644-4eed-bc55-360072b94fff/4c15b41e-e284-4978-99e7-5aaee19bd0ce" value="SPIS_sclk_s" />
       <Data key="8c8734ef-3644-4eed-bc55-360072b94fff/5e2b647c-52cb-4f09-80bd-87ed9563ab24" value="SPIS_mosi_s" />
       <Data key="8c8734ef-3644-4eed-bc55-360072b94fff/52f31aa9-2f0a-497d-9a1f-1424095e13e6" value="SPIS_miso_s" />
       <Data key="8c8734ef-3644-4eed-bc55-360072b94fff/3446580a-3b9d-491c-8730-f7ea34ca86e3" value="SPIS_ss_s" />
-      <Data key="8d97cd9b-f51b-408e-b009-ed8ff5e367d4" value="STEP_INPUT_SOURCE" />
+      <Data key="8d97cd9b-f51b-408e-b009-ed8ff5e367d4" value="STEP_INPUT_SOURCE_1" />
       <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="END_STOP_1" />
       <Data key="08e7a672-6132-4608-8cb0-486336e7d641" value="mosi_m" />
-      <Data key="8ecf930f-9f68-43d9-9c06-ecf6ba170189" value="DIR_OUT_B" />
-      <Data key="52f31aa9-2f0a-497d-9a1f-1424095e13e6" value="INTERNAL_STEP_OUT" />
+      <Data key="8ecf930f-9f68-43d9-9c06-ecf6ba170189" value="DIR_OUT_B_1" />
+      <Data key="010a08ed-7390-437f-bfc3-91b92a7772d0/5382e105-1382-4a2e-b9f4-3bb2feba71e0" value="I2C_sda" />
+      <Data key="010a08ed-7390-437f-bfc3-91b92a7772d0/22863ebe-a37b-476f-b252-6e49a8c00b12" value="I2C_scl" />
+      <Data key="52f31aa9-2f0a-497d-9a1f-1424095e13e6" value="INTERNAL_STEP_OUT_1" />
       <Data key="74cbd069-96d1-46de-b032-5f29e3b18053" value="LED_SERIAL" />
       <Data key="79e4cafd-4835-4dd8-9282-958728c681f9" value="Pin_1" />
       <Data key="83b2fde2-60ad-45b6-9e5c-cb3baa6e3f9a" value="sclk_m" />
-      <Data key="83c29c13-98a4-4b51-915f-d72f5a63a069" value="PWM_OUT_A" />
-      <Data key="01373a8d-5dbe-42f2-82a0-a07ee28d1dc1" value="PWM_OUT_A_1" />
+      <Data key="83c29c13-98a4-4b51-915f-d72f5a63a069" value="PWM_OUT_A_1" />
+      <Data key="268a066a-6918-4cc8-830e-fa750105e3ff" value="I2C_Addr" />
+      <Data key="01373a8d-5dbe-42f2-82a0-a07ee28d1dc1" value="PWM_OUT_A_2" />
       <Data key="2072b9b8-e806-4de0-997b-72732ba5cf4f" value="INTERNAL_STEP_OUT" />
       <Data key="7268cf2b-71bc-4fbe-87b0-9c9762a9e7ad" value="ss_m" />
       <Data key="42588a7e-3837-4c90-b8b7-9edaf280345b" value="DIR_OUT_A" />
       <Data key="51934cea-a61b-44a6-88a7-77d0e8007d9c/1ec6effd-8f31-4dd5-a825-0c49238d524e/5382e105-1382-4a2e-b9f4-3bb2feba71e0" value="I2C_LCD_1_SCB_sda" />
       <Data key="51934cea-a61b-44a6-88a7-77d0e8007d9c/1ec6effd-8f31-4dd5-a825-0c49238d524e/22863ebe-a37b-476f-b252-6e49a8c00b12" value="I2C_LCD_1_SCB_scl" />
-      <Data key="98563c74-d433-46d0-8815-f5ffc08d8de1" value="PWM_OUT_B_1" />
+      <Data key="98563c74-d433-46d0-8815-f5ffc08d8de1" value="PWM_OUT_B_2" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="miso_m" />
       <Data key="05048453-4a9c-4e17-bd92-5235ad16ceb7" value="Pin_Sw_1" />
       <Data key="a3ffefd5-7809-4a67-be1b-703f220a3bbf" value="STEP_INPUT_SOURCE" />
       <Data key="a4b34be4-0bfc-4c6e-8ff4-3dbab7237fec" value="DIR_OUT_B" />
-      <Data key="afe1087a-faeb-4f2f-91cc-3f9b725536b8" value="DIR_INPUT_SOURCE" />
+      <Data key="afe1087a-faeb-4f2f-91cc-3f9b725536b8" value="DIR_INPUT_SOURCE_1" />
       <Data key="b6f8dfe7-d226-4cb5-9784-bc382f301be6" value="Pin_Sw" />
-      <Data key="b721bcfb-62ea-4b21-94c2-6c4c35c93dee" value="DIR_INPUT_SOURCE_1" />
-      <Data key="b3427416-fbe8-4821-bcd8-3aaa0dce77ef" value="DIR_INPUT_1" />
-      <Data key="bc77ba4c-c29d-4857-b94d-1b6372eb95c1" value="DIR_INPUT" />
+      <Data key="b721bcfb-62ea-4b21-94c2-6c4c35c93dee" value="DIR_INPUT_SOURCE_2" />
+      <Data key="b3427416-fbe8-4821-bcd8-3aaa0dce77ef" value="DIR_INPUT_2" />
+      <Data key="bc77ba4c-c29d-4857-b94d-1b6372eb95c1" value="DIR_INPUT_1" />
       <Data key="bf914d5b-b8c9-46c3-b2bc-01701afe9c65" value="PWM_OUT_A" />
       <Data key="c8a074bb-d441-44d7-87e7-2efff3eaadea" value="DIR_OUT_B" />
       <Data key="ca5f92d5-dcfc-49d4-83d3-a85afd6c0988" value="INTERNAL_STEP_OUT" />
@@ -63,8 +66,8 @@
       <Data key="cc181ea2-f0e6-4997-a81a-9278f2e2e0af" value="DIR_INPUT" />
       <Data key="eb361b74-3178-4d44-bb56-b397e275deb8" value="SensA_neg" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="LED_I2C" />
-      <Data key="f7d1f408-a333-46e8-9ec4-c585a1a80291" value="STEP_INPUT" />
-      <Data key="f1872a9a-e2e5-4fa8-bf68-a52a8d2a5226" value="PWM_OUT_B" />
+      <Data key="f7d1f408-a333-46e8-9ec4-c585a1a80291" value="STEP_INPUT_1" />
+      <Data key="f1872a9a-e2e5-4fa8-bf68-a52a8d2a5226" value="PWM_OUT_B_1" />
     </Group>
   </Group>
   <Group key="FlashSecurity">
@@ -1075,6 +1078,16 @@
         <Data key="Port Format" value="0,6" />
       </Group>
     </Group>
+    <Group key="010a08ed-7390-437f-bfc3-91b92a7772d0/5382e105-1382-4a2e-b9f4-3bb2feba71e0">
+      <Group key="0">
+        <Data key="Port Format" value="4,1" />
+      </Group>
+    </Group>
+    <Group key="010a08ed-7390-437f-bfc3-91b92a7772d0/22863ebe-a37b-476f-b252-6e49a8c00b12">
+      <Group key="0">
+        <Data key="Port Format" value="4,0" />
+      </Group>
+    </Group>
     <Group key="52f31aa9-2f0a-497d-9a1f-1424095e13e6">
       <Group key="0">
         <Data key="Port Format" value="0,4" />
@@ -1093,6 +1106,26 @@
     <Group key="83c29c13-98a4-4b51-915f-d72f5a63a069">
       <Group key="0">
         <Data key="Port Format" value="3,7" />
+      </Group>
+    </Group>
+    <Group key="268a066a-6918-4cc8-830e-fa750105e3ff">
+      <Group key="0">
+        <Data key="Port Format" value="2,0" />
+      </Group>
+      <Group key="1">
+        <Data key="Port Format" value="2,1" />
+      </Group>
+      <Group key="2">
+        <Data key="Port Format" value="2,2" />
+      </Group>
+      <Group key="3">
+        <Data key="Port Format" value="2,3" />
+      </Group>
+      <Group key="4">
+        <Data key="Port Format" value="2,4" />
+      </Group>
+      <Group key="5">
+        <Data key="Port Format" value="2,5" />
       </Group>
     </Group>
     <Group key="01373a8d-5dbe-42f2-82a0-a07ee28d1dc1">
